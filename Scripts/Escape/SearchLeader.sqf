@@ -9,7 +9,8 @@ _searchAreaMarkerName = _this select 0;
 if (count _this > 1) then {_debug = _this select 1;} else {_debug = false;};
 
 _marker = "";
-_worldSizeXY = 20000;
+//will need to be appropriately changed for stratis
+_worldSizeXY = 30000;
 _searchAreaDiamSmall = 200;
 _searchAreaDiamMedium = 700;
 _searchAreaDiamLarge = 1500;

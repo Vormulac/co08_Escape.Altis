@@ -4,8 +4,10 @@ private ["_unit", "_debug"];
 private ["_destinationPos", "_worldSizeX", "_worldSizeY", "_group"];
 private ["_waypoint", "_waypointFormations", "_formation"];
 
-_worldSizeX = 12500;
-_worldSizeY = 12500;
+//This needs to be changed for stratis
+//will need to be centred and decreased for efficiency
+_worldSizeX = 30000;
+_worldSizeY = 30000;
 
 _unit = _this select 0;
 if (count _this > 1) then {_debug = _this select 1;} else {_debug = false;};
