@@ -74,7 +74,7 @@ enableRadio false;
 0 cutText ["", "BLACK FADED"];
 
 if (isDedicated && _useRevive) then {
-	server execVM "revive_init.sqf";
+	//server execVM "revive_init.sqf";
 };
 
 if (!isDedicated) then {
@@ -388,7 +388,7 @@ if (!isNull player) then {
                 
                 sleep 10;
                 if (_useRevive && !isDedicated) then {
-					server execVM "revive_init.sqf";
+					//server execVM "revive_init.sqf";
                 }; 
                 
                 // Only show this on non ported missions
@@ -407,7 +407,7 @@ if (!isNull player) then {
         waitUntil {!(isNil "drn_escapeHasStarted")};
         
         if (_isJipPlayer && _useRevive) then {
-			server execVM "revive_init.sqf";
+			//server execVM "revive_init.sqf";
         }; 
 
         {
