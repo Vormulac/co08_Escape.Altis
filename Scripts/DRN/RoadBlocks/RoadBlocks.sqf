@@ -29,7 +29,7 @@ if (str _infantryClasses == """RU""") then {
     _isFaction = true;
 };
 if (str _infantryClasses == """INS""") then {
-    _possibleInfantryTypes = ["O_engineer_F", "O_medic_F", "O_Soldier_A_F", "O_Soldier_AA_F", "O_Soldier_AR_F", "O_Soldier_AT_F", "O_Soldier_exp_F", "O_soldier_F", "O_Soldier_GL_F", "O_Soldier_LAT_F", "O_Soldier_lite_F", "O_Soldier_M_F", "O_Soldier_repair_F", "O_officer_F"];
+    _possibleInfantryTypes = ["O_Soldier_A_F", "O_Soldier_AA_F", "O_Soldier_AR_F", "O_Soldier_AT_F", "O_Soldier_exp_F", "O_soldier_F", "O_Soldier_GL_F", "O_Soldier_LAT_F", "O_Soldier_lite_F", "O_Soldier_M_F", "O_Soldier_repair_F", "O_medic_F", "O_Soldier_A_F", "O_Soldier_AA_F", "O_Soldier_AR_F", "O_Soldier_AT_F", "O_Soldier_exp_F", "O_soldier_F", "O_Soldier_GL_F", "O_Soldier_LAT_F", "O_Soldier_lite_F", "O_Soldier_M_F"];
     _isFaction = true;
 };
 if (str _infantryClasses == """GUE""") then {
@@ -55,7 +55,7 @@ if (str _mannedVehicleClasses == """RU""") then {
     _isFaction = true;
 };
 if (str _mannedVehicleClasses == """INS""") then {
-    _possibleVehicleTypes = ["O_MRAP_02_gmg_F", "O_MRAP_02_hmg_F", "O_APC_Wheeled_02_rcws_F", "O_APC_Tracked_02_cannon_F", "O_APC_Tracked_02_AA_F"];
+    _possibleVehicleTypes = ["O_MRAP_02_gmg_F", "O_MRAP_02_hmg_F"];
     _isFaction = true;
 };
 if (str _mannedVehicleClasses == """GUE""") then {

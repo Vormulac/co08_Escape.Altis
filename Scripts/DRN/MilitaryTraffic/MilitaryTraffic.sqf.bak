@@ -57,7 +57,6 @@ if (isNil "drn_fnc_MilitaryTraffic_MoveVehicle") then {
         private ["_waypoint", "_fuel"];
         
         _vehicle = _this select 0;
-		
         if (count _this > 1) then {_firstDestinationPos = _this select 1;} else {_firstDestinationPos = [];};
         if (count _this > 2) then {_debug = _this select 2;} else {_debug = false;};
         
@@ -80,7 +79,7 @@ if (isNil "drn_fnc_MilitaryTraffic_MoveVehicle") then {
         };
         
         _waypoint = group _vehicle addWaypoint [_destinationPos, 10];
-        _waypoint setWaypointBehaviour "SAFE";
+        _waypoint setWaypointBehaviour "Careless";
         _waypoint setWaypointSpeed _speed;
         _waypoint setWaypointCompletionRadius 10;
         _waypoint setWaypointStatements ["true", "_nil = [" + vehicleVarName _vehicle + ", [], " + str _debug + "] spawn drn_fnc_MilitaryTraffic_MoveVehicle;"];
@@ -107,7 +106,7 @@ if (str _vehicleClasses == """RU""") then {
     _isFaction = true;
 };
 if (str _vehicleClasses == """INS""") then {
-    _possibleVehicles = ["O_MRAP_02_F", "O_MRAP_02_gmg_F", "O_MRAP_02_hmg_F", "O_Truck_02_covered_F", "O_Truck_02_transport_F"];//];//, "O_APC_Wheeled_03_cannon_F"];
+    _possibleVehicles = ["O_MRAP_02_F", "O_MRAP_02_gmg_F", "O_MRAP_02_hmg_F", "O_Quadbike_01_F", "O_Truck_02_covered_F", "O_Truck_02_transport_F", "O_Truck_02_ammo_F", "O_Truck_02_box_F", "O_Truck_02_fuel_F", "O_Truck_02_medical_F", "O_APC_Wheeled_02_rcws_F", "O_APC_Tracked_02_AA_F", "O_APC_Tracked_02_cannon_F", "O_MBT_02_arty_F", "O_MBT_02_cannon_F"];
     _isFaction = true;
 };
 if (str _vehicleClasses == """GUE""") then {
@@ -115,7 +114,7 @@ if (str _vehicleClasses == """GUE""") then {
     _isFaction = true;
 };
 if (str _vehicleClasses == """CIV""") then {
-    _possibleVehicles = ["C_Hatchback_01_F", "C_Hatchback_01_sport_F", "C_Offroad_01_F", "C_Quadbike_01_F", "C_SUV_01_F", "C_Van_01_box_F", "C_Van_01_transport_F"];
+    _possibleVehicles = ["C_Hatchback_01_F", "C_Hatchback_01_sport_F", "C_Offroad_01_F", "C_Quadbike_01_F", "C_SUV_01_F", "C_Van_01_box_F", "C_Van_01_transport_F", "C_Van_01_fuel_F"];;
     _isFaction = true;
 };
 

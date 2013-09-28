@@ -5,8 +5,7 @@ class Mission
 	{
 		"a3_map_Altis",
 		"A3_Characters_F_BLUFOR",
-		"a3_characters_f_beta",
-		"A3_Air_F_Beta_Heli_Attack_02"
+		"a3_characters_f_beta"
 	};
 	addOnsAuto[]=
 	{
