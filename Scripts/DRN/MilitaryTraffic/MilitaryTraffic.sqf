@@ -68,8 +68,8 @@ if (isNil "drn_fnc_MilitaryTraffic_MoveVehicle") then {
             _destinationPos = + _firstDestinationPos;
         }
         else {
-            //_roadSegments = _allRoadSegments;
-            _destinationSegment = drn_allroadSegments select floor random drn_allroadsCount;
+            _roadSegments = _vehicle nearroads 2000;
+            _destinationSegment = _roadSegments select floor random _roadSegments;
             _destinationPos = getPos _destinationSegment;
         };
         
@@ -232,13 +232,13 @@ while {true} do {
             _tries = 0;
             
             // Get first destination
-            _trafficLocation = floor random 5;
+            _trafficLocation = floor random 4;
             switch (_trafficLocation) do {
                 case 0: { _roadSegments = (getMarkerPos "TrafficMarker_SouthWest") nearRoads 300; };
                 case 1: { _roadSegments = (getMarkerPos "TrafficMarker_NorthWest") nearRoads 300; };
                 case 2: { _roadSegments = (getMarkerPos "TrafficMarker_NorthEast") nearRoads 300; };
                 case 3: { _roadSegments = (getMarkerPos "TrafficMarker_SouthEast") nearRoads 300; };
-                default { _roadSegments = drn_allroadSegments };
+                //default { _roadSegments = drn_allroadSegments };
             };
             
             _destinationSegment = _roadSegments select floor random count _roadSegments;

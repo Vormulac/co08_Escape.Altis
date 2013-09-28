@@ -428,7 +428,7 @@ class Mission
 		{
 			position[]={24086.104,6.0678048,16151.474};
 			name="RoadBlockNullRoad";
-			type="mil_warning";
+			type="Empty";
 			colorName="ColorRed";
 		};
 	};
