@@ -90,7 +90,7 @@ drn_fnc_Escape_FindGoodPos = {
         _isOk = false;
         while {!_isOk} do {
 			_randomNumber = random 100;
-            if (_randomNumber > 75) then {
+            if (_randomNumber > 90) then {
                 _startPos = + [8200 + random 6000, 6200 + random 4800]; // Most difficult place
             }
             else {
@@ -144,7 +144,7 @@ drn_fnc_Escape_FindAmmoDepotPositions = {
     _countSE = 0;
     _countSW = 0;
     
-    while {count _positions < 4} do {
+    while {count _positions < 10} do {
         _isOk = false;
         _j = 0;
         

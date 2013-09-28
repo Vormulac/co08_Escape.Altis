@@ -108,7 +108,7 @@ if (true) then {
 
     _distanceBetween = 1500;
     
-    while {count _chosenComCenIndexes < 3} do {
+    while {count _chosenComCenIndexes < 5} do {
         _index = floor random count drn_arr_communicationCenterMarkers;
         _currentPos = (drn_arr_communicationCenterMarkers select _index) select 0;
         

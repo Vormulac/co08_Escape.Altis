@@ -149,7 +149,7 @@ _fnc_FindRoadBlockSegment = {
 
 _fnc_CreateRoadBlock = {
     private ["_roadSegment", "_side", "_possibleInfantryTypes", "_possibleVehicleTypes", "_fnc_OnSpawnInfantryGroup", "_fnc_OnSpawnMannedVehicle"];
-    private ["_dir", "_pos", "_angle", "_posX", "_posY", "_result", "_group", "_waypoint", "_barrier", "_guardTypes", "_units", "_vehicle", "_crew", "_possibleVehicles"];
+    private ["_dir", "_pos", "_angle", "_posX", "_posY", "_result", "_group", "_barrier", "_guardTypes", "_units", "_vehicle", "_crew", "_possibleVehicles"];
     
     _roadSegment = _this select 0;
     _side = _this select 1;
@@ -186,10 +186,10 @@ _fnc_CreateRoadBlock = {
     _units = _units + [_vehicle];
     _units = _units + _crew;
     
-    _waypoint = _group addWaypoint [_pos, 0];
-    _waypoint setWaypointType "GUARD";
-    _waypoint setWaypointBehaviour "AWARE";
-    _waypoint setWaypointCombatMode "RED";
+    //_waypoint = _group addWaypoint [_pos, 0];
+    //_waypoint setWaypointType "MOVE";
+    //_waypoint setWaypointBehaviour "AWARE";
+    //_waypoint setWaypointCombatMode "RED";
     
     _result spawn _fnc_OnSpawnMannedVehicle;
     
@@ -220,10 +220,10 @@ _fnc_CreateRoadBlock = {
     
     _units = _units + units _group;
     
-    _waypoint = _group addWaypoint [_pos, 0];
-    _waypoint setWaypointType "GUARD";
-    _waypoint setWaypointBehaviour "AWARE";
-    _waypoint setWaypointCombatMode "YELLOW";
+    //_waypoint = _group addWaypoint [_pos, 0];
+    //_waypoint setWaypointType "MOVE";
+    //_waypoint setWaypointBehaviour "AWARE";
+    //_waypoint setWaypointCombatMode "YELLOW";
     
     _group spawn _fnc_OnSpawnInfantryGroup;
     
@@ -336,3 +336,11 @@ while {true} do {
     _roadBlocks = _tempRoadBlocks;
     _firstLoop = false;
 };
+
+
+
+
+
+
+
+
