@@ -6,7 +6,7 @@ private ["_enemyMinSkill", "_enemyMaxSkill", "_searchChopperSearchTimeMin", "_se
 
 // Developer Variables
 
-_useRandomStartPos = true;
+_useRandomStartPos = false;
 _useEscapeSurprises = true;
 _useAmmoDepots = true;
 _useSearchLeader = true;
@@ -29,7 +29,7 @@ _debugAmmoDepots = false;
 _debugSearchLeader = false;
 _debugVillagePatrols = false;
 _debugMilitaryTraffic = false;
-_debugAmbientInfantry = false;
+_debugAmbientInfantry = true;
 _debugGarbageCollector = false;
 _debugRoadBlocks = false;
 drn_var_Escape_debugMotorizedSearchGroup = false;

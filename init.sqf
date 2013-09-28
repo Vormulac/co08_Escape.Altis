@@ -94,7 +94,7 @@ call drn_fnc_CL_InitParams;
 call compile preprocessFileLineNumbers "Scripts\Escape\Functions.sqf";
 
 [_isJipPlayer] call compile preprocessFileLineNumbers "Briefing.sqf";
-call compile preprocessFileLineNumbers "scripts\Init_UPSMON.sqf";
+//call compile preprocessFileLineNumbers "scripts\Init_UPSMON.sqf";
 
 _dynamicWeather = (paramsArray select 3);
 setTerrainGrid (paramsArray select 4);
