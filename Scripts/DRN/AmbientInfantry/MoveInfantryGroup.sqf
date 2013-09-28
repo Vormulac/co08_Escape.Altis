@@ -4,6 +4,8 @@ private ["_unit", "_debug"];
 private ["_destinationPos", "_worldSizeX", "_worldSizeY", "_group"];
 private ["_waypoint", "_waypointFormations", "_formation"];
 
+//This needs to be changed for stratis
+//will need to be centred and decreased for efficiency
 _worldSizeX = 30000;
 _worldSizeY = 30000;
 
