@@ -8,23 +8,28 @@ _spawnMarkerName = "drn_Escape_ExtracionBoatSpawnPos" + str _extractionPointNo;
 _extractionMarkerName = "drn_Escape_ExtractionPos" + str _extractionPointNo;
 _extractionMarkerName2 = "drn_Escape_ExtractionPos" + str _extractionPointNo + "_1";
 
-_result = [[((getMarkerPos _spawnMarkerName) select 0) + 15, ((getMarkerPos _spawnMarkerName) select 1) + 10, 0], 0, "B_Boat_Armed_01_minigun_F", west] call BIS_fnc_spawnVehicle;
+_result = [[((getMarkerPos _spawnMarkerName) select 0) + 15, ((getMarkerPos _spawnMarkerName) select 1) + 10, 0], 0, "B_Heli_Transport_01_F", west] call BIS_fnc_spawnVehicle;
 _boat1 = _result select 0;
 _group1 = _result select 2;
 
-_result = [[((getMarkerPos _spawnMarkerName) select 0) - 15, ((getMarkerPos _spawnMarkerName) select 1) - 10, 0], 0, "B_Boat_Armed_01_minigun_F", west] call BIS_fnc_spawnVehicle;
+_result = [[((getMarkerPos _spawnMarkerName) select 0) - 15, ((getMarkerPos _spawnMarkerName) select 1) - 10, 0], 0, "B_Heli_Transport_01_F", west] call BIS_fnc_spawnVehicle;
 _boat2 = _result select 0;
 _group2 = _result select 2;
 
 _waypoint = _group1 addWaypoint [getMarkerPos _extractionMarkerName, 0];
-_waypoint setWaypointSpeed "NORMAL";
-_waypoint setWaypointBehaviour "NORMAL";
+_waypoint setWaypointSpeed "FULL";
+_waypoint setWaypointBehaviour "CARELESS";
 _waypoint setWaypointFormation "WEDGE";
+_waypoint setWaypointStatements ["true", "vehicle this land 'LAND'"];
 
 _waypoint = _group2 addWaypoint [getMarkerPos _extractionMarkerName2, 0];
 _waypoint setWaypointSpeed "FULL";
-_waypoint setWaypointBehaviour "SAFE";
+_waypoint setWaypointBehaviour "CARELESS";
 _waypoint setWaypointFormation "WEDGE";
+_waypoint setWaypointStatements ["true", "vehicle this land 'LAND'"];
+
+_boat1 flyinheight 50;
+_boat2 flyinheight 50;
 
 sleep 1;
 
