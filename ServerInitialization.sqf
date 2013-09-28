@@ -15,7 +15,7 @@ _useVillagePatrols = true;
 _useMilitaryTraffic = true;
 _useAmbientInfantry = true;
 _useSearchChopper = true;
-_useRoadBlocks = (paramsArray select 6) == 1;
+_useRoadBlocks = true;//(paramsArray select 6) == 1;
 
 _guardsExist = true;
 _comCenGuardsExist = true;
@@ -58,7 +58,8 @@ _searchChopperRefuelTimeMin = (5 + random 10);
 
 //Vorm -- don't need this anymore
 //waituntil {!isnil "bis_fnc_init"};
-
+drn_allroadSegments = [0,0,0] nearroads 1000000;
+drn_allroadsCount = count drn_allroadSegments;
 _enemyFrequency = (paramsArray select 1);
 _enemySpawnDistance = (paramsArray select 5);
 

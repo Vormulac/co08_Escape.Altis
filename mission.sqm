@@ -42,7 +42,7 @@ class Mission
 				items=8;
 				class Item0
 				{
-					position[]={13138.69,16.217979,18197.924};
+					position[]={12238.461,41.995682,19422.68};
 					azimut=79.459641;
 					id=0;
 					side="WEST";
@@ -56,7 +56,7 @@ class Mission
 				};
 				class Item1
 				{
-					position[]={13134.813,16.472012,18191.049};
+					position[]={12234.582,42.545288,19415.805};
 					azimut=2.6379197;
 					special="NONE";
 					id=1;
@@ -70,7 +70,7 @@ class Mission
 				};
 				class Item2
 				{
-					position[]={13130.452,16.6131,18192.074};
+					position[]={12229.506,42.940037,19417.715};
 					azimut=2.6379197;
 					special="NONE";
 					id=2;
@@ -84,7 +84,7 @@ class Mission
 				};
 				class Item3
 				{
-					position[]={13132.289,16.51897,18191.486};
+					position[]={12232.059,42.70015,19416.242};
 					azimut=2.6379197;
 					special="NONE";
 					id=3;
@@ -98,7 +98,7 @@ class Mission
 				};
 				class Item4
 				{
-					position[]={13137.81,16.394102,18190.736};
+					position[]={12237.578,42.27565,19415.492};
 					azimut=2.6379197;
 					special="NONE";
 					id=4;
@@ -112,7 +112,7 @@ class Mission
 				};
 				class Item5
 				{
-					position[]={13140.319,16.28479,18190.764};
+					position[]={12240.09,42.061829,19415.52};
 					azimut=2.6379197;
 					special="NONE";
 					id=5;
@@ -126,7 +126,7 @@ class Mission
 				};
 				class Item6
 				{
-					position[]={13136.507,16.445366,18190.797};
+					position[]={12236.277,42.390316,19415.555};
 					azimut=2.6379197;
 					special="NONE";
 					id=6;
@@ -140,7 +140,7 @@ class Mission
 				};
 				class Item7
 				{
-					position[]={13142.866,16.194029,18191.268};
+					position[]={12242.637,41.877041,19416.023};
 					azimut=2.6379197;
 					special="NONE";
 					id=7;
@@ -175,7 +175,7 @@ class Mission
 	};
 	class Markers
 	{
-		items=36;
+		items=37;
 		class Item0
 		{
 			position[]={14871.075,17.947748,16432.234};
@@ -215,7 +215,7 @@ class Mission
 		};
 		class Item6
 		{
-			position[]={25695.986,20.389252,21333.043};
+			position[]={13137.318,36.413891,19994.426};
 			name="TrafficMarker_NorthEast";
 			type="Empty";
 		};
@@ -409,6 +409,13 @@ class Mission
 			position[]={8497.6738,110.95332,25040.924};
 			name="Boot_Hill";
 			type="Empty";
+		};
+		class Item36
+		{
+			position[]={24086.104,6.0678048,16151.474};
+			name="RoadBlockNullRoad";
+			type="mil_warning";
+			colorName="ColorRed";
 		};
 	};
 	class Sensors

@@ -68,8 +68,8 @@ if (isNil "drn_fnc_MilitaryTraffic_MoveVehicle") then {
             _destinationPos = + _firstDestinationPos;
         }
         else {
-            _roadSegments = _vehicle nearRoads 1000000;
-            _destinationSegment = _roadSegments select floor random count _roadSegments;
+            //_roadSegments = _allRoadSegments;
+            _destinationSegment = drn_allroadSegments select floor random drn_allroadsCount;
             _destinationPos = getPos _destinationSegment;
         };
         
@@ -203,7 +203,7 @@ _fnc_FindSpawnSegment = {
 
 //_iterationNo = 0;
 _firstIteration = true;
-_allRoadSegments = [0,0,0] nearRoads 1000000;
+
 
 while {true} do {
     scopeName "mainScope";
@@ -238,7 +238,7 @@ while {true} do {
                 case 1: { _roadSegments = (getMarkerPos "TrafficMarker_NorthWest") nearRoads 300; };
                 case 2: { _roadSegments = (getMarkerPos "TrafficMarker_NorthEast") nearRoads 300; };
                 case 3: { _roadSegments = (getMarkerPos "TrafficMarker_SouthEast") nearRoads 300; };
-                default { _roadSegments = _allRoadSegments };
+                default { _roadSegments = drn_allroadSegments };
             };
             
             _destinationSegment = _roadSegments select floor random count _roadSegments;

@@ -125,19 +125,19 @@ drn_arr_AmmoDepotSpecialWeapons set [count drn_arr_AmmoDepotSpecialWeapons, ["ar
 // Weapons and ammo in the launchers box
 drn_arr_AmmoDepotLaunchers = [];
 // Insurgent weapons
-drn_arr_AmmoDepotLaunchers set [count drn_arr_AmmoDepotLaunchers, ["launch_RPG32_F", 100, 3, 5, ["RPG32_F", "RPG32_HE_F"]], 2]];
+drn_arr_AmmoDepotLaunchers set [count drn_arr_AmmoDepotLaunchers, ["launch_RPG32_F", 100, 3, 5, ["RPG32_F", "RPG32_HE_F"], 2]];
 drn_arr_AmmoDepotLaunchers set [count drn_arr_AmmoDepotLaunchers, ["launch_RPG32_F", 25, 1, 2, ["RPG32_F", "RPG32_HE_F"], 2]];
 drn_arr_AmmoDepotLaunchers set [count drn_arr_AmmoDepotLaunchers, ["launch_O_Titan_F", 100, 1, 1, ["Titan_AA"], 2]];
-drn_arr_AmmoDepotLaunchers set [count drn_arr_AmmoDepotLaunchers, ["launch_O_Titan_short_F", 75, 1, 2, ["Titian_AP", "Titan_AT"], 2]];
+drn_arr_AmmoDepotLaunchers set [count drn_arr_AmmoDepotLaunchers, ["launch_O_Titan_short_F", 75, 1, 2, ["titan_AP", "Titan_AT"], 2]];
 
 // Russian weapons
 drn_arr_AmmoDepotLaunchers set [count drn_arr_AmmoDepotLaunchers, ["launch_I_Titan_F", 35, 1, 2, ["Titan_AA"], 3]];
-drn_arr_AmmoDepotLaunchers set [count drn_arr_AmmoDepotLaunchers, ["launch_I_Titan_short_F", 25, 1, 2, ["Titian_AP", "Titan_AT"], 2]];
+drn_arr_AmmoDepotLaunchers set [count drn_arr_AmmoDepotLaunchers, ["launch_I_Titan_short_F", 25, 1, 2, ["titan_AP", "Titan_AT"], 2]];
 
 // Some stolen western weapons can sometimes appear
 drn_arr_AmmoDepotLaunchers set [count drn_arr_AmmoDepotLaunchers, ["launch_NLAW_F", 45, 2, 2, ["NLAW_F"], 2]];
 drn_arr_AmmoDepotLaunchers set [count drn_arr_AmmoDepotLaunchers, ["launch_B_Titan_F", 35, 1, 2, ["Titan_AA"], 3]];
-drn_arr_AmmoDepotLaunchers set [count drn_arr_AmmoDepotLaunchers, ["launch_B_Titan_short_F", 25, 1, 2, ["Titian_AP", "Titan_AT"], 2]];
+drn_arr_AmmoDepotLaunchers set [count drn_arr_AmmoDepotLaunchers, ["launch_B_Titan_short_F", 25, 1, 2, ["titan_AP", "Titan_AT"], 2]];
 
 // Weapons and ammo in the ordnance box
 drn_arr_AmmoDepotOrdnance = [];

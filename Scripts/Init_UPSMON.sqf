@@ -324,67 +324,68 @@ KRON_UPS_ARTILLERY_GUER_FIRE = false; //set to true for doing resistance to fire
 				if (KRON_UPS_Debug>0) then { diag_log format ["KRON_NPCs: [%1]", KRON_NPCs]; };
 				
 				{		
-                       
-					if ( !isnull _x && {alive _x} && {!captive _x} ) then 
-					{
-                        _npc = _x;                                
-                        _targets = [];  						
-
-						switch (side _npc) do {
-							//West targets
-							case west: {
-								_sharedenemy = 0;
-								_enemyside = [east];
-							};
-							//East targets
-							case east: {
-								_sharedenemy = 1;
-								_enemyside = [west];
-							};
-							//Resistance targets
-							case resistance: {								
-								_sharedenemy = 2;
-								_enemyside = KRON_UPS_Res_enemy;
-							};
-						};		
-						
-						if (side _npc in KRON_UPS_Res_enemy) then {
-							_enemyside = _enemyside + [resistance];
-						};
-						
-						//Gets known targets on each leader for comunicating enemy position
-						//Has better performance with targetsquery
-						//_targets = _npc nearTargets KRON_UPS_sharedist;		
-						_targets = _npc targetsQuery ["","","","",""];
-						
+					if(!isNil "_x") then {
+						if ( !isnull _x && {alive _x} && {!captive _x} ) then 
 						{
-							//_target = _x select 4;      //Neartargets
-							_target = _x select 1;        //Targetsquery							
-							if ( side _target in _enemyside ) then {																									
+							_npc = _x;                                
+							_targets = [];  						
+
+							switch (side _npc) do {
+								//West targets
+								case west: {
+									_sharedenemy = 0;
+									_enemyside = [east];
+								};
+								//East targets
+								case east: {
+									_sharedenemy = 1;
+									_enemyside = [west];
+								};
+								//Resistance targets
+								case resistance: {								
+									_sharedenemy = 2;
+									_enemyside = KRON_UPS_Res_enemy;
+								};
+							};		
 							
-							if (KRON_UPS_Debug>0) then {diag_log format["UPSMON: [%1] knows about [%2]: [%3], enemies=[%4] (index: %5)",_npc getVariable ("UPSMON_grpid"),_target, _npc knowsabout _target, _npc countEnemy _targets, _forEachIndex]};
-													
-								if (!isnull _target && { alive _target } && { canmove _target } && { !captive _target } && { _npc knowsabout _target > R_knowsAboutEnemy }
-									&& { ( _target iskindof "Land" || _target iskindof "Air" || _target iskindof "Ship" ) }
-									&& { !( _target iskindof "Animal") }
-									&& { ( _target emptyPositions "Gunner" == 0 && _target emptyPositions "Driver" == 0 
-										|| (!isnull (gunner _target) && canmove (gunner _target))
-										|| (!isnull (driver _target) && canmove (driver _target))) }									
-								) then {
-									//Saves last known position	
-									//_knownpos = _x select 0;	//Neartargets							
-									_knownpos = _x select 4;//Targetsquery
-									_target setvariable ["UPSMON_lastknownpos", _knownpos, false];									
-									// _npc setVariable ["R_knowsAboutTarget", true, false];	  // !R								
-									
-									call (compile format ["_targets%1 = _targets%1 - [_target]",_sharedenemy]);
-									call (compile format ["_targets%1 = _targets%1 + [_target]",_sharedenemy]);						
-								};	
+							if (side _npc in KRON_UPS_Res_enemy) then {
+								_enemyside = _enemyside + [resistance];
 							};
-						sleep 0.01;	
-						}foreach _targets;							
-					};					
-					sleep 0.01;				
+							
+							//Gets known targets on each leader for comunicating enemy position
+							//Has better performance with targetsquery
+							//_targets = _npc nearTargets KRON_UPS_sharedist;		
+							_targets = _npc targetsQuery ["","","","",""];
+							
+							{
+								//_target = _x select 4;      //Neartargets
+								_target = _x select 1;        //Targetsquery							
+								if ( side _target in _enemyside ) then {																									
+								
+								if (KRON_UPS_Debug>0) then {diag_log format["UPSMON: [%1] knows about [%2]: [%3], enemies=[%4] (index: %5)",_npc getVariable ("UPSMON_grpid"),_target, _npc knowsabout _target, _npc countEnemy _targets, _forEachIndex]};
+														
+									if (!isnull _target && { alive _target } && { canmove _target } && { !captive _target } && { _npc knowsabout _target > R_knowsAboutEnemy }
+										&& { ( _target iskindof "Land" || _target iskindof "Air" || _target iskindof "Ship" ) }
+										&& { !( _target iskindof "Animal") }
+										&& { ( _target emptyPositions "Gunner" == 0 && _target emptyPositions "Driver" == 0 
+											|| (!isnull (gunner _target) && canmove (gunner _target))
+											|| (!isnull (driver _target) && canmove (driver _target))) }									
+									) then {
+										//Saves last known position	
+										//_knownpos = _x select 0;	//Neartargets							
+										_knownpos = _x select 4;//Targetsquery
+										_target setvariable ["UPSMON_lastknownpos", _knownpos, false];									
+										// _npc setVariable ["R_knowsAboutTarget", true, false];	  // !R								
+										
+										call (compile format ["_targets%1 = _targets%1 - [_target]",_sharedenemy]);
+										call (compile format ["_targets%1 = _targets%1 + [_target]",_sharedenemy]);						
+									};	
+								};
+							sleep 0.01;	
+							}foreach _targets;							
+						};					
+						sleep 0.01;				
+					};
 				} foreach KRON_NPCs;												
 				
 				//Share targets

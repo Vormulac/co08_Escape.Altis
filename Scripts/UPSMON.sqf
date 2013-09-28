@@ -254,8 +254,10 @@ if (KRON_UPS_Debug>0) then {diag_log format["UPSMON - npc [%1] - typename [%2] -
 	}
 	else 
 	{
-		if (count _obj>0) then {
-			_npc = [_obj,count _obj] call MON_getleader;			
+		if (typeName _obj != typeName []) then {
+			if (count _obj>0) then {
+				_npc = [_obj,count _obj] call MON_getleader;			
+			};
 		};
 	};
 	
