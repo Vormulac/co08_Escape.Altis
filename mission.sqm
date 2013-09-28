@@ -6,13 +6,15 @@ class Mission
 		"a3_map_Altis",
 		"A3_Characters_F_BLUFOR",
 		"a3_characters_f_beta",
-		"A3_Air_F_Beta_Heli_Attack_02"
+		"A3_Air_F_Beta_Heli_Attack_02",
+		"A3_Soft_F_TruckHeavy"
 	};
 	addOnsAuto[]=
 	{
 		"A3_Characters_F_BLUFOR",
 		"a3_characters_f_beta",
 		"A3_Air_F_Beta_Heli_Attack_02",
+		"A3_Soft_F_TruckHeavy",
 		"a3_map_altis"
 	};
 	randomSeed=16426086;
@@ -177,13 +179,21 @@ class Mission
 	};
 	class Vehicles
 	{
-		items=1;
+		items=2;
 		class Item0
 		{
 			position[]={13163.328,16.515974,18209.686};
 			id=9;
 			side="EMPTY";
 			vehicle="O_Heli_Attack_02_F";
+			skill=0.60000002;
+		};
+		class Item1
+		{
+			position[]={12275.552,40.243774,19418.229};
+			id=10;
+			side="EMPTY";
+			vehicle="O_Truck_02_transport_F";
 			skill=0.60000002;
 		};
 	};
