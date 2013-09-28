@@ -13,10 +13,10 @@ _unit = _this select 0;
 if (count _this > 1) then {_debug = _this select 1;} else {_debug = false;};
 
 _group = group _unit;
-
-_destinationPos = [random _worldSizeX, random _worldSizeY];
+_searchRange = 1000;
+_destinationPos = [((getPos _unit) select 0) - _searchRange + (random (2* _searchRange)), ((getPos _unit) select 1) - _searchRange + (random (2* _searchRange))];
 while {surfaceIsWater [_destinationPos select 0, _destinationPos select 1]} do {
-    _destinationPos = [random _worldSizeX, random _worldSizeY];
+    _destinationPos = [((getPos _unit) select 0) - _searchRange + (random (2* _searchRange)), ((getPos _unit) select 1) - _searchRange + (random (2* _searchRange))];
 };
 
 _waypointFormations = ["COLUMN", "STAG COLUMN", "FILE", "DIAMOND"];

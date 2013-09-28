@@ -23,7 +23,7 @@ if (count _firstDestinationPos > 0) then {
     _destinationPos = + _firstDestinationPos;
 }
 else {
-    _roadSegments = _vehicle nearRoads 1000000;
+    _roadSegments = _vehicle nearRoads 2000;
     _destinationSegment = _roadSegments select floor random count _roadSegments;
     _destinationPos = getPos _destinationSegment;
 };

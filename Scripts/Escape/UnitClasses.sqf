@@ -128,7 +128,7 @@ drn_arr_AmmoDepotLaunchers = [];
 drn_arr_AmmoDepotLaunchers set [count drn_arr_AmmoDepotLaunchers, ["launch_RPG32_F", 100, 3, 5, ["RPG32_F", "RPG32_HE_F"], 2]];
 drn_arr_AmmoDepotLaunchers set [count drn_arr_AmmoDepotLaunchers, ["launch_RPG32_F", 25, 1, 2, ["RPG32_F", "RPG32_HE_F"], 2]];
 drn_arr_AmmoDepotLaunchers set [count drn_arr_AmmoDepotLaunchers, ["launch_O_Titan_F", 100, 1, 1, ["Titan_AA"], 2]];
-drn_arr_AmmoDepotLaunchers set [count drn_arr_AmmoDepotLaunchers, ["launch_O_Titan_short_F", 75, 1, 2, ["Titan_AP", "Titan_AT"], 2]];
+drn_arr_AmmoDepotLaunchers set [count drn_arr_AmmoDepotLaunchers, ["launch_O_Titan_short_F", 75, 1, 2, ["titan_AP", "Titan_AT"], 2]];
 
 // Russian weapons
 drn_arr_AmmoDepotLaunchers set [count drn_arr_AmmoDepotLaunchers, ["launch_I_Titan_F", 35, 1, 2, ["Titan_AA"], 3]];
