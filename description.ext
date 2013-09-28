@@ -8,9 +8,9 @@ class Header
 
 onLoadMission = "ESCAPE Altis v1RC";
 OnLoadMissionTime = FALSE;
-dev = "Engima of Ostoga Ops, ported by [TGH] Vormulac";
+dev = "Engima, ported by [TGH] Vormulac and Hyperz";
 briefingName = "Escape Altis";
-author = "Engima of Ostoga Ops, ported by [TGH] Vormulac";
+author = "Engima, ported by [TGH] Vormulac and Hyperz";
 overviewPicture = "a3\Missions_F_Gamma\data\img\MP_COOP_m03_overview_CA.paa";
 overviewText = "Escape Altis, v1.0 RC 1";
 onLoadName = "Escape Altis, v1.0 RC 1";
