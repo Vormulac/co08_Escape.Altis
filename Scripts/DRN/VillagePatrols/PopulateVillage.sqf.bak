@@ -47,7 +47,7 @@ if (count _groups == 0) exitWith {};
 			_soldier set [3, _soldierObj];
 
 			if (_rank == "SERGEANT") then {
-				_script = [_soldierObj, _markerName, "spawned"] execVM "Scripts\upsmon.sqf";
+				_script = [_soldierObj, _markerName, "NOFOLLOW"] execVM "Scripts\ups.sqf";
 
 /*
 				if (random 100 < 50) then {
