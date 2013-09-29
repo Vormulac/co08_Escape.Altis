@@ -50,7 +50,8 @@ _firstGroup = true;
         _markerName setMarkerPos _locationPos; // upsmon moves this away for some reason, so we need to reset it
         
         _soldier = _group createUnit [_soldierType, _spawnPos, [], 0, "FORM"];
-        _soldier setSkill _skill;
+        //_soldier setSkill _skill;
+		[_soldier, drn_var_Escape_enemyMinSkill] call EGG_EVO_skill;
         _soldier setDamage _damage;
 
 		_soldier setVehicleAmmo (0.2 + random 0.6);

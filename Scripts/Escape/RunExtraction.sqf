@@ -18,19 +18,23 @@ _group2 = _result select 2;
 
 _waypoint = _group1 addWaypoint [getMarkerPos _extractionMarkerName, 0];
 _waypoint setWaypointSpeed "NORMAL";
-_waypoint setWaypointBehaviour "SAFE";
+_waypoint setWaypointBehaviour "careless";
 _waypoint setWaypointFormation "WEDGE";
 _waypoint setWaypointStatements ["true", "vehicle this land 'LAND'"];
 
 _waypoint = _group2 addWaypoint [getMarkerPos _extractionMarkerName2, 0];
 _waypoint setWaypointSpeed "NORMAL";
-_waypoint setWaypointBehaviour "SAFE";
+_waypoint setWaypointBehaviour "careless";
 _waypoint setWaypointFormation "WEDGE";
 _waypoint setWaypointStatements ["true", "vehicle this land 'LAND'"];
 
-_boat1 flyinheight 50;
-_boat2 flyinheight 50;
-
+_boat1 flyinheight 30;
+_boat2 flyinheight 30;
+_boat1 allowFleeing 0;
+_boat2 allowFleeing 0;
+_boat1 setskill 1;
+_boat2 setskill 1;
+ 
 sleep 1;
 
 // Verkar inte funka...

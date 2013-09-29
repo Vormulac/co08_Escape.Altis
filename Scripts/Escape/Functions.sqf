@@ -54,7 +54,8 @@ drn_fnc_Escape_OnSpawnGeneralSoldierUnit = {
     _this removeItem "ItemMap";
     _this removeItem "ItemCompass";
     _this removeItem "NVGoggles_OPFOR";
-    _this setSkill (drn_var_Escape_enemyMinSkill + random (drn_var_Escape_enemyMaxSkill - drn_var_Escape_enemyMinSkill));
+    //_this setSkill (drn_var_Escape_enemyMinSkill + random (drn_var_Escape_enemyMaxSkill - drn_var_Escape_enemyMinSkill));
+	[_this, drn_var_Escape_enemyMinSkill] call EGG_EVO_skill;
     _this removeItem "FirstAidKit";
 	if(random 100 < 70) then {
 		_this removePrimaryWeaponItem "optic_Aco";

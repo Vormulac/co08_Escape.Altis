@@ -48,8 +48,10 @@ drn_var_Escape_MissionComplete = false;
 publicVariable "drn_var_Escape_AllPlayersDead";
 publicVariable "drn_var_Escape_MissionComplete";
 
-_enemyMinSkill = (paramsArray select 0) / 6;
-_enemyMaxSkill = (paramsArray select 0) / 6 + 0.1;
+//_enemyMinSkill = (paramsArray select 0) / 6;
+//_enemyMaxSkill = (paramsArray select 0) / 6 + 0.1;
+_enemyMinSkill = (paramsArray select 0);
+_enemyMaxSkill = _enemyMinskill;
 drn_var_Escape_enemyMinSkill = _enemyMinSkill;
 drn_var_Escape_enemyMaxSkill = _enemyMaxSkill;
 
@@ -600,8 +602,8 @@ if (_useSearchChopper) then {
 		_guard removePrimaryWeaponItem "optic_MRCO";
 		_guard removePrimaryWeaponItem "optic_SOS";
 	};
-    _guard setSkill _enemyMinSkill + random (_enemyMaxSkill - _enemyMinSkill);
-    
+    //_guard setSkill _enemyMinSkill + random (_enemyMaxSkill - _enemyMinSkill);
+    [_guard, drn_var_Escape_enemyMinSkill] call EGG_EVO_skill;
     // _guard addMagazine drn_var_Escape_InnerFenceGuardSecondaryWeaponMagazine;
     // _guard addMagazine drn_var_Escape_InnerFenceGuardSecondaryWeaponMagazine;
     // _guard addMagazine drn_var_Escape_InnerFenceGuardSecondaryWeaponMagazine;
@@ -682,7 +684,8 @@ if (_useSearchChopper) then {
 				_unit assignItem "NVGoggles_OPFOR";
             };
             
-            _unit setSkill _enemyMinSkill + random (_enemyMaxSkill - _enemyMinSkill);
+            //_unit setSkill _enemyMinSkill + random (_enemyMaxSkill - _enemyMinSkill);
+			[_unit, drn_var_Escape_enemyMinSkill] call EGG_EVO_skill;
             _unit removeMagazines "Handgrenade_East";
             
             if (_guardsAreArmed) then {

@@ -121,7 +121,8 @@ while {true} do {
                     for [{_i = 0}, {_i < _noOfDropUnits}, {_i = _i + 1}] do {
                         _soldierType = drn_arr_Escape_InfantryTypes select floor (random count drn_arr_Escape_InfantryTypes);
                         _soldier = _dropGroup createUnit [_soldierType, [0,0,30], [], 0, "FORM"];
-                        _soldier setSkill (_minEnemySkill + random (_maxEnemySkill - _minEnemySkill));
+                        //_soldier setSkill (_minEnemySkill + random (_maxEnemySkill - _minEnemySkill));
+						[_soldier, drn_var_Escape_enemyMinSkill] call EGG_EVO_skill;
                         _soldier setRank "CAPTAIN";
                         _soldier call drn_fnc_Escape_OnSpawnGeneralSoldierUnit;
                         _dropUnits set [_i, _soldier];
