@@ -180,11 +180,7 @@ if ( isnil "_obj") exitwith
 {	
 	hint format ["Object: %1",_obj];
 	diag_log format ["UPSMON: Object for _npc: %1",_obj];
-};
- if ((isNull _obj)) exitWith {
-
-};
-
+	};
 _npc = _obj;
 
 
@@ -305,51 +301,46 @@ if (KRON_UPS_Debug>0) then {player sidechat format["%1: New instance %2 %3 %4",_
 	_exit = true;
 
 if (KRON_UPS_Debug>0) then {diag_log format["UPSMON - npc [%1] - typename [%2] - typeof [%3] - units [%4]",_npc, typename _npc, typeof _npc, units (group _npc)]; };	
-	if(!isNull _npc) then {
-		if ( !isNull _npc && { typeName _npc=="OBJECT" } ) then 
-		{		
-			if (!isNull group _npc) then 
-			{
-				_npc = ( [_npc,units (group _npc)] call MON_getleader );
-			}
-			else 
-			{
-				_vehicles = [_npc,2] call MON_nearestSoldiers;
-				if (count _vehicles>0) then {
-					_npc = [_vehicles select 0,units (_vehicles select 0)] call MON_getleader;
-				};
-			};
+	
+	if ( !isNull _npc && { typeName _npc=="OBJECT" } ) then 
+	{		
+		if (!isNull group _npc) then 
+		{
+			_npc = ( [_npc,units (group _npc)] call MON_getleader );
 		}
 		else 
 		{
-			
-				if (count _obj>0) then {
-					_npc = [_obj,count _obj] call MON_getleader;			
-				};
-			
-		};
-		
-		// set the leader in the vehilce
-		if (!(_npc iskindof "Man")) then { 
-			if (!isnull(commander _npc) ) then {
-				_npc = commander _npc;
-			}else{
-				if (!isnull(driver _npc) ) then {
-					_npc = driver _npc;
-				}else{			
-					_npc = gunner _npc;	
-				};	
+			_vehicles = [_npc,2] call MON_nearestSoldiers;
+			if (count _vehicles>0) then {
+				_npc = [_vehicles select 0,units (_vehicles select 0)] call MON_getleader;
 			};
-			group _npc selectLeader _npc;
 		};
-
-	// ===============================================	
-		if (alive _npc) then {_exit = false;};	
-		if (KRON_UPS_Debug>0 && _exit) then {player sidechat format["%1 There is no alive members %1 %2 %3",_grpidx,typename _npc,typeof _npc, count units _npc]};	
 	}
-	else {
-		_exit = true;
+	else 
+	{
+		if (count _obj>0) then {
+			_npc = [_obj,count _obj] call MON_getleader;			
+		};
 	};
+	
+	// set the leader in the vehilce
+	if (!(_npc iskindof "Man")) then { 
+		if (!isnull(commander _npc) ) then {
+			_npc = commander _npc;
+		}else{
+			if (!isnull(driver _npc) ) then {
+				_npc = driver _npc;
+			}else{			
+				_npc = gunner _npc;	
+			};	
+		};
+		group _npc selectLeader _npc;
+	};
+
+// ===============================================	
+	if (alive _npc) then {_exit = false;};	
+	if (KRON_UPS_Debug>0 && _exit) then {player sidechat format["%1 There is no alive members %1 %2 %3",_grpidx,typename _npc,typeof _npc, count units _npc]};	
+
 	
 	// exit if something went wrong during initialization (or if unit is on roof)
 	if (_exit) exitWith {

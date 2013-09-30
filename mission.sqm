@@ -5,12 +5,15 @@ class Mission
 	{
 		"a3_map_Altis",
 		"A3_Characters_F_BLUFOR",
-		"a3_characters_f_beta"
+		"a3_characters_f_beta",
+		"A3_Soft_F_TruckHeavy",
+		"A3_Air_F_Beta_Heli_Attack_02"
 	};
 	addOnsAuto[]=
 	{
 		"A3_Characters_F_BLUFOR",
 		"a3_characters_f_beta",
+		"A3_Air_F_Beta_Heli_Attack_02",
 		"a3_map_altis"
 	};
 	randomSeed=16426086;
@@ -42,7 +45,7 @@ class Mission
 				items=8;
 				class Item0
 				{
-					position[]={12238.461,41.995682,19422.68};
+					position[]={24493.561,22.896397,20623.283};
 					azimut=79.459641;
 					id=0;
 					side="WEST";
@@ -56,7 +59,7 @@ class Mission
 				};
 				class Item1
 				{
-					position[]={12234.582,42.545288,19415.805};
+					position[]={24489.682,22.81743,20616.408};
 					azimut=2.6379197;
 					special="NONE";
 					id=1;
@@ -70,7 +73,7 @@ class Mission
 				};
 				class Item2
 				{
-					position[]={12229.506,42.940037,19417.715};
+					position[]={24484.605,22.942696,20618.318};
 					azimut=2.6379197;
 					special="NONE";
 					id=2;
@@ -84,7 +87,7 @@ class Mission
 				};
 				class Item3
 				{
-					position[]={12232.059,42.70015,19416.242};
+					position[]={24487.158,22.870632,20616.846};
 					azimut=2.6379197;
 					special="NONE";
 					id=3;
@@ -98,7 +101,7 @@ class Mission
 				};
 				class Item4
 				{
-					position[]={12237.578,42.27565,19415.492};
+					position[]={24492.678,22.758451,20616.096};
 					azimut=2.6379197;
 					special="NONE";
 					id=4;
@@ -112,7 +115,7 @@ class Mission
 				};
 				class Item5
 				{
-					position[]={12240.09,42.061829,19415.52};
+					position[]={24495.189,22.715528,20616.123};
 					azimut=2.6379197;
 					special="NONE";
 					id=5;
@@ -126,7 +129,7 @@ class Mission
 				};
 				class Item6
 				{
-					position[]={12236.277,42.390316,19415.555};
+					position[]={24491.377,22.782398,20616.158};
 					azimut=2.6379197;
 					special="NONE";
 					id=6;
@@ -140,7 +143,7 @@ class Mission
 				};
 				class Item7
 				{
-					position[]={12242.637,41.877041,19416.023};
+					position[]={24497.736,22.682795,20616.627};
 					azimut=2.6379197;
 					special="NONE";
 					id=7;
@@ -171,6 +174,18 @@ class Mission
 					text="server";
 				};
 			};
+		};
+	};
+	class Vehicles
+	{
+		items=1;
+		class Item0
+		{
+			position[]={24529.377,22.322014,20626.791};
+			id=9;
+			side="EMPTY";
+			vehicle="O_Heli_Attack_02_F";
+			skill=0.60000002;
 		};
 	};
 	class Markers

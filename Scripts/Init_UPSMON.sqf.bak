@@ -127,9 +127,7 @@ KRON_UPS_ARTILLERY_GUER_FIRE = false; //set to true for doing resistance to fire
 //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------		
 //		Do not touch these variables !!!! !R	
 //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------			
-	if (isNil "R_GOTHIT_ARRAY") then {
-		R_GOTHIT_ARRAY =[0];
-	};
+	R_GOTHIT_ARRAY =[0];
 	AcePresent = isClass(configFile/"CfgPatches"/"ace_main");
 	UPSMON_Version = "UPSMON 5.2.0 beta1";
 	KILLED_CIV_COUNTER = [0,0,0,0,0];

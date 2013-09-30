@@ -31,9 +31,9 @@ if (_debug) then {
 		};
 
         if (_hasScript) then {
-            if (!(scriptDone _script)) then {
-                terminate _script;
-            };
+            // if (!(scriptDone _script)) then {
+                // terminate _script;
+            // };
         };
         
         _group = group _soldier;
