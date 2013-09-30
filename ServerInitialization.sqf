@@ -39,7 +39,7 @@ drn_var_Escape_debugSearchChopper = false;
 drn_var_Escape_DebugSearchGroup = false;
 drn_var_Escape_debugCivilEnemy = false;
 CommTowers = [];
-_showGroupDiagnostics = true;
+_showGroupDiagnostics = false;
 
 // Game Control Variables, do not edit!
 
