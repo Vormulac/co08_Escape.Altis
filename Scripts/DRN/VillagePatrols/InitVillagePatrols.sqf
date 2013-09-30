@@ -71,7 +71,7 @@ _villageNo = 0;
     
     _villagePos = _x select 0;
     _villageSize = _x select 3;
-    _maxGroupsCount = ceil (((_villageSize select 0) * (_villageSize select 1)) / _areaPerGroup);
+    _maxGroupsCount = ceil (((_villageSize select 0) * (_villageSize select 1) * 4) / _areaPerGroup);
     
     // _groupsCount = floor random (_maxGroupsCount + 1);
     // _groupsCount = _groupsCount + (floor random (_maxGroupsCount + 1 - _groupsCount));
