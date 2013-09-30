@@ -31,15 +31,14 @@ if (!isServer && hasInterface ) exitWith {};
 //ace_sys_wounds_noai = false; // set it as required // Not used (yet?) in ArmA 3
 
 //1=Enable or 0=disable debug. In debug could see a mark positioning de leader and another mark of the destination of movement, very useful for editing mission
-KRON_UPS_Debug = 1;
+KRON_UPS_Debug = 0;
 
 //1=Enable or 0=disable. In game display global chat info about who just killed a civilian. 
 //numbers of Civilians killed by players could be read from array 'KILLED_CIV_COUNTER' -> [Total, by West, by East, by Res, The killer]
 R_WHO_IS_CIV_KILLER_INFO = 0;
 
-
 // if you are spotted by AI group, how close the other AI group have to be to You , to be informed about your present position. over this, will lose target
-KRON_UPS_sharedist = 600;
+KRON_UPS_sharedist = 300; // org value 800 => increased for ArmA3 map sizes for less predictable missions..
 
 // If enabled AI communication between them with radio defined sharedist distance, 0/2 
 // (must be set to 2 in order to use reinforcement !R)

@@ -31,7 +31,7 @@ if (!isServer && hasInterface ) exitWith {};
 //ace_sys_wounds_noai = false; // set it as required // Not used (yet?) in ArmA 3
 
 //1=Enable or 0=disable debug. In debug could see a mark positioning de leader and another mark of the destination of movement, very useful for editing mission
-KRON_UPS_Debug = 1;
+KRON_UPS_Debug = 0;
 
 //1=Enable or 0=disable. In game display global chat info about who just killed a civilian. 
 //numbers of Civilians killed by players could be read from array 'KILLED_CIV_COUNTER' -> [Total, by West, by East, by Res, The killer]
@@ -127,7 +127,9 @@ KRON_UPS_ARTILLERY_GUER_FIRE = false; //set to true for doing resistance to fire
 //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------		
 //		Do not touch these variables !!!! !R	
 //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------			
-	R_GOTHIT_ARRAY =[0];
+	if (isNil "R_GOTHIT_ARRAY") then {
+		R_GOTHIT_ARRAY =[0];
+	};
 	AcePresent = isClass(configFile/"CfgPatches"/"ace_main");
 	UPSMON_Version = "UPSMON 5.2.0 beta1";
 	KILLED_CIV_COUNTER = [0,0,0,0,0];
