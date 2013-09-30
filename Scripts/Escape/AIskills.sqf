@@ -14,78 +14,46 @@ e.g. [_guard,3] spawn call EGG_EVO_skill;
 
 EGG_EVO_skill =
 {
-	_unit =  _this select 0;
-	_skill = _this select 1;
+    _unit =  _this select 0;
+    _skill = _this select 1;
 
-	if (_skill==0) then {_skill=(round random 4)+1};
-//	_baseskill = skillfactor; //set in init -can develop an initial base skill modifier for parameters use later
+    if (_skill == 0) then { _skill = (round random 4) + 1};
+    
+    _aiSkillBase = 1.0;
 
-	switch (_skill) do
-	{
-		case 1: //conscript very low skill
-		{
-			{
-				_x setSkill ["aimingspeed", 0.05];
-				_x setSkill ["spotdistance", 0.05];
-				_x setSkill ["aimingaccuracy", 0.02];
-				_x setSkill ["aimingshake", 0.02];
-				_x setSkill ["spottime", 0.1];
-				_x setSkill ["spotdistance", 0.3];
-				_x setSkill ["commanding", 0.3];
-				_x setSkill ["general", 0.2];
-			};
-		};
-		case 2: //rebels low skill
-		{
-			{
-				_x setSkill ["aimingspeed", 0.1];
-				_x setSkill ["spotdistance", 0.1];
-				_x setSkill ["aimingaccuracy", 0.05];
-				_x setSkill ["aimingshake", 0.05];
-				_x setSkill ["spottime", 0.2];
-				_x setSkill ["spotdistance", 0.4];
-				_x setSkill ["commanding", 0.4];
-				_x setSkill ["general", 0.3];
-			};
-		};
-		case 3: //regular fair skill
-		{
-			{
-				_x setSkill ["aimingspeed", 0.15];
-				_x setSkill ["spotdistance", 0.15];
-				_x setSkill ["aimingaccuracy", 0.1];
-				_x setSkill ["aimingshake", 0.1];
-				_x setSkill ["spottime", 0.3];
-				_x setSkill ["spotdistance", 0.5];
-				_x setSkill ["commanding", 0.5];
-				_x setSkill ["general", 0.6];
-			};
-		};
-		case 4: //elite soldiers medium skill
-		{
-			{
-				_x setSkill ["aimingspeed", 0.2];
-				_x setSkill ["spotdistance", 0.2];
-				_x setSkill ["aimingaccuracy", 0.2];
-				_x setSkill ["aimingshake", 0.2];
-				_x setSkill ["spottime", 0.4];
-				_x setSkill ["spotdistance", 0.6];
-				_x setSkill ["commanding", 0.6];
-				_x setSkill ["general", 0.7];
-			};
-		};
-		case 5: // specops good skill
-		{
-			{
-				_x setSkill ["aimingspeed", 0.3];
-				_x setSkill ["spotdistance", 0.3];
-				_x setSkill ["aimingaccuracy", 0.3];
-				_x setSkill ["aimingshake", 0.3];
-				_x setSkill ["spottime", 0.5];
-				_x setSkill ["spotdistance", 0.8];
-				_x setSkill ["commanding", 0.8];
-				_x setSkill ["general", 0.9];
-			};
-		};
-	};
+    switch (_skill) do
+    {
+        case 1: //conscript very low skill
+        {
+            _aiSkillBase = 0.3;
+        };
+        case 2: //rebels low skill
+        {
+            _aiSkillBase = 0.6;
+        };
+        case 3: //regular fair skill
+        {
+            _aiSkillBase = 1.0;
+        };
+        case 4: //elite soldiers medium skill
+        {
+            _aiSkillBase = 1.4;
+        };
+        case 5: // specops good skill
+        {
+            _aiSkillBase = 1.8;
+        };
+    };
+    
+    _unit setskill _aiSkillBase;
+    _unit setskill ["general", _aiSkillBase];
+    _unit setskill ["aimingAccuracy", (_aiSkillBase * 0.30)];
+    _unit setskill ["aimingShake", (_aiSkillBase * 0.50)];
+    _unit setskill ["aimingSpeed", (_aiSkillBase * 0.40)];
+    _unit setskill ["endurance", _aiSkillBase];
+    _unit setskill ["spotDistance", (_aiSkillBase * 0.30)];
+    _unit setskill ["spotTime", (_aiSkillBase * 0.65)];
+    _unit setskill ["courage", _aiSkillBase];
+    _unit setskill ["reloadSpeed", _aiSkillBase];
+    _unit setskill ["commanding", _aiSkillBase];
 };
