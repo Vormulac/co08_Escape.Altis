@@ -30,8 +30,8 @@ _showIntro = true;
 
 // Debug Variables
 
-_showPlayerMapAndCompass = false;
-_playerIsImmortal = false; // Only works for unit p1
+_showPlayerMapAndCompass = true;
+_playerIsImmortal = true; // Only works for unit p1
 
 // Initialization
 
@@ -297,7 +297,7 @@ if (!isNull player) then {
                 
                 for "_i" from 0 to (count drn_var_Escape_communicationCenterPositions) - 1 do {
                     _marker = createMarkerLocal ["drn_Escape_ComCenJipMarker" + str _i, (drn_var_Escape_communicationCenterPositions select _i)];
-                    _marker setMarkerType "Flag_CSAT_F";
+                    _marker setMarkerType "Flag_CSAT";
                 };
                 
                 // Ammo depot markers

@@ -24,22 +24,22 @@ _guardLivesLong = true;
 
 // Debug Variables
 
-_debugEscapeSurprises = false;
-_debugAmmoDepots = false;
-_debugSearchLeader = false;
-_debugVillagePatrols = false;
-_debugMilitaryTraffic = false;
-_debugAmbientInfantry = false;
-_debugGarbageCollector = false;
-_debugRoadBlocks = false;
-drn_var_Escape_debugMotorizedSearchGroup = false;
-drn_var_Escape_debugDropChoppers = false;
-drn_var_Escape_debugReinforcementTruck = false;
-drn_var_Escape_debugSearchChopper = false;
-drn_var_Escape_DebugSearchGroup = false;
-drn_var_Escape_debugCivilEnemy = false;
+_debugEscapeSurprises = true;
+_debugAmmoDepots = true;
+_debugSearchLeader = true;
+_debugVillagePatrols = true;
+_debugMilitaryTraffic = true;
+_debugAmbientInfantry = true;
+_debugGarbageCollector = true;
+_debugRoadBlocks = true;
+drn_var_Escape_debugMotorizedSearchGroup = true;
+drn_var_Escape_debugDropChoppers = true;
+drn_var_Escape_debugReinforcementTruck = true;
+drn_var_Escape_debugSearchChopper = true;
+drn_var_Escape_DebugSearchGroup = true;
+drn_var_Escape_debugCivilEnemy = true;
 CommTowers = [];
-_showGroupDiagnostics = false;
+_showGroupDiagnostics = true;
 
 // Game Control Variables, do not edit!
 
