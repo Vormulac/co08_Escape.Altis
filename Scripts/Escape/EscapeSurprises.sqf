@@ -196,7 +196,7 @@ while {true} do {
                         sleep 1;
                     };
                     
-                    [getPos _spawnSegment, _enemyMinSkill, _enemyMaxSkill, drn_var_Escape_debugReinforcementTruck] execVM "Scripts\Escape\CreateReinforcementTruck.sqf";
+                    [getPos _spawnSegment, _enemyMinSkill, _enemyMaxSkill,_enemyFrequency,  drn_var_Escape_debugReinforcementTruck] execVM "Scripts\Escape\CreateReinforcementTruck.sqf";
                     
                     _surpriseArgs = [_minEnemySkill, _maxEnemySkill];
                     _timeInSek = random (45 * 60);

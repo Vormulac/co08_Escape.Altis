@@ -295,7 +295,7 @@ while {true} do {
             
             // Create vehicle
             _vehicleType = _possibleVehicles select floor (random count _possibleVehicles);
-            _result = [_pos, _direction, _vehicleType, _side] call BIS_fnc_spawnVehicle;
+            _result = [_pos, _direction + 90, _vehicleType, _side] call BIS_fnc_spawnVehicle;
             _vehicle = _result select 0;
             _vehiclesCrew = _result select 1;
             _vehiclesGroup = _result select 2;
