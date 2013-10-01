@@ -653,7 +653,7 @@ drn_fnc_Escape_BuildAmmoDepot = {
     // Set markers
     
     _marker = createMarker ["drn_AmmoDepotMapMarker" + str _instanceNo, _middlePos];
-    _marker setMarkerType "hd_objective";
+    _marker setMarkerType "o_installation";
     
     _marker = createMarkerLocal ["drn_AmmoDepotPatrolMarker" + str _instanceNo, _middlePos];
     _marker setMarkerShapeLocal "ELLIPSE";
