@@ -26,7 +26,7 @@ _guardLivesLong = true;
 
 _debugEscapeSurprises = false;
 _debugAmmoDepots = false;
-_debugSearchLeader = true;
+_debugSearchLeader = false;
 _debugVillagePatrols = false;
 _debugMilitaryTraffic = false;
 _debugAmbientInfantry = false;
@@ -36,10 +36,10 @@ drn_var_Escape_debugMotorizedSearchGroup = false;
 drn_var_Escape_debugDropChoppers = false;
 drn_var_Escape_debugReinforcementTruck = false;
 drn_var_Escape_debugSearchChopper = false;
-drn_var_Escape_DebugSearchGroup = true;
+drn_var_Escape_DebugSearchGroup = false;
 drn_var_Escape_debugCivilEnemy = false;
 CommTowers = [];
-_showGroupDiagnostics = true;
+_showGroupDiagnostics = false;
 
 // Game Control Variables, do not edit!
 

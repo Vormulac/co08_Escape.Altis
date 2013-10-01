@@ -17,14 +17,14 @@ _boat2 = _result select 0;
 _group2 = _result select 2;
 
 _waypoint = _group1 addWaypoint [getMarkerPos _extractionMarkerName, 0];
-_waypoint setWaypointSpeed "NORMAL";
-_waypoint setWaypointBehaviour "careless";
+_waypoint setWaypointSpeed "FULL";
+_waypoint setWaypointBehaviour "CARELESS";
 _waypoint setWaypointFormation "WEDGE";
 _waypoint setWaypointStatements ["true", "vehicle this land 'LAND'"];
 
 _waypoint = _group2 addWaypoint [getMarkerPos _extractionMarkerName2, 0];
-_waypoint setWaypointSpeed "NORMAL";
-_waypoint setWaypointBehaviour "careless";
+_waypoint setWaypointSpeed "FULL";
+_waypoint setWaypointBehaviour "CARELESS";
 _waypoint setWaypointFormation "WEDGE";
 _waypoint setWaypointStatements ["true", "vehicle this land 'LAND'"];
 
@@ -48,13 +48,16 @@ else {
     waitUntil {{vehicle _x == _boat1 || vehicle _x == _boat2} count units group ((call drn_fnc_Escape_GetPlayers) select 0) == count units group ((call drn_fnc_Escape_GetPlayers) select 0)};
 };
 
+_boat1 land "NONE";
+_boat2 land "NONE";
+
 _waypoint = _group1 addWaypoint [getMarkerPos _spawnMarkerName, 0];
 _waypoint setWaypointSpeed "FULL";
-_waypoint setWaypointBehaviour "SAFE";
+_waypoint setWaypointBehaviour "CARELESS";
 
 _waypoint = _group2 addWaypoint [getMarkerPos _spawnMarkerName, 0];
 _waypoint setWaypointSpeed "FULL";
-_waypoint setWaypointBehaviour "SAFE";
+_waypoint setWaypointBehaviour "CARELESS";
 
 sleep 10;
 

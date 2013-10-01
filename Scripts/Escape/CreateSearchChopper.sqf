@@ -80,7 +80,7 @@ _gunner1 assignAsGunner _chopper;
 _gunner1 moveInTurret [_chopper, [0]];
 // _gunner2 assignAsGunner _chopper;
 // _gunner2 moveInTurret [_chopper, [1]];
-
+_chopper action ["lightOn", _chopper];
 {
     _x call drn_fnc_Escape_OnSpawnGeneralSoldierUnit;
 } foreach units _group;
