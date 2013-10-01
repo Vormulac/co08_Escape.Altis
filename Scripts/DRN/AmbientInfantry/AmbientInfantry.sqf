@@ -143,8 +143,12 @@ while {true} do {
         for [{_i = 0}, {_i < _unitsInGroup}, {_i = _i + 1}] do {
             _infantryType = _possibleInfantryTypes select floor (random count _possibleInfantryTypes);
             _infantryType createUnit [_spawnPos, _group,"", _skill, "PRIVATE"];
+			
         };
-        
+		//setskills
+        {
+			[_x, drn_var_Escape_enemyMinSkill] call EGG_EVO_skill;
+		} foreach units _group;
         // Run custom code for units and group
         {
             _x setVariable ["drn_scriptHandle", _x spawn _fnc_OnSpawnUnit]; // Squint complaining, but is ok.

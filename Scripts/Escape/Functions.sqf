@@ -81,6 +81,8 @@ drn_fnc_Escape_OnSpawnGeneralSoldierUnit = {
 			_this assignItem "NVGoggles_OPFOR";
         };
     };
+	
+	[_this, drn_var_Escape_enemyMinSkill] call EGG_EVO_skill;
 };
 
 drn_fnc_Escape_FindGoodPos = {
