@@ -305,7 +305,7 @@ if (!isNull player) then {
                 
                 for "_i" from 0 to (count drn_var_Escape_ammoDepotPositions) - 1 do {
                     _marker = createMarkerLocal ["drn_Escape_AmmoDepotJipMarker" + str _i, (drn_var_Escape_ammoDepotPositions select _i)];
-                    _marker setMarkerType "hd_objective";
+                    _marker setMarkerType "o_installation";
                 };
                 
                 // Extraction marker

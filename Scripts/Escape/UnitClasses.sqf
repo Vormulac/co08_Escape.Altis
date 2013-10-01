@@ -182,4 +182,4 @@ drn_arr_CivilianCarWeapons set [count drn_arr_CivilianCarWeapons, ["hgun_ACPC2_F
 drn_arr_CivilianCarWeapons set [count drn_arr_CivilianCarWeapons, ["MineDetector", "MineDetector", 1]];
 drn_arr_CivilianCarWeapons set [count drn_arr_CivilianCarWeapons, ["launch_RPG32_F", "RPG32_F", 1]];
 drn_arr_CivilianCarWeapons set [count drn_arr_CivilianCarWeapons, ["SatchelCharge_Remote_Mag", 2]];
-drn_arr_CivilianCarWeapons set [count drn_arr_CivilianCarWeapons, ["HandGrenade", 5]];
+//drn_arr_CivilianCarWeapons set [count drn_arr_CivilianCarWeapons, ["HandGrenade", 5]]; // handgrenade is not a weapon
