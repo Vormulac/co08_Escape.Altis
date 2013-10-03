@@ -6,14 +6,14 @@ class Header
   maxPlayers = 8;
 };
 
-onLoadMission = "ESCAPE Altis v1.2";
+onLoadMission = "ESCAPE Altis v1.3";
 OnLoadMissionTime = FALSE;
 dev = "Engima, ported by Vormulac and Hyperz";
 briefingName = "co08 Escape Altis";
 author = "Engima, ported by Vormulac and Hyperz";
 overviewPicture = "a3\Missions_F_Gamma\data\img\MP_COOP_m03_overview_CA.paa";
-overviewText = "Escape Altis v1.2";
-onLoadName = "Escape Altis v1.2";
+overviewText = "Escape Altis v1.3";
+onLoadName = "Escape Altis v1.3";
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////
@@ -73,5 +73,13 @@ class Params
 		values[]={800,1050,1300};
 		texts[]={"Short (better performance)", "Medium", "Far (for good rigs)"};
 		default = 1300;
+	};
+	class VillageSpawnCount
+	{
+		//paramsArray[6]
+		title="Village Patrol Spawns";
+		values[]={80000, 40000, 10000};
+		texts[]={"Low (better performance)", "Medium", "High (for good rigs)"};
+		default = 40000;
 	};
 };
