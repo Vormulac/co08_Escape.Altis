@@ -97,10 +97,12 @@ call compile preprocessFileLineNumbers "Scripts\Escape\AIskills.sqf";
 [_isJipPlayer] call compile preprocessFileLineNumbers "Briefing.sqf";
 call compile preprocessFileLineNumbers "scripts\Init_UPSMON.sqf";
 
-_dynamicWeather = (paramsArray select 3);
+//_dynamicWeather = (paramsArray select 3);
+execVM "Scripts\Escape\RandomWeather.sqf";
+
 setTerrainGrid (paramsArray select 4);
 
-switch (_dynamicWeather) do {
+/*switch (_dynamicWeather) do {
     case 0: { execVM "Scripts\Escape\StaticWeatherEffects.sqf"; }; // Dynamic weather off
     case 1: { [0.1, 0.1, 0, [random 8, random 8]] execVM "Scripts\DRN\DynamicWeatherEffects\DynamicWeatherEffects.sqf"; }; // Dynamic weather (start clear)
     default {
@@ -114,7 +116,7 @@ switch (_dynamicWeather) do {
         
         [_fog] execVM "Scripts\DRN\DynamicWeatherEffects\DynamicWeatherEffects.sqf";
     };
-};
+};*/
 
 // Server Initialization
 

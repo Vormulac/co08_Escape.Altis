@@ -53,10 +53,10 @@ class Params
 	class Weather
 	{	
 		// paramsArray[3]
-		title="Dynamic Weather";
-		values[]={0, 1, 2};
-		texts[]={"Off", "On (Start clear)", "On (Start random)"};
-		default = 2;
+		title="Weather";
+		values[] = {1,2,3,4,5,6,7};
+		texts[] = {"Clear","Overcast","Light Rain","Heavy Rain","Light Fog","Heavy Fog","Random"};
+		default = 7;
 	};
 	class Grass
 	{	
