@@ -477,6 +477,7 @@ drn_fnc_Escape_BuildAmmoDepot = {
         _box = "Box_East_Wps_F" createVehicle _middlePos;
         clearWeaponCargoGlobal _box;
         clearMagazineCargoGlobal _box;
+        clearItemCargoGlobal _box;
         
         {
             _box addWeaponCargoGlobal _x;
@@ -518,6 +519,7 @@ drn_fnc_Escape_BuildAmmoDepot = {
         _box = "Box_East_WpsLaunch_F" createVehicle _middlePos;
         clearWeaponCargoGlobal _box;
         clearMagazineCargoGlobal _box;
+        clearItemCargoGlobal _box;
         
         {
             _box addWeaponCargoGlobal _x;
@@ -559,6 +561,7 @@ drn_fnc_Escape_BuildAmmoDepot = {
         _box = "Box_East_WpsSpecial_F" createVehicle _middlePos;
         clearWeaponCargoGlobal _box;
         clearMagazineCargoGlobal _box;
+        clearItemCargoGlobal _box;
         
         {
             _box addWeaponCargoGlobal _x;
@@ -600,6 +603,7 @@ drn_fnc_Escape_BuildAmmoDepot = {
         _box = "Box_NATO_AmmoVeh_F" createVehicle _middlePos;
         clearWeaponCargoGlobal _box;
         clearMagazineCargoGlobal _box;
+        clearItemCargoGlobal _box;
         
         {
             _box addWeaponCargoGlobal _x;
@@ -608,6 +612,37 @@ drn_fnc_Escape_BuildAmmoDepot = {
         {
             _box addMagazineCargoGlobal _x;
         } foreach _weaponMagazines;
+    };
+    
+    // Items
+
+    _weapons = [];
+    
+    for "_i" from 0 to (count drn_arr_AmmoDepotItems - 1) do {
+        private ["_item", "_itemClassName", "_probabilityOfPrecence", "_minCount", "_maxCount"];
+        
+        _item = drn_arr_AmmoDepotItems select _i;
+        
+        _itemClassName = _item select 0;
+        _probabilityOfPrecence = _item select 1;
+        _minCount = _item select 2;
+        _maxCount = _item select 3;
+        
+        if (random 100 <= _probabilityOfPrecence) then {
+            _itemCount = floor (_minCount + random (_maxCount - _minCount));
+            _weapons set [count _weapons, [_itemClassName, _itemCount]];
+        };
+    };
+    
+    if (count _weapons > 0) then {
+        _box = "Box_East_Wps_F" createVehicle _middlePos;
+        clearWeaponCargoGlobal _box;
+        clearMagazineCargoGlobal _box;
+        clearItemCargoGlobal _box;
+        
+        {
+            _box addItemCargoGlobal _x;
+        } foreach _weapons;
     };
 
     // Launchers
@@ -641,6 +676,7 @@ drn_fnc_Escape_BuildAmmoDepot = {
         _box = "Box_East_WpsLaunch_F" createVehicle _middlePos;
         clearWeaponCargoGlobal _box;
         clearMagazineCargoGlobal _box;
+        clearItemCargoGlobal _box;
         
         {
             _box addWeaponCargoGlobal _x;
