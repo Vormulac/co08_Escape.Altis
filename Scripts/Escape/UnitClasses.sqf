@@ -149,49 +149,56 @@ drn_arr_AmmoDepotVehicle = [];
 drn_arr_AmmoDepotVehicle set [count drn_arr_AmmoDepotVehicle, [objNull, 100, 1, 1, ["HandGrenade", "MiniGrenade", "HandGrenade_Stone"], 50]];
 drn_arr_AmmoDepotVehicle set [count drn_arr_AmmoDepotVehicle, [objNull, 100, 1, 1, ["SmokeShell", "SmokeShellYellow", "SmokeShellRed", "SmokeShellGreen", "SmokeShellPurple", "SmokeShellBlue", "SmokeShellOrange"], 50]];
 drn_arr_AmmoDepotVehicle set [count drn_arr_AmmoDepotVehicle, [objNull, 100, 1, 1, ["Chemlight_blue", "Chemlight_green", "Chemlight_red", "Chemlight_yellow"], 50]];
-drn_arr_AmmoDepotVehicle set [count drn_arr_AmmoDepotVehicle, [objNull, 100, 1, 1, ["1Rnd_Smoke_Grenade_shell", "1Rnd_Smoke_Grenade_shell", "1Rnd_SmokeGreen_Grenade_shell", "1Rnd_SmokeOrange_Grenade_shell", "1Rnd_SmokePurple_Grenade_shell", "1Rnd_SmokeRed_Grenade_shell", "1Rnd_SmokeYellow_Grenade_shell"], 25]];
-drn_arr_AmmoDepotVehicle set [count drn_arr_AmmoDepotVehicle, [objNull, 100, 1, 1, ["3Rnd_Smoke_Grenade_shell", "3Rnd_Smoke_Grenade_shell", "3Rnd_SmokeGreen_Grenade_shell", "3Rnd_SmokeOrange_Grenade_shell", "3Rnd_SmokePurple_Grenade_shell", "3Rnd_SmokeRed_Grenade_shell", "3Rnd_SmokeYellow_Grenade_shell"], 25]];
+drn_arr_AmmoDepotVehicle set [count drn_arr_AmmoDepotVehicle, [objNull, 100, 1, 1, ["1Rnd_Smoke_Grenade_shell", "1Rnd_SmokeBlue_Grenade_shell", "1Rnd_SmokeGreen_Grenade_shell", "1Rnd_SmokeOrange_Grenade_shell", "1Rnd_SmokePurple_Grenade_shell", "1Rnd_SmokeRed_Grenade_shell", "1Rnd_SmokeYellow_Grenade_shell"], 25]];
+drn_arr_AmmoDepotVehicle set [count drn_arr_AmmoDepotVehicle, [objNull, 100, 1, 1, ["3Rnd_Smoke_Grenade_shell", "3Rnd_SmokeBlue_Grenade_shell", "3Rnd_SmokeGreen_Grenade_shell", "3Rnd_SmokeOrange_Grenade_shell", "3Rnd_SmokePurple_Grenade_shell", "3Rnd_SmokeRed_Grenade_shell", "3Rnd_SmokeYellow_Grenade_shell"], 25]];
 drn_arr_AmmoDepotVehicle set [count drn_arr_AmmoDepotVehicle, [objNull, 100, 1, 1, ["FlareWhite_F", "FlareGreen_F", "FlareRed_F", "FlareYellow_F"], 25]];
 drn_arr_AmmoDepotVehicle set [count drn_arr_AmmoDepotVehicle, [objNull, 100, 1, 1, ["UGL_FlareWhite_F", "UGL_FlareGreen_F", "UGL_FlareRed_F", "UGL_FlareYellow_F", "UGL_FlareCIR_F"], 25]];
 drn_arr_AmmoDepotVehicle set [count drn_arr_AmmoDepotVehicle, [objNull, 100, 1, 1, ["3Rnd_UGL_FlareWhite_F", "3Rnd_UGL_FlareGreen_F", "3Rnd_UGL_FlareRed_F", "3Rnd_UGL_FlareYellow_F", "3Rnd_UGL_FlareCIR_F"], 25]];
 drn_arr_AmmoDepotVehicle set [count drn_arr_AmmoDepotVehicle, [objNull, 100, 1, 1, ["1Rnd_HE_Grenade_shell", "3Rnd_HE_Grenade_shell"], 25]];
 
-// FIXME: items can't be added to ammo/weapon boxes anymore in A3 *sigh*
-/*drn_arr_AmmoDepotVehicle set [count drn_arr_AmmoDepotVehicle, ["O_UavTerminal", 100, 10, 10, [], 0]];
-drn_arr_AmmoDepotVehicle set [count drn_arr_AmmoDepotVehicle, ["Binocular", 100, 10, 10, [], 0]];
-drn_arr_AmmoDepotVehicle set [count drn_arr_AmmoDepotVehicle, ["Laserdesignator", 100, 10, 10, [], 0]];
-drn_arr_AmmoDepotVehicle set [count drn_arr_AmmoDepotVehicle, ["NVGoggles", 100, 10, 10, [], 0]];
-drn_arr_AmmoDepotVehicle set [count drn_arr_AmmoDepotVehicle, ["Rangefinder", 100, 10, 10, [], 0]];
-drn_arr_AmmoDepotVehicle set [count drn_arr_AmmoDepotVehicle, ["ItemCompass", 100, 10, 10, [], 0]];
-drn_arr_AmmoDepotVehicle set [count drn_arr_AmmoDepotVehicle, ["ItemGPS", 100, 10, 10, [], 0]];
-drn_arr_AmmoDepotVehicle set [count drn_arr_AmmoDepotVehicle, ["ItemMap", 100, 10, 10, [], 0]];
-drn_arr_AmmoDepotVehicle set [count drn_arr_AmmoDepotVehicle, ["ItemRadio", 100, 10, 10, [], 0]];
-drn_arr_AmmoDepotVehicle set [count drn_arr_AmmoDepotVehicle, ["ItemWatch", 100, 10, 10, [], 0]];
-drn_arr_AmmoDepotVehicle set [count drn_arr_AmmoDepotVehicle, ["ToolKit", 100, 10, 10, [], 0]];
-drn_arr_AmmoDepotVehicle set [count drn_arr_AmmoDepotVehicle, ["Medikit", 100, 10, 10, [], 0]];
-drn_arr_AmmoDepotVehicle set [count drn_arr_AmmoDepotVehicle, ["FirstAidKit", 100, 50, 50, [], 0]];
-drn_arr_AmmoDepotVehicle set [count drn_arr_AmmoDepotVehicle, ["acc_flashlight", 100, 10, 10, [], 0]];
-drn_arr_AmmoDepotVehicle set [count drn_arr_AmmoDepotVehicle, ["acc_pointer_IR", 100, 10, 10, [], 0]];
-drn_arr_AmmoDepotVehicle set [count drn_arr_AmmoDepotVehicle, ["muzzle_snds_acp", 100, 10, 10, [], 0]];
-drn_arr_AmmoDepotVehicle set [count drn_arr_AmmoDepotVehicle, ["muzzle_snds_B", 100, 10, 10, [], 0]];
-drn_arr_AmmoDepotVehicle set [count drn_arr_AmmoDepotVehicle, ["muzzle_snds_H", 100, 10, 10, [], 0]];
-drn_arr_AmmoDepotVehicle set [count drn_arr_AmmoDepotVehicle, ["muzzle_snds_H_MG", 100, 10, 10, [], 0]];
-drn_arr_AmmoDepotVehicle set [count drn_arr_AmmoDepotVehicle, ["muzzle_snds_L", 100, 10, 10, [], 0]];
-drn_arr_AmmoDepotVehicle set [count drn_arr_AmmoDepotVehicle, ["muzzle_snds_M", 100, 10, 10, [], 0]];
-drn_arr_AmmoDepotVehicle set [count drn_arr_AmmoDepotVehicle, ["optic_Aco", 100, 10, 10, [], 0]];
-drn_arr_AmmoDepotVehicle set [count drn_arr_AmmoDepotVehicle, ["optic_Aco_smg", 100, 10, 10, [], 0]];
-drn_arr_AmmoDepotVehicle set [count drn_arr_AmmoDepotVehicle, ["optic_ACO_grn", 100, 10, 10, [], 0]];
-drn_arr_AmmoDepotVehicle set [count drn_arr_AmmoDepotVehicle, ["optic_ACO_grn_smg", 100, 10, 10, [], 0]];
-drn_arr_AmmoDepotVehicle set [count drn_arr_AmmoDepotVehicle, ["optic_Arco", 100, 10, 10, [], 0]];
-drn_arr_AmmoDepotVehicle set [count drn_arr_AmmoDepotVehicle, ["optic_Hamr", 100, 10, 10, [], 0]];
-drn_arr_AmmoDepotVehicle set [count drn_arr_AmmoDepotVehicle, ["optic_Holosight", 100, 10, 10, [], 0]];
-drn_arr_AmmoDepotVehicle set [count drn_arr_AmmoDepotVehicle, ["optic_Holosight_smg", 100, 10, 10, [], 0]];
-drn_arr_AmmoDepotVehicle set [count drn_arr_AmmoDepotVehicle, ["optic_MRCO", 100, 10, 10, [], 0]];
-drn_arr_AmmoDepotVehicle set [count drn_arr_AmmoDepotVehicle, ["optic_Nightstalker", 100, 10, 10, [], 0]];
-drn_arr_AmmoDepotVehicle set [count drn_arr_AmmoDepotVehicle, ["optic_NVS", 100, 10, 10, [], 0]];
-drn_arr_AmmoDepotVehicle set [count drn_arr_AmmoDepotVehicle, ["optic_SOS", 100, 10, 10, [], 0]];
-drn_arr_AmmoDepotVehicle set [count drn_arr_AmmoDepotVehicle, ["optic_tws", 100, 10, 10, [], 0]];
-drn_arr_AmmoDepotVehicle set [count drn_arr_AmmoDepotVehicle, ["optic_tws_mg", 100, 10, 10, [], 0]];*/
+// Items that can't be added to the containers/boxes
+
+// Index 0: Item classname.
+// Index 1: Item's probability of presence (in percent, 0-100)..
+// Index 2: Minimum amount.
+// Index 3: Maximum amount.
+
+drn_arr_AmmoDepotItems = [];
+drn_arr_AmmoDepotItems set [count drn_arr_AmmoDepotItems, ["O_UavTerminal", 100, 10, 10]];
+drn_arr_AmmoDepotItems set [count drn_arr_AmmoDepotItems, ["Binocular", 100, 10, 10]];
+drn_arr_AmmoDepotItems set [count drn_arr_AmmoDepotItems, ["Laserdesignator", 100, 10, 10]];
+drn_arr_AmmoDepotItems set [count drn_arr_AmmoDepotItems, ["NVGoggles", 100, 10, 10]];
+drn_arr_AmmoDepotItems set [count drn_arr_AmmoDepotItems, ["Rangefinder", 100, 10, 10]];
+drn_arr_AmmoDepotItems set [count drn_arr_AmmoDepotItems, ["ItemCompass", 100, 10, 10]];
+drn_arr_AmmoDepotItems set [count drn_arr_AmmoDepotItems, ["ItemGPS", 100, 10, 10]];
+drn_arr_AmmoDepotItems set [count drn_arr_AmmoDepotItems, ["ItemMap", 100, 10, 10]];
+drn_arr_AmmoDepotItems set [count drn_arr_AmmoDepotItems, ["ItemRadio", 100, 10, 10]];
+drn_arr_AmmoDepotItems set [count drn_arr_AmmoDepotItems, ["ItemWatch", 100, 10, 10]];
+drn_arr_AmmoDepotItems set [count drn_arr_AmmoDepotItems, ["ToolKit", 100, 10, 10]];
+drn_arr_AmmoDepotItems set [count drn_arr_AmmoDepotItems, ["Medikit", 100, 10, 10]];
+drn_arr_AmmoDepotItems set [count drn_arr_AmmoDepotItems, ["FirstAidKit", 100, 50, 50, [], 0]];
+drn_arr_AmmoDepotItems set [count drn_arr_AmmoDepotItems, ["acc_flashlight", 100, 10, 10]];
+drn_arr_AmmoDepotItems set [count drn_arr_AmmoDepotItems, ["acc_pointer_IR", 100, 10, 10]];
+drn_arr_AmmoDepotItems set [count drn_arr_AmmoDepotItems, ["muzzle_snds_acp", 100, 10, 10]];
+drn_arr_AmmoDepotItems set [count drn_arr_AmmoDepotItems, ["muzzle_snds_B", 100, 10, 10]];
+drn_arr_AmmoDepotItems set [count drn_arr_AmmoDepotItems, ["muzzle_snds_H", 100, 10, 10]];
+drn_arr_AmmoDepotItems set [count drn_arr_AmmoDepotItems, ["muzzle_snds_H_MG", 100, 10, 10]];
+drn_arr_AmmoDepotItems set [count drn_arr_AmmoDepotItems, ["muzzle_snds_L", 100, 10, 10]];
+drn_arr_AmmoDepotItems set [count drn_arr_AmmoDepotItems, ["muzzle_snds_M", 100, 10, 10]];
+drn_arr_AmmoDepotItems set [count drn_arr_AmmoDepotItems, ["optic_Aco", 100, 10, 10]];
+drn_arr_AmmoDepotItems set [count drn_arr_AmmoDepotItems, ["optic_Aco_smg", 100, 10, 10]];
+drn_arr_AmmoDepotItems set [count drn_arr_AmmoDepotItems, ["optic_ACO_grn", 100, 10, 10]];
+drn_arr_AmmoDepotItems set [count drn_arr_AmmoDepotItems, ["optic_ACO_grn_smg", 100, 10, 10]];
+drn_arr_AmmoDepotItems set [count drn_arr_AmmoDepotItems, ["optic_Arco", 100, 10, 10]];
+drn_arr_AmmoDepotItems set [count drn_arr_AmmoDepotItems, ["optic_Hamr", 100, 10, 10]];
+drn_arr_AmmoDepotItems set [count drn_arr_AmmoDepotItems, ["optic_Holosight", 100, 10, 10]];
+drn_arr_AmmoDepotItems set [count drn_arr_AmmoDepotItems, ["optic_Holosight_smg", 100, 10, 10]];
+drn_arr_AmmoDepotItems set [count drn_arr_AmmoDepotItems, ["optic_MRCO", 100, 10, 10]];
+drn_arr_AmmoDepotItems set [count drn_arr_AmmoDepotItems, ["optic_Nightstalker", 100, 10, 10]];
+drn_arr_AmmoDepotItems set [count drn_arr_AmmoDepotItems, ["optic_NVS", 100, 10, 10]];
+drn_arr_AmmoDepotItems set [count drn_arr_AmmoDepotItems, ["optic_SOS", 100, 10, 10]];
+drn_arr_AmmoDepotItems set [count drn_arr_AmmoDepotItems, ["optic_tws", 100, 10, 10]];
+drn_arr_AmmoDepotItems set [count drn_arr_AmmoDepotItems, ["optic_tws_mg", 100, 10, 10]];
 
 // Weapons that may show up in civilian cars
 
@@ -202,7 +209,6 @@ drn_arr_AmmoDepotVehicle set [count drn_arr_AmmoDepotVehicle, ["optic_tws_mg", 1
 drn_arr_CivilianCarWeapons = [];
 drn_arr_CivilianCarWeapons set [count drn_arr_CivilianCarWeapons, ["hgun_P07_F", "16Rnd_9x21_Mag", 5]];
 drn_arr_CivilianCarWeapons set [count drn_arr_CivilianCarWeapons, ["hgun_P07_snds_F", "30Rnd_9x21_Mag", 11]];
-drn_arr_CivilianCarWeapons set [count drn_arr_CivilianCarWeapons, ["hgun_Rook40_snds_F", "30Rnd_9x21_Mag", 9]];
 drn_arr_CivilianCarWeapons set [count drn_arr_CivilianCarWeapons, ["hgun_Rook40_snds_F", "30Rnd_9x21_Mag", 9]];
 drn_arr_CivilianCarWeapons set [count drn_arr_CivilianCarWeapons, ["arifle_MXM_Hamr_pointer_F", "30Rnd_65x39_caseless_mag_Tracer", 8]];
 drn_arr_CivilianCarWeapons set [count drn_arr_CivilianCarWeapons, ["arifle_MX_Hamr_pointer_F", "30Rnd_65x39_caseless_mag_Tracer", 6]];
