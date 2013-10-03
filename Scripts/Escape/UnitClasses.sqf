@@ -74,7 +74,7 @@ drn_arr_Escape_EnemyCivilianCarTypes = ["C_Hatchback_01_F", "C_Hatchback_01_spor
 // Random array. An ammo depot contains one static weapon of the followin types:
 drn_arr_Escape_AmmoDepot_StaticWeaponClasses = ["O_GMG_01_F", "O_HMG_01_F", "O_GMG_01_F", "O_HMG_01_F", "O_static_AT_F", "O_static_AA_F"];
 // An ammo depot have one parked and empty vehicle of the following possible types.
-drn_arr_Escape_AmmoDepot_ParkedVehicleClasses = ["O_MRAP_02_F", "O_MRAP_02_gmg_F", "O_MRAP_02_hmg_F", "C_Offroad_01_F", "C_Van_01_transport_F", "O_MRAP_02_F"];
+drn_arr_Escape_AmmoDepot_ParkedVehicleClasses = ["O_MRAP_02_F", "O_MRAP_02_gmg_F", "O_MRAP_02_hmg_F", "O_Truck_02_covered_F", "O_Truck_02_ammo_F", "O_Truck_02_box_F"];
 
 // The following arrays define weapons and ammo contained at the ammo depots
 // Index 0: Weapon classname.
@@ -87,79 +87,119 @@ drn_arr_Escape_AmmoDepot_ParkedVehicleClasses = ["O_MRAP_02_F", "O_MRAP_02_gmg_F
 // Weapons and ammo in the basic weapons box
 drn_arr_AmmoDepotBasicWeapons = [];
 // Insurgent weapons
-drn_arr_AmmoDepotBasicWeapons set [count drn_arr_AmmoDepotBasicWeapons, ["arifle_Katiba_C_F", 40, 8, 12, ["30Rnd_65x39_caseless_green"], 14]];
-drn_arr_AmmoDepotBasicWeapons set [count drn_arr_AmmoDepotBasicWeapons, ["arifle_Katiba_ARCO_F", 40, 8, 12, ["30Rnd_65x39_caseless_green"], 12]];
-drn_arr_AmmoDepotBasicWeapons set [count drn_arr_AmmoDepotBasicWeapons, ["arifle_Katiba_C_ACO_F", 40, 8, 12, ["30Rnd_65x39_caseless_green"], 12]];
-drn_arr_AmmoDepotBasicWeapons set [count drn_arr_AmmoDepotBasicWeapons, ["arifle_Katiba_GL_ACO_F", 35, 2, 4, ["30Rnd_65x39_caseless_green", "UGL_FlareWhite_F"], 15]];
-drn_arr_AmmoDepotBasicWeapons set [count drn_arr_AmmoDepotBasicWeapons, ["arifle_Katiba_GL_ACO_F", 35, 2, 4, ["30Rnd_65x39_caseless_green", "1Rnd_HE_Grenade_shell"], 20]];
-drn_arr_AmmoDepotBasicWeapons set [count drn_arr_AmmoDepotBasicWeapons, ["arifle_Katiba_C_F", 25, 3, 6, ["30Rnd_65x39_caseless_green"], 12]];
-drn_arr_AmmoDepotBasicWeapons set [count drn_arr_AmmoDepotBasicWeapons, ["LMG_Zafir_F", 30, 2, 3, ["150Rnd_762x51_Box_Tracer"], 15]];
-drn_arr_AmmoDepotBasicWeapons set [count drn_arr_AmmoDepotBasicWeapons, ["hgun_ACPC2_F", 85, 8, 12, ["16Rnd_9x21_Mag"], 10]];
+drn_arr_AmmoDepotBasicWeapons set [count drn_arr_AmmoDepotBasicWeapons, ["arifle_Katiba_C_F", 100, 8, 12, ["30Rnd_65x39_caseless_green"], 14]];
+drn_arr_AmmoDepotBasicWeapons set [count drn_arr_AmmoDepotBasicWeapons, ["arifle_Katiba_ARCO_F", 100, 8, 12, ["30Rnd_65x39_caseless_green"], 12]];
+drn_arr_AmmoDepotBasicWeapons set [count drn_arr_AmmoDepotBasicWeapons, ["arifle_Katiba_C_ACO_F", 100, 8, 12, ["30Rnd_65x39_caseless_green"], 12]];
+drn_arr_AmmoDepotBasicWeapons set [count drn_arr_AmmoDepotBasicWeapons, ["arifle_Katiba_GL_ACO_F", 100, 2, 4, ["30Rnd_65x39_caseless_green", "UGL_FlareWhite_F"], 15]];
+drn_arr_AmmoDepotBasicWeapons set [count drn_arr_AmmoDepotBasicWeapons, ["arifle_Katiba_GL_ACO_F", 100, 2, 4, ["30Rnd_65x39_caseless_green", "1Rnd_HE_Grenade_shell"], 20]];
+drn_arr_AmmoDepotBasicWeapons set [count drn_arr_AmmoDepotBasicWeapons, ["arifle_Katiba_C_F", 100, 3, 6, ["30Rnd_65x39_caseless_green"], 12]];
+drn_arr_AmmoDepotBasicWeapons set [count drn_arr_AmmoDepotBasicWeapons, ["LMG_Zafir_F", 100, 2, 3, ["150Rnd_762x51_Box_Tracer"], 15]];
+drn_arr_AmmoDepotBasicWeapons set [count drn_arr_AmmoDepotBasicWeapons, ["hgun_ACPC2_F", 100, 8, 12, ["9Rnd_45ACP_Mag"], 10]];
 
 // Russian weapons
-drn_arr_AmmoDepotBasicWeapons set [count drn_arr_AmmoDepotBasicWeapons, ["arifle_Mk20_ACO_F", 20, 1, 3, ["30Rnd_65x39_caseless_green"], 18]];
-drn_arr_AmmoDepotBasicWeapons set [count drn_arr_AmmoDepotBasicWeapons, ["arifle_Mk20_GL_ACO_F", 15, 1, 3, ["30Rnd_65x39_caseless_green", "1Rnd_Smoke_Grenade_shell", "1Rnd_HE_Grenade_shell"], 15]];
-drn_arr_AmmoDepotBasicWeapons set [count drn_arr_AmmoDepotBasicWeapons, ["arifle_Mk20_Holo_F", 15, 1, 3, ["30Rnd_556x45_Stanag_Tracer_Yellow"], 15]];
-drn_arr_AmmoDepotBasicWeapons set [count drn_arr_AmmoDepotBasicWeapons, ["SMG_01_ACO_F", 15, 1, 2, ["30Rnd_45ACP_Mag_SMG_01_Tracer_Green", "30Rnd_45ACP_Mag_SMG_01_Tracer_Green"], 20]];
+drn_arr_AmmoDepotBasicWeapons set [count drn_arr_AmmoDepotBasicWeapons, ["arifle_Mk20_ACO_F", 100, 1, 3, ["30Rnd_65x39_caseless_green"], 18]];
+drn_arr_AmmoDepotBasicWeapons set [count drn_arr_AmmoDepotBasicWeapons, ["arifle_Mk20_GL_ACO_F", 100, 1, 3, ["30Rnd_65x39_caseless_green", "1Rnd_Smoke_Grenade_shell", "1Rnd_HE_Grenade_shell"], 15]];
+drn_arr_AmmoDepotBasicWeapons set [count drn_arr_AmmoDepotBasicWeapons, ["arifle_Mk20_Holo_F", 100, 1, 3, ["30Rnd_556x45_Stanag_Tracer_Yellow"], 15]];
+drn_arr_AmmoDepotBasicWeapons set [count drn_arr_AmmoDepotBasicWeapons, ["SMG_01_ACO_F", 100, 1, 2, ["30Rnd_45ACP_Mag_SMG_01_Tracer_Green", "30Rnd_45ACP_Mag_SMG_01_Tracer_Green"], 20]];
 
 // Weapons and ammo in the special weapons box
 drn_arr_AmmoDepotSpecialWeapons = [];
 // Insurgent weapons
-drn_arr_AmmoDepotSpecialWeapons set [count drn_arr_AmmoDepotSpecialWeapons, ["srifle_EBR_SOS_F", 20, 1, 2, ["20Rnd_762x51_Mag"], 15]];
-drn_arr_AmmoDepotSpecialWeapons set [count drn_arr_AmmoDepotSpecialWeapons, ["arifle_Katiba_C_F", 20, 1, 2, ["30Rnd_65x39_caseless_green"], 20]];
-drn_arr_AmmoDepotSpecialWeapons set [count drn_arr_AmmoDepotSpecialWeapons, ["LMG_Mk200_F", 20, 1, 2, ["200Rnd_65x39_cased_Box_Tracer", "200Rnd_65x39_cased_Box"], 15]];
-drn_arr_AmmoDepotSpecialWeapons set [count drn_arr_AmmoDepotSpecialWeapons, ["srifle_LRR_F", 20, 1, 2, ["7Rnd_408_Mag"], 15]];
-drn_arr_AmmoDepotSpecialWeapons set [count drn_arr_AmmoDepotSpecialWeapons, ["LMG_Mk200_F", 20, 1, 1, ["200Rnd_65x39_cased_Box_Tracer"], 18]];
-drn_arr_AmmoDepotSpecialWeapons set [count drn_arr_AmmoDepotSpecialWeapons, ["LMG_Mk200_F", 20, 1, 1, ["200Rnd_65x39_cased_Box_Tracer"], 18]];
-drn_arr_AmmoDepotSpecialWeapons set [count drn_arr_AmmoDepotSpecialWeapons, ["arifle_Katiba_ARCO_F", 20, 1, 3, ["30Rnd_65x39_caseless_green_mag_Tracer"], 14]];
+drn_arr_AmmoDepotSpecialWeapons set [count drn_arr_AmmoDepotSpecialWeapons, ["srifle_EBR_SOS_F", 100, 1, 2, ["20Rnd_762x51_Mag"], 15]];
+drn_arr_AmmoDepotSpecialWeapons set [count drn_arr_AmmoDepotSpecialWeapons, ["arifle_Katiba_C_F", 100, 1, 2, ["30Rnd_65x39_caseless_green"], 20]];
+drn_arr_AmmoDepotSpecialWeapons set [count drn_arr_AmmoDepotSpecialWeapons, ["LMG_Mk200_F", 100, 1, 2, ["200Rnd_65x39_cased_Box_Tracer", "200Rnd_65x39_cased_Box"], 15]];
+drn_arr_AmmoDepotSpecialWeapons set [count drn_arr_AmmoDepotSpecialWeapons, ["srifle_LRR_F", 100, 1, 2, ["7Rnd_408_Mag"], 15]];
+drn_arr_AmmoDepotSpecialWeapons set [count drn_arr_AmmoDepotSpecialWeapons, ["LMG_Mk200_F", 100, 1, 1, ["200Rnd_65x39_cased_Box_Tracer"], 18]];
+drn_arr_AmmoDepotSpecialWeapons set [count drn_arr_AmmoDepotSpecialWeapons, ["LMG_Mk200_F", 100, 1, 1, ["200Rnd_65x39_cased_Box_Tracer"], 18]];
+drn_arr_AmmoDepotSpecialWeapons set [count drn_arr_AmmoDepotSpecialWeapons, ["arifle_Katiba_ARCO_F", 100, 1, 3, ["30Rnd_65x39_caseless_green_mag_Tracer"], 14]];
 
 // Russian weapons
-drn_arr_AmmoDepotSpecialWeapons set [count drn_arr_AmmoDepotSpecialWeapons, ["arifle_Katiba_C_F", 15, 1, 1, ["30Rnd_65x39_caseless_green"], 20]];
-drn_arr_AmmoDepotSpecialWeapons set [count drn_arr_AmmoDepotSpecialWeapons, ["arifle_Katiba_GL_ACO_F", 10, 1, 1, ["1Rnd_Smoke_Grenade_shell", "UGL_FlareWhite_F", "1Rnd_Smoke_Grenade_shell", "30Rnd_65x39_caseless_green"], 12]];
-drn_arr_AmmoDepotSpecialWeapons set [count drn_arr_AmmoDepotSpecialWeapons, ["arifle_Katiba_C_F", 15, 2, 5, ["30Rnd_65x39_caseless_green"], 8]];
-drn_arr_AmmoDepotSpecialWeapons set [count drn_arr_AmmoDepotSpecialWeapons, ["LMG_Mk200_pointer_F", 10, 1, 1, ["200Rnd_65x39_cased_Box_Tracer"], 12]];
-drn_arr_AmmoDepotSpecialWeapons set [count drn_arr_AmmoDepotSpecialWeapons, ["srifle_LRR_F", 10, 1, 1, ["7Rnd_408_Mag"], 15]];
-drn_arr_AmmoDepotSpecialWeapons set [count drn_arr_AmmoDepotSpecialWeapons, ["srifle_EBR_SOS_F", 10, 1, 1, ["20Rnd_762x51_Mag"], 12]];
-drn_arr_AmmoDepotSpecialWeapons set [count drn_arr_AmmoDepotSpecialWeapons, ["arifle_TRG21_F", 20, 2, 5, ["30Rnd_556x45_Stanag"], 10]];
+drn_arr_AmmoDepotSpecialWeapons set [count drn_arr_AmmoDepotSpecialWeapons, ["arifle_Katiba_C_F", 100, 1, 1, ["30Rnd_65x39_caseless_green"], 20]];
+drn_arr_AmmoDepotSpecialWeapons set [count drn_arr_AmmoDepotSpecialWeapons, ["arifle_Katiba_GL_ACO_F", 100, 1, 1, ["1Rnd_Smoke_Grenade_shell", "UGL_FlareWhite_F", "1Rnd_Smoke_Grenade_shell", "30Rnd_65x39_caseless_green"], 12]];
+drn_arr_AmmoDepotSpecialWeapons set [count drn_arr_AmmoDepotSpecialWeapons, ["arifle_Katiba_C_F", 100, 2, 5, ["30Rnd_65x39_caseless_green"], 8]];
+drn_arr_AmmoDepotSpecialWeapons set [count drn_arr_AmmoDepotSpecialWeapons, ["LMG_Mk200_pointer_F", 100, 1, 1, ["200Rnd_65x39_cased_Box_Tracer"], 12]];
+drn_arr_AmmoDepotSpecialWeapons set [count drn_arr_AmmoDepotSpecialWeapons, ["srifle_LRR_F", 100, 2, 4, ["7Rnd_408_Mag"], 15]];
+drn_arr_AmmoDepotSpecialWeapons set [count drn_arr_AmmoDepotSpecialWeapons, ["srifle_EBR_SOS_F", 100, 1, 1, ["20Rnd_762x51_Mag"], 12]];
+drn_arr_AmmoDepotSpecialWeapons set [count drn_arr_AmmoDepotSpecialWeapons, ["arifle_TRG21_F", 100, 2, 5, ["30Rnd_556x45_Stanag"], 10]];
 
 // Weapons and ammo in the launchers box
 drn_arr_AmmoDepotLaunchers = [];
 // Insurgent weapons
-drn_arr_AmmoDepotLaunchers set [count drn_arr_AmmoDepotLaunchers, ["launch_RPG32_F", 100, 3, 5, ["RPG32_F", "RPG32_HE_F"], 2]];
-drn_arr_AmmoDepotLaunchers set [count drn_arr_AmmoDepotLaunchers, ["launch_RPG32_F", 25, 1, 2, ["RPG32_F", "RPG32_HE_F"], 2]];
-drn_arr_AmmoDepotLaunchers set [count drn_arr_AmmoDepotLaunchers, ["launch_O_Titan_F", 100, 1, 1, ["Titan_AA"], 2]];
-drn_arr_AmmoDepotLaunchers set [count drn_arr_AmmoDepotLaunchers, ["launch_O_Titan_short_F", 75, 1, 2, ["titan_AP", "Titan_AT"], 2]];
+drn_arr_AmmoDepotLaunchers set [count drn_arr_AmmoDepotLaunchers, ["launch_RPG32_F", 100, 5, 5, ["RPG32_F", "RPG32_HE_F"], 15]];
+drn_arr_AmmoDepotLaunchers set [count drn_arr_AmmoDepotLaunchers, ["launch_O_Titan_F", 100, 1, 1, ["Titan_AA"], 5]];
+drn_arr_AmmoDepotLaunchers set [count drn_arr_AmmoDepotLaunchers, ["launch_O_Titan_short_F", 100, 1, 1, ["titan_AP", "Titan_AT"], 5]];
 
 // Russian weapons
-drn_arr_AmmoDepotLaunchers set [count drn_arr_AmmoDepotLaunchers, ["launch_I_Titan_F", 35, 1, 2, ["Titan_AA"], 3]];
-drn_arr_AmmoDepotLaunchers set [count drn_arr_AmmoDepotLaunchers, ["launch_I_Titan_short_F", 25, 1, 2, ["titan_AP", "Titan_AT"], 2]];
+drn_arr_AmmoDepotLaunchers set [count drn_arr_AmmoDepotLaunchers, ["launch_I_Titan_F", 100, 1, 1, ["Titan_AA"], 5]];
+drn_arr_AmmoDepotLaunchers set [count drn_arr_AmmoDepotLaunchers, ["launch_I_Titan_short_F", 100, 1, 1, ["titan_AP", "Titan_AT"], 5]];
 
 // Some stolen western weapons can sometimes appear
-drn_arr_AmmoDepotLaunchers set [count drn_arr_AmmoDepotLaunchers, ["launch_NLAW_F", 45, 2, 2, ["NLAW_F"], 2]];
-drn_arr_AmmoDepotLaunchers set [count drn_arr_AmmoDepotLaunchers, ["launch_B_Titan_F", 35, 1, 2, ["Titan_AA"], 3]];
-drn_arr_AmmoDepotLaunchers set [count drn_arr_AmmoDepotLaunchers, ["launch_B_Titan_short_F", 25, 1, 2, ["titan_AP", "Titan_AT"], 2]];
+drn_arr_AmmoDepotLaunchers set [count drn_arr_AmmoDepotLaunchers, ["launch_NLAW_F", 100, 5, 5, ["NLAW_F"], 15]];
+drn_arr_AmmoDepotLaunchers set [count drn_arr_AmmoDepotLaunchers, ["launch_B_Titan_F", 100, 1, 1, ["Titan_AA"], 5]];
+drn_arr_AmmoDepotLaunchers set [count drn_arr_AmmoDepotLaunchers, ["launch_B_Titan_short_F", 100, 1, 1, ["titan_AP", "Titan_AT"], 5]];
 
 // Weapons and ammo in the ordnance box
 drn_arr_AmmoDepotOrdnance = [];
 // General weapons
-drn_arr_AmmoDepotOrdnance set [count drn_arr_AmmoDepotOrdnance, ["Put", 50, 1, 2, ["SatchelCharge_Remote_Mag"], 5]];
-drn_arr_AmmoDepotOrdnance set [count drn_arr_AmmoDepotOrdnance, ["Put", 35, 1, 2, ["SatchelCharge_Remote_Mag"], 6]];
-drn_arr_AmmoDepotOrdnance set [count drn_arr_AmmoDepotOrdnance, ["Throw", 85, 1, 2, ["ClaymoreDirectionalMine_Remote_Mag"], 8]];
-drn_arr_AmmoDepotOrdnance set [count drn_arr_AmmoDepotOrdnance, ["Put", 50, 1, 2, ["APERSBoundingMine_Range_Mag"], 2]];
-drn_arr_AmmoDepotOrdnance set [count drn_arr_AmmoDepotOrdnance, ["Throw", 75, 1, 2, ["SmokeShell"], 8]];
-drn_arr_AmmoDepotOrdnance set [count drn_arr_AmmoDepotOrdnance, ["Throw", 15, 1, 2, ["SmokeShellYellow"], 8]];
-drn_arr_AmmoDepotOrdnance set [count drn_arr_AmmoDepotOrdnance, ["Throw", 15, 1, 2, ["SmokeShellRed"], 8]];
-drn_arr_AmmoDepotOrdnance set [count drn_arr_AmmoDepotOrdnance, ["Throw", 15, 1, 2, ["SmokeShellGreen"], 8]];
-drn_arr_AmmoDepotOrdnance set [count drn_arr_AmmoDepotOrdnance, ["Throw", 15, 1, 2, ["SmokeShellPurple"], 8]];
-drn_arr_AmmoDepotOrdnance set [count drn_arr_AmmoDepotOrdnance, ["Throw", 15, 1, 2, ["SmokeShellBlue"], 8]];
-drn_arr_AmmoDepotOrdnance set [count drn_arr_AmmoDepotOrdnance, ["Throw", 15, 1, 2, ["SmokeShellOrange"], 8]];
+drn_arr_AmmoDepotOrdnance set [count drn_arr_AmmoDepotOrdnance, [objNull, 100, 1, 1, ["DemoCharge_Remote_Mag", "SatchelCharge_Remote_Mag", "ClaymoreDirectionalMine_Remote_Mag", "APERSMine_Range_Mag", "APERSBoundingMine_Range_Mag", "ATMine_Range_Mag", "APERSTripMine_Wire_Mag", "SLAMDirectionalMine_Wire_Mag", "Laserbatteries"], 20]];
 
 // Weapons and ammo in the vehicle box (the big one)
 // Some high volumes (mostly for immersion)
 drn_arr_AmmoDepotVehicle = [];
-drn_arr_AmmoDepotVehicle set [count drn_arr_AmmoDepotVehicle, ["Put", 30, 1, 1, ["ATMine_Range_Mag"], 100]];
-drn_arr_AmmoDepotVehicle set [count drn_arr_AmmoDepotVehicle, ["Throw", 30, 1, 2, ["HandGrenade_Stone"], 120]];
-drn_arr_AmmoDepotVehicle set [count drn_arr_AmmoDepotVehicle, ["Put", 30, 1, 2, ["APERSTripMine_Wire_Mag"], 75]];
+drn_arr_AmmoDepotVehicle set [count drn_arr_AmmoDepotVehicle, [objNull, 100, 1, 1, ["HandGrenade", "MiniGrenade", "HandGrenade_Stone"], 50]];
+drn_arr_AmmoDepotVehicle set [count drn_arr_AmmoDepotVehicle, [objNull, 100, 1, 1, ["SmokeShell", "SmokeShellYellow", "SmokeShellRed", "SmokeShellGreen", "SmokeShellPurple", "SmokeShellBlue", "SmokeShellOrange"], 50]];
+drn_arr_AmmoDepotVehicle set [count drn_arr_AmmoDepotVehicle, [objNull, 100, 1, 1, ["Chemlight_blue", "Chemlight_green", "Chemlight_red", "Chemlight_yellow"], 50]];
+drn_arr_AmmoDepotVehicle set [count drn_arr_AmmoDepotVehicle, [objNull, 100, 1, 1, ["1Rnd_Smoke_Grenade_shell", "1Rnd_SmokeBlue_Grenade_shell", "1Rnd_SmokeGreen_Grenade_shell", "1Rnd_SmokeOrange_Grenade_shell", "1Rnd_SmokePurple_Grenade_shell", "1Rnd_SmokeRed_Grenade_shell", "1Rnd_SmokeYellow_Grenade_shell"], 25]];
+drn_arr_AmmoDepotVehicle set [count drn_arr_AmmoDepotVehicle, [objNull, 100, 1, 1, ["3Rnd_Smoke_Grenade_shell", "3Rnd_SmokeBlue_Grenade_shell", "3Rnd_SmokeGreen_Grenade_shell", "3Rnd_SmokeOrange_Grenade_shell", "3Rnd_SmokePurple_Grenade_shell", "3Rnd_SmokeRed_Grenade_shell", "3Rnd_SmokeYellow_Grenade_shell"], 25]];
+drn_arr_AmmoDepotVehicle set [count drn_arr_AmmoDepotVehicle, [objNull, 100, 1, 1, ["FlareWhite_F", "FlareGreen_F", "FlareRed_F", "FlareYellow_F"], 25]];
+drn_arr_AmmoDepotVehicle set [count drn_arr_AmmoDepotVehicle, [objNull, 100, 1, 1, ["UGL_FlareWhite_F", "UGL_FlareGreen_F", "UGL_FlareRed_F", "UGL_FlareYellow_F", "UGL_FlareCIR_F"], 25]];
+drn_arr_AmmoDepotVehicle set [count drn_arr_AmmoDepotVehicle, [objNull, 100, 1, 1, ["3Rnd_UGL_FlareWhite_F", "3Rnd_UGL_FlareGreen_F", "3Rnd_UGL_FlareRed_F", "3Rnd_UGL_FlareYellow_F", "3Rnd_UGL_FlareCIR_F"], 25]];
+drn_arr_AmmoDepotVehicle set [count drn_arr_AmmoDepotVehicle, [objNull, 100, 1, 1, ["1Rnd_HE_Grenade_shell", "3Rnd_HE_Grenade_shell"], 25]];
+drn_arr_AmmoDepotVehicle set [count drn_arr_AmmoDepotVehicle, ["ToolKit", 100, 10, 10, [], 0]];
+drn_arr_AmmoDepotVehicle set [count drn_arr_AmmoDepotVehicle, ["Medikit", 100, 10, 10, [], 0]];
+drn_arr_AmmoDepotVehicle set [count drn_arr_AmmoDepotVehicle, ["FirstAidKit", 100, 50, 50, [], 0]];
+drn_arr_AmmoDepotVehicle set [count drn_arr_AmmoDepotVehicle, ["Binocular", 100, 25, 25, [], 0]];
+
+// Items
+
+// Index 0: Item classname.
+// Index 1: Item's probability of presence (in percent, 0-100)..
+// Index 2: Minimum amount.
+// Index 3: Maximum amount.
+
+drn_arr_AmmoDepotItems = [];
+drn_arr_AmmoDepotItems set [count drn_arr_AmmoDepotItems, ["Laserdesignator", 100, 10, 10]];
+drn_arr_AmmoDepotItems set [count drn_arr_AmmoDepotItems, ["NVGoggles", 100, 10, 10]];
+drn_arr_AmmoDepotItems set [count drn_arr_AmmoDepotItems, ["Rangefinder", 100, 10, 10]];
+drn_arr_AmmoDepotItems set [count drn_arr_AmmoDepotItems, ["ItemCompass", 100, 10, 10]];
+drn_arr_AmmoDepotItems set [count drn_arr_AmmoDepotItems, ["ItemGPS", 100, 10, 10]];
+drn_arr_AmmoDepotItems set [count drn_arr_AmmoDepotItems, ["ItemMap", 100, 10, 10]];
+drn_arr_AmmoDepotItems set [count drn_arr_AmmoDepotItems, ["ItemRadio", 100, 10, 10]];
+drn_arr_AmmoDepotItems set [count drn_arr_AmmoDepotItems, ["ItemWatch", 100, 10, 10]];
+drn_arr_AmmoDepotItems set [count drn_arr_AmmoDepotItems, ["acc_flashlight", 100, 10, 10]];
+drn_arr_AmmoDepotItems set [count drn_arr_AmmoDepotItems, ["acc_pointer_IR", 100, 10, 10]];
+drn_arr_AmmoDepotItems set [count drn_arr_AmmoDepotItems, ["muzzle_snds_acp", 100, 10, 10]];
+drn_arr_AmmoDepotItems set [count drn_arr_AmmoDepotItems, ["muzzle_snds_B", 100, 10, 10]];
+drn_arr_AmmoDepotItems set [count drn_arr_AmmoDepotItems, ["muzzle_snds_H", 100, 10, 10]];
+drn_arr_AmmoDepotItems set [count drn_arr_AmmoDepotItems, ["muzzle_snds_H_MG", 100, 10, 10]];
+drn_arr_AmmoDepotItems set [count drn_arr_AmmoDepotItems, ["muzzle_snds_L", 100, 10, 10]];
+drn_arr_AmmoDepotItems set [count drn_arr_AmmoDepotItems, ["muzzle_snds_M", 100, 10, 10]];
+drn_arr_AmmoDepotItems set [count drn_arr_AmmoDepotItems, ["optic_Aco", 100, 10, 10]];
+drn_arr_AmmoDepotItems set [count drn_arr_AmmoDepotItems, ["optic_Aco_smg", 100, 10, 10]];
+drn_arr_AmmoDepotItems set [count drn_arr_AmmoDepotItems, ["optic_ACO_grn", 100, 10, 10]];
+drn_arr_AmmoDepotItems set [count drn_arr_AmmoDepotItems, ["optic_ACO_grn_smg", 100, 10, 10]];
+drn_arr_AmmoDepotItems set [count drn_arr_AmmoDepotItems, ["optic_Arco", 100, 10, 10]];
+drn_arr_AmmoDepotItems set [count drn_arr_AmmoDepotItems, ["optic_Hamr", 100, 10, 10]];
+drn_arr_AmmoDepotItems set [count drn_arr_AmmoDepotItems, ["optic_Holosight", 100, 10, 10]];
+drn_arr_AmmoDepotItems set [count drn_arr_AmmoDepotItems, ["optic_Holosight_smg", 100, 10, 10]];
+drn_arr_AmmoDepotItems set [count drn_arr_AmmoDepotItems, ["optic_MRCO", 100, 10, 10]];
+drn_arr_AmmoDepotItems set [count drn_arr_AmmoDepotItems, ["optic_Nightstalker", 100, 10, 10]];
+drn_arr_AmmoDepotItems set [count drn_arr_AmmoDepotItems, ["optic_NVS", 100, 10, 10]];
+drn_arr_AmmoDepotItems set [count drn_arr_AmmoDepotItems, ["optic_SOS", 100, 10, 10]];
+drn_arr_AmmoDepotItems set [count drn_arr_AmmoDepotItems, ["optic_tws", 100, 10, 10]];
+drn_arr_AmmoDepotItems set [count drn_arr_AmmoDepotItems, ["optic_tws_mg", 100, 10, 10]];
+drn_arr_AmmoDepotItems set [count drn_arr_AmmoDepotItems, ["O_UavTerminal", 100, 5, 5]];
+//drn_arr_AmmoDepotItems set [count drn_arr_AmmoDepotItems, ["O_UAV_01_backpack_F", 100, 5, 5]];
 
 // Weapons that may show up in civilian cars
 
@@ -171,6 +211,7 @@ drn_arr_CivilianCarWeapons = [];
 drn_arr_CivilianCarWeapons set [count drn_arr_CivilianCarWeapons, ["hgun_P07_F", "16Rnd_9x21_Mag", 5]];
 drn_arr_CivilianCarWeapons set [count drn_arr_CivilianCarWeapons, ["hgun_P07_snds_F", "30Rnd_9x21_Mag", 11]];
 drn_arr_CivilianCarWeapons set [count drn_arr_CivilianCarWeapons, ["hgun_Rook40_snds_F", "30Rnd_9x21_Mag", 9]];
+drn_arr_CivilianCarWeapons set [count drn_arr_CivilianCarWeapons, ["hgun_ACPC2_F", "9Rnd_45ACP_Mag", 12]];
 drn_arr_CivilianCarWeapons set [count drn_arr_CivilianCarWeapons, ["arifle_MXM_Hamr_pointer_F", "30Rnd_65x39_caseless_mag_Tracer", 8]];
 drn_arr_CivilianCarWeapons set [count drn_arr_CivilianCarWeapons, ["arifle_MX_Hamr_pointer_F", "30Rnd_65x39_caseless_mag_Tracer", 6]];
 drn_arr_CivilianCarWeapons set [count drn_arr_CivilianCarWeapons, ["arifle_MXM_SOS_pointer_F", "30Rnd_65x39_caseless_mag_Tracer", 7]];
@@ -178,8 +219,11 @@ drn_arr_CivilianCarWeapons set [count drn_arr_CivilianCarWeapons, ["arifle_Katib
 drn_arr_CivilianCarWeapons set [count drn_arr_CivilianCarWeapons, ["arifle_Mk20_GL_ACO_F", "UGL_FlareWhite_F", 8]];
 drn_arr_CivilianCarWeapons set [count drn_arr_CivilianCarWeapons, ["SMG_01_Holo_F", "30Rnd_45ACP_Mag_SMG_01_Tracer_Green", 5]];
 drn_arr_CivilianCarWeapons set [count drn_arr_CivilianCarWeapons, ["SMG_02_ACO_F", "30Rnd_9x21_Mag", 12]];
-drn_arr_CivilianCarWeapons set [count drn_arr_CivilianCarWeapons, ["hgun_ACPC2_F", "16Rnd_9x21_Mag", 1]];
-drn_arr_CivilianCarWeapons set [count drn_arr_CivilianCarWeapons, ["MineDetector", "MineDetector", 1]];
-drn_arr_CivilianCarWeapons set [count drn_arr_CivilianCarWeapons, ["launch_RPG32_F", "RPG32_F", 1]];
-drn_arr_CivilianCarWeapons set [count drn_arr_CivilianCarWeapons, ["SatchelCharge_Remote_Mag", 2]];
-//drn_arr_CivilianCarWeapons set [count drn_arr_CivilianCarWeapons, ["HandGrenade", 5]]; // handgrenade is not a weapon
+drn_arr_CivilianCarWeapons set [count drn_arr_CivilianCarWeapons, ["launch_RPG32_F", "RPG32_F", 2]];
+drn_arr_CivilianCarWeapons set [count drn_arr_CivilianCarWeapons, ["MineDetector", objNull, 0]];
+drn_arr_CivilianCarWeapons set [count drn_arr_CivilianCarWeapons, ["Medikit", objNull, 0]];
+drn_arr_CivilianCarWeapons set [count drn_arr_CivilianCarWeapons, ["Toolkit", objNull, 0]];
+drn_arr_CivilianCarWeapons set [count drn_arr_CivilianCarWeapons, ["Binocular", objNull, 0]];
+drn_arr_CivilianCarWeapons set [count drn_arr_CivilianCarWeapons, [objNull, "SatchelCharge_Remote_Mag", 2]];
+drn_arr_CivilianCarWeapons set [count drn_arr_CivilianCarWeapons, [objNull, "HandGrenade", 5]];
+drn_arr_CivilianCarWeapons set [count drn_arr_CivilianCarWeapons, [objNull, "SmokeShell", 5]];
