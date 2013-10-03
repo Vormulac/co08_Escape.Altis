@@ -63,6 +63,7 @@ _searchChopperRefuelTimeMin = (5 + random 10);
 
 _enemyFrequency = (paramsArray select 1);
 _enemySpawnDistance = (paramsArray select 5);
+_villagePatrolSpawnArea = (paramsArray select 6);
 
 drn_searchAreaMarkerName = "drn_searchAreaMarker";
 
@@ -289,7 +290,7 @@ if (_useMotorizedSearchGroup) then {
 [_playerGroup, 750, _debugGarbageCollector] spawn drn_fnc_CL_RunGarbageCollector;
 
 // Run initialization for scripts that need the players to be gathered at the start position
-[_useVillagePatrols, _useMilitaryTraffic, _useAmbientInfantry, _debugVillagePatrols, _debugMilitaryTraffic, _debugAmbientInfantry, _enemyMinSkill, _enemyMaxSkill, _enemySpawnDistance, _enemyFrequency, _useRoadBlocks, _debugRoadBlocks] spawn {
+[_useVillagePatrols, _useMilitaryTraffic, _useAmbientInfantry, _debugVillagePatrols, _debugMilitaryTraffic, _debugAmbientInfantry, _enemyMinSkill, _enemyMaxSkill, _enemySpawnDistance, _enemyFrequency, _useRoadBlocks, _debugRoadBlocks, _villagePatrolSpawnArea] spawn {
     private ["_useVillagePatrols", "_useMilitaryTraffic", "_useAmbientInfantry", "_debugVillagePatrols", "_debugMilitaryTraffic", "_debugAmbientInfantry", "_enemyMinSkill", "_enemyMaxSkill", "_enemySpawnDistance", "_enemyFrequency", "_useRoadBlocks", "_debugRoadBlocks"];
     private ["_fnc_OnSpawnAmbientInfantryGroup", "_fnc_OnSpawnAmbientInfantryUnit", "_scriptHandle"];
     private ["_playerGroup", "_minEnemiesPerGroup", "_maxEnemiesPerGroup", "_fnc_OnSpawnGroup"];
@@ -306,6 +307,7 @@ if (_useMotorizedSearchGroup) then {
     _enemyFrequency = _this select 9;
     _useRoadBlocks = _this select 10;
     _debugRoadBlocks = _this select 11;
+	_villagePatrolSpawnArea = _this select 12;
     
     waitUntil {[drn_startPos] call drn_fnc_Escape_AllPlayersOnStartPos};
     _playerGroup = group ((call drn_fnc_Escape_GetPlayers) select 0);
@@ -336,7 +338,7 @@ if (_useMotorizedSearchGroup) then {
             } foreach units _this;
         };
         
-        _scriptHandle = [(units _playerGroup) select 0, east, drn_arr_Escape_InfantryTypes, _minEnemiesPerGroup, _maxEnemiesPerGroup, 80000, _enemyMinSkill, _enemyMaxSkill, _enemySpawnDistance + 250, _fnc_OnSpawnGroup, _debugVillagePatrols] execVM "Scripts\DRN\VillagePatrols\InitVillagePatrols.sqf";
+        _scriptHandle = [(units _playerGroup) select 0, east, drn_arr_Escape_InfantryTypes, _minEnemiesPerGroup, _maxEnemiesPerGroup, _villagePatrolSpawnArea, _enemyMinSkill, _enemyMaxSkill, _enemySpawnDistance + 250, _fnc_OnSpawnGroup, _debugVillagePatrols] execVM "Scripts\DRN\VillagePatrols\InitVillagePatrols.sqf";
         waitUntil {scriptDone _scriptHandle};
     };
     

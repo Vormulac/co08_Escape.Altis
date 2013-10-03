@@ -353,12 +353,12 @@ drn_fnc_Escape_BuildAmmoDepot = {
     
     // Tunnor
     _pos = [(_middlePos select 0) + 7, (_middlePos select 1) - 5, 0];
-    _object = "Campfire_burning_F" createVehicle _pos;
+    _object = "MetalBarrel_burning_F" createVehicle _pos;
     _object setPos _pos;
     _object setDir 90;
     
     _pos = [(_middlePos select 0) - 5, (_middlePos select 1) + 7, 0];
-    _object = "Campfire_burning_F" createVehicle _pos;
+    _object = "MetalBarrel_burning_F" createVehicle _pos;
     _object setPos _pos;
     _object setDir 90;
     
@@ -960,13 +960,14 @@ drn_fnc_Escape_AddRemoveComCenArmor = {
         _spawnedArmors = [];
         
         {
-            _roadSegments = (_pos nearRoads 100);
-               if (count _roadSegments == 0) then {
-				_spawnPos = _pos;
-			} else {		
-				_spawnPos = getPos (_roadSegments select floor random count _roadSegments);
-            };
-            
+            _roadSegments = (_pos nearRoads 250);
+            if (count _roadSegments == 0) then {
+				_roadSegments = (_pos nearRoads 500);
+			};
+			if (count _roadSegments == 0) then {
+				_roadSegments = (_pos nearRoads 1000);
+			};
+            _spawnPos = getPos (_roadSegments select floor random count _roadSegments);
             _result = [_spawnPos, 0, _x, east] call BIS_fnc_spawnVehicle;
             _vehicle = _result select 0;
             _crew = _result select 1;
