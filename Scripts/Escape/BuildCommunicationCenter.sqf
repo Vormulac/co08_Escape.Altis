@@ -1,9 +1,12 @@
 private ["_centerPos", "_rotateDir", "_staticWeaponClasses", "_parkedVehicleClasses", "_index"];
 private ["_pos", "_dir", "_posX", "_posY", "_sectionDir", "_guns", "_gun", "_vehicle", "_powerGenerator"];
 private ["_fnc_CreateObject"];
+private ["_tower", "_medicalBuilding"];
+
 
 _centerPos = _this select 0;
 _rotateDir = _this select 1;
+
 if (count _this > 2) then { _staticWeaponClasses = _this select 2; } else { _staticWeaponClasses = []; };
 if (count _this > 3) then { _parkedVehicleClasses = _this select 3; } else { _parkedVehicleClasses = []; };
 
@@ -214,13 +217,13 @@ _dir = 90;
 _pos = [0, -8];
 _dir = 180;
 _tower = ["Land_SolarPanel_2_F", _pos, _dir, _centerPos, _rotateDir] call _fnc_CreateObject;
-_index = count CommTowers;
-CommTowers set [_index, _tower];
-[[CommTowers select _index ,"Hijack","Scripts\Escape\Hijack.sqf"],"Hijack_addAction",nil,false] spawn BIS_fnc_MP;
+[[_tower, "Hijack", "Scripts\Escape\Hijack.sqf"], "addHijackAction", nil, false] spawn BIS_fnc_MP;
 
 _pos = [13, 1];
 _dir = 90;
-["Land_Medevac_House_V1_F", _pos, _dir, _centerPos, _rotateDir] call _fnc_CreateObject;
+_tower = ["Land_Medevac_House_V1_F", _pos, _dir, _centerPos, _rotateDir] call _fnc_CreateObject;
+[[_tower, "Heal at medical building", "Scripts\Escape\HealAtMedicalBuilding.sqf"], "addHealAtMedicalBuildingAction", nil, false] spawn BIS_fnc_MP;
+
 _pos = [10, -5];
 _dir = 180;
 ["Land_Cargo_House_V1_F", _pos, _dir, _centerPos, _rotateDir] call _fnc_CreateObject;

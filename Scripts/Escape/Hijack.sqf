@@ -1,8 +1,9 @@
-private ["_generatorTrailer", "_unit"];
+private ["_generatorTrailer", "_unit", "_id"];
 private ["_marker", "_extractionPointNo", "_count", "_text"];
 
 _generatorTrailer = _this select 0;
 _unit = _this select 1;
+_id = _this select 2;
 
 _count = 30;
 if (typeOf _unit == "B_engineer_F") then {
@@ -46,6 +47,8 @@ if (_count == 0) then {
         
         drn_var_EscapeCommunicationCenterHijacked = true;
         publicVariable "drn_var_EscapeCommunicationCenterHijacked";
+
+        _generatorTrailer removeAction _id;
     };
 };
 
