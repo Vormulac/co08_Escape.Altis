@@ -224,25 +224,28 @@ while {true} do {
         else {
             _minDistance = _minSpawnDistance;
         };
-        
+        _refUnit = vehicle ((units _referenceGroup) select floor random count units _referenceGroup);
         _spawnSegment = [_referenceGroup, _minDistance, _maxSpawnDistance, _activeVehiclesAndGroup] call _fnc_FindSpawnSegment;
         
         // If there were spawn positions
         if (str _spawnSegment != """NULL""") then {
             _tries = 0;
-            
+            _refPos = position _spawnSegment;
             // Get first destination
-            _trafficLocation = floor random 8;
-            switch (_trafficLocation) do {
-                case 0: { _roadSegments = (getMarkerPos "TrafficMarker_SouthWest") nearRoads 300; };
-                case 1: { _roadSegments = (getMarkerPos "TrafficMarker_NorthWest") nearRoads 300; };
-                case 2: { _roadSegments = (getMarkerPos "TrafficMarker_NorthEast") nearRoads 300; };
-                case 3: { _roadSegments = (getMarkerPos "TrafficMarker_SouthEast") nearRoads 300; };
-				case 4: { _roadSegments = (getMarkerPos "TrafficMarker_North") nearRoads 300; };
-                case 5: { _roadSegments = (getMarkerPos "TrafficMarker_East") nearRoads 300; };
-                case 6: { _roadSegments = (getMarkerPos "TrafficMarker_South") nearRoads 300; };
-                case 7: { _roadSegments = (getMarkerPos "TrafficMarker_West") nearRoads 300; };
-                //default { _roadSegments = drn_allroadSegments };
+            
+            _roadSegments = [];
+            while {count _roadSegments == 0} do {
+                _trafficLocation = floor random 8;
+                switch (_trafficLocation) do {
+                    case 0: { _roadSegments = ([(_refPos select 0) + 5000, (_refPos select 1) + 5000]  ) nearRoads 1500; };
+                    case 1: { _roadSegments = ([(_refPos select 0) - 5000, (_refPos select 1) + 5000] ) nearRoads 1500; };
+                    case 2: { _roadSegments = ([(_refPos select 0) + 5000, (_refPos select 1) - 5000] ) nearRoads 1500; };
+                    case 3: { _roadSegments = ([(_refPos select 0) - 5000, (_refPos select 1) - 5000] ) nearRoads 1500; };
+                    case 4: { _roadSegments = ([(_refPos select 0), (_refPos select 1) + 7071]  ) nearRoads 1500; };
+                    case 5: { _roadSegments = ([(_refPos select 0), (_refPos select 1) - 7071] ) nearRoads 1500; };
+                    case 6: { _roadSegments = ([(_refPos select 0) + 7071, (_refPos select 1)] ) nearRoads 1500; };
+                    case 7: { _roadSegments = ([(_refPos select 0) - 7071, (_refPos select 1)] ) nearRoads 1500; };
+                };
             };
             
             _destinationSegment = _roadSegments select floor random count _roadSegments;

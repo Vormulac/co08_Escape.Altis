@@ -87,7 +87,7 @@ _fnc_FindRoadBlockSegment = {
     _isOk = false;
     _tries = 0;
     while {!_isOk && _tries < 100} do {
-        _isOk = true;
+        
         
         _dir = random 360;
         _refPosX = ((getPos _refUnit) select 0) + (_minSpawnDistance + _spawnDistanceDiff) * sin _dir;
@@ -96,54 +96,57 @@ _fnc_FindRoadBlockSegment = {
         _roadSegments = [_refPosX, _refPosY] nearRoads (_spawnDistanceDiff);
 		if(count _roadSegments > 0) then {
 			_roadSegment = _roadSegments select floor random count _roadSegments;
-		};
-        
-        // Check if road segment is at spawn distance
-        _tooFarAwayFromAll = true;
-        _tooClose = false;
-        {
-            private ["_tooFarAway"];
-            
+            _isOk = true;
+		}
+        else {
+            _isOk = false;
+        };
+         
+        if(_isOK) then {
+            // Check if road segment is at spawn distance
+            _tooFarAwayFromAll = true;
             _tooClose = false;
-            _tooFarAway = false;
+            {
+                private ["_tooFarAway"];
+                
+                _tooClose = false;
+                _tooFarAway = false;
+                
+                if ((vehicle _x) distance (getPos _roadSegment) < _minSpawnDistance) then {
+                    _tooClose = true;
+                };
+                if ((vehicle _x) distance (getPos _roadSegment) > _maxSpawnDistance) then {
+                    _tooFarAway = true;
+                };
+                if (!_tooFarAway) then {
+                    _tooFarAwayFromAll = false;
+                };
+            } foreach units _referenceGroup;
             
-            if ((vehicle _x) distance (getPos _roadSegment) < _minSpawnDistance) then {
-                _tooClose = true;
-            };
-            if ((vehicle _x) distance (getPos _roadSegment) > _maxSpawnDistance) then {
-                _tooFarAway = true;
-            };
-            if (!_tooFarAway) then {
-                _tooFarAwayFromAll = false;
-            };
-        } foreach units _referenceGroup;
-        
-        if (_tooClose || _tooFarAwayFromAll) then {
-            _isOk = false;
-        };
-        
-        // Check if road segment is not close to a house
-        if ((nearestBuilding _roadSegment) distance _roadSegment < 50) then {
-            _isOk = false;
-        };
-        
-        // Check if road segment is not too close to another road block
-        {
-            private ["_anotherSegment"];
-            _anotherSegment = _x select 1;
-            
-            if (_roadSegment distance _anotherSegment < _minDistanceBetweenRoadBlocks) then {
+            if (_tooClose || _tooFarAwayFromAll) then {
                 _isOk = false;
             };
-        } foreach _roadBlocks;
+            
+            // Check if road segment is not close to a house
+            if ((nearestBuilding _roadSegment) distance _roadSegment < 50) then {
+                _isOk = false;
+            };
+            
+            // Check if road segment is not too close to another road block
+            {
+                private ["_anotherSegment"];
+                _anotherSegment = _x select 1;
+                
+                if (_roadSegment distance _anotherSegment < _minDistanceBetweenRoadBlocks) then {
+                    _isOk = false;
+                };
+            } foreach _roadBlocks;
+        };
         
         _tries = _tries + 1;
     };
     
-    if (!_isOk) then {
-        _result = _nullval;
-    }
-    else {
+    if (_isOk) then {
         _result = _roadSegment;
     };
     
@@ -258,19 +261,21 @@ while {true} do {
         };
 		
         _roadSegment = [_roadBlocks, _referenceGroup, _minDistance, _maxSpawnDistance, _minDistanceBetweenRoadBlocks, _nullRoad] call _fnc_FindRoadBlockSegment;
-        if(!(_nullRoad == _roadSegment)) then {
-			if (!isNull _roadSegment) then {
-				_units = [_roadSegment, _side, _possibleInfantryTypes, _possibleVehicleTypes, _fnc_OnSpawnInfantryGroup, _fnc_OnSpawnMannedVehicle] call _fnc_CreateRoadBlock;
-				
-				_roadBlockItem = [_instanceNo, _roadSegment, _units]; // instance no, road segment, units
-				_roadBlocks set [count _roadBlocks, _roadBlockItem];
-				
-				if (_debug) then {
-					["Road block created. Number of road blocks: " + str count _roadBlocks] call drn_fnc_CL_ShowDebugTextAllClients;
-					["drn_DebugMarker_RoadBlocks_" + str _instanceNo, getPos _roadSegment, "mil_dot", "ColorRed", "Road Block"] call drn_fnc_CL_SetDebugMarkerAllClients;
-				};
-			};
-		};
+        if(!(isNil "_roadSegment")) then {
+            if(!(_nullRoad == _roadSegment)) then {
+    			if (!isNull _roadSegment) then {
+    				_units = [_roadSegment, _side, _possibleInfantryTypes, _possibleVehicleTypes, _fnc_OnSpawnInfantryGroup, _fnc_OnSpawnMannedVehicle] call _fnc_CreateRoadBlock;
+    				
+    				_roadBlockItem = [_instanceNo, _roadSegment, _units]; // instance no, road segment, units
+    				_roadBlocks set [count _roadBlocks, _roadBlockItem];
+    				
+    				if (_debug) then {
+    					["Road block created. Number of road blocks: " + str count _roadBlocks] call drn_fnc_CL_ShowDebugTextAllClients;
+    					["drn_DebugMarker_RoadBlocks_" + str _instanceNo, getPos _roadSegment, "mil_dot", "ColorRed", "Road Block"] call drn_fnc_CL_SetDebugMarkerAllClients;
+    				};
+    			};
+    		};
+        };
     };
     
     if (_debug) then {

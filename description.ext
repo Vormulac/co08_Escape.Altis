@@ -19,6 +19,7 @@ onLoadName = "Escape Altis v1.5";
 ///////////////////////////////////////////////////////////////////////////////////////////
 Respawn = "BASE";
 disabledAI = 1;
+enableDebugConsole = 2;
 
 // Include revive script resources
 
