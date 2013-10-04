@@ -232,7 +232,7 @@ while {true} do {
             _tries = 0;
             
             // Get first destination
-            _trafficLocation = floor random 8;
+            _trafficLocation = floor random 9;
             switch (_trafficLocation) do {
                 case 0: { _roadSegments = (getMarkerPos "TrafficMarker_SouthWest") nearRoads 300; };
                 case 1: { _roadSegments = (getMarkerPos "TrafficMarker_NorthWest") nearRoads 300; };
@@ -242,6 +242,7 @@ while {true} do {
                 case 5: { _roadSegments = (getMarkerPos "TrafficMarker_East") nearRoads 300; };
                 case 6: { _roadSegments = (getMarkerPos "TrafficMarker_South") nearRoads 300; };
                 case 7: { _roadSegments = (getMarkerPos "TrafficMarker_West") nearRoads 300; };
+                case 8: { _roadSegments = (getMarkerPos "TrafficMarker_AirField") nearRoads 300; };
                 //default { _roadSegments = drn_allroadSegments };
             };
             

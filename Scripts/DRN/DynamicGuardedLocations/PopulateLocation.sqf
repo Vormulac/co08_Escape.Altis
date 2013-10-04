@@ -91,7 +91,7 @@ _firstGroup = true;
 		
         if (_groupMemberCount == 0) then {
 			_soldier setUnitRank "SEARGENT";
-            _script = [_soldier, _markerName, "spawned", "NOFOLLOW", "fortify"] execVM "Scripts\upsmon.sqf";
+            _script = [_soldier, _markerName, "spawned", "NOFOLLOW", "NOWAIT", "FORTIFY"] execVM "Scripts\upsmon.sqf";
             _soldierObject set [5, _script];
             _soldierObject set [6, true];
         };

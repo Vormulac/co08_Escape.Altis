@@ -5,12 +5,14 @@ class Mission
 	{
 		"a3_map_Altis",
 		"A3_Characters_F_BLUFOR",
-		"a3_characters_f_beta"
+		"a3_characters_f_beta",
+		"A3_Air_F_Beta_Heli_Attack_02"
 	};
 	addOnsAuto[]=
 	{
 		"A3_Characters_F_BLUFOR",
 		"a3_characters_f_beta",
+		"A3_Air_F_Beta_Heli_Attack_02",
 		"a3_map_altis"
 	};
 	randomSeed=16426086;
@@ -173,9 +175,21 @@ class Mission
 			};
 		};
 	};
+	class Vehicles
+	{
+		items=1;
+		class Item0
+		{
+			position[]={13691.491,17.750694,18792.291};
+			id=9;
+			side="EMPTY";
+			vehicle="O_Heli_Attack_02_F";
+			skill=0.60000002;
+		};
+	};
 	class Markers
 	{
-		items=41;
+		items=42;
 		class Item0
 		{
 			position[]={14871.075,17.947748,16432.234};
@@ -439,6 +453,12 @@ class Mission
 		{
 			position[]={3294.6685,27.890711,18208.375};
 			name="TrafficMarker_West";
+			type="Empty";
+		};
+		class Item41
+		{
+			position[]={14933.878,18.646664,16208.35};
+			name="TrafficMarker_AirField";
 			type="Empty";
 		};
 	};
