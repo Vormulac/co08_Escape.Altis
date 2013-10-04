@@ -8,11 +8,11 @@ _spawnMarkerName = "drn_Escape_ExtracionBoatSpawnPos" + str _extractionPointNo;
 _extractionMarkerName = "drn_Escape_ExtractionPos" + str _extractionPointNo;
 _extractionMarkerName2 = "drn_Escape_ExtractionPos" + str _extractionPointNo + "_1";
 
-_result = [[((getMarkerPos _spawnMarkerName) select 0) + 15, ((getMarkerPos _spawnMarkerName) select 1) + 10, 0], 0, "B_Heli_Transport_01_F", west] call BIS_fnc_spawnVehicle;
+_result = [[((getMarkerPos _spawnMarkerName) select 0) + 25, ((getMarkerPos _spawnMarkerName) select 1) + 20, 0], 0, "B_Heli_Transport_01_F", west] call BIS_fnc_spawnVehicle;
 _boat1 = _result select 0;
 _group1 = _result select 2;
 
-_result = [[((getMarkerPos _spawnMarkerName) select 0) - 15, ((getMarkerPos _spawnMarkerName) select 1) - 10, 0], 0, "B_Heli_Transport_01_F", west] call BIS_fnc_spawnVehicle;
+_result = [[((getMarkerPos _spawnMarkerName) select 0) - 25, ((getMarkerPos _spawnMarkerName) select 1) - 20, 0], 0, "B_Heli_Transport_01_F", west] call BIS_fnc_spawnVehicle;
 _boat2 = _result select 0;
 _group2 = _result select 2;
 
@@ -28,14 +28,12 @@ _waypoint setWaypointBehaviour "CARELESS";
 _waypoint setWaypointFormation "WEDGE";
 _waypoint setWaypointStatements ["true", "vehicle this land 'LAND'"];
 
+
 _boat1 flyinheight 30;
 _boat2 flyinheight 30;
-_boat1 allowFleeing 0;
-_boat2 allowFleeing 0;
-_boat1 setskill 1;
-_boat2 setskill 1;
- 
+
 sleep 1;
+
 
 // Verkar inte funka...
 (driver _boat1) action ["LightOff", _boat1];

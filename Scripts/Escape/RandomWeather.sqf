@@ -77,11 +77,11 @@ if (isServer) then {
         setWind [forecastWindE, forecastWindN, true];
 
         // Create random numbers for next forecast.
-        _randOvercast = (round((random(0.3)-0.15)*100))/100;
-        _randRain = (round((random(0.3)-0.15)*100))/100;
-        _randFog = (round((random(0.1)-0.05)*100))/100;
-        _randWindE = (round((random(1)-.05)*100))/100;
-        _randWindN = (round((random(1)-.05)*100))/100;
+        _randOvercast = (round((random(0.4)-0.2)*100))/100;
+        _randRain = (round((random(0.4)-0.2)*100))/100;
+        _randFog = (round((random(0.2)-0.1)*100))/100;
+        _randWindE = (round((random(1)-0.5)*100))/100;
+        _randWindN = (round((random(1)-0.5)*100))/100;
 
         // Create next random overcast level and keep it between 0 and 1
         forecastOvercast = forecastOvercast + _randOvercast;
