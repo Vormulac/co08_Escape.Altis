@@ -40,7 +40,7 @@ switch (_enemyFrequency) do {
 drn_arr_Escape_InfantryTypes = ["O_engineer_F", "O_medic_F", "O_Soldier_A_F", "O_Soldier_AA_F", "O_Soldier_AR_F", "O_Soldier_AT_F", "O_Soldier_exp_F", "O_soldier_F", "O_Soldier_GL_F", "O_Soldier_LAT_F", "O_Soldier_lite_F", "O_Soldier_M_F", "O_Soldier_repair_F", "O_officer_F", "O_engineer_F", "O_medic_F", "O_Soldier_A_F", "O_Soldier_AR_F", "O_Soldier_exp_F", "O_soldier_F", "O_Soldier_GL_F", "O_Soldier_LAT_F", "O_Soldier_lite_F", "O_Soldier_M_F", "O_Soldier_repair_F", "O_officer_F", "O_engineer_F", "O_medic_F", "O_Soldier_A_F", "O_Soldier_AR_F", "O_Soldier_exp_F", "O_soldier_F", "O_Soldier_GL_F", "O_Soldier_lite_F", "O_Soldier_M_F", "O_Soldier_repair_F"];
 
 // Random array. A roadblock has a manned vehicle. This array contains possible manned vehicles (can be of any kind, like cars, armored and statics).
-drn_arr_Escape_RoadBlock_MannedVehicleTypes = ["O_MRAP_02_gmg_F", "O_MRAP_02_hmg_F", "O_GMG_01_F", "O_GMG_01_F", "O_HMG_01_F", "O_static_AT_F"];
+drn_arr_Escape_RoadBlock_MannedVehicleTypes = ["O_MRAP_02_gmg_F", "O_MRAP_02_hmg_F", "O_GMG_01_high_F", "O_GMG_01_high_F", "O_HMG_01_high_F", "O_static_AT_F"];
 
 // Random array. Vehicle classes (preferrably trucks) transporting enemy reinforcements.
 drn_arr_Escape_ReinforcementTruck_vehicleClasses = ["O_Truck_02_covered_F", "O_Truck_02_transport_F"];
@@ -62,7 +62,7 @@ drn_arr_ComCenDefence_heavyArmorClasses = ["O_MBT_02_arty_F", "O_MBT_02_cannon_F
 
 // A communication center contains two static weapons (in two corners of the communication center).
 // Random array. Possible static weapon types for communication centers.
-drn_arr_ComCenStaticWeapons = ["O_GMG_01_F", "O_GMG_01_F", "O_HMG_01_F"];
+drn_arr_ComCenStaticWeapons = ["O_GMG_01_high_F", "O_GMG_01_high_F", "O_HMG_01_high_F"];
 // A communication center have two parked and empty vehicles of the following possible types.
 drn_arr_ComCenParkedVehicles = ["O_MRAP_02_F", "O_MRAP_02_gmg_F", "O_MRAP_02_hmg_F", "C_Offroad_01_F", "C_Van_01_transport_F", "O_MRAP_02_F"];
 
@@ -72,7 +72,7 @@ drn_arr_Escape_EnemyCivilianCarTypes = ["C_Hatchback_01_F", "C_Hatchback_01_spor
 // Vehicles, weapons and ammo at ammo depots
 
 // Random array. An ammo depot contains one static weapon of the followin types:
-drn_arr_Escape_AmmoDepot_StaticWeaponClasses = ["O_GMG_01_F", "O_HMG_01_F", "O_GMG_01_F", "O_HMG_01_F", "O_static_AT_F", "O_static_AA_F"];
+drn_arr_Escape_AmmoDepot_StaticWeaponClasses = ["O_GMG_01_high_F", "O_HMG_01_high_F", "O_GMG_01_high_F", "O_HMG_01_high_F", "O_static_AT_F", "O_static_AA_F"];
 // An ammo depot have one parked and empty vehicle of the following possible types.
 drn_arr_Escape_AmmoDepot_ParkedVehicleClasses = ["O_MRAP_02_F", "O_MRAP_02_gmg_F", "O_MRAP_02_hmg_F", "O_Truck_02_covered_F", "O_Truck_02_ammo_F", "O_Truck_02_box_F"];
 
