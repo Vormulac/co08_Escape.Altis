@@ -23,18 +23,20 @@ if (count _firstDestinationPos > 0) then {
     _destinationPos = + _firstDestinationPos;
 }
 else {
-    _trafficLocation = floor random 9;
-	switch (_trafficLocation) do {
-		case 0: { _roadSegments = (getMarkerPos "TrafficMarker_SouthWest") nearRoads 300; };
-		case 1: { _roadSegments = (getMarkerPos "TrafficMarker_NorthWest") nearRoads 300; };
-		case 2: { _roadSegments = (getMarkerPos "TrafficMarker_NorthEast") nearRoads 300; };
-		case 3: { _roadSegments = (getMarkerPos "TrafficMarker_SouthEast") nearRoads 300; };
-		case 4: { _roadSegments = (getMarkerPos "TrafficMarker_North") nearRoads 300; };
-		case 5: { _roadSegments = (getMarkerPos "TrafficMarker_East") nearRoads 300; };
-		case 6: { _roadSegments = (getMarkerPos "TrafficMarker_South") nearRoads 300; };
-		case 7: { _roadSegments = (getMarkerPos "TrafficMarker_West") nearRoads 300; };
-		case 8: { _roadSegments = (getMarkerPos "TrafficMarker_AirField") nearRoads 300; };
-		//default { _roadSegments = drn_allroadSegments };
+	_roadSegments = [];
+	_refPos = petPos _vehicle;
+    while {count _roadSegments == 0} do {
+    	_trafficLocation = floor random 8;
+        switch (_trafficLocation) do {
+			case 0: { _roadSegments = ([(_refPos select 0) + 5000, (_refPos select 1) + 5000]  ) nearRoads 1500; };
+			case 1: { _roadSegments = ([(_refPos select 0) - 5000, (_refPos select 1) + 5000] ) nearRoads 1500; };
+	 		case 2: { _roadSegments = ([(_refPos select 0) + 5000, (_refPos select 1) - 5000] ) nearRoads 1500; };
+			case 3: { _roadSegments = ([(_refPos select 0) - 5000, (_refPos select 1) - 5000] ) nearRoads 1500; };
+			case 4: { _roadSegments = ([(_refPos select 0), (_refPos select 1) + 7071]  ) nearRoads 1500; };
+			case 5: { _roadSegments = ([(_refPos select 0), (_refPos select 1) - 7071] ) nearRoads 1500; };
+	 		case 6: { _roadSegments = ([(_refPos select 0) + 7071, (_refPos select 1)] ) nearRoads 1500; };
+			case 7: { _roadSegments = ([(_refPos select 0) - 7071, (_refPos select 1)] ) nearRoads 1500; };
+		};
 	};
     _destinationSegment = _roadSegments select floor random count _roadSegments;
     _destinationPos = getPos _destinationSegment;
