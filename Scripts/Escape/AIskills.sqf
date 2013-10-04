@@ -14,6 +14,8 @@ e.g. [_guard,3] spawn call EGG_EVO_skill;
 
 EGG_EVO_skill =
 {
+    private ["_unit", "_skill", "_aiSkillBase"];
+
     _unit =  _this select 0;
     _skill = _this select 1;
 
