@@ -220,10 +220,11 @@ CommTowers set [_index, _tower];
 
 _pos = [13, 1];
 _dir = 90;
-["Land_Cargo_House_V1_F", _pos, _dir, _centerPos, _rotateDir] call _fnc_CreateObject;
+["Land_Medevac_House_V1_F", _pos, _dir, _centerPos, _rotateDir] call _fnc_CreateObject;
 _pos = [10, -5];
 _dir = 180;
 ["Land_Cargo_House_V1_F", _pos, _dir, _centerPos, _rotateDir] call _fnc_CreateObject;
+
 // Toilet
 
 _pos = [-8, -9];
