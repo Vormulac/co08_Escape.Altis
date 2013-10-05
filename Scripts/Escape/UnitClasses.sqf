@@ -199,7 +199,6 @@ drn_arr_AmmoDepotItems set [count drn_arr_AmmoDepotItems, ["optic_SOS", 100, 10,
 drn_arr_AmmoDepotItems set [count drn_arr_AmmoDepotItems, ["optic_tws", 100, 10, 10]];
 drn_arr_AmmoDepotItems set [count drn_arr_AmmoDepotItems, ["optic_tws_mg", 100, 10, 10]];
 drn_arr_AmmoDepotItems set [count drn_arr_AmmoDepotItems, ["O_UavTerminal", 100, 5, 5]];
-//drn_arr_AmmoDepotItems set [count drn_arr_AmmoDepotItems, ["O_UAV_01_backpack_F", 100, 5, 5]];
 
 // Weapons that may show up in civilian cars
 

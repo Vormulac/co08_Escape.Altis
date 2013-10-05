@@ -1,7 +1,7 @@
 private ["_centerPos", "_rotateDir", "_staticWeaponClasses", "_parkedVehicleClasses", "_index"];
 private ["_pos", "_dir", "_posX", "_posY", "_sectionDir", "_guns", "_gun", "_vehicle", "_powerGenerator"];
 private ["_fnc_CreateObject"];
-private ["_tower", "_medicalBuilding"];
+private ["_obj"];
 
 
 _centerPos = _this select 0;
@@ -214,15 +214,15 @@ _dir = 90;
 
 // Antennas
 
-_pos = [0, -8];
-_dir = 180;
-_tower = ["Land_SolarPanel_2_F", _pos, _dir, _centerPos, _rotateDir] call _fnc_CreateObject;
-[[_tower, "Hijack", "Scripts\Escape\Hijack.sqf"], "addHijackAction", nil, false] spawn BIS_fnc_MP;
+_pos = [0, -9];
+_dir = 90;
+_obj = ["Land_PowerGenerator_F", _pos, _dir, _centerPos, _rotateDir] call _fnc_CreateObject;
+[[_obj, "Hijack", "Scripts\Escape\Hijack.sqf"], "addHijackAction", nil, false] spawn BIS_fnc_MP;
 
 _pos = [13, 1];
 _dir = 90;
-_tower = ["Land_Medevac_House_V1_F", _pos, _dir, _centerPos, _rotateDir] call _fnc_CreateObject;
-[[_tower, "Heal at medical building", "Scripts\Escape\HealAtMedicalBuilding.sqf"], "addHealAtMedicalBuildingAction", nil, false] spawn BIS_fnc_MP;
+_obj = ["Land_Medevac_House_V1_F", _pos, _dir, _centerPos, _rotateDir] call _fnc_CreateObject;
+[[_obj, "Heal at medical building", "Scripts\Escape\HealAtMedicalBuilding.sqf"], "addHealAtMedicalBuildingAction", nil, false] spawn BIS_fnc_MP;
 
 _pos = [10, -5];
 _dir = 180;

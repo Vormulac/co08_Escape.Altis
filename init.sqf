@@ -14,7 +14,7 @@ addHijackAction =
 
     if (isNull _object) exitWith {};
 
-    _object addaction [_screenMsg, _scriptToCall];
+    _object addaction [_screenMsg, _scriptToCall, [], 1.5, true, false, "", "_this distance _target <= 3"];
 };
 
 addHealAtMedicalBuildingAction =
