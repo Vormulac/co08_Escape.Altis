@@ -474,7 +474,8 @@ drn_fnc_Escape_BuildAmmoDepot = {
     };
     
     if (count _weapons > 0) then {
-        _box = "Box_East_Wps_F" createVehicle _middlePos;
+        //_box = "Box_East_Wps_F" createVehicle [(_middlePos select 0) - 3, (_middlePos select 1) + 0, 0];
+        _box = createVehicle ["Box_East_Wps_F", [(_middlePos select 0) - 3, (_middlePos select 1) + 0, 0], [], 0, "CAN_COLLIDE"];
         clearWeaponCargoGlobal _box;
         clearMagazineCargoGlobal _box;
         clearItemCargoGlobal _box;
@@ -516,7 +517,8 @@ drn_fnc_Escape_BuildAmmoDepot = {
     };
     
     if (count _weapons > 0) then {
-        _box = "Box_East_WpsLaunch_F" createVehicle _middlePos;
+        //_box = "Box_East_WpsLaunch_F" createVehicle [(_middlePos select 0) + 3, (_middlePos select 1) + 0, 0];
+        _box = createVehicle ["Box_East_WpsLaunch_F", [(_middlePos select 0) + 3, (_middlePos select 1) + 0, 0], [], 0, "CAN_COLLIDE"];
         clearWeaponCargoGlobal _box;
         clearMagazineCargoGlobal _box;
         clearItemCargoGlobal _box;
@@ -558,7 +560,8 @@ drn_fnc_Escape_BuildAmmoDepot = {
     };
     
     if (count _weapons > 0) then {
-        _box = "Box_East_WpsSpecial_F" createVehicle _middlePos;
+        //_box = "Box_East_WpsSpecial_F" createVehicle [(_middlePos select 0) + 0, (_middlePos select 1) - 3, 0];
+        _box = createVehicle ["Box_East_WpsSpecial_F", [(_middlePos select 0) + 0, (_middlePos select 1) - 3, 0], [], 0, "CAN_COLLIDE"];
         clearWeaponCargoGlobal _box;
         clearMagazineCargoGlobal _box;
         clearItemCargoGlobal _box;
@@ -600,7 +603,8 @@ drn_fnc_Escape_BuildAmmoDepot = {
     };
     
     if (count _weapons > 0) then {
-        _box = "Box_NATO_AmmoVeh_F" createVehicle _middlePos;
+        //_box = "Box_NATO_AmmoVeh_F" createVehicle [(_middlePos select 0) + 0, (_middlePos select 1) + 0, 0];
+        _box = createVehicle ["Box_NATO_AmmoVeh_F", [(_middlePos select 0) + 0, (_middlePos select 1) + 0, 0], [], 0, "CAN_COLLIDE"];
         clearWeaponCargoGlobal _box;
         clearMagazineCargoGlobal _box;
         clearItemCargoGlobal _box;
@@ -635,7 +639,8 @@ drn_fnc_Escape_BuildAmmoDepot = {
     };
     
     if (count _weapons > 0) then {
-        _box = "Box_East_Wps_F" createVehicle _middlePos;
+        //_box = "Box_East_Wps_F" createVehicle [(_middlePos select 0) + 0, (_middlePos select 1) + 3, 0];
+        _box = createVehicle ["Box_East_Wps_F", [(_middlePos select 0) + 3, (_middlePos select 1) - 3, 0], [], 0, "CAN_COLLIDE"];
         clearWeaponCargoGlobal _box;
         clearMagazineCargoGlobal _box;
         clearItemCargoGlobal _box;
@@ -673,7 +678,8 @@ drn_fnc_Escape_BuildAmmoDepot = {
     };
     
     if (count _weapons > 0) then {
-        _box = "Box_East_WpsLaunch_F" createVehicle _middlePos;
+        //_box = "Box_East_WpsLaunch_F" createVehicle [(_middlePos select 0) - 3, (_middlePos select 1) - 3, 0];
+        _box = createVehicle ["Box_East_WpsLaunch_F", [(_middlePos select 0) - 3, (_middlePos select 1) - 3, 0], [], 0, "CAN_COLLIDE"];
         clearWeaponCargoGlobal _box;
         clearMagazineCargoGlobal _box;
         clearItemCargoGlobal _box;
