@@ -16,8 +16,10 @@ class Mission
 	randomSeed=16426086;
 	class Intel
 	{
+		startWeather=0.69999999;
 		startWind=0.1;
 		startWaves=0.1;
+		forecastWeather=0.69999999;
 		forecastWind=0.1;
 		forecastWaves=0.1;
 		forecastLightnings=0.1;
