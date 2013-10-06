@@ -65,9 +65,11 @@ _chopper call compile format ["%1=_this;", _vehicleVarName];
 
 _group = createGroup _side;
 
-"O_Pilot_F" createUnit [getMarkerPos "drn_searchChopperStartPosMarker", _group, "", (_minSkill + random (_maxSkill - _minSkill)), "LIEUTNANT"];
-"O_Pilot_F" createUnit [getMarkerPos "drn_searchChopperStartPosMarker", _group, "", (_minSkill + random (_maxSkill - _minSkill)), "LIEUTNANT"];
+//"O_Pilot_F" createUnit [getMarkerPos "drn_searchChopperStartPosMarker", _group, "", (_minSkill + random (_maxSkill - _minSkill)), "LIEUTNANT"];
+//"O_Pilot_F" createUnit [getMarkerPos "drn_searchChopperStartPosMarker", _group, "", (_minSkill + random (_maxSkill - _minSkill)), "LIEUTNANT"];
 //"O_Pilot_F" createUnit [position player, _group, "", (_minSkill + random (_maxSkill - _minSkill)), "LIEUTNANT"];
+_group createUnit ["O_Pilot_F", getMarkerPos "drn_searchChopperStartPosMarker", [], 0, "FORM"];
+_group createUnit ["O_Pilot_F", getMarkerPos "drn_searchChopperStartPosMarker", [], 0, "FORM"];
 
 _unitArray = _unitArray + units _group;
 
@@ -82,7 +84,9 @@ _gunner1 moveInTurret [_chopper, [0]];
 // _gunner2 assignAsGunner _chopper;
 // _gunner2 moveInTurret [_chopper, [1]];
 _chopper action ["lightOn", _chopper];
+
 {
+	_x setUnitRank "LIEUTNANT";
     _x call drn_fnc_Escape_OnSpawnGeneralSoldierUnit;
 } foreach units _group;
 

@@ -557,8 +557,10 @@ if (_useSearchChopper) then {
     // Spawn guard
     _guardGroup = createGroup east;
     _guardPos = [_startPos, [(_startPos select 0) - 4, (_startPos select 1) + 4, 0], _fenceRotateDir] call drn_fnc_CL_RotatePosition;
-    (drn_arr_Escape_StartPositionGuardTypes select floor (random count drn_arr_Escape_StartPositionGuardTypes)) createUnit [_guardPos, _guardGroup, "", (0.5), "CAPTAIN"];
+    //(drn_arr_Escape_StartPositionGuardTypes select floor (random count drn_arr_Escape_StartPositionGuardTypes)) createUnit [_guardPos, _guardGroup, "", (0.5), "CAPTAIN"];
+    _guardGroup createUnit [(drn_arr_Escape_StartPositionGuardTypes select floor (random count drn_arr_Escape_StartPositionGuardTypes)), _guardPos, [], 0, "FORM"];
     _guard = units _guardGroup select 0;
+    _guard setUnitRank "CAPTAIN";
     _guard disableAI "MOVE";
     _guard setDir _fenceRotateDir + 125;
     _guard setVehicleAmmo 0.3 + random 0.7;
@@ -626,7 +628,8 @@ if (_useSearchChopper) then {
             _createNewGroup = false;
         };
         
-        (drn_arr_Escape_StartPositionGuardTypes select floor (random count drn_arr_Escape_StartPositionGuardTypes)) createUnit [_pos, _guardGroup, "", (0.5), "CAPTAIN"];
+        //(drn_arr_Escape_StartPositionGuardTypes select floor (random count drn_arr_Escape_StartPositionGuardTypes)) createUnit [_pos, _guardGroup, "", (0.5), "CAPTAIN"];
+        _guardGroup createUnit [(drn_arr_Escape_StartPositionGuardTypes select floor (random count drn_arr_Escape_StartPositionGuardTypes)), _pos, [], 0, "FORM"];
         
         if (count units _guardGroup >= 2) then {
             _createNewGroup = true;
@@ -640,6 +643,7 @@ if (_useSearchChopper) then {
         
         {
             _unit = _x; //(units _guardGroup) select 0;
+            _unit setUnitRank "CAPTAIN";
 			_unit unassignItem "ItemMap";
             _unit unassignItem "ItemCompass";
             _unit unassignItem "ItemGPS";

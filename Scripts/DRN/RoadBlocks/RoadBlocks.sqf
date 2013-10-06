@@ -220,10 +220,18 @@ _fnc_CreateRoadBlock = {
     
     _group = createGroup _side;
     _guardTypes = _possibleInfantryTypes;
-    (_guardTypes select floor random count _guardTypes) createUnit [_pos, _group, "", 0.5, "LIEUTNANT"];
-    (_guardTypes select floor random count _guardTypes) createUnit [_pos, _group, "", 0.5, "LIEUTNANT"];
-    (_guardTypes select floor random count _guardTypes) createUnit [_pos, _group, "", 0.5, "LIEUTNANT"];
-    (_guardTypes select floor random count _guardTypes) createUnit [_pos, _group, "", 0.5, "LIEUTNANT"];
+    //(_guardTypes select floor random count _guardTypes) createUnit [_pos, _group, "", 0.5, "LIEUTNANT"];
+    //(_guardTypes select floor random count _guardTypes) createUnit [_pos, _group, "", 0.5, "LIEUTNANT"];
+    //(_guardTypes select floor random count _guardTypes) createUnit [_pos, _group, "", 0.5, "LIEUTNANT"];
+    //(_guardTypes select floor random count _guardTypes) createUnit [_pos, _group, "", 0.5, "LIEUTNANT"];
+    _group createUnit [(_guardTypes select floor random count _guardTypes), _pos, [], 0, "FORM"];
+    _group createUnit [(_guardTypes select floor random count _guardTypes), _pos, [], 0, "FORM"];
+    _group createUnit [(_guardTypes select floor random count _guardTypes), _pos, [], 0, "FORM"];
+    _group createUnit [(_guardTypes select floor random count _guardTypes), _pos, [], 0, "FORM"];
+    
+    {
+        _x setUnitRank "LIEUTNANT";
+    } foreach units _group;
     
     _units = _units + units _group;
     

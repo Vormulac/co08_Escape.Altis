@@ -162,8 +162,10 @@ while {true} do {
                     
                     _group = createGroup east;
 
-                    "O_Pilot_F" createUnit [[0, 0, 30], _group, "", (_minEnemySkill + random (_maxEnemySkill - _minEnemySkill)), "LIEUTNANT"];
-                    "O_Pilot_F" createUnit [[0, 0, 30], _group, "", (_minEnemySkill + random (_maxEnemySkill - _minEnemySkill)), "LIEUTNANT"];
+                    //"O_Pilot_F" createUnit [[0, 0, 30], _group, "", (_minEnemySkill + random (_maxEnemySkill - _minEnemySkill)), "LIEUTNANT"];
+                    //"O_Pilot_F" createUnit [[0, 0, 30], _group, "", (_minEnemySkill + random (_maxEnemySkill - _minEnemySkill)), "LIEUTNANT"];
+                    _group createUnit ["O_Pilot_F", [0, 0, 30], [], 0, "FORM"];
+                    _group createUnit ["O_Pilot_F", [0, 0, 30], [], 0, "FORM"];
 
                     ((units _group) select 0) assignAsDriver _chopper;
                     ((units _group) select 0) moveInDriver _chopper;
@@ -171,6 +173,7 @@ while {true} do {
                     ((units _group) select 1) moveInGunner _chopper;
                     
                     {
+                        _x setUnitRank "LIEUTNANT";
                         _x call drn_fnc_Escape_OnSpawnGeneralSoldierUnit;
                     } foreach units _group;
                     
