@@ -24,22 +24,22 @@ _guardLivesLong = true;
 
 // Debug Variables
 
-_debugEscapeSurprises = true;
-_debugAmmoDepots = true;
-_debugSearchLeader = true;
-_debugVillagePatrols = true;
-_debugMilitaryTraffic = true;
-_debugAmbientInfantry = true;
-_debugGarbageCollector = true;
-_debugRoadBlocks = true;
-drn_var_Escape_debugMotorizedSearchGroup = true;
-drn_var_Escape_debugDropChoppers = true;
-drn_var_Escape_debugReinforcementTruck = true;
-drn_var_Escape_debugSearchChopper = true;
-drn_var_Escape_DebugSearchGroup = true;
-drn_var_Escape_debugCivilEnemy = true;
+_debugEscapeSurprises = false;
+_debugAmmoDepots = false;
+_debugSearchLeader = false;
+_debugVillagePatrols = false;
+_debugMilitaryTraffic = false;
+_debugAmbientInfantry = false;
+_debugGarbageCollector = false;
+_debugRoadBlocks = false;
+drn_var_Escape_debugMotorizedSearchGroup = false;
+drn_var_Escape_debugDropChoppers = false;
+drn_var_Escape_debugReinforcementTruck = false;
+drn_var_Escape_debugSearchChopper = false;
+drn_var_Escape_DebugSearchGroup = false;
+drn_var_Escape_debugCivilEnemy = false;
 
-_showGroupDiagnostics = true;
+_showGroupDiagnostics = false;
 
 // Game Control Variables, do not edit!
 
@@ -760,37 +760,3 @@ if (_useSearchChopper) then {
     _guard setDamage 1;
 };
 
-
- private ["_noOfDropUnits", "_noOfDropUnits"];
-                    private ["_dropUnitTypeArray", "_dropGroup", "_soldierType", "_soldier", "_dropUnits", "_i", "_dropPosition"];
-                    private ["_onGroupDropped"];
-                    
-                    _noOfDropUnits = 8;
-                    
-                    _dropGroup = createGroup east;
-                    _dropUnits = [];
-                    
-                    for [{_i = 0}, {_i < _noOfDropUnits}, {_i = _i + 1}] do {
-                        _soldierType = drn_arr_Escape_InfantryTypes select floor (random count drn_arr_Escape_InfantryTypes);
-                        _soldier = _dropGroup createUnit [_soldierType, [0,0,30], [], 0, "FORM"];
-                        //_soldier setSkill (_minEnemySkill + random (_maxEnemySkill - _minEnemySkill));
-                        [_soldier, 2] call EGG_EVO_skill;
-                        _soldier setRank "CAPTAIN";
-                        _soldier call drn_fnc_Escape_OnSpawnGeneralSoldierUnit;
-                        _dropUnits set [_i, _soldier];
-                    };
-                    
-                    _dropPosition = getpos player;
-                    
-                    _onGroupDropped = {
-                        private ["_group", "_dropPos"];
-                        
-                        _group = _this select 0;
-                        _dropPos = _this select 1;
-                        
-                        [_group, drn_searchAreaMarkerName, _dropPos, true] execVM "Scripts\DRN\SearchGroup\SearchGroup.sqf";                        
-                    };
-                    
-                    [getMarkerPos "drn_dropChopperStartPosMarker", east, "O_Heli_Attack_02_F", "O_Pilot_F", _dropUnits, _dropPosition, 2, 2, _onGroupDropped, true] execVM "Scripts\Escape\CreateDropChopper.sqf";
-                    
-                   

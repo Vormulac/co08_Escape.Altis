@@ -58,6 +58,8 @@ onPreloadFinished {
 
 		if (!isNull player) then {
             drn_var_Escape_playerEnteredWorld = true;
+            removeAllWeapons player;
+            removeAllItems player;
 		};
 	};
 };
