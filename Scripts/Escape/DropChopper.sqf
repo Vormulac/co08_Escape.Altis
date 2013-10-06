@@ -39,7 +39,8 @@ _chopper setVariable ["missionCompleted", false];
 		player sideChat "Drop chopper dropping cargo...";
 	};
 	
-    
+
+
    for "_i" from 0 to ((count _dropUnits - 1)) step 1 do{
 		_dropUnit = _dropUnits select _i;
 		
@@ -87,6 +88,7 @@ _chopper setVariable ["missionCompleted", false];
 	
 
     _dropUnits = units (group (_dropUnits select 0));
+    _dropGroup = group (_dropUnits select 0);
     [_dropGroup, _dropPosition] call _onGroupDropped;
     
 	while {!(_chopper getVariable "missionCompleted")} do {

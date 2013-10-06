@@ -48,7 +48,7 @@ if (_vehicle distance _destinationSegment < 500) then {
 };
 
 _waypoint = group _vehicle addWaypoint [_destinationPos, 10];
-_waypoint setWaypointBehaviour "CAreleSS";
+_waypoint setWaypointBehaviour "SAFE";
 _waypoint setWaypointSpeed _speed;
 _waypoint setWaypointCompletionRadius 10;
 _waypoint setWaypointStatements ["true", "_nil = [" + vehicleVarName _vehicle + ", [], " + str _debug + "] execVM ""Scripts\DRN\MilitaryTraffic\MoveVehicle.sqf"";"];
