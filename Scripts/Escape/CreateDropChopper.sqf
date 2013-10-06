@@ -25,7 +25,8 @@ if (isNil "drn_CreateDropChopper_CurrentInstanceNo") then {
 _currentInstanceNo = drn_CreateDropChopper_CurrentInstanceNo;
 drn_CreateDropChopper_CurrentInstanceNo = drn_CreateDropChopper_CurrentInstanceNo + 1;
 
-_chopper = _chopperType createVehicle _spawnPos;
+//_chopper = _chopperType createVehicle _spawnPos;
+_chopper = createVehicle [_chopperType, _spawnPos, [], 0, "NONE"];
 _vehicleVarName = "drn_searchChopper" + str _currentInstanceNo;
 _chopper setVehicleVarName _vehicleVarName;
 _chopper Call Compile Format ["%1 = _this; PublicVariable ""%1""", _vehicleVarName];

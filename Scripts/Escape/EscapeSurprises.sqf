@@ -154,7 +154,8 @@ while {true} do {
                 if (_surpriseID == "RUSSIANSEARCHCHOPPER") then {
                     private ["_chopper", "_result", "_group"];
                     
-                    _chopper = "O_Heli_Light_02_F" createVehicle getMarkerPos "drn_russianSearchChopperStartPosMarker";
+                    //_chopper = "O_Heli_Light_02_F" createVehicle getMarkerPos "drn_russianSearchChopperStartPosMarker";
+                    _chopper = createVehicle ["O_Heli_Light_02_F", (getMarkerPos "drn_russianSearchChopperStartPosMarker"), [], 0, "NONE"];
                     _chopper lock false;
                     _chopper setVehicleVarName "drn_russianSearchChopper";
                     _chopper call compile format ["%1=_this;", "drn_russianSearchChopper"];

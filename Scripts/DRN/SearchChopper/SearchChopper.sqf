@@ -67,7 +67,8 @@ while {!_exitScript} do {
 			_waypoint setWaypointStatements ["true", vehicleVarName _chopper + " setVariable [""waypointFulfilled"", true];"];
 
 			if (_debug) then {
-				"SmokeShellBlue" createVehicle _position;
+				//"SmokeShellBlue" createVehicle _position;
+				createVehicle ["SmokeShellBlue", _position, [], 0, "NONE"];
 			};
 		};
 		case "SEARCHING": {
@@ -87,7 +88,8 @@ while {!_exitScript} do {
 			_chopper flyInHeight 100;
 
 			if (_debug) then {
-				"SmokeShellRed" createVehicle _position;
+				//"SmokeShellRed" createVehicle _position;
+				createVehicle ["SmokeShellRed", _position, [], 0, "NONE"];
 			};
 		};
 		case "RETURNING": {
@@ -109,7 +111,8 @@ while {!_exitScript} do {
 			_waypoint setWaypointStatements ["true", vehicleVarName _chopper + " setVariable [""waypointFulfilled"", true];"];
 
 			if (_debug) then {
-				"SmokeShellBlue" createVehicle _homePos;
+				//"SmokeShellBlue" createVehicle _homePos;
+				createVehicle ["SmokeShellBlue", _homePos, [], 0, "NONE"];
 			};
 
 			_chopper flyInHeight 100;

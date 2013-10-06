@@ -40,7 +40,8 @@ _fnc_CreateVehicle = {
     
     _realPos = ([_centerPos, [(_centerPos select 0) + (_relativePos select 0), (_centerPos select 1) + (_relativePos select 1)], _rotateDir] call drn_fnc_CL_RotatePosition);
     _realDir = _relativeDir + _rotateDir;
-    _object = _className createVehicle _realpos;
+    //_object = _className createVehicle _realpos;
+    _object = createVehicle [_className, _realpos, [], 0, "NONE"];
     _object setDir _realDir;
     //_object lock true;
     _object
