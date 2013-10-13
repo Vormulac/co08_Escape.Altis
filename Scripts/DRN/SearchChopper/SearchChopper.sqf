@@ -159,6 +159,15 @@ while {!_exitScript} do {
 				case "RETURNING": {
 					_state = "LANDING";
 				};
+				case "LANDING": {
+					//do nothing
+				};
+				case "REFUELING": {
+					//do nothing	
+				};
+				case "READY": {
+					//do nothing
+				};
 				default {
 					player sideChat "ERROR IN SearchChopper.sqf: Case " + _state + " not taken care of (2nd switch)!";
 				};
