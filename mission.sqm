@@ -248,27 +248,27 @@ class Mission
 		};
 		class Item11
 		{
-			position[]={13310.184,-0.010250837,4519.1357};
+			position[]={12592.144,0.067863792,2322.7834};
 			name="drn_Escape_ExtracionBoatSpawnPos8";
 			type="Empty";
 			angle=-144.12442;
 		};
 		class Item12
 		{
-			position[]={3107.7742,9.048048,18095.785};
+			position[]={3181.4722,12.72008,18195.58};
 			name="drn_Escape_ExtractionPos7";
 			type="Empty";
 		};
 		class Item13
 		{
-			position[]={1845.1838,0.0055585168,18126.637};
+			position[]={53.9268,-0.54252708,18124.391};
 			name="drn_Escape_ExtracionBoatSpawnPos7";
 			type="Empty";
 			angle=-3.4297307;
 		};
 		class Item14
 		{
-			position[]={3106.6968,7.1310449,18132.178};
+			position[]={3073.9424,8.8459349,18226.35};
 			name="drn_Escape_ExtractionPos7_1";
 			type="Empty";
 		};
@@ -281,7 +281,7 @@ class Mission
 		};
 		class Item16
 		{
-			position[]={6312.7427,0.015027696,8268.9863};
+			position[]={5235.6846,-0.30337629,5967.043};
 			name="drn_Escape_ExtracionBoatSpawnPos6";
 			type="Empty";
 			angle=31.054735;
@@ -307,7 +307,7 @@ class Mission
 		};
 		class Item20
 		{
-			position[]={4773.3643,0.0086556636,25914.789};
+			position[]={5026.7891,-0.2573562,27224.152};
 			name="drn_Escape_ExtracionBoatSpawnPos5";
 			type="Empty";
 			angle=-147.72934;
@@ -328,7 +328,7 @@ class Mission
 		};
 		class Item23
 		{
-			position[]={19417.416,0.0028031939,21817.279};
+			position[]={19248.463,-0.032193527,24330.414};
 			name="drn_Escape_ExtracionBoatSpawnPos4";
 			type="Empty";
 			angle=-122.52755;
@@ -347,7 +347,7 @@ class Mission
 		};
 		class Item26
 		{
-			position[]={27218.086,0.025193477,16941.537};
+			position[]={29076.537,-0.21041398,15991.191};
 			name="drn_Escape_ExtracionBoatSpawnPos3";
 			type="Empty";
 			angle=132.43147;
@@ -387,7 +387,7 @@ class Mission
 		};
 		class Item32
 		{
-			position[]={26608.885,0.0007946156,11183.869};
+			position[]={27918.248,0.39227366,10634.778};
 			name="drn_Escape_ExtracionBoatSpawnPos1";
 			type="Empty";
 			angle=296.77747;

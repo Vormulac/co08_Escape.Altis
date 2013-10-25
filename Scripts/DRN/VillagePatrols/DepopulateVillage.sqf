@@ -34,7 +34,7 @@ _deleteGroupDelayed = {
 };
 
 {
-	_soldiers = _x;
+	_soldiers = _x select 0;
 
 	_soldier = _soldiers select 0;
 	_soldierObj = _soldier select 3;

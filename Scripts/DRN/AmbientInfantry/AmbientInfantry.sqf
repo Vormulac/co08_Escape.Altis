@@ -22,7 +22,7 @@
 if (!isServer) exitWith {};
 
 private ["_referenceGroup", "_side", "_groupsCount", "_minSpawnDistance", "_maxSpawnDistance", "_infantryClasses", "_minSkill", "_maxSkill", "_garbageCollectDistance", "_debug"];
-private ["_activeGroups", "_activeUnits", "_spawnPos", "_group", "_possibleInfantryTypes", "_infantryType", "_minDistance", "_skill", "_vehicleVarName"];
+private ["_activeGroups", "_activeUnits", "_spawnPos", "_group", "_possibleInfantryTypes", "_infantryType", "_minDistance", "_skill", "_vehicleVarName", "_factionsArray"];
 private ["_minUnitsInGroup", "_maxUnitsInGroup", "_i", "_atScriptStartUp", "_currentEntityNo", "_debugMsg", "_farAwayUnits", "_farAwayUnitsCount", "_unitsToDeleteCount", "_groupsToDeleteCount"];
 private ["_debugMarkers", "_debugMarkerNo", "_debugMarkerName", "_isFaction", "_unitsToDelete", "_groupsToDelete", "_tempGroups", "_tempGroupsCount"];
 private ["_fnc_OnSpawnUnit", "_fnc_OnSpawnGroup", "_fnc_GetRandomSpawnPos"];
@@ -41,6 +41,8 @@ if (count _this > 10) then {_garbageCollectDistance = _this select 10;} else {_g
 if (count _this > 11) then {_fnc_OnSpawnUnit = _this select 11;} else {_fnc_OnSpawnUnit = {};};
 if (count _this > 12) then {_fnc_OnSpawnGroup = _this select 12;} else {_fnc_OnSpawnGroup = {};};
 if (count _this > 13) then {_debug = _this select 13;} else {_debug = false;};
+_factionsArray = [EAST, independent, EAST, independent, EAST, independent, EAST, independent, EAST, independent, EAST, independent, EAST, independent];
+
 
 if (isNil "drn_var_commonLibInitialized") then {
     [] spawn {
@@ -120,7 +122,7 @@ while {true} do {
 	// While there are too few active groups, add a group
 
     while {count _activeGroups < _groupsCount} do {
-        private ["_spawnX", "_spawnY","_unitsInGroup"];
+        private ["_spawnX", "_spawnY","_unitsInGroup", "_faction"];
 
         if (_atScriptStartUp) then {
             _minDistance = 350;
@@ -136,9 +138,17 @@ while {true} do {
         _spawnPos = [units _referenceGroup, _minDistance, _maxSpawnDistance] call _fnc_GetRandomSpawnPos;
         _skill = _minSkill + random (_maxSkill - _minSkill);
         
+        _faction = _factionsArray select (floor (random (count _factionsArray)));
+        if(_faction == EAST) then {
+            _possibleInfantryTypes = drn_arr_Escape_InfantryTypes;
+        };
+        if (_faction == independent) then {
+            _possibleInfantryTypes = drn_arr_Escape_InfantryTypes_Ind;
+        };
+
         // Create group
         _unitsInGroup = _minUnitsInGroup + floor (random (_maxUnitsInGroup - _minUnitsInGroup));
-        _group = createGroup _side;
+        _group = createGroup _faction;
         
         for [{_i = 0}, {_i < _unitsInGroup}, {_i = _i + 1}] do {
             _infantryType = _possibleInfantryTypes select floor (random count _possibleInfantryTypes);

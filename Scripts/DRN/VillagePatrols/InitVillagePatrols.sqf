@@ -2,7 +2,7 @@
 if (!isServer) exitWith {};
 
 private ["_referenceUnit", "_side", "_infantryClasses", "_minSkill", "_maxSkill", "_debug", "_spawnRadius", "_villagePos", "_minSoldiersPerGroup", "_maxSoldiersPerGroup", "_areaPerGroup"];
-private ["_village", "_possibleInfantryTypes", "_soldierType", "_soldierCount", "_soldier", "_soldiers", "_i", "_isFaction"];
+private ["_village", "_possibleInfantryTypes", "_soldierType", "_soldierCount", "_soldier", "_soldiers", "_i", "_isFaction", "_factionsArray"];
 private ["_villageNo", "_villageSize", "_maxGroupsCount", "_groupsCount", "_groups", "_groupIndex", "_damage", "_spawned", "_soldierObj"];
 private ["_script", "_skill", "_ammo", "_trigger", "_soldierPos", "_rank", "_hasScript", "_groupPos", "_roadSegments", "_roadSegment"];
 private ["_message", "_villageMarkerName", "_fnc_onSpawnGroup"];
@@ -28,7 +28,7 @@ if (count _this > 7) then {_maxSkill = _this select 7;} else {_maxSkill = 0.6;};
 if (count _this > 8) then {_spawnRadius = _this select 8;} else {_spawnRadius = 750;};
 if (count _this > 9) then {_fnc_onSpawnGroup = _this select 9;} else {_fnc_onSpawnGroup = {};};
 if (count _this > 10) then {_debug = _this select 10;} else {_debug = false;};
-
+_factionsArray = [independent, independent, independent, independent, EAST, independent, EAST, independent, EAST, independent, EAST, independent, EAST, independent];
 if (_debug) then {
 	_message = "Initializing village patrols.";
 	diag_log _message;
@@ -75,12 +75,12 @@ _villageNo = 0;
     
     // _groupsCount = floor random (_maxGroupsCount + 1);
     // _groupsCount = _groupsCount + (floor random (_maxGroupsCount + 1 - _groupsCount));
-   _groupsCount = floor random (_maxGroupsCount + 1);
-   _groupsCount = _maxGroupsCount;
+    _groupsCount = floor random (_maxGroupsCount + 1);
+    _groupsCount = _maxGroupsCount;
     _groups = [];
     
     // Create groups
-    
+
     for [{_groupIndex = 0}, {_groupIndex < _groupsCount}, {_groupIndex = _groupIndex + 1}] do {
         
         _soldierCount = _minSoldiersPerGroup + floor (random (_maxSoldiersPerGroup - _minSoldiersPerGroup + 1));
@@ -93,6 +93,16 @@ _villageNo = 0;
             _groupPos = getPos _roadSegment;
         };
         
+        //set village side
+        _faction = _factionsArray select (floor (random (count _factionsArray)));
+       
+        if(_faction == EAST) then {
+            _possibleInfantryTypes = drn_arr_Escape_InfantryTypes;
+        };
+        if (_faction == independent) then {
+            _possibleInfantryTypes = drn_arr_Escape_InfantryTypes_Ind;
+        };
+
         _soldiers = [];
         for [{_i = 0}, {_i < _soldierCount}, {_i = _i + 1}] do {
             _soldierType = _possibleInfantryTypes select floor random count _possibleInfantryTypes;
@@ -110,7 +120,7 @@ _villageNo = 0;
             _soldiers set [_i, _soldier];
         };
         
-        _groups set [count _groups, _soldiers];
+        _groups set [count _groups, [_soldiers, _faction]];
     };
 
 	_village = [_villageMarkerName, _villagePos, _groups, _side];

@@ -5,6 +5,11 @@ private ["_debugEscapeSurprises", "_debugAmmoDepots", "_debugSearchLeader", "_sh
 private ["_enemyMinSkill", "_enemyMaxSkill", "_searchChopperSearchTimeMin", "_searchChopperRefuelTimeMin", "_enemySpawnDistance", "_playerGroup", "_enemyFrequency", "_comCenGuardsExist", "_fenceRotateDir", "_scriptHandle"];
 
 // Developer Variables
+EAST Setfriend [independent, 1];
+INDEPENDENT setFriend [EAST, 1];
+
+WEST setFriend [INDEPENDENT, 0];
+INDEPENDENT setFriend [WEST, 0];
 
 _useRandomStartPos = true;
 _useEscapeSurprises = true;

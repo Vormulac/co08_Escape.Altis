@@ -18,8 +18,9 @@ if (_debug) then {
 if (count _groups == 0) exitWith {};
 
 {
-	_soldiers = _x;
-	_newGroup = createGroup _villageSide;
+	_soldiers = _x select 0;
+	_side = _x select 1;
+	_newGroup = createGroup _side;
 
 	{
 		_soldier = _x;
