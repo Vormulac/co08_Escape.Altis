@@ -18,7 +18,7 @@ if (count _this > 6) then {_minSkill = _this select 6;} else {_minSkill = 0.4;};
 if (count _this > 7) then {_maxSkill = _this select 7;} else {_maxSkill = 0.6;};
 if (count _this > 8) then {_fnc_OnSpawnVehicle = _this select 8;} else {_fnc_OnSpawnVehicle = {};};
 if (count _this > 9) then {_debug = _this select 9;} else {_debug = false;};
-
+_factionsArray = [EAST, independent, EAST, independent, EAST, independent, EAST, independent, EAST, independent, EAST, independent, EAST, independent];
 while {isNil "drn_var_commonLibInitialized"} do {
     player sideChat "Script MilitaryTraffic.sqf requires CommonLib v1.02.";
     sleep 10;
@@ -295,10 +295,24 @@ while {true} do {
             _posX = _posX + 2.5 * sin (_direction + 90);
             _posY = _posY + 2.5 * cos (_direction + 90);
             _pos = [_posX, _posY, 0];
-            
+            _faction = _side;
             // Create vehicle
+            if(_side != civilian) then {
+                _faction = _factionsArray select (floor (random (count _factionsArray)));
+            };
+            if(_side == civilian) then {
+                _faction = civilian;
+                _possibleVehicles = drn_arr_Escape_EnemyCivilianCarTypes;
+            };
+            if(_faction == EAST) then {
+                _possibleVehicles = drn_arr_Escape_MilitaryTraffic_EnemyVehicleClasses;
+            };
+            if (_faction == independent) then {
+                _possibleVehicles = drn_arr_Escape_MilitaryTraffic_EnemyVehicleClasses_Ind;
+            };
+
             _vehicleType = _possibleVehicles select floor (random count _possibleVehicles);
-            _result = [_pos, _direction + 90, _vehicleType, _side] call BIS_fnc_spawnVehicle;
+            _result = [_pos, _direction + 90, _vehicleType, _faction] call BIS_fnc_spawnVehicle;
             _vehicle = _result select 0;
             _vehiclesCrew = _result select 1;
             _vehiclesGroup = _result select 2;

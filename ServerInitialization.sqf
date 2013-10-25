@@ -33,7 +33,7 @@ _debugEscapeSurprises = false;
 _debugAmmoDepots = false;
 _debugSearchLeader = false;
 _debugVillagePatrols = false;
-_debugMilitaryTraffic = false;
+_debugMilitaryTraffic = true;
 _debugAmbientInfantry = false;
 _debugGarbageCollector = false;
 _debugRoadBlocks = false;
@@ -533,7 +533,7 @@ if (_useMotorizedSearchGroup) then {
             _roadBlockCount = 1;
         };
         
-        [_playerGroup, east, drn_arr_Escape_InfantryTypes, drn_arr_Escape_RoadBlock_MannedVehicleTypes, _roadBlockCount, _enemySpawnDistance, _enemySpawnDistance + 500, 500, 300, _fnc_OnSpawnInfantryGroup, _fnc_OnSpawnMannedVehicle, _debugRoadBlocks] execVM "Scripts\DRN\RoadBlocks\RoadBlocks.sqf";
+        [_playerGroup, east, drn_arr_Escape_InfantryTypes, drn_arr_Escape_RoadBlock_MannedVehicleTypes, _roadBlockCount, _enemySpawnDistance, _enemySpawnDistance + 500, 750, 300, _fnc_OnSpawnInfantryGroup, _fnc_OnSpawnMannedVehicle, _debugRoadBlocks] execVM "Scripts\DRN\RoadBlocks\RoadBlocks.sqf";
         sleep 0.25;
     };
 };
@@ -764,4 +764,6 @@ if (_useSearchChopper) then {
     // Guard passes out
     _guard setDamage 1;
 };
+
+
 
