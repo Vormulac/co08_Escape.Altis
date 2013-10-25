@@ -11,6 +11,7 @@ INDEPENDENT setFriend [EAST, 1];
 WEST setFriend [INDEPENDENT, 0];
 INDEPENDENT setFriend [WEST, 0];
 
+enableSaving true;
 _useRandomStartPos = true;
 _useEscapeSurprises = true;
 _useAmmoDepots = true;
@@ -33,7 +34,7 @@ _debugEscapeSurprises = false;
 _debugAmmoDepots = false;
 _debugSearchLeader = false;
 _debugVillagePatrols = false;
-_debugMilitaryTraffic = true;
+_debugMilitaryTraffic = false;
 _debugAmbientInfantry = false;
 _debugGarbageCollector = false;
 _debugRoadBlocks = false;

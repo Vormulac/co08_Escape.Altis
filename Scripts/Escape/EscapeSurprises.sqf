@@ -139,7 +139,7 @@ while {true} do {
                         [_group, drn_searchAreaMarkerName, _dropPos, drn_var_Escape_DebugSearchGroup] execVM "Scripts\DRN\SearchGroup\SearchGroup.sqf";                        
                     };
                     
-                    [getMarkerPos "drn_dropChopperStartPosMarker", east, "O_Heli_Attack_02_F", "O_Pilot_F", _dropUnits, _dropPosition, _minEnemySkill, _maxEnemySkill, _onGroupDropped, drn_var_Escape_debugDropChoppers] execVM "Scripts\Escape\CreateDropChopper.sqf";
+                    [getMarkerPos "drn_dropChopperStartPosMarker", east, "O_Heli_Light_02_F", "O_Pilot_F", _dropUnits, _dropPosition, _minEnemySkill, _maxEnemySkill, _onGroupDropped, drn_var_Escape_debugDropChoppers] execVM "Scripts\Escape\CreateDropChopper.sqf";
                     
                     // Create next drop chopper
                     _surpriseArgs = [(_enemyFrequency + 2) + floor random (_enemyFrequency * 2)]; // [NoOfDropUnits]
@@ -155,7 +155,7 @@ while {true} do {
                     private ["_chopper", "_result", "_group"];
                     
                     //_chopper = "O_Heli_Light_02_F" createVehicle getMarkerPos "drn_russianSearchChopperStartPosMarker";
-                    _chopper = createVehicle ["O_Heli_Light_02_F", (getMarkerPos "drn_russianSearchChopperStartPosMarker"), [], 0, "NONE"];
+                    _chopper = createVehicle ["O_Heli_Attack_02_F", (getMarkerPos "drn_russianSearchChopperStartPosMarker"), [], 0, "NONE"];
                     _chopper lock false;
                     _chopper setVehicleVarName "drn_russianSearchChopper";
                     _chopper call compile format ["%1=_this;", "drn_russianSearchChopper"];
