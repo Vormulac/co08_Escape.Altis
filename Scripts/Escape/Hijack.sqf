@@ -34,11 +34,13 @@ cutText ["", "Plain", 1];
 //### mode 0: totally random
 //### mode 1: try to pick a close extraction point
 //### mode 2: try to pick a extraction far away 
+
 if(isMultiplayer) then {
 	_mode = paramsArray select 7;
 } else {
 	_mode = 1;
 };
+
 _max_range = 3000;
 _min_range = 3000;
 
