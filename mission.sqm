@@ -45,7 +45,7 @@ class Mission
 				class Item0
 				{
 					position[]={12943.073,28.213163,18902.805};
-					azimut=-7.9579978;
+					azimut=-7.9580002;
 					id=0;
 					side="WEST";
 					vehicle="B_Soldier_TL_F";
