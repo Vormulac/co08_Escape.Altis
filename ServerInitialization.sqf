@@ -11,7 +11,6 @@ INDEPENDENT setFriend [EAST, 1];
 WEST setFriend [INDEPENDENT, 0];
 INDEPENDENT setFriend [WEST, 0];
 
-enableSaving true;
 _useRandomStartPos = true;
 _useEscapeSurprises = true;
 _useAmmoDepots = true;

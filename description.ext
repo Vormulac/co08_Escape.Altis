@@ -6,20 +6,21 @@ class Header
   maxPlayers = 8;
 };
 
-onLoadMission = "ESCAPE Altis v1.5";
+onLoadMission = "ESCAPE Altis v1.5.2";
 OnLoadMissionTime = FALSE;
 dev = "Engima, ported by Vormulac and Hyperz";
 briefingName = "co08 Escape Altis";
-author = "Engima, ported by Vormulac and Hyperz";
+author = "Engima, ported by Vormulac, Hyperz, and NeoArmageddon";
 overviewPicture = "a3\Missions_F_Gamma\data\img\MP_COOP_m03_overview_CA.paa";
-overviewText = "Escape Altis v1.5";
-onLoadName = "Escape Altis v1.5";
+overviewText = "Escape Altis v1.5.2";
+onLoadName = "Escape Altis v1.5.2";
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////
 Respawn = "BASE";
 disabledAI = 1;
-enableDebugConsole = 2;
+enableDebugConsole = 1;
+
 
 // Include revive script resources
 

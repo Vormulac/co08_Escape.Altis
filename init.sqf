@@ -84,7 +84,7 @@ if (isServer) then {
 };
 
 _volume = soundVolume;
-enableSaving [false, false];
+enableSaving [true, true];
 0 fadeSound 0;
 enableRadio false;
 0 cutText ["", "BLACK FADED"];
