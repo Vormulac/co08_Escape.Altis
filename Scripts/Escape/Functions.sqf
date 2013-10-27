@@ -52,14 +52,18 @@ drn_fnc_Escape_OnSpawnGeneralSoldierUnit = {
 	} else {
 		_nighttime = false;
 	};
-	_this unassignItem "ItemGPS";
-    _this unassignItem "ItemMap";
-    _this unassignItem "ItemCompass";
-	_this unassignItem "NVGoggles_OPFOR";
-    _this removeItem "ItemGPS";
-    _this removeItem "ItemMap";
-    _this removeItem "ItemCompass";
-    _this removeItem "NVGoggles_OPFOR";
+	_this unlinkItem "ItemGPS";
+    _this unlinkItem "ItemMap";
+    _this unlinkItem "ItemCompass";
+    if(EAST == side _this) then {
+	   _this unlinkItem "NVGoggles_OPFOR";
+    } else {
+        if(INDEPENDENT == side _this) then {
+            _this unlinkItem "NVGoggles_INDEP";
+        };
+    };
+   
+    
 	_this removePrimaryWeaponItem "acc_pointer_IR";
 	
     //_this setSkill (drn_var_Escape_enemyMinSkill + random (drn_var_Escape_enemyMaxSkill - drn_var_Escape_enemyMinSkill));
@@ -97,30 +101,23 @@ drn_fnc_Escape_OnSpawnGeneralSoldierUnit = {
 		//Not yet
 	};
     if (random 100 < 30) then {
-        _this addItem "ItemMap";
-		_this assignItem "ItemMap";
+        _this linkItem "ItemMap";
     };
 	if (random 100 < 30) then {
-        _this addItem "ItemMap";
-		_this assignItem "ItemMap";
+        _this linkItem "ItemMap";
     };
     if (random 100 < 10) then {
-        _this addItem "ItemGPS";
-		_this assignItem "ItemGPS";
+        _this linkItem "ItemGPS";
     };
 	if (random 100 < 50) then {
 		if (random 100 < 80) then {
-			_this addItem "Binocular";
-			_this assignItem "Binocular";
+			_this linkItem "Binocular";
 		} else {
-			_this addItem "Rangefinder";
-			_this assignItem "Rangefinder";
+			_this linkItem "Rangefinder";
 		};
 	};
     if(((random 100 < 5) && (!_nighttime)) OR ((random 100 < 30) && (_nighttime))) then {
-        _this addItem "NVGoggles";
-		_this assignItem "NVGoggles";
-
+        _this linkItem "NVGoggles";
     };
 	
 	[_this, drn_var_Escape_enemyMinSkill] call EGG_EVO_skill;

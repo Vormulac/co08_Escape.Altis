@@ -570,24 +570,13 @@ if (_useSearchChopper) then {
     _guard disableAI "MOVE";
     _guard setDir _fenceRotateDir + 125;
     _guard setVehicleAmmo 0.3 + random 0.7;
-	_guard unassignItem "ItemGPS";
-	_guard unassignItem "ItemMap";
-	_guard unassignItem "ItemCompass";
-	_guard unassignItem "NVGoggles_OPFOR";
-    _guard removeItem "ItemMap";
-    _guard removeItem "ItemCompass";
-    _guard removeItem "ItemGPS";
-	_guard removeItem "NVGoggles_OPFOR";
-	_guard addItem "Medikit";
-	_guard removeItem "FirstAidKit";
+	_guard unlinkItem "ItemGPS";
+	_guard unlinkItem "ItemMap";
+	_guard unlinkItem "ItemCompass";
+	_guard unlinkItem "NVGoggles_INDEP";
+    
 	if(random 100 < 70) then {
-		_guard removePrimaryWeaponItem "optic_Aco";
-		_guard removePrimaryWeaponItem "optic_ACO_grn";
-		_guard removePrimaryWeaponItem "optic_Hamr";
-		_guard removePrimaryWeaponItem "optic_Holosight";
-		_guard removePrimaryWeaponItem "optic_Arco";
-		_guard removePrimaryWeaponItem "optic_MRCO";
-		_guard removePrimaryWeaponItem "optic_SOS";
+		removeAllPrimaryWeaponItems _guard;
 	};
 	
     //_guard setSkill _enemyMinSkill + random (_enemyMaxSkill - _enemyMinSkill);
@@ -601,8 +590,8 @@ if (_useSearchChopper) then {
     // _guard addWeapon drn_var_Escape_InnerFenceGuardSecondaryWeapon;
   
     if (random 100 < 40) then {
-        _guard addItem "NVGoggles_OPFOR";
-		_guard assignItem "NVGoggles_OPFOR";
+        _guard linkItem "NVGoggles_INDEP";
+		
     };
     
     // Spawn more guards
@@ -650,33 +639,22 @@ if (_useSearchChopper) then {
         {
             _unit = _x; //(units _guardGroup) select 0;
             _unit setUnitRank "CAPTAIN";
-			_unit unassignItem "ItemMap";
-            _unit unassignItem "ItemCompass";
-            _unit unassignItem "ItemGPS";
-			_unit unassignItem "NVGoggles_OPFOR";
-            _unit removeItem "ItemMap";
-            _unit removeItem "ItemCompass";
-            _unit removeItem "ItemGPS";
-            _unit removeItem "NVGoggles_OPFOR";
-			_unit removeItem "FirstAidKit";
+			_unit unlinkItem "ItemMap";
+            _unit unlinkItem "ItemCompass";
+            _unit unlinkItem "ItemGPS";
+			_unit unlinkItem "NVGoggles_INDEP";
 			
 			if(random 100 < 70) then {
-				_unit removePrimaryWeaponItem "optic_Aco";
-				_unit removePrimaryWeaponItem "optic_ACO_grn";
-				_unit removePrimaryWeaponItem "optic_Hamr";
-				_unit removePrimaryWeaponItem "optic_Holosight";
-				_unit removePrimaryWeaponItem "optic_Arco";
-				_unit removePrimaryWeaponItem "optic_MRCO";
-				_unit removePrimaryWeaponItem "optic_SOS";
+				removeAllPrimaryWeaponItems _unit;
+				
 			};
             if (random 100 < 40) then {
-                _unit addItem "NVGoggles_OPFOR";
-				_unit assignItem "NVGoggles_OPFOR";
+                _unit linkItem "NVGoggles_INDEP";
             };
             
             //_unit setSkill _enemyMinSkill + random (_enemyMaxSkill - _enemyMinSkill);
 			[_unit, drn_var_Escape_enemyMinSkill] call EGG_EVO_skill;
-            _unit removeMagazines "Handgrenade_East";
+            _unit removeMagazines "Handgrenade";
             
             if (_guardsAreArmed) then {
                 _unit setVehicleAmmo 0.3 + random 0.7;
