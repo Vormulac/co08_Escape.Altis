@@ -19,7 +19,7 @@ onLoadName = "Escape Altis v1.5";
 ///////////////////////////////////////////////////////////////////////////////////////////
 Respawn = "BASE";
 disabledAI = 1;
-enableDebugConsole = 1;
+enableDebugConsole = 2;
 
 // Include revive script resources
 
@@ -82,5 +82,13 @@ class Params
 		values[]={80000, 40000, 10000};
 		texts[]={"Low (better performance)", "Medium", "High (Very demanding)"};
 		default = 40000;
+	};
+	class ExtractionSelection
+	{
+		//paramsArray[7]
+		title="Extraction Points";
+		values[]={0, 1, 2};
+		texts[]={"Random", "Close", "Far"};
+		default = 0;
 	};
 };
