@@ -3,18 +3,32 @@ Stuff to do:
 
 New Surprises:
 
-1) Search Drone
-	A quadcopter than buzzes around looking for the players
+	1) Search Drone
+		A quadcopter than buzzes around looking for the players
 
-2) Crashed Friendly Aircraft
-	A wrecked BluFor aircraft that has Blufor weapons around it.
+	2) Crashed Friendly Aircraft
+		A wrecked BluFor aircraft that has Blufor weapons around it.
 
-3) Friendly AIF camp
-	Small camp guarded by a squad of friendly AIF.  Supplies are
-	here available.
+	3) Friendly AIF camp
+		Small camp guarded by a squad of friendly AIF.  Supplies are
+		here available.
 
-4) Drone Strike
-	Predator does a flyby and shoots at the players.
+	4) Drone Strike
+		Predator does a flyby and shoots at the players.
 
-5) Stomper Attack
-	Stomper drone
+	5) Stomper Attack
+		Stomper drone attacks the players
+
+
+Other things:
+
+	1) patrol boats
+		Add Patrol boats to some of the bays and inlets
+
+	2) Fighters
+		If the players get a chopper and fly too high send in a fighter or two to
+		fix this problem.
+
+	3) Attack Chopper
+		If the players get too far from the island then attack choppers will spawn
+		and hunt them down.
