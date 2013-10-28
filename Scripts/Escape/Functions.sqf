@@ -64,7 +64,7 @@ drn_fnc_Escape_OnSpawnGeneralSoldierUnit = {
     };
    
     
-	_this removePrimaryWeaponItem "acc_pointer_IR";
+	
 	
     //_this setSkill (drn_var_Escape_enemyMinSkill + random (drn_var_Escape_enemyMaxSkill - drn_var_Escape_enemyMinSkill));
 	[_this, drn_var_Escape_enemyMinSkill] call EGG_EVO_skill;
@@ -72,28 +72,23 @@ drn_fnc_Escape_OnSpawnGeneralSoldierUnit = {
 	
 	//Chance for a random scope (and no scope):
 	if(random 100 < 70) then {
-		_this removePrimaryWeaponItem "optic_Aco";
-		_this removePrimaryWeaponItem "optic_ACO_grn";
-		_this removePrimaryWeaponItem "optic_Hamr";
-		_this removePrimaryWeaponItem "optic_Holosight";
-		_this removePrimaryWeaponItem "optic_Arco";
-		_this removePrimaryWeaponItem "optic_MRCO";
-		_this removePrimaryWeaponItem "optic_SOS";
+
+		removeAllPrimaryWeaponItems _this;
 		if((random 100 < 30)) then {
 			_scopes = a3n_arr_Scopes + a3n_arr_TWSScopes;
 			if(_nighttime) then {
 				_scopes = _scopes + a3n_arr_NightScopes;
 			};
 			_scope = _scopes select floor(random(count(_scopes)));
-			_this addPrimaryWeaponItem _scope;
+			_this linkItem _scope;
 		};
 	};
 	//Chance for random attachment
 	if(((random 100 < 15) && (!_nighttime)) OR ((random 100 < 70) && (_nighttime))) then {
 		if(random 100 < 70) then {
-			_this addPrimaryWeaponItem "acc_flashlight";
+			_this linkItem "acc_flashlight";
 		} else {
-			_this addPrimaryWeaponItem "acc_pointer_IR";
+			_this linkItem "acc_pointer_IR";
 		};
 	};
 	//Chance for silencers
