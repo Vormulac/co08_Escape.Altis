@@ -39,21 +39,21 @@ _unconscious_drag 				= 1;				//array no.39 - whether a unit can drag the bodies
 _load_wounded					= 1;				//array no.61 - allows you to load unconscious units on vehicles
 _altUnc_animation 				= 0;				//array no.54 - use alternate revive animation
 _JIP_spawn_dialog 				= 0;				//array no.2  - does a dialog appear on JIP so that he can be transported to a spawn point near the action 
-_time_b4_JIP_spawn_dialog 		= 10000;			//array no.17 - time before the respawn dialog appears for JIP players 
+_time_b4_JIP_spawn_dialog 		= 1;			//array no.17 - time before the respawn dialog appears for JIP players 
 // ==================================================================
 // LIST OF PLAYABLE UNITS
-//NORRN_player_units = playableUNits;
-NORRN_player_units = [p1,p2,p3,p4,p5,p6,p7,p8];
+NORRN_player_units = playableUNits;
+//NORRN_player_units = [p1, p2, p3, p4, p5, p6, p7, p8];
 // ==================================================================
 // WELCOME SCREEN
 //titleText ["Joining the Revive Test Mission\n\n(Make sure you check the mission notes for details on how the scripts work\nand the revive_readMe in the attached pdf file for the full notes on implementing \nthe scripts in your own missions and the options available)", "BLACK FADED", 0.6]; 	// This next line can be commented out or removed if it interferes with intro movies  
 // ==================================================================
 // REVIVE OPTIONS
-_max_respawns 					= (paramsArray select 1);			//array no.38 - Number of lives per unit
+_max_respawns 					= (paramsArray select 8);			//array no.38 - Number of lives per unit
 _JIP_respawns					= [1000,0];			//array no.63 - 0 - off or the number of lives players receive when they JIP , JIP time after the mission starts 
 _revive_timer 					= 0;	 			//array no.7  - Whether you want to limit the amount of timer a player has while unconscious
 _revive_time_limit 				= 100000;				//array no.27 - Amount of time a player remains unconscious before respawning or dying
-_revive_damage 					= 0.8;				//array no.37 - Unit's level of damage following revive
+_revive_damage 					= 0.2;				//array no.37 - Unit's level of damage following revive
 _unconscious_markers 			= 0;				//array no. 4 - Whether a marker appears on the game map at the location of the unconscious unit
 _caseVAC						= [0];	//array no.64 - Allows units to be taken to a hospital etc to be revived
 _chance_ofDeath					= [0,0];			//array no.66 - Two parameters in the array the first switches off/on (0/1) chance of death when shot,  
@@ -163,7 +163,7 @@ NORRNCustomExec5				="";  				// Must use variables: MAP_r_rejoin (false - first
 _unconscious_invincibility 		= 0;
 _enemy_units_1 					= [];
 _enemy_units_2  				= [];
-_mobile_base_start 				= _Base_2;			//array no.52
+_mobile_base_start 				= objNull;			//array no.52
 _mediVAC						= [];				//array no.65 - NOT IMPLEMENTED
 _perpetual_server				= 0;				//array no.62 - NOT IMPLEMENTED
 _ACE_mod						= 0;				//array no.102 - NOT IMPLEMENTED - Currently a place holder for possible future functionality 

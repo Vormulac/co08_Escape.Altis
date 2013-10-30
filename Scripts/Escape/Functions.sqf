@@ -80,15 +80,15 @@ drn_fnc_Escape_OnSpawnGeneralSoldierUnit = {
 				_scopes = _scopes + a3n_arr_NightScopes;
 			};
 			_scope = _scopes select floor(random(count(_scopes)));
-			_this linkItem _scope;
+			_this addPrimaryWeaponItem _scope;
 		};
 	};
 	//Chance for random attachment
 	if(((random 100 < 15) && (!_nighttime)) OR ((random 100 < 70) && (_nighttime))) then {
 		if(random 100 < 70) then {
-			_this linkItem "acc_flashlight";
+			_this addPrimaryWeaponItem "acc_flashlight";
 		} else {
-			_this linkItem "acc_pointer_IR";
+			_this addPrimaryWeaponItem "acc_pointer_IR";
 		};
 	};
 	//Chance for silencers
@@ -114,8 +114,6 @@ drn_fnc_Escape_OnSpawnGeneralSoldierUnit = {
     if(((random 100 < 5) && (!_nighttime)) OR ((random 100 < 30) && (_nighttime))) then {
         _this linkItem "NVGoggles";
     };
-	
-	[_this, drn_var_Escape_enemyMinSkill] call EGG_EVO_skill;
 };
 
 drn_fnc_Escape_FindGoodPos = {

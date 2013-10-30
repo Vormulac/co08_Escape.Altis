@@ -28,13 +28,13 @@ if (isServer) then {
     // Make sure the # in the select below matches what # in the order of parameters your initialWeather class is in the description.ext
     initialWeather = (paramsArray select 3);  
     switch (initialWeather) do {
-        case 1: {forecastOvercast = 0; forecastRain = 0; forecastFog = 0; forecastWindE = 1; forecastWindN = 1;};            // Clear
-        case 2: {forecastOvercast = .45; forecastRain = .45; forecastFog = 0; forecastWindE = 2; forecastWindN = 2;};    // Overcast
-        case 3: {forecastOvercast = .70; forecastRain = .70; forecastFog = .05; forecastWindE = 3; forecastWindN = 3;};    // Light Rain
-        case 4: {forecastOvercast = 1; forecastRain = 1; forecastFog = .05; forecastWindE = 4; forecastWindN = 4;};        // Heavy Rain
-        case 5: {forecastOvercast = .75; forecastRain = .10; forecastFog = .30; forecastWindE = 1; forecastWindN = 1;};    // Light Fog
+        case 1: {forecastOvercast = 0; forecastRain = 0; forecastFog = 0; forecastWindE = .5 - random 1; forecastWindN = .5 - random 1;};            // Clear
+        case 2: {forecastOvercast = .45; forecastRain = .45; forecastFog = 0; forecastWindE = 1 - random 2; forecastWindN = 1 - random 2;};    // Overcast
+        case 3: {forecastOvercast = .70; forecastRain = .70; forecastFog = .05; forecastWindE = 1.5 - random 3; forecastWindN = 1.5 - random 3;};    // Light Rain
+        case 4: {forecastOvercast = 1; forecastRain = 1; forecastFog = .05; forecastWindE = 2 - random 4; forecastWindN = 2 - random 4;};        // Heavy Rain
+        case 5: {forecastOvercast = .75; forecastRain = .10; forecastFog = .30; forecastWindE = .5 - random 1; forecastWindN = .5 - random 1;};    // Light Fog
         case 6: {forecastOvercast = .85; forecastRain = .20; forecastFog = .50; forecastWindE = 0; forecastWindN = 0;};    // Heavy Fog
-        case 7: {forecastOvercast = random(1); forecastRain = random(1); forecastFog = floor(random(2))*random(.80)^2; forecastWindE = (random(14)-7); forecastWindN = (random(14)-7);};    // Random
+        case 7: {forecastOvercast = random(1); forecastRain = random(1); forecastFog = floor(random(2))*random(.80)^2; forecastWindE = (5 - random(10)); forecastWindN = (5 - random(10));};    // Random
     };
 
     // Set up variable to track server weather updates.

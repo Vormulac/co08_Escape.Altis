@@ -51,43 +51,10 @@ _firstGroup = true;
         
         _soldier = _group createUnit [_soldierType, _spawnPos, [], 0, "FORM"];
         //_soldier setSkill _skill;
-		[_soldier, drn_var_Escape_enemyMinSkill] call EGG_EVO_skill;
-        _soldier setDamage _damage;
-
-		_soldier setVehicleAmmo (0.2 + random 0.6);
-		_soldier unassignItem "ItemGPS";
-		_soldier unassignItem "ItemMap";
-		_soldier unassignItem "ItemCompass";
-		_soldier unassignItem "NVGoggles_OPFOR";
-		_soldier removeItem "ItemGPS";
-		_soldier removeItem "ItemMap";
-		_soldier removeItem "ItemCompass";
-		_soldier removeItem "NVGoggles_OPFOR";
-		_soldier removeItem "FirstAidKit";
-		if(random 100 < 70) then {
-			_soldier removePrimaryWeaponItem "optic_Aco";
-			_soldier removePrimaryWeaponItem "optic_ACO_grn";
-			_soldier removePrimaryWeaponItem "optic_Hamr";
-			_soldier removePrimaryWeaponItem "optic_Holosight";
-			_soldier removePrimaryWeaponItem "optic_Arco";
-			_soldier removePrimaryWeaponItem "optic_MRCO";
-			_soldier removePrimaryWeaponItem "optic_SOS";
-		};
 		
-		if (random 100 < 30) then {
-			_soldier addItem "ItemMap";
-			_soldier assignItem "ItemMap";
-		};
-		if (random 100 < 30) then {
-			_soldier addItem "ItemCompass";
-			_soldier assignItem "ItemCompass";
-		};
-		if (random 100 < 25) then {
-			if (!(_soldier hasWeapon "NVGoggles_OPFOR")) then {
-				_soldier addItem "NVGoggles_OPFOR";
-				_soldier assignItem "NVGoggles_OPFOR";
-			};
-		};
+        _soldier setDamage _damage;
+//		[_soldier, drn_var_Escape_enemyMinSkill] call EGG_EVO_skill;
+		_soldier call drn_fnc_Escape_OnSpawnGeneralSoldierUnit;
 		
         if (_groupMemberCount == 0) then {
 			_soldier setUnitRank "SEARGENT";
