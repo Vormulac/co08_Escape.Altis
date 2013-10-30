@@ -410,7 +410,7 @@ class Mission
 		};
 		class Item35
 		{
-			position[]={8476.0664,107.59206,25131.676};
+			position[]={8465.373,101.88601,25157.072};
 			name="Boot_Hill";
 			type="Empty";
 		};
@@ -475,7 +475,7 @@ class Mission
 			activationBy="ANY";
 			interruptable=1;
 			age="UNKNOWN";
-			expCond="isServer && isMultiplayer && drn_escapeHasStarted && ({(_x getVariable ""FAR_isUnconscious"") == 1} count playableUnits == count playableUnits)";
+			expCond="isServer && isMultiplayer && drn_escapeHasStarted && ({(_x getVariable ""NORRN_unconscious"")} count playableUnits == count playableUnits)";
 			expActiv="call drn_fnc_Escape_SetMissionCompleteTasks;drn_var_Escape_AllPlayersDead = true;publicVariable ""drn_var_Escape_AllPlayersDead"";";
 			class Effects
 			{

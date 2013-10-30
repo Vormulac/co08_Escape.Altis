@@ -350,7 +350,7 @@ if (!isNull player) then {
                 } foreach units group player;
             };
             
-			while {!([drn_startPos] call drn_fnc_Escape_AllPlayersOnStartPos) && (isNil "drn_escapeHasStarted")} do {
+            while {!([drn_startPos] call drn_fnc_Escape_AllPlayersOnStartPos) && !drn_escapeHasStarted} do {
                 sleep 0.1;
             };
             
@@ -408,7 +408,7 @@ if (!isNull player) then {
                 
                 sleep 10;
                 if (_useRevive && !isDedicated) then {
-					server execVM "revive_init.sqf";
+                    server execVM "revive_init.sqf";
                 }; 
                 
                 // Only show this on non ported missions
@@ -427,17 +427,15 @@ if (!isNull player) then {
         waitUntil {!(isNil "drn_escapeHasStarted")};
         
         if (_isJipPlayer && _useRevive) then {
-			server execVM "revive_init.sqf";
+            server execVM "revive_init.sqf";
         }; 
-
+        
         {
             _x setCaptive false;
             _x enableAI "MOVE";
         } foreach units group player;
     };
 };
-
-
 
 if (true) exitWith {};
 
