@@ -90,7 +90,7 @@ enableRadio false;
 0 cutText ["", "BLACK FADED"];
 
 if (isDedicated && _useRevive) then {
-    //server execVM "revive_init.sqf";
+	//server execVM "revive_init.sqf";
 };
 
 if (!isDedicated) then {
