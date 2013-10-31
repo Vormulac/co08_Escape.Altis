@@ -67,7 +67,9 @@ drn_fnc_Escape_OnSpawnGeneralSoldierUnit = {
 	
 	
     //_this setSkill (drn_var_Escape_enemyMinSkill + random (drn_var_Escape_enemyMaxSkill - drn_var_Escape_enemyMinSkill));
-	[_this, drn_var_Escape_enemyMinSkill] call EGG_EVO_skill;
+    if(drn_var_Escape_enemyMinSkill != 5) then {
+	   [_this, drn_var_Escape_enemyMinSkill] call EGG_EVO_skill;
+    };
     _this removeItem "FirstAidKit";
 	
 	//Chance for a random scope (and no scope):
