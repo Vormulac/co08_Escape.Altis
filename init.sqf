@@ -1,7 +1,7 @@
 private ["_useRevive"];
 private ["_volume", "_dynamicWeather", "_isJipPlayer"];
 private ["_showIntro", "_showPlayerMapAndCompass", "_fog", "_playerIsImmortal", "_playersEnteredWorld"];
-call compileFinal preprocessFileLineNumbers "FAR_revive\FAR_revive_init.sqf";
+
 
 
 addHijackAction =
@@ -36,6 +36,7 @@ if (!isServer && isNull player) then
 {
     _isJipPlayer = true;
 };
+diag_log ("_isJipPlayer == " + str _isJipPlayer);
 
 // Developer Variables
 
@@ -90,7 +91,7 @@ enableRadio false;
 0 cutText ["", "BLACK FADED"];
 
 if (isDedicated && _useRevive) then {
-	//server execVM "revive_init.sqf";
+    //server execVM "revive_init.sqf";
 };
 
 if (!isDedicated) then {
@@ -436,7 +437,7 @@ if (!isNull player) then {
     };
 };
 
-
+server execVM "revive_init.sqf";
 
 if (true) exitWith {};
 

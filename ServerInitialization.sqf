@@ -351,22 +351,7 @@ if (_useMotorizedSearchGroup) then {
     if (_useAmbientInfantry) then {
         
         _fnc_OnSpawnAmbientInfantryUnit = {
-            _this setVehicleAmmo (0.3 + random 0.7);
-			_this unassignItem "ItemGPS";
-			_this unassignItem "ItemMap";
-			_this unassignItem "ItemCompass";
-            _this removeItem "ItemGPS";
-            _this removeItem "ItemMap";
-            _this removeItem "ItemCompass";
-            
-            if (random 100 > 75) then {
-                _this addItem "ItemMap";
-				_this assignItem "ItemMap";
-                if (random 100 > 67) then {
-                    _this addItem "ItemCompass";
-					_this assignItem "ItemCompass";
-                };
-            };
+            _this call drn_fnc_Escape_OnSpawnGeneralSoldierUnit;
         };
         
         _fnc_OnSpawnAmbientInfantryGroup = {
@@ -579,7 +564,7 @@ if (_useSearchChopper) then {
 	};
 	
     //_guard setSkill _enemyMinSkill + random (_enemyMaxSkill - _enemyMinSkill);
-    [_guard, drn_var_Escape_enemyMinSkill] call EGG_EVO_skill;
+//    [_guard, drn_var_Escape_enemyMinSkill] call EGG_EVO_skill;
     // _guard addMagazine drn_var_Escape_InnerFenceGuardSecondaryWeaponMagazine;
     // _guard addMagazine drn_var_Escape_InnerFenceGuardSecondaryWeaponMagazine;
     // _guard addMagazine drn_var_Escape_InnerFenceGuardSecondaryWeaponMagazine;

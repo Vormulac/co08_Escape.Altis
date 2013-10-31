@@ -332,8 +332,9 @@ while {true} do {
             
             // Set crew skill
             {
-                _skill = _minSkill + random (_maxSkill - _minSkill);
-                [_x, drn_var_Escape_enemyMinSkill] call EGG_EVO_skill;
+                //_skill = _minSkill + random (_maxSkill - _minSkill);
+//                [_x, drn_var_Escape_enemyMinSkill] call EGG_EVO_skill;
+
             } foreach _vehiclesCrew;
             
             _debugMarkerName = "drn_MilitaryTraffic_DebugMarker" + str _currentEntityNo;
