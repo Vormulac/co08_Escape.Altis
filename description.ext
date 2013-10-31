@@ -6,14 +6,14 @@ class Header
   maxPlayers = 8;
 };
 
-onLoadMission = "ESCAPE Altis v1.5.2";
+onLoadMission = "ESCAPE Altis v1.5.3";
 OnLoadMissionTime = FALSE;
 dev = "Engima, port by Vormulac, Hyperz, and NeoArmageddon";
 briefingName = "co08 Escape Altis";
 author = "Engima, port by Vormulac, Hyperz, and NeoArmageddon";
 overviewPicture = "a3\Missions_F_Gamma\data\img\MP_COOP_m03_overview_CA.paa";
-overviewText = "Escape Altis v1.5.2";
-onLoadName = "Escape Altis v1.5.2";
+overviewText = "Escape Altis v1.5.3";
+onLoadName = "Escape Altis v1.5.3";
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////
