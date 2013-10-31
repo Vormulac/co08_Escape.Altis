@@ -16,18 +16,18 @@ class Mission
 	randomSeed=16426086;
 	class Intel
 	{
-		startWeather=0.1;
+		startWeather=0.69999999;
 		startWind=0.1;
 		startWaves=0.1;
-		forecastWeather=0.1;
+		forecastWeather=0.69999999;
 		forecastWind=0.1;
 		forecastWaves=0.1;
 		forecastLightnings=0.1;
 		year=2035;
 		month=7;
 		day=6;
-		hour=23;
-		minute=55;
+		hour=15;
+		minute=35;
 		startFogBase=0.001;
 		forecastFogBase=0.001;
 		startFogDecay=0.0049999999;
@@ -398,7 +398,7 @@ class Mission
 			name="Respawn_east";
 			type="Empty";
 			colorName="ColorRed";
-			angle=-118.635;
+			angle=-118.63451;
 		};
 		class Item34
 		{
@@ -406,7 +406,7 @@ class Mission
 			name="Respawn_west";
 			type="Empty";
 			colorName="ColorBlue";
-			angle=88.291199;
+			angle=88.291168;
 		};
 		class Item35
 		{
@@ -475,7 +475,7 @@ class Mission
 			activationBy="ANY";
 			interruptable=1;
 			age="UNKNOWN";
-			expCond="isServer && isMultiplayer && drn_escapeHasStarted && ({(_x getVariable ""NORRN_unconscious"")} count playableUnits == count playableUnits)";
+			expCond="isServer && isMultiplayer && drn_escapeHasStarted && ({(_x getVariable ""FAR_isUnconscious"") == 1} count playableUnits == count playableUnits)";
 			expActiv="call drn_fnc_Escape_SetMissionCompleteTasks;drn_var_Escape_AllPlayersDead = true;publicVariable ""drn_var_Escape_AllPlayersDead"";";
 			class Effects
 			{
