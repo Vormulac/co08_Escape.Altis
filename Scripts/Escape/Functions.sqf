@@ -101,7 +101,7 @@ drn_fnc_Escape_OnSpawnGeneralSoldierUnit = {
         _this linkItem "ItemMap";
     };
 	if (random 100 < 30) then {
-        _this linkItem "ItemMap";
+        _this linkItem "ItemCompass";
     };
     if (random 100 < 10) then {
         _this linkItem "ItemGPS";
