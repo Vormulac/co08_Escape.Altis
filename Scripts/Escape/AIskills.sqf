@@ -18,30 +18,28 @@ EGG_EVO_skill =
 
     _unit =  _this select 0;
     _skill = _this select 1;
-
-    if (_skill == 0) then { _skill = (round random 4) + 1};
     
     _aiSkillBase = 1.0;
 
     switch (_skill) do
     {
-        case 1: //conscript very low skill
+        case 0: //conscript very low skill
         {
             _aiSkillBase = 0.2;
         };
-        case 2: //rebels low skill
+        case 1: //rebels low skill
         {
             _aiSkillBase = 0.5;
         };
-        case 3: //regular fair skill
+        case 2: //regular fair skill
         {
             _aiSkillBase = 1.0;
         };
-        case 4: //elite soldiers medium skill
+        case 3: //elite soldiers medium skill
         {
             _aiSkillBase = 1.4;
         };
-        case 5: // specops good skill
+        case 4: // specops good skill
         {
             _aiSkillBase = 1.8;
         };

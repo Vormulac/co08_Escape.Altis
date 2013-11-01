@@ -70,6 +70,7 @@ drn_fnc_Escape_OnSpawnGeneralSoldierUnit = {
     if(drn_var_Escape_enemyMinSkill != 5) then {
 	   [_this, drn_var_Escape_enemyMinSkill] call EGG_EVO_skill;
     };
+    //player sideChat str (_this skill "aimingAccuracy");
     _this removeItem "FirstAidKit";
 	
 	//Chance for a random scope (and no scope):
