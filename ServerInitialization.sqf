@@ -11,6 +11,8 @@ INDEPENDENT setFriend [EAST, 1];
 WEST setFriend [INDEPENDENT, 0];
 INDEPENDENT setFriend [WEST, 0];
 
+
+//#### Do we need all those switches
 _useRandomStartPos = true;
 _useEscapeSurprises = true;
 _useAmmoDepots = true;
@@ -24,25 +26,25 @@ _useRoadBlocks = true;
 
 _guardsExist = true;
 _comCenGuardsExist = true;
-_guardsAreArmed = true;
-_guardLivesLong = true;
+_guardsAreArmed = false;
+_guardLivesLong = false;
 
 // Debug Variables
 
-_debugEscapeSurprises = false;
-_debugAmmoDepots = false;
-_debugSearchLeader = false;
-_debugVillagePatrols = false;
-_debugMilitaryTraffic = false;
-_debugAmbientInfantry = false;
-_debugGarbageCollector = false;
-_debugRoadBlocks = false;
-drn_var_Escape_debugMotorizedSearchGroup = false;
-drn_var_Escape_debugDropChoppers = false;
-drn_var_Escape_debugReinforcementTruck = false;
-drn_var_Escape_debugSearchChopper = false;
-drn_var_Escape_DebugSearchGroup = false;
-drn_var_Escape_debugCivilEnemy = false;
+_debugEscapeSurprises = true;
+_debugAmmoDepots = true;
+_debugSearchLeader = true;
+_debugVillagePatrols = true;
+_debugMilitaryTraffic = true;
+_debugAmbientInfantry = true;
+_debugGarbageCollector = true;
+_debugRoadBlocks = true;
+drn_var_Escape_debugMotorizedSearchGroup = true;
+drn_var_Escape_debugDropChoppers = true;
+drn_var_Escape_debugReinforcementTruck = true;
+drn_var_Escape_debugSearchChopper = true;
+drn_var_Escape_DebugSearchGroup = true;
+drn_var_Escape_debugCivilEnemy = true;
 
 _showGroupDiagnostics = false;
 
@@ -90,8 +92,11 @@ sleep 0.25;
 drn_fenceIsCreated = true;
 publicVariable "drn_fenceIsCreated";
 
-call compile preprocessFileLineNumbers "Scripts\DRN\VillageMarkers\InitVillageMarkers.sqf";
+//### The following is a mission function now
+//call compile preprocessFileLineNumbers "Scripts\DRN\VillageMarkers\InitVillageMarkers.sqf";
 [_enemyFrequency] call compile preprocessFileLineNumbers "Scripts\Escape\UnitClasses.sqf";
+
+//#### The player group should become a global variable broadcasted to network ###
 _playerGroup = group ((call drn_fnc_Escape_GetPlayers) select 0);
 
 if (_useEscapeSurprises) then {
@@ -99,7 +104,7 @@ if (_useEscapeSurprises) then {
 };
 
 if (_showGroupDiagnostics) then {
-    [] execVM "Scripts\DRN\Diagnostics\MonitorEmptyGroups.sqf";
+    [] spawn drn_fnc_MonitorEmptyGroups;
 };
 
 // Initialize communication centers
@@ -206,7 +211,7 @@ if (true) then {
     } foreach _chosenComCenIndexes;
     
     if (_comCenGuardsExist) then {
-        _scriptHandle = [_playerGroup, "drn_CommunicationCenterPatrolMarker", east, "INS", 4, _minEnemies, _maxEnemies, _enemyMinSkill, _enemyMaxSkill, _enemySpawnDistance] execVM "Scripts\DRN\DynamicGuardedLocations\InitGuardedLocations.sqf";
+        _scriptHandle = [_playerGroup, "drn_CommunicationCenterPatrolMarker", east, "INS", 4, _minEnemies, _maxEnemies, _enemyMinSkill, _enemyMaxSkill, _enemySpawnDistance] spawn drn_fnc_InitGuardedLocations;
         waitUntil {scriptDone _scriptHandle};
     };
     
@@ -261,7 +266,7 @@ if (_useAmmoDepots) then {
             };
         };
         
-        _scriptHandle = [_playerGroup, "drn_AmmoDepotPatrolMarker", east, "INS", 3, _minEnemies, _maxEnemies, _enemyMinSkill, _enemyMaxSkill, _enemySpawnDistance, _debugAmmoDepots] execVM "Scripts\DRN\DynamicGuardedLocations\InitGuardedLocations.sqf";
+        _scriptHandle = [_playerGroup, "drn_AmmoDepotPatrolMarker", east, "INS", 3, _minEnemies, _maxEnemies, _enemyMinSkill, _enemyMaxSkill, _enemySpawnDistance, _debugAmmoDepots] spawn drn_fnc_InitGuardedLocations;
         waitUntil {scriptDone _scriptHandle};
     };
 };
@@ -295,6 +300,7 @@ if (_useMotorizedSearchGroup) then {
 [_playerGroup, 750, _debugGarbageCollector] spawn drn_fnc_CL_RunGarbageCollector;
 
 // Run initialization for scripts that need the players to be gathered at the start position
+//### Whats the meaning of the next line? No private there! ###
 [_useVillagePatrols, _useMilitaryTraffic, _useAmbientInfantry, _debugVillagePatrols, _debugMilitaryTraffic, _debugAmbientInfantry, _enemyMinSkill, _enemyMaxSkill, _enemySpawnDistance, _enemyFrequency, _useRoadBlocks, _debugRoadBlocks, _villagePatrolSpawnArea] spawn {
     private ["_useVillagePatrols", "_useMilitaryTraffic", "_useAmbientInfantry", "_debugVillagePatrols", "_debugMilitaryTraffic", "_debugAmbientInfantry", "_enemyMinSkill", "_enemyMaxSkill", "_enemySpawnDistance", "_enemyFrequency", "_useRoadBlocks", "_debugRoadBlocks"];
     private ["_fnc_OnSpawnAmbientInfantryGroup", "_fnc_OnSpawnAmbientInfantryUnit", "_scriptHandle"];
@@ -343,7 +349,7 @@ if (_useMotorizedSearchGroup) then {
             } foreach units _this;
         };
         
-        _scriptHandle = [(units _playerGroup) select 0, east, drn_arr_Escape_InfantryTypes, _minEnemiesPerGroup, _maxEnemiesPerGroup, _villagePatrolSpawnArea, _enemyMinSkill, _enemyMaxSkill, _enemySpawnDistance + 250, _fnc_OnSpawnGroup, _debugVillagePatrols] execVM "Scripts\DRN\VillagePatrols\InitVillagePatrols.sqf";
+        _scriptHandle = [(units _playerGroup) select 0, east, drn_arr_Escape_InfantryTypes, _minEnemiesPerGroup, _maxEnemiesPerGroup, _villagePatrolSpawnArea, _enemyMinSkill, _enemyMaxSkill, _enemySpawnDistance + 250, _fnc_OnSpawnGroup, _debugVillagePatrols] spawn drn_fnc_InitVillagePatrols;
         waitUntil {scriptDone _scriptHandle};
     };
     
@@ -368,7 +374,7 @@ if (_useMotorizedSearchGroup) then {
                         deleteWaypoint [_this, _i];
                     };
                     
-                    _scriptHandle = [_this, drn_searchAreaMarkerName, (getPos _enemyUnit), drn_var_Escape_DebugSearchGroup] execVM "Scripts\DRN\SearchGroup\SearchGroup.sqf";
+                    _scriptHandle = [_this, drn_searchAreaMarkerName, (getPos _enemyUnit), drn_var_Escape_DebugSearchGroup] spawn drn_fnc_searchGroup;
                     _this setVariable ["drn_scriptHandle", _scriptHandle];
                 };
                 
@@ -404,7 +410,7 @@ if (_useMotorizedSearchGroup) then {
         _radius = (_enemySpawnDistance + 500) / 1000;
         _infantryGroupsCount = round (_groupsPerSqkm * _radius * _radius * 3.141592);
         
-        [_playerGroup, east, drn_arr_Escape_InfantryTypes, _infantryGroupsCount, _enemySpawnDistance + 200, _enemySpawnDistance + 500, _minEnemiesPerGroup, _maxEnemiesPerGroup, _enemyMinSkill, _enemyMaxSkill, 750, _fnc_OnSpawnAmbientInfantryUnit, _fnc_OnSpawnAmbientInfantryGroup, _debugAmbientInfantry] execVM "Scripts\DRN\AmbientInfantry\AmbientInfantry.sqf";
+        [_playerGroup, east, drn_arr_Escape_InfantryTypes, _infantryGroupsCount, _enemySpawnDistance + 200, _enemySpawnDistance + 500, _minEnemiesPerGroup, _maxEnemiesPerGroup, _enemyMinSkill, _enemyMaxSkill, 750, _fnc_OnSpawnAmbientInfantryUnit, _fnc_OnSpawnAmbientInfantryGroup, _debugAmbientInfantry] spawn drn_fnc_AmbientInfantry;
         sleep 0.25;
     };
     
@@ -465,7 +471,7 @@ if (_useMotorizedSearchGroup) then {
             };
         };
         
-        [_playerGroup, civilian, drn_arr_Escape_MilitaryTraffic_CivilianVehicleClasses, _vehiclesCount, _enemySpawnDistance, _radius, 0.5, 0.5, _fnc_onSpawnCivilian, _debugMilitaryTraffic] execVM "Scripts\DRN\MilitaryTraffic\MilitaryTraffic.sqf";
+        [_playerGroup, civilian, drn_arr_Escape_MilitaryTraffic_CivilianVehicleClasses, _vehiclesCount, _enemySpawnDistance, _radius, 0.5, 0.5, _fnc_onSpawnCivilian, _debugMilitaryTraffic] spawn drn_fnc_MilitaryTraffic;
         sleep 0.25;
         
         // Enemy military traffic
@@ -488,7 +494,7 @@ if (_useMotorizedSearchGroup) then {
         
         _radius = _enemySpawnDistance + 500;
         _vehiclesCount = round (_vehiclesPerSqkm * (_radius / 1000) * (_radius / 1000) * 3.141592);
-        [_playerGroup, east, drn_arr_Escape_MilitaryTraffic_EnemyVehicleClasses, _vehiclesCount, _enemySpawnDistance, _radius, _enemyMinSkill, _enemyMaxSkill, drn_fnc_Escape_TrafficSearch, _debugMilitaryTraffic] execVM "Scripts\DRN\MilitaryTraffic\MilitaryTraffic.sqf";
+        [_playerGroup, east, drn_arr_Escape_MilitaryTraffic_EnemyVehicleClasses, _vehiclesCount, _enemySpawnDistance, _radius, _enemyMinSkill, _enemyMaxSkill, drn_fnc_Escape_TrafficSearch, _debugMilitaryTraffic] spawn drn_fnc_MilitaryTraffic;
         sleep 0.25;
     };
     
@@ -518,7 +524,7 @@ if (_useMotorizedSearchGroup) then {
             _roadBlockCount = 1;
         };
         
-        [_playerGroup, east, drn_arr_Escape_InfantryTypes, drn_arr_Escape_RoadBlock_MannedVehicleTypes, _roadBlockCount, _enemySpawnDistance, _enemySpawnDistance + 500, 750, 300, _fnc_OnSpawnInfantryGroup, _fnc_OnSpawnMannedVehicle, _debugRoadBlocks] execVM "Scripts\DRN\RoadBlocks\RoadBlocks.sqf";
+        [_playerGroup, east, drn_arr_Escape_InfantryTypes, drn_arr_Escape_RoadBlock_MannedVehicleTypes, _roadBlockCount, _enemySpawnDistance, _enemySpawnDistance + 500, 750, 300, _fnc_OnSpawnInfantryGroup, _fnc_OnSpawnMannedVehicle, _debugRoadBlocks] spawn drn_fnc_RoadBlocks;
         sleep 0.25;
     };
 };
@@ -648,7 +654,7 @@ if (_useSearchChopper) then {
             };
         } foreach units _guardGroup;
         
-        [_guardGroup, _marker] execVM "Scripts\DRN\SearchGroup\SearchGroup.sqf";
+        [_guardGroup, _marker] spawn drn_fnc_SearchGroup;
         
     } foreach _guardGroups;
     

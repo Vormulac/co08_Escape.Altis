@@ -4,6 +4,7 @@ private ["_showIntro", "_showPlayerMapAndCompass", "_fog", "_playerIsImmortal", 
 call compileFinal preprocessFileLineNumbers "FAR_revive\FAR_revive_init.sqf";
 
 
+// ### These function are now in the missionfile. They should be replaced everywhere with A3E_fnc_addHijackAction and A3E_fnc_addHealAtMedicalBuildingAction ###
 addHijackAction =
 {
     private ["_object", "_screenMsg", "_scriptToCall"];
@@ -29,7 +30,7 @@ addHealAtMedicalBuildingAction =
 
     _object addaction [_screenMsg, _scriptToCall, [], 1.5, true, false, "", "(_this distance _target < 4) && (damage _this > 0.0)"];
 };
-
+//###
 
 _isJipPlayer = false;
 if (!isServer && isNull player) then
@@ -44,8 +45,8 @@ _showIntro = true;
 
 // Debug Variables
 
-_showPlayerMapAndCompass = false;
-_playerIsImmortal = false; // Only works for unit p1
+_showPlayerMapAndCompass = true;
+_playerIsImmortal = true; // Only works for unit p1
 
 // Initialization
 
@@ -111,13 +112,19 @@ call compile preprocessFileLineNumbers "Scripts\Escape\Functions.sqf";
 call compile preprocessFileLineNumbers "Scripts\Escape\AIskills.sqf";
 
 [_isJipPlayer] call compile preprocessFileLineNumbers "Briefing.sqf";
-call compile preprocessFileLineNumbers "scripts\Init_UPSMON.sqf";
 
+//### UPSMON is disabled from now on  and will be replaced by own patrol handling ##################
+//call compile preprocessFileLineNumbers "scripts\Init_UPSMON.sqf";
+//##################################################################################################
 //_dynamicWeather = (paramsArray select 3);
+
+//The following should become a function
 execVM "Scripts\Escape\RandomWeather.sqf";
 
 setTerrainGrid (paramsArray select 4);
 
+
+//### Unused parts should be removed to keep the code clean ###
 /*switch (_dynamicWeather) do {
     case 0: { execVM "Scripts\Escape\StaticWeatherEffects.sqf"; }; // Dynamic weather off
     case 1: { [0.1, 0.1, 0, [random 8, random 8]] execVM "Scripts\DRN\DynamicWeatherEffects\DynamicWeatherEffects.sqf"; }; // Dynamic weather (start clear)
@@ -133,10 +140,12 @@ setTerrainGrid (paramsArray select 4);
         [_fog] execVM "Scripts\DRN\DynamicWeatherEffects\DynamicWeatherEffects.sqf";
     };
 };*/
+//################################################################
 
 // Server Initialization
 
 if (isServer) then {
+	//### To a function
     execVM "ServerInitialization.sqf";
     if (isDedicated) exitWith {};
 };
@@ -144,6 +153,7 @@ if (isServer) then {
 waitUntil {drn_var_Escape_playerEnteredWorld};
 
 // Report to all other clients (and server) that player has entered the world
+//### Maybe its save to only report to server (could save traffic at startup) ###
 if (isNil "drn_var_Escape_syncronizationDone") then {
     switch (str player) do {
         case "p1": {

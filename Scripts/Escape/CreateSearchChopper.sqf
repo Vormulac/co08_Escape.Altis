@@ -90,6 +90,6 @@ _chopper action ["lightOn", _chopper];
     _x call drn_fnc_Escape_OnSpawnGeneralSoldierUnit;
 } foreach units _group;
 
-[_chopper, _searchAreaMarker, _searchTimeMin, _refuelTimeMin, _debug] execVM "Scripts\DRN\SearchChopper\SearchChopper.sqf";
+[_chopper, _searchAreaMarker, _searchTimeMin, _refuelTimeMin, _debug] spawn drn_fnc_SearchChopper;
 
 

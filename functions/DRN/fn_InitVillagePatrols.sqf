@@ -127,13 +127,14 @@ _villageNo = 0;
 	drn_arr_villagePatrols_Villages set [count drn_arr_villagePatrols_Villages, _village];
 
 	// Set village trigger
+	//#### We should add two trigger, one for population one for depopulation ######
 
 	_trigger = createTrigger["EmptyDetector", _villagePos];
 	_trigger triggerAttachVehicle [vehicle _referenceUnit];
 	_trigger setTriggerArea[_spawnRadius, _spawnRadius, 0, false];
 	_trigger setTriggerActivation["MEMBER", "PRESENT", true];
 	_trigger setTriggerTimeout [1, 1, 1, true];
-	_trigger setTriggerStatements["this", "_nil = [drn_arr_villagePatrols_Villages select " + str _villageNo + ", " + str _debug + "] execVM ""Scripts\DRN\VillagePatrols\PopulateVillage.sqf"";", "_nil = [drn_arr_villagePatrols_Villages select " + str _villageNo + ", " + str _debug + "] execVM ""Scripts\DRN\VillagePatrols\DepopulateVillage.sqf"";"];
+	_trigger setTriggerStatements["this", "_nil = [drn_arr_villagePatrols_Villages select " + str _villageNo + ", " + str _debug + "] spawn drn_fnc_PopulateVillage;", "_nil = [drn_arr_villagePatrols_Villages select " + str _villageNo + ", " + str _debug + "] spawn drn_fnc_DepopulateVillage;"];
 
 	_villageNo = _villageNo + 1;
 } foreach drn_villageMarkers;

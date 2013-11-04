@@ -98,7 +98,7 @@ while {_locationExists} do {
     _trigger setTriggerArea[_spawnRadius, _spawnRadius, 0, false];
     _trigger setTriggerActivation["MEMBER", "PRESENT", true];
     _trigger setTriggerTimeout [1, 1, 1, true];
-    _trigger setTriggerStatements["this", "_nil = [drn_var_guardedLocations" + str _instanceNo + " select " + str _locationNo + ", " + str _side + ", " + str _maxGroupsCount + ", " + str _debug + "] execVM ""Scripts\DRN\DynamicGuardedLocations\PopulateLocation.sqf"";", "_nil = [drn_var_guardedLocations" + str _instanceNo + " select " + str _locationNo + ", " + str _debug + "] execVM ""Scripts\DRN\DynamicGuardedLocations\DepopulateLocation.sqf"";"];
+    _trigger setTriggerStatements["this", "_nil = [drn_var_guardedLocations" + str _instanceNo + " select " + str _locationNo + ", " + str _side + ", " + str _maxGroupsCount + ", " + str _debug + "] spawn drn_fnc_PopulateLocation;", "_nil = [drn_var_guardedLocations" + str _instanceNo + " select " + str _locationNo + ", " + str _debug + "] spawn drn_fnc_DepopulateLocation;"];
     
 	// Get next guarded position
 	_locationNo = _locationNo + 1;

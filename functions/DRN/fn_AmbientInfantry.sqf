@@ -181,7 +181,7 @@ while {true} do {
         ((units _group) select 0) call compile format ["%1=_this;", _vehicleVarName];
         
         // Start group
-        [((units _group) select 0), _debug] execVM "Scripts\DRN\AmbientInfantry\MoveInfantryGroup.sqf";
+        [((units _group) select 0), _debug] spawn drn_fnc_MoveInfantryGroup;
         _activeGroups set [count _activeGroups, _group];
         _activeUnits = _activeUnits + units _group;
 

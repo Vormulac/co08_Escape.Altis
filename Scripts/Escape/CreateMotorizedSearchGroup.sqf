@@ -59,5 +59,5 @@ _group selectLeader (_insurgentSoldiers select 0);
     //[_x, drn_var_Escape_enemyMinSkill] call EGG_EVO_skill;
 } foreach units _group;
 
-[_vehicle, _searchAreaMarker, _debug] execVM "Scripts\DRN\MotorizedSearchGroup\MotorizedSearchGroup.sqf";
+[_vehicle, _searchAreaMarker, _debug] spawn drn_fnc_MotorizedSearchGroup;
 

@@ -24,7 +24,9 @@ if (count _firstDestinationPos > 0) then {
 }
 else {
 	_roadSegments = [];
-	_refPos = petPos _vehicle;
+	//#### What is petPos? Does we have pets now in Escape? Should be getPos... but Pets are a nice idea indeed :D
+	//_refPos = petPos _vehicle;
+	_refPos = getPos _vehicle;
     while {count _roadSegments == 0} do {
     	_trafficLocation = floor random 8;
         switch (_trafficLocation) do {
@@ -51,6 +53,6 @@ _waypoint = group _vehicle addWaypoint [_destinationPos, 10];
 _waypoint setWaypointBehaviour "SAFE";
 _waypoint setWaypointSpeed _speed;
 _waypoint setWaypointCompletionRadius 10;
-_waypoint setWaypointStatements ["true", "_nil = [" + vehicleVarName _vehicle + ", [], " + str _debug + "] execVM ""Scripts\DRN\MilitaryTraffic\MoveVehicle.sqf"";"];
+_waypoint setWaypointStatements ["true", "_nil = [" + vehicleVarName _vehicle + ", [], " + str _debug + "] spawn drn_fnc_MoveVehicle;"];
 
 
