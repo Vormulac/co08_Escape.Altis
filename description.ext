@@ -40,9 +40,9 @@ class Params
 	{
 		// paramsArray[1]
 		title="Enemy Frequency";
-		values[]={1,2,3};
-		texts[]={"Few (suitable for 1-3 players)", "Some (suitable for 4-6 players)", "A lot (suitable for 7-8 players)"};
-		default = 3;
+		values[]={0,1,2,3};
+		texts[]={"Adaptive", "Few (suitable for 1-3 players)", "Some (suitable for 4-6 players)", "A lot (suitable for 7-8 players)"};
+		default = 2;
 	};
 	class TimeOfDay	
 	{	
@@ -90,7 +90,7 @@ class Params
 		title="Extraction Points";
 		values[]={0, 1, 2};
 		texts[]={"Random", "Close", "Far"};
-		default = 0;
+		default = 1;
 	};
 	class AccuracySelection
 	{
