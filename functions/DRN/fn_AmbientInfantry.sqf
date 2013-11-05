@@ -181,7 +181,11 @@ while {true} do {
         ((units _group) select 0) call compile format ["%1=_this;", _vehicleVarName];
         
         // Start group
-        [((units _group) select 0), _debug] spawn drn_fnc_MoveInfantryGroup;
+        //[((units _group) select 0), _debug] spawn drn_fnc_MoveInfantryGroup;
+		
+		_script = [_group, nil, true] spawn A3E_fnc_RandomPatrolRoute;
+		_group setvariable["A3E_GroupPatrolScript",_script];
+		
         _activeGroups set [count _activeGroups, _group];
         _activeUnits = _activeUnits + units _group;
 
@@ -192,38 +196,6 @@ while {true} do {
     
     _atScriptStartUp = false;
 
-	if (_debug) then {
-        private ["_debugMarkerColor"];
-        
-        {
-            [_x] call drn_fnc_CL_DeleteDebugMarkerAllClients;
-        } foreach _debugMarkers;
-
-		_debugMarkers = [];
-
-        {
-            _group = _x;
-            _debugMarkerNo = _debugMarkerNo + 1;
-            
-            _debugMarkerName = "drn_debugMarker" + str _side + str _debugMarkerNo;
-            if (_side == west) then {
-                _debugMarkerColor = "ColorBlue";
-            };
-            if (_side == east) then {
-                _debugMarkerColor = "ColorRed";
-            };
-            if (_side == civilian) then {
-                _debugMarkerColor = "ColorWhite";
-            };
-            if (_side == resistance) then {
-                _debugMarkerColor = "ColorYellow";
-            };
-            
-            [_debugMarkerName, getPos ((units _group) select 0), "mil_dot", _debugMarkerColor] call drn_fnc_CL_SetDebugMarkerAllClients;
-            
-            _debugMarkers set [count _debugMarkers, _debugMarkerName];
-        } foreach _activeGroups;
-    };
 	
     _farAwayUnits = [];
     _farAwayUnitsCount = 0;
@@ -314,7 +286,12 @@ while {true} do {
         if (!(scriptDone _scriptHandle)) then {
             terminate _scriptHandle;
         };
-        
+        _script = _group getvariable ["A3E_GroupPatrolScript",nil];
+		if(!isNil("_script")) then {
+			if (!(scriptDone _script)) then {
+				terminate _script;
+			};
+		};
         deleteGroup _x;
     } foreach _groupsToDelete;
     
