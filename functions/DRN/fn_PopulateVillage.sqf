@@ -47,23 +47,11 @@ if (count _groups == 0) exitWith {};
 
 			_soldier set [2, true];
 			_soldier set [3, _soldierObj];
-
+			
 			if (_rank == "SERGEANT") then {
-				//_script = [_soldierObj, _markerName, "spawned"] execVM "Scripts\upsmon.sqf";
+				_script = [_newGroup, _markerName,true] spawn A3E_fnc_RandomPatrolRoute;
+				_newGroup setvariable["A3E_GroupPatrolScript",_script];
 
-/*
-// ### We should definitly enable this randomisation between patrols and searchgroups ###
-				if (random 100 < 50) then {
-					//_script = [_soldierObj, _markerName, "spawned"] execVM "Scripts\upsmon.sqf";
-				}
-				else {
-					_script = [_newGroup, _markerName, [0,0,0], drn_var_Escape_DebugSearchGroup] spawn drn_fnc_SearchGroup;
-				};
-*/
-
-				_script = objNull;
-				_soldier set [4, _script];
-				_soldier set [9, true];
 			};
 		};
 	} foreach _soldiers;
@@ -74,5 +62,4 @@ if (count _groups == 0) exitWith {};
 	sleep 1;
 } foreach _groups;
 
-//[] call DRN_fnc_InitUpsmonAllClients;
 
