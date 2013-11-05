@@ -1,36 +1,14 @@
 private ["_useRevive"];
 private ["_volume", "_dynamicWeather", "_isJipPlayer"];
 private ["_showIntro", "_showPlayerMapAndCompass", "_fog", "_playerIsImmortal", "_playersEnteredWorld"];
+
+if(!isDedicated) then {
+	startLoadingScreen ["Loading Mission, please wait...","Escape_loadingScreen"];
+};
 call compileFinal preprocessFileLineNumbers "FAR_revive\FAR_revive_init.sqf";
 
+execVM "config.sqf";
 
-// ### These function are now in the missionfile. They should be replaced everywhere with A3E_fnc_addHijackAction and A3E_fnc_addHealAtMedicalBuildingAction ###
-addHijackAction =
-{
-    private ["_object", "_screenMsg", "_scriptToCall"];
-    
-    _object = _this select 0;
-    _screenMsg = _this select 1;
-    _scriptToCall = _this select 2;
-
-    if (isNull _object) exitWith {};
-
-    _object addaction [_screenMsg, _scriptToCall, [], 1.5, true, false, "", "_this distance _target <= 3"];
-};
-
-addHealAtMedicalBuildingAction =
-{
-    private ["_object", "_screenMsg", "_scriptToCall"];
-    
-    _object = _this select 0;
-    _screenMsg = _this select 1;
-    _scriptToCall = _this select 2;
-
-    if (isNull _object) exitWith {};
-
-    _object addaction [_screenMsg, _scriptToCall, [], 1.5, true, false, "", "(_this distance _target < 4) && (damage _this > 0.0)"];
-};
-//###
 
 _isJipPlayer = false;
 if (!isServer && isNull player) then
@@ -45,8 +23,9 @@ _showIntro = true;
 
 // Debug Variables
 
-_showPlayerMapAndCompass = true;
-_playerIsImmortal = true; // Only works for unit p1
+_showPlayerMapAndCompass = false;
+_playerIsImmortal = false; // Only works for unit p1
+_debug = false;
 
 // Initialization
 
@@ -84,15 +63,7 @@ if (isServer) then {
     };
 };
 
-_volume = soundVolume;
 enableSaving [true, true];
-0 fadeSound 0;
-enableRadio false;
-0 cutText ["", "BLACK FADED"];
-
-if (isDedicated && _useRevive) then {
-	//server execVM "revive_init.sqf";
-};
 
 if (!isDedicated) then {
     waitUntil {!isNull player};
@@ -113,10 +84,6 @@ call compile preprocessFileLineNumbers "Scripts\Escape\AIskills.sqf";
 
 [_isJipPlayer] call compile preprocessFileLineNumbers "Briefing.sqf";
 
-//### UPSMON is disabled from now on  and will be replaced by own patrol handling ##################
-//call compile preprocessFileLineNumbers "scripts\Init_UPSMON.sqf";
-//##################################################################################################
-//_dynamicWeather = (paramsArray select 3);
 
 //The following should become a function
 execVM "Scripts\Escape\RandomWeather.sqf";
@@ -280,18 +247,20 @@ if (!isMultiplayer) then {
     } foreach units group player;
 };
 
+
+
 // Run start sequence for all players
 if (!isNull player) then {
-    [_volume, _showIntro, _showPlayerMapAndCompass, _isJipPlayer, _useRevive] spawn {
-        private ["_volume", "_showIntro", "_showPlayerMapAndCompass", "_isJipPlayer", "_useRevive"];
-        private ["_marker"];
+    [_showIntro, _showPlayerMapAndCompass, _isJipPlayer, _useRevive, _debug] spawn {
+        private ["_showIntro", "_showPlayerMapAndCompass", "_isJipPlayer", "_useRevive"];
+        private ["_marker","_debug"];
         
-        _volume = _this select 0;
-        _showIntro = _this select 1;
-        _showPlayerMapAndCompass = _this select 2;
-        _isJipPlayer = _this select 3;
-        _useRevive = _this select 4;
-        
+        _showIntro = _this select 0;
+        _showPlayerMapAndCompass = _this select 1;
+        _isJipPlayer = _this select 2;
+        _useRevive = _this select 3;
+        _debug = _this select 4;
+		
         waitUntil {!(isNil "drn_startPos")};
         waitUntil {!(isNil "drn_fenceIsCreated")};
         
@@ -342,13 +311,7 @@ if (!isNull player) then {
                     _marker setMarkerType "Flag_NATO";
                 };
             };
-        }
-        else {
-            sleep 1;
-            if (_showIntro) then {
-                ["<t size='0.9'>" + "Engima of Ostgota Ops presents" + "</t>",0.02,0.3,2,-1,0,3010] spawn bis_fnc_dynamicText;
-            };
-            
+        } else {
             if (isMultiplayer) then {
                 player setPos [(drn_startPos select 0) + (random 4) - 2, (drn_startPos select 1) + (random 6) - 3, 0];
             }
@@ -359,40 +322,16 @@ if (!isNull player) then {
                 } foreach units group player;
             };
             
-			while {!([drn_startPos] call drn_fnc_Escape_AllPlayersOnStartPos) && (isNil "drn_escapeHasStarted")} do {
+			/*while {!([drn_startPos] call drn_fnc_Escape_AllPlayersOnStartPos) && (isNil "drn_escapeHasStarted")} do {
                 sleep 0.1;
-            };
-            
-            if (_showIntro) then {            
-                0 cutText ["", "BLACK FADED"];
-                sleep 2.75;
-                0 cutText ["", "BLACK FADED"];
-                sleep 2.75;
-            
-                ["<t size='1'>" + "Escape Altis" + "</t>",0.02,0.3,3,-1,0,3011] spawn bis_fnc_dynamicText;
-                ["<t size='0.6'>" + "A port of 'Escape Chernarus'" + "</t>",0.02,0.4,3,-1,0,3012] spawn bis_fnc_dynamicText;
-				["<t size='0.5'>" + "by Vormulac and Hyperz" + "</t>",0.02,0.5,3,-1,0,3013] spawn bis_fnc_dynamicText;
-                
-                0 cutText ["", "BLACK FADED"];
-                sleep 2.75;
-                0 cutText ["", "BLACK FADED"];
-                sleep 2.75;
-                
-                0 cutText ["", "BLACK FADED"];
-                ["Somewhere on", "Altis", str (date select 2) + "/" + str (date select 1) + "/" + str (date select 0) + " " + str (date select 3) + ":00"] spawn BIS_fnc_infoText;
-            };
-			
-        };
+            };*/
+           // waituntil {([drn_startPos] call drn_fnc_Escape_AllPlayersOnStartPos) && (!isNil "drn_escapeHasStarted")};
 
-        1 fadeSound _volume;
-        
-        if (_showIntro && !_isJipPlayer) then {
-            sleep 2;
         };
-        
+ 
         if (_showPlayerMapAndCompass) then {
             _marker = createMarkerLocal ["drn_startPosMarker", drn_startPos];
-            _marker setMarkerType "Warning";
+            _marker setMarkerType "mil_dot";
             player additem "ItemCompass";
 			player assignItem "ItemCompass";
         }
@@ -407,37 +346,15 @@ if (!isNull player) then {
 			player removeItem "NVGoggles";
         };
         
-        enableRadio true;
-        
-        if (!_isJipPlayer) then {
-            [_useRevive] spawn {
-                private ["_useRevive"];
-                
-                _useRevive = _this select 0;
-                
-                sleep 10;
-                if (_useRevive && !isDedicated) then {
-					//server execVM "revive_init.sqf";
-                }; 
-                
-                // Only show this on non ported missions
-                if (worldName == "Chernarus") then {
-                    sleep 20;
-                    [name player + "! Please tell me about your Escape Chernarus experience on the BIS Forum or at Armaholic.com! Thank you, and enjoy the mission!", true] call drn_fnc_CL_ShowTitleTextLocal;
-                };
-            };
-        };
-
         // Set position again (a fix for the bug that makes players run away after server restart and before fence is built by server)
         player setPos [(drn_startPos select 0) + (random 4) - 2, (drn_startPos select 1) + (random 6) - 3, 0];
-        sleep 0.1;
+
         
         player setVariable ["drn_var_initializing", false, true];
         waitUntil {!(isNil "drn_escapeHasStarted")};
-        
-        if (_isJipPlayer && _useRevive) then {
-			//server execVM "revive_init.sqf";
-        }; 
+        if(_debug) then {
+			player sidechat "Escape has started";
+		};
 
         {
             _x setCaptive false;
@@ -445,9 +362,9 @@ if (!isNull player) then {
         } foreach units group player;
     };
 };
+waitUntil {!(isNil "drn_startPos")};
+waitUntil {!(isNil "drn_fenceIsCreated")};
+endLoadingScreen;
 
-
-
-if (true) exitWith {};
 
 
