@@ -1,11 +1,10 @@
-call compile preprocessFileLineNumbers ("Scripts\DRN\VillageMarkers\VillageMarkers" + worldName + ".sqf");
+call compile format["call drn_fnc_VillageMarkers%1;",worldName];
 
 drn_fnc_VillageMarkers_PutVillageMarkersOnMap = {
 	private ["_showMarkers"];
 	private ["_markerName", "_villageIndex"];
 
 	if (count _this > 0) then {_showMarkers = _this select 0;} else {_showMarkers = true};
-
 	_villageIndex = 0;
 
 	{
