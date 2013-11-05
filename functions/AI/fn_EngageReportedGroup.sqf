@@ -11,7 +11,7 @@ _leader = (leader _group);
 } foreach (units _group);
 
 
-_lastSeen = diag_tickTime - (_lastKnownPosition getvariable "A3E_LastUpdated");
+_lastSeen = diag_tickTime - (_lastKnownPosition getvariable ["A3E_LastUpdated",diag_tickTime]);
 _accuracy = _lastSeen * 2;
 _position = [((getpos _lastKnownPosition) select 0) + (random _accuracy - random _accuracy),((getpos _lastKnownPosition) select 1) + (random _accuracy - random _accuracy),0];
 _leader domove _position;
@@ -28,8 +28,8 @@ if(_debug) then {
 
 while{true} do {
 	if(_lastSeen > 300) exitwith {};
-	_lastSeen = diag_tickTime - (_lastKnownPosition getvariable "A3E_LastUpdated");	
-	if(![_group] call A3E_fnc_InCombat) then {
+	_lastSeen = diag_tickTime - (_lastKnownPosition getvariable ["A3E_LastUpdated",diag_tickTime]);	
+	if(!([_group] call A3E_fnc_InCombat)) then {
 		if(_lastSeen > 200) exitwith {};
 		_accuracy = _lastSeen * 2;
 		_position = [((getpos _lastKnownPosition) select 0) + (random _accuracy - random _accuracy),((getpos _lastKnownPosition) select 1) + (random _accuracy - random _accuracy),0];
@@ -39,6 +39,7 @@ while{true} do {
 		};
 	};
 	sleep random 60;
+	if(isNil("_group")) exitwith {};
 };
 
 if(_debug) then {

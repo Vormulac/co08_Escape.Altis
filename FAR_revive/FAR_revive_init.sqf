@@ -45,7 +45,7 @@ if (isDedicated) exitWith {};
 	
 	[] spawn FAR_Player_Init;
 	
-	hintSilent format["Farooq's Revive %1 is initialized.", SCRIPT_VERSION];
+	//hintSilent format["Farooq's Revive %1 is initialized.", SCRIPT_VERSION];
 
 	// Event Handlers
 	player addEventHandler 

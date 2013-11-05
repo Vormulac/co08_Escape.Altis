@@ -183,7 +183,7 @@ while {true} do {
         // Start group
         //[((units _group) select 0), _debug] spawn drn_fnc_MoveInfantryGroup;
 		
-		_script = [_group, nil, true] spawn A3E_fnc_RandomPatrolRoute;
+		_script = [_group, nil, false] spawn A3E_fnc_RandomPatrolRoute;
 		_group setvariable["A3E_GroupPatrolScript",_script];
 		
         _activeGroups set [count _activeGroups, _group];
@@ -271,10 +271,12 @@ while {true} do {
     {
         private ["_scriptHandle"];
         
-        _scriptHandle = _x getVariable "drn_scriptHandle";
-        if (!(scriptDone _scriptHandle)) then {
-            terminate _scriptHandle;
-        };
+        _scriptHandle = _x getVariable ["drn_scriptHandle",nil];
+		if(!isNil("_scriptHandle")) then {
+			if (!(scriptDone _scriptHandle)) then {
+				terminate _scriptHandle;
+			};
+		};
         
         deleteVehicle _x;
     } foreach _unitsToDelete;
@@ -282,10 +284,12 @@ while {true} do {
     {
         private ["_scriptHandle"];
         
-        _scriptHandle = _x getVariable "drn_scriptHandle";
-        if (!(scriptDone _scriptHandle)) then {
-            terminate _scriptHandle;
-        };
+        _scriptHandle = _x getVariable ["drn_scriptHandle",nil];
+        if(!isNil("_scriptHandle")) then {
+			if (!(scriptDone _scriptHandle)) then {
+				terminate _scriptHandle;
+			};
+		};
         _script = _group getvariable ["A3E_GroupPatrolScript",nil];
 		if(!isNil("_script")) then {
 			if (!(scriptDone _script)) then {
