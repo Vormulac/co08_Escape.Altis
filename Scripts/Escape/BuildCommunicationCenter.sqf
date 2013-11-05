@@ -218,13 +218,13 @@ _dir = 90;
 _pos = [0, -9];
 _dir = 90;
 _obj = ["Land_PowerGenerator_F", _pos, _dir, _centerPos, _rotateDir] call _fnc_CreateObject;
-[[_obj, "Hijack", "Scripts\Escape\Hijack.sqf"], "addHijackAction", nil, false] spawn BIS_fnc_MP;
+[[_obj, "Hijack", "Scripts\Escape\Hijack.sqf"], "a3e_fnc_addHijackAction", nil, false] spawn BIS_fnc_MP;
 _obj allowDamage false;
 
 _pos = [13, 1];
 _dir = 90;
 _obj = ["Land_Medevac_House_V1_F", _pos, _dir, _centerPos, _rotateDir] call _fnc_CreateObject;
-[[_obj, "Heal at medical building", "Scripts\Escape\HealAtMedicalBuilding.sqf"], "addHealAtMedicalBuildingAction", nil, false] spawn BIS_fnc_MP;
+[[_obj, "Heal at medical building", "Scripts\Escape\HealAtMedicalBuilding.sqf"], "a3e_fnc_addHealAtMedicalBuildingAction", nil, false] spawn BIS_fnc_MP;
 
 _pos = [10, -5];
 _dir = 180;
