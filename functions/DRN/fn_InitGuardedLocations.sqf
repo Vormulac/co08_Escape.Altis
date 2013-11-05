@@ -88,7 +88,6 @@ while {_locationExists} do {
 	_location = [_locationFullName, "", _soldiers, _locationPos];
 
     _location call compile format ["drn_var_guardedLocations%1 set [count drn_var_guardedLocations%2, _this];", _instanceNo, _instanceNo];
-    //	drn_var_guardedLocations set [count drn_var_guardedLocations, _location];
 
     // Set ammo depot trigger
     private ["_marker", "_count", "_populated", "_trigger"];
