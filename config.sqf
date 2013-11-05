@@ -1,6 +1,6 @@
 //SearchLeader
 
-a3e_var_knownPositionHelperObject = "Sign_Arrow_Large_F";
+a3e_var_knownPositionHelperObject = "Land_HelipadEmpty_F";
 a3e_var_knownPositionMinDistance = 100;
 
 
