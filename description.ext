@@ -1,3 +1,5 @@
+#include "include\defines.hpp"
+
 // Mission Header
 class Header
 {
@@ -6,26 +8,24 @@ class Header
   maxPlayers = 8;
 };
 
-onLoadMission = "ESCAPE Altis v1.5.3.3";
+onLoadMission = MISSIONNAME;
 OnLoadMissionTime = FALSE;
-dev = "Engima, port by Vormulac, Hyperz, and NeoArmageddon";
-briefingName = "co08 Escape Altis";
-author = "Engima, port by Vormulac, Hyperz, and NeoArmageddon";
+dev = "Vormulac, Hyperz and NeoArmageddon";
+briefingName = MISSIONNAME;
+author = "Vormulac, Hyperz and NeoArmageddon";
 overviewPicture = "a3\Missions_F_Gamma\data\img\MP_COOP_m03_overview_CA.paa";
-overviewText = "Escape Altis v1.5.3.3";
-onLoadName = "Escape Altis v1.5.3.3";
-
+overviewText = MISSIONNAME;
+onLoadName = MISSIONNAME;
+loadScreen = "escape_banner.paa"; 
 
 ///////////////////////////////////////////////////////////////////////////////////////////
 Respawn = "BASE";
 disabledAI = 1;
-enableDebugConsole = 1;
-
-
-// Include revive script resources
+enableDebugConsole = 2;
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////
 
 #include "include\params.hpp"
 #include "include\functions.hpp"
+#include "include\loadingscreen.hpp"
