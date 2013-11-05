@@ -48,7 +48,7 @@ if (_count == 0) then {
 
 	_flag = false;
 	//If selection fails ten times, a random point is selected-
-	for[{_i = 0},{_i<10},{_i = _i +1}] do {
+	for[{_i = 0},{_i<15},{_i = _i +1}] do {
 		_extractionPointNo = (floor random 8) + 1;
 		drn_var_Escape_ExtractionMarkerPos = getMarkerPos ("drn_Escape_ExtractionPos" + str _extractionPointNo);
 		
