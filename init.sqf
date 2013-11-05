@@ -5,7 +5,7 @@ call compileFinal preprocessFileLineNumbers "FAR_revive\FAR_revive_init.sqf";
 execVM "config.sqf";
 
 if(!isDedicated) then {
-	startLoadingScreen ["Loading Mission, please wait...","Escape_loadingScreen"];
+	//startLoadingScreen ["Loading Mission, please wait...","Escape_loadingScreen"];
 	//startLoadingScreen ["Loading Mission, please wait..."];
 };
 
@@ -359,7 +359,7 @@ if (!isNull player) then {
 };
 waitUntil {!(isNil "drn_startPos")};
 waitUntil {!(isNil "drn_fenceIsCreated")};
-endLoadingScreen;
+//endLoadingScreen;
 sleep 1;
 ["Somewhere on", "Altis", str (date select 2) + "/" + str (date select 1) + "/" + str (date select 0) + " " + str (date select 3) + ":00"] spawn BIS_fnc_infoText;
 
