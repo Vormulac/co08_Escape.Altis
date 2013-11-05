@@ -1,9 +1,10 @@
 if (!isServer) exitWith {};
 
 private ["_searchAreaMarkerName", "_debug"];
-private ["_trigger", "_marker", "_state", "_timeUntilMarkerSizeMediumMin", "_timeUntilMarkerSizeLargeMin", "_searchStartTimeSek", "_markerState", "_lostContactTimeSek", "_maxKnowledge", "_detectedUnit"];
+private ["_trigger","_trigger2","_marker", "_state", "_timeUntilMarkerSizeMediumMin", "_timeUntilMarkerSizeLargeMin", "_searchStartTimeSek", "_markerState", "_lostContactTimeSek", "_maxKnowledge", "_detectedUnit"];
 private ["_unitIsDetected", "_enemyUnit", "_knowledge", "_detectedUnitsPosition", "_unitThatDetected", "_unitThatDetectedPositionAccuracy", "_minTimeUntilReportToHQSec", "_maxTimeUntilReportToHQSec", "_timeUntilReportToHQSec"];
 private ["_reportingUnit", "_debugMsg", "_lastDebugMsg", "_reportingStartTime", "_worldSizeXY", "_searchAreaDiamSmall", "_searchAreaDiamMedium", "_searchAreaDiamLarge", "_searchAreaMarkerCreated"];
+private["_knownPositionHelperObject","_knownPositionMinDistance"];
 
 _searchAreaMarkerName = _this select 0;
 if (count _this > 1) then {_debug = _this select 1;} else {_debug = false;};
@@ -16,8 +17,11 @@ _searchAreaDiamMedium = 700;
 _searchAreaDiamLarge = 1500;
 _timeUntilMarkerSizeMediumMin = 1;
 _timeUntilMarkerSizeLargeMin = 3;
-_minTimeUntilReportToHQSec = 0;
-_maxTimeUntilReportToHQSec = 12;
+_minTimeUntilReportToHQSec = 6;
+_maxTimeUntilReportToHQSec = 20;
+
+_knownPositionHelperObject = a3e_var_knownPositionHelperObject;
+_knownPositionMinDistance = a3e_var_knownPositionMinDistance;
 
 drn_var_SearchLeader_Detected = false;
 drn_var_Escape_SearchLeader_civilianReporting = false;
@@ -43,6 +47,11 @@ _trigger setTriggerArea[_worldSizeXY, _worldSizeXY, 0, true];
 _trigger setTriggerActivation["WEST", "EAST D", false];
 _trigger setTriggerStatements["this", "drn_var_SearchLeader_Detected = true;", ""];
 
+_trigger2 = createTrigger["EmptyDetector", [_worldSizeXY / 2, _worldSizeXY / 2, 0]];
+_trigger2 setTriggerArea[_worldSizeXY, _worldSizeXY, 0, true];
+_trigger2 setTriggerActivation["WEST", "GUER D", false];
+_trigger2 setTriggerStatements["this", "drn_var_SearchLeader_Detected = true;", ""];
+
 // Start thread that sets detected by civilian
 [] spawn {
     while {true} do {
@@ -67,6 +76,7 @@ while {1 == 1} do {
 	if (drn_var_SearchLeader_Detected) then {
 
 		deleteVehicle _trigger;
+		deleteVehicle _trigger2;
 
 		// Find the enemy that detected us
 
@@ -89,7 +99,7 @@ while {1 == 1} do {
 				_leader = _x;
 			} foreach units _x;
 
-            if (alive _leader && side _x == east) then {
+            if (alive _leader && (side _x == east || side _x == resistance)) then {
 				_nearestEnemy = _leader findNearestEnemy position _leader;
 				
                 if (!isNull _nearestEnemy) then {
@@ -103,7 +113,7 @@ while {1 == 1} do {
                             
                             {
                                 _knowledge = (_leader knowsAbout _x);
-                                if (alive _x && _knowledge > _maxKnowledge && _positionAccuracy < 5) then {
+                                if (alive _x && _knowledge > _maxKnowledge && _positionAccuracy < 15) then {
                                     _maxKnowledge = _knowledge;
                                     _unitIsDetected = true;
                                     _detectedUnit = _x;
@@ -125,6 +135,7 @@ while {1 == 1} do {
         
         // Check if detected by civilian
         if (drn_var_Escape_SearchLeader_civilianReporting && !_unitIsDetected) then {
+			//We need to check if civilian knows about player atm this is cheating for AI
             _unitIsDetected = true;
             _detectedUnit = (call drn_fnc_Escape_GetPlayers) select 0;
             _unitThatDetected = drn_var_Escape_SearchLeader_ReportingCivilian;
@@ -163,7 +174,12 @@ while {1 == 1} do {
 			_trigger setTriggerArea[_worldSizeXY, _worldSizeXY, 0, true];
 			_trigger setTriggerActivation["WEST", "EAST D", false];
 			_trigger setTriggerStatements["this", "drn_var_SearchLeader_Detected = true;", ""];
-
+			
+			_trigger2 = createTrigger["EmptyDetector", [_worldSizeXY / 2, _worldSizeXY / 2, 0]];
+			_trigger2 setTriggerArea[_worldSizeXY, _worldSizeXY, 0, true];
+			_trigger2 setTriggerActivation["WEST", "GUER D", false];
+			_trigger2 setTriggerStatements["this", "drn_var_SearchLeader_Detected = true;", ""];
+			
 			if (_debug) then {
 				_debugMsg = "Enemy lost contact of player group.";
 				if (_debugMsg != _lastDebugMsg) then {
@@ -227,6 +243,20 @@ while {1 == 1} do {
                         };
                     } foreach allGroups;
                 };
+				
+				//Create a spot of last known Position
+				if(count(_detectedUnitsPosition nearObjects [_knownPositionHelperObject,_knownPositionMinDistance])==0) then {
+					_knownPosition = createVehicle [_knownPositionHelperObject, _detectedUnitsPosition, [], 0, "CAN_COLLIDE"];
+					_knownPosition setvariable["A3E_LastUpdated",diag_tickTime,true];
+					_knownPosition setvariable["A3E_Accuracy",_unitThatDetectedPositionAccuracy,true];
+					[_knownPosition] spawn A3E_fnc_watchKnownPosition;
+				} else {
+					_list = nearestObjects [_detectedUnitsPosition, [_knownPositionHelperObject], _knownPositionMinDistance];
+					(_list select 0) setpos _detectedUnitsPosition;
+					(_list select 0) setvariable["A3E_LastUpdated",diag_tickTime,true];
+					(_list select 0) setvariable["A3E_Accuracy",_unitThatDetectedPositionAccuracy,true];
+				};
+
                 
 				// If search area marker is not yet created, create it.
 				if (!_searchAreaMarkerCreated) then {
