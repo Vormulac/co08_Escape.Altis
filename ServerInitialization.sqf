@@ -2,14 +2,14 @@ if (!isServer) exitWith {};
 
 private ["_useEscapeSurprises", "_useRandomStartPos", "_useAmmoDepots", "_useSearchLeader", "_useMotorizedSearchGroup", "_useVillagePatrols", "_useMilitaryTraffic", "_useAmbientInfantry", "_useSearchChopper", "_useRoadBlocks", "_guardsExist", "_guardsAreArmed", "_guardLivesLong"];
 private ["_debugEscapeSurprises", "_debugAmmoDepots", "_debugSearchLeader", "_showGroupDiagnostics", "_debugVillagePatrols", "_debugMilitaryTraffic", "_debugAmbientInfantry", "_debugGarbageCollector", "_debugRoadBlocks"];
-private ["_enemyMinSkill", "_enemyMaxSkill", "_searchChopperSearchTimeMin", "_searchChopperRefuelTimeMin", "_enemySpawnDistance", "_playerGroup", "_enemyFrequency", "_comCenGuardsExist", "_fenceRotateDir", "_scriptHandle"];
+private ["_debugAllUnits","_pos","_enemyMinSkill", "_enemyMaxSkill", "_searchChopperSearchTimeMin", "_searchChopperRefuelTimeMin", "_enemySpawnDistance", "_playerGroup", "_enemyFrequency", "_comCenGuardsExist", "_fenceRotateDir", "_scriptHandle"];
 
 // Developer Variables
-EAST Setfriend [independent, 1];
-INDEPENDENT setFriend [EAST, 1];
+EAST Setfriend [RESISTANCE, 1];
+RESISTANCE setFriend [EAST, 1];
 
-WEST setFriend [INDEPENDENT, 0];
-INDEPENDENT setFriend [WEST, 0];
+WEST setFriend [RESISTANCE, 0];
+RESISTANCE setFriend [WEST, 0];
 
 
 //#### Do we need all those switches
@@ -26,25 +26,26 @@ _useRoadBlocks = true;
 
 _guardsExist = true;
 _comCenGuardsExist = true;
-_guardsAreArmed = false;
-_guardLivesLong = false;
+_guardsAreArmed = true;
+_guardLivesLong = true;
 
 // Debug Variables
 
-_debugEscapeSurprises = true;
-_debugAmmoDepots = true;
-_debugSearchLeader = true;
-_debugVillagePatrols = true;
-_debugMilitaryTraffic = true;
-_debugAmbientInfantry = true;
-_debugGarbageCollector = true;
-_debugRoadBlocks = true;
-drn_var_Escape_debugMotorizedSearchGroup = true;
-drn_var_Escape_debugDropChoppers = true;
-drn_var_Escape_debugReinforcementTruck = true;
-drn_var_Escape_debugSearchChopper = true;
-drn_var_Escape_DebugSearchGroup = true;
-drn_var_Escape_debugCivilEnemy = true;
+_debugAllUnits = false;
+_debugEscapeSurprises = false;
+_debugAmmoDepots = false;
+_debugSearchLeader = false;
+_debugVillagePatrols = false;
+_debugMilitaryTraffic = false;
+_debugAmbientInfantry = false;
+_debugGarbageCollector = false;
+_debugRoadBlocks = false;
+drn_var_Escape_debugMotorizedSearchGroup = false;
+drn_var_Escape_debugDropChoppers = false;
+drn_var_Escape_debugReinforcementTruck = false;
+drn_var_Escape_debugSearchChopper = false;
+drn_var_Escape_DebugSearchGroup = false;
+drn_var_Escape_debugCivilEnemy = false;
 
 _showGroupDiagnostics = false;
 
@@ -94,6 +95,7 @@ publicVariable "drn_fenceIsCreated";
 
 //### The following is a mission function now
 //call compile preprocessFileLineNumbers "Scripts\DRN\VillageMarkers\InitVillageMarkers.sqf";
+[true] call drn_fnc_InitVillageMarkers; 
 [_enemyFrequency] call compile preprocessFileLineNumbers "Scripts\Escape\UnitClasses.sqf";
 
 //#### The player group should become a global variable broadcasted to network ###
@@ -299,8 +301,11 @@ if (_useMotorizedSearchGroup) then {
 // Start garbage collector
 [_playerGroup, 750, _debugGarbageCollector] spawn drn_fnc_CL_RunGarbageCollector;
 
+if(_debugAllUnits) then {
+		[] spawn A3E_fnc_unit_debug_marker;
+	};
+
 // Run initialization for scripts that need the players to be gathered at the start position
-//### Whats the meaning of the next line? No private there! ###
 [_useVillagePatrols, _useMilitaryTraffic, _useAmbientInfantry, _debugVillagePatrols, _debugMilitaryTraffic, _debugAmbientInfantry, _enemyMinSkill, _enemyMaxSkill, _enemySpawnDistance, _enemyFrequency, _useRoadBlocks, _debugRoadBlocks, _villagePatrolSpawnArea] spawn {
     private ["_useVillagePatrols", "_useMilitaryTraffic", "_useAmbientInfantry", "_debugVillagePatrols", "_debugMilitaryTraffic", "_debugAmbientInfantry", "_enemyMinSkill", "_enemyMaxSkill", "_enemySpawnDistance", "_enemyFrequency", "_useRoadBlocks", "_debugRoadBlocks"];
     private ["_fnc_OnSpawnAmbientInfantryGroup", "_fnc_OnSpawnAmbientInfantryUnit", "_scriptHandle"];
@@ -539,7 +544,7 @@ if (_useSearchChopper) then {
 // Spawn creation of start position settings
 [drn_startPos, _enemyMinSkill, _enemyMaxSkill, _guardsAreArmed, _guardsExist, _guardLivesLong, _enemyFrequency, _fenceRotateDir] spawn {
     private ["_startPos", "_enemyMinSkill", "_enemyMaxSkill", "_guardsAreArmed", "_guardsExist", "_guardLivesLong", "_enemyFrequency", "_fenceRotateDir"];
-    private ["_i", "_guard", "_guardGroup", "_marker", "_guardCount", "_guardGroups", "_unit", "_createNewGroup", "_guardPos"];
+    private ["_debugAllUnits","_i", "_guard", "_guardGroup", "_marker", "_guardCount", "_guardGroups", "_unit", "_createNewGroup", "_guardPos"];
     
     _startPos = _this select 0;
     _enemyMinSkill = _this select 1;
@@ -549,7 +554,7 @@ if (_useSearchChopper) then {
     _guardLivesLong = _this select 5;
     _enemyFrequency = _this select 6;
     _fenceRotateDir = _this select 7;
-    
+	 
     // Spawn guard
     _guardGroup = createGroup east;
     _guardPos = [_startPos, [(_startPos select 0) - 4, (_startPos select 1) + 4, 0], _fenceRotateDir] call drn_fnc_CL_RotatePosition;
@@ -723,6 +728,7 @@ if (_useSearchChopper) then {
         } foreach _guardGroups;
     };
     
+	
     if (_guardLivesLong) then {
         sleep (30 + floor (random 40));
     }
@@ -733,6 +739,4 @@ if (_useSearchChopper) then {
     // Guard passes out
     _guard setDamage 1;
 };
-
-
 
