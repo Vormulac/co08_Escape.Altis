@@ -6,15 +6,21 @@ class CfgFunctions
 		{
 			class addHijackAction {};
 			class addHealAtMedicalBuildingAction {};
+			class rnd_marker_pos {};
 		};
 		class AI
 		{
+			class RandomPatrolRoute {};
+			class EngageReportedGroup {};
+			class InCombat {};
 		};
 		class Debug
 		{
+			class unit_debug_marker {};
 		};
 		class Server
 		{
+			class watchKnownPosition {};
 		};
 	};
 	class drn
