@@ -1,13 +1,14 @@
 private ["_useRevive"];
 private ["_volume", "_dynamicWeather", "_isJipPlayer"];
 private ["_showIntro", "_showPlayerMapAndCompass", "_fog", "_playerIsImmortal", "_playersEnteredWorld"];
+call compileFinal preprocessFileLineNumbers "FAR_revive\FAR_revive_init.sqf";
+execVM "config.sqf";
 
 if(!isDedicated) then {
 	startLoadingScreen ["Loading Mission, please wait...","Escape_loadingScreen"];
+	//startLoadingScreen ["Loading Mission, please wait..."];
 };
-call compileFinal preprocessFileLineNumbers "FAR_revive\FAR_revive_init.sqf";
 
-execVM "config.sqf";
 
 
 _isJipPlayer = false;
@@ -162,12 +163,6 @@ if (isNil "drn_var_Escape_syncronizationDone") then {
     
     _playersEnteredWorld = 1;
     while {(count call drn_fnc_Escape_GetPlayers != _playersEnteredWorld)} do {
-        
-        if (_showIntro) then {
-            0 cutText ["", "BLACK FADED"];
-        };
-        
-        sleep 0.5;
         
         _playersEnteredWorld = 0;
         if (!isNil "drn_var_Escape_playerEnteredWorld_p1") then {
