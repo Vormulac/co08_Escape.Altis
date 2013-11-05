@@ -59,9 +59,11 @@ _firstGroup = true;
         if (_groupMemberCount == 0) then {
 			_soldier setUnitRank "SEARGENT";
 			//No UPSMON anymore!
-            //_script = [_soldier, _markerName, "spawned", "NOFOLLOW", "NOWAIT", "FORTIFY"] execVM "Scripts\upsmon.sqf";
+            //_script = [_soldier, _markerName,_debug] spawn A3E_fnc_RandomPatrolRoute;
             //_soldierObject set [5, _script];
-            _soldierObject set [6, true];
+            //_soldierObject set [6, true];
+			_script = [_group, _markerName,true] spawn A3E_fnc_RandomPatrolRoute;
+			_group setvariable["A3E_GroupPatrolScript",_script];
         };
 
 		_soldierObject set [2, true];
