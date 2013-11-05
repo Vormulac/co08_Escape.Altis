@@ -1,5 +1,5 @@
 if (!isServer) exitWith {};
-
+//This file is obsolete now!
 private ["_unit", "_debug"];
 private ["_destinationPos", "_worldSizeX", "_worldSizeY", "_group"];
 private ["_waypoint", "_waypointFormations", "_formation"];
