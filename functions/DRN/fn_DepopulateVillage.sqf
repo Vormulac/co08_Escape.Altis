@@ -30,6 +30,12 @@ _deleteGroupDelayed = {
     {
         deleteVehicle _x;
     } foreach units _group;
+	_script = _group getvariable ["A3E_GroupPatrolScript",nil];
+	if(!isNil("_script")) then {
+		if (!(scriptDone _script)) then {
+			terminate _script;
+		};
+	};
     deleteGroup _group;
 };
 
@@ -42,12 +48,8 @@ _deleteGroupDelayed = {
 	_soldierObj = leader _group;
 	//_script = _soldierObj getVariable "activeScript";
 	//_script = _soldier select 4;
-	_hasScript = _soldier select 9;
+	//_hasScript = _soldier select 9;
 
-	if (_hasScript) then {
-		//terminate _script;
-		//(group _soldier) setVariable ["UPSMON_exit", true];
-	};
 
 	{
 		_soldier = _x;
