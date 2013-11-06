@@ -7,7 +7,7 @@ private ["_in_combat","_knows_enemy","_currentPos", "_destinationPos", "_time", 
 _group = _this select 0;
 _markerName = _this select 1;
 _debug = _this select 2;
-
+_debug = true;
 
 if(_debug) then {
 	_leader = (leader _group);
@@ -80,7 +80,7 @@ while {true} do {
 			};
 		} else {
 			private["_searchRange"];
-			_searchRange = 5000;
+			_searchRange = 2000;
 			_destinationPos = [((getPos _leader) select 0) - _searchRange + (random (2* _searchRange)), ((getPos _leader) select 1) - _searchRange + (random (2* _searchRange))];
 			while {surfaceIsWater [_destinationPos select 0, _destinationPos select 1]} do {
 					_destinationPos = [((getPos _leader) select 0) - _searchRange + (random (2* _searchRange)), ((getPos _leader) select 1) - _searchRange + (random (2* _searchRange))];
@@ -91,26 +91,8 @@ while {true} do {
 			_debugmarker1 setmarkerpos getpos _leader;
 			_debugmarker2 setmarkerpos _destinationPos;
 		};
-		//--------------------------------------------//--------------------------------------------//--------------------------------------------//--------------------------------------------
-		if(count (waypoints _group) == 0) then {
-			_group addWaypoint [[0,0,0], 0];
-			_group addWaypoint [[0,0,0], 1];
-
-		}
-		else {
-			if(count (waypoints _group) == 1) then {
-				_group addWaypoint [[0,0,0], 1];
-			};
-		};
-		[_group, 0] setWaypointPosition [_leader, 10];
-		[_group, 1] setWaypointPosition [_destinationPos, 10];
-		[_group, 1] setWaypointBehaviour "SAFE";
-		[_group, 1] setWaypointSpeed "LIMITED";
-		[_group, 1] setWaypointFormation "COLUMN";
-		[_group, 1] setWaypointType "MOVE";
-		[_group, 1] setWaypointCompletionRadius 5;
-		_group setCurrentWaypoint [_group, 0];
-		//--------------------------------------------//--------------------------------------------//--------------------------------------------//--------------------------------------------
+		
+		[_group,_destinationPos] call a3e_fnc_move;
 
 
 		//IIRC walking speed is 101 m/min (this may be from Arma 2)?

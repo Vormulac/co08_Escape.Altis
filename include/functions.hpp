@@ -13,10 +13,14 @@ class CfgFunctions
 			class RandomPatrolRoute {};
 			class EngageReportedGroup {};
 			class InCombat {};
+			class move {};
+			class moveEngage {};
+			class movePatrol {};
 		};
 		class Debug
 		{
 			class unit_debug_marker {};
+			class drawMapLine {};
 		};
 		class Server
 		{
