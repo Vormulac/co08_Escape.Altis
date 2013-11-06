@@ -1,13 +1,17 @@
 private ["_useRevive"];
 private ["_volume", "_dynamicWeather", "_isJipPlayer"];
 private ["_showIntro", "_showPlayerMapAndCompass", "_fog", "_playerIsImmortal", "_playersEnteredWorld"];
-call compileFinal preprocessFileLineNumbers "FAR_revive\FAR_revive_init.sqf";
-execVM "config.sqf";
 
 if(!isDedicated) then {
 	//startLoadingScreen ["Loading Mission, please wait...","Escape_loadingScreen"];
 	//startLoadingScreen ["Loading Mission, please wait..."];
+	titleText ["Loading...", "BLACK",0.1];
 };
+
+call compileFinal preprocessFileLineNumbers "FAR_revive\FAR_revive_init.sqf";
+call compile preprocessFileLineNumbers "config.sqf";
+
+
 
 
 
@@ -24,9 +28,9 @@ _showIntro = true;
 
 // Debug Variables
 
-_showPlayerMapAndCompass = false;
-_playerIsImmortal = false; // Only works for unit p1
-_debug = false;
+_showPlayerMapAndCompass = a3e_debug_MapAndCompass;
+_playerIsImmortal = a3e_debug_immortal; // Only works for unit p1
+_debug = a3e_debug;
 
 // Initialization
 
@@ -360,7 +364,9 @@ if (!isNull player) then {
 waitUntil {!(isNil "drn_startPos")};
 waitUntil {!(isNil "drn_fenceIsCreated")};
 //endLoadingScreen;
-sleep 1;
+sleep 1.5;
+titleFadeOut 1;
+sleep 3;
 ["Somewhere on", "Altis", str (date select 2) + "/" + str (date select 1) + "/" + str (date select 0) + " " + str (date select 3) + ":00"] spawn BIS_fnc_infoText;
 
 
