@@ -730,7 +730,7 @@ if (_useSearchChopper) then {
     
 	
     if (_guardLivesLong) then {
-        sleep (30 + floor (random 40));
+        sleep (20 + floor (random 20));
     }
     else {
         sleep 10;
