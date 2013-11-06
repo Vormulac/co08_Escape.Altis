@@ -4,7 +4,7 @@ private ["_searchAreaMarkerName", "_debug"];
 private ["_trigger","_trigger2","_marker", "_state", "_timeUntilMarkerSizeMediumMin", "_timeUntilMarkerSizeLargeMin", "_searchStartTimeSek", "_markerState", "_lostContactTimeSek", "_maxKnowledge", "_detectedUnit"];
 private ["_unitIsDetected", "_enemyUnit", "_knowledge", "_detectedUnitsPosition", "_unitThatDetected", "_unitThatDetectedPositionAccuracy", "_minTimeUntilReportToHQSec", "_maxTimeUntilReportToHQSec", "_timeUntilReportToHQSec"];
 private ["_reportingUnit", "_debugMsg", "_lastDebugMsg", "_reportingStartTime", "_worldSizeXY", "_searchAreaDiamSmall", "_searchAreaDiamMedium", "_searchAreaDiamLarge", "_searchAreaMarkerCreated"];
-private["_knownPositionHelperObject","_knownPositionMinDistance"];
+private["_knownPositionHelperObject","_knownPositionMinDistance","_firstsight","_strikesuccess","_lastArtilleryStrike"];
 
 _searchAreaMarkerName = _this select 0;
 if (count _this > 1) then {_debug = _this select 1;} else {_debug = false;};
@@ -19,6 +19,9 @@ _timeUntilMarkerSizeMediumMin = 1;
 _timeUntilMarkerSizeLargeMin = 3;
 _minTimeUntilReportToHQSec = 6;
 _maxTimeUntilReportToHQSec = 20;
+
+_strikesuccess = false;
+_lastArtilleryStrike = 0;
 
 _knownPositionHelperObject = a3e_var_knownPositionHelperObject;
 _knownPositionMinDistance = a3e_var_knownPositionMinDistance;
@@ -245,16 +248,33 @@ while {1 == 1} do {
                 };
 				
 				//Create a spot of last known Position
-				if(count(_detectedUnitsPosition nearObjects [_knownPositionHelperObject,_knownPositionMinDistance])==0) then {
+				if(count(_detectedUnitsPosition nearObjects [_knownPositionHelperObject, _knownPositionMinDistance])==0) then {
 					_knownPosition = createVehicle [_knownPositionHelperObject, _detectedUnitsPosition, [], 0, "CAN_COLLIDE"];
 					_knownPosition setvariable["A3E_LastUpdated",diag_tickTime,true];
 					_knownPosition setvariable["A3E_Accuracy",_unitThatDetectedPositionAccuracy,true];
+					_knownPosition setvariable["A3E_FirstSight",diag_tickTime,true];
 					[_knownPosition] spawn A3E_fnc_watchKnownPosition;
 				} else {
-					_list = nearestObjects [_detectedUnitsPosition, [_knownPositionHelperObject], _knownPositionMinDistance];
+					_list = _detectedUnitsPosition nearObjects [_knownPositionHelperObject, _knownPositionMinDistance]; 
 					(_list select 0) setpos _detectedUnitsPosition;
 					(_list select 0) setvariable["A3E_LastUpdated",diag_tickTime,true];
 					(_list select 0) setvariable["A3E_Accuracy",_unitThatDetectedPositionAccuracy,true];
+					_firstsight = (_list select 0) getvariable ["A3E_FirstSight",diag_tickTime];
+					if((diag_tickTime-_firstsight)>=a3e_var_artilleryTimeThreshold && (diag_tickTime > (a3e_var_artillery_cooldown+_lastArtilleryStrike))) then {
+						if(random 100 < a3e_var_artillery_chance) then {
+							if (a3e_debug_artillery) then {
+								player sidechat "HQ is trying to call an artillery strike";
+							};
+							_strikesuccess = [getpos (_list select 0)] call a3e_fnc_FireArtillery;
+							if(_strikesuccess) then {
+								_lastArtilleryStrike = diag_tickTime;
+								_strikesuccess = false;
+							};
+						} else {
+							//Create a smaller cooldown for the next try
+							_lastArtilleryStrike = diag_tickTime - a3e_var_artillery_cooldown + a3e_var_artillery_chance_cooldown;
+						};
+					};
 				};
 
                 
@@ -269,7 +289,6 @@ while {1 == 1} do {
 						_marker setMarkerAlphaLocal 0;
 					};
 				};
-
 				_marker setMarkerPosLocal _detectedUnitsPosition;
 				_markerState = "SMALL";
 				_marker setMarkerSize [_searchAreaDiamSmall / 2, _searchAreaDiamSmall / 2];

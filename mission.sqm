@@ -5,12 +5,16 @@ class Mission
 	{
 		"a3_map_Altis",
 		"A3_Characters_F_BLUFOR",
-		"a3_characters_f_beta"
+		"a3_characters_f_beta",
+		"A3_Static_F_Mortar_01",
+		"A3_Armor_F_T100K"
 	};
 	addOnsAuto[]=
 	{
 		"A3_Characters_F_BLUFOR",
 		"a3_characters_f_beta",
+		"A3_Static_F_Mortar_01",
+		"A3_Armor_F_T100K",
 		"a3_map_altis"
 	};
 	randomSeed=16426086;
@@ -37,7 +41,7 @@ class Mission
 	};
 	class Groups
 	{
-		items=2;
+		items=5;
 		class Item0
 		{
 			side="WEST";
@@ -173,6 +177,60 @@ class Mission
 					leader=1;
 					skill=0.60000002;
 					text="server";
+				};
+			};
+		};
+		class Item2
+		{
+			side="EAST";
+			class Vehicles
+			{
+				items=1;
+				class Item0
+				{
+					position[]={14669.868,17.91,16695.209};
+					id=9;
+					side="EAST";
+					vehicle="O_Mortar_01_F";
+					leader=1;
+					skill=0.60000002;
+					text="arti_1";
+				};
+			};
+		};
+		class Item3
+		{
+			side="EAST";
+			class Vehicles
+			{
+				items=1;
+				class Item0
+				{
+					position[]={14694.581,17.91,16717.906};
+					id=10;
+					side="EAST";
+					vehicle="O_Mortar_01_F";
+					leader=1;
+					skill=0.60000002;
+					text="arti_2";
+				};
+			};
+		};
+		class Item4
+		{
+			side="EAST";
+			class Vehicles
+			{
+				items=1;
+				class Item0
+				{
+					position[]={14697.102,17.91,16691.678};
+					id=11;
+					side="EAST";
+					vehicle="O_MBT_02_arty_F";
+					leader=1;
+					skill=0.60000002;
+					text="arti_3";
 				};
 			};
 		};

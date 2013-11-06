@@ -16,6 +16,7 @@ class CfgFunctions
 			class move {};
 			class moveEngage {};
 			class movePatrol {};
+			class FireArtillery {};
 		};
 		class Debug
 		{
