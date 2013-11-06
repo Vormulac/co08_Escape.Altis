@@ -14,7 +14,7 @@ class Params
 		title="Enemy Frequency";
 		values[]={0,1,2,3};
 		texts[]={"Adaptive", "Few (suitable for 1-3 players)", "Some (suitable for 4-6 players)", "A lot (suitable for 7-8 players)"};
-		default = 2;
+		default = 3;
 	};
 	class TimeOfDay	
 	{	

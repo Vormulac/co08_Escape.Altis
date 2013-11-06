@@ -58,7 +58,7 @@ drn_fnc_Escape_OnSpawnGeneralSoldierUnit = {
     if(EAST == side _this) then {
 	   _this unlinkItem "NVGoggles_OPFOR";
     } else {
-        if(INDEPENDENT == side _this) then {
+        if(RESISTANCE == side _this) then {
             _this unlinkItem "NVGoggles_INDEP";
         };
     };

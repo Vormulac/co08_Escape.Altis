@@ -14,7 +14,7 @@ if (count _this > 8) then { _minSpawnDistanceAtStartup = _this select 8; } else 
 if (count _this > 9) then { _fnc_OnSpawnInfantryGroup = _this select 9; } else { _fnc_OnSpawnInfantryGroup = {}; };
 if (count _this > 10) then { _fnc_OnSpawnMannedVehicle = _this select 10; } else { _fnc_OnSpawnMannedVehicle = {}; };
 if (count _this > 11) then { _debug = _this select 11; } else { _debug = false; };
-_factionsArray = [EAST, independent, EAST, independent, EAST, independent, EAST, independent, EAST, independent, EAST, independent, EAST, independent];
+_factionsArray = [EAST, RESISTANCE, EAST, RESISTANCE, EAST, RESISTANCE, EAST, RESISTANCE, EAST, RESISTANCE, EAST, RESISTANCE, EAST, RESISTANCE];
 
 _isFaction = false;
 if (str _infantryClasses == """USMC""") then {
@@ -189,7 +189,7 @@ _fnc_CreateRoadBlock = {
     if(_side == EAST) then {
         _possibleVehicles = drn_arr_Escape_RoadBlock_MannedVehicleTypes;
     };
-    if (_side == independent) then {
+    if (_side == RESISTANCE) then {
         _possibleVehicles = drn_arr_Escape_RoadBlock_MannedVehicleTypes_Ind;
     };
     _result = [_pos, _dir, _possibleVehicles select floor random count _possibleVehicles, _side] call BIS_fnc_spawnVehicle;
@@ -230,7 +230,7 @@ _fnc_CreateRoadBlock = {
     if(_side == EAST) then {
         _guardTypes = drn_arr_Escape_InfantryTypes;
     };
-    if (_side == independent) then {
+    if (_side == RESISTANCE) then {
         _guardTypes = drn_arr_Escape_InfantryTypes_Ind;
     };
     

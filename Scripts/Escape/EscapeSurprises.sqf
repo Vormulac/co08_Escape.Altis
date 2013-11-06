@@ -136,7 +136,8 @@ while {true} do {
                         _group = _this select 0;
                         _dropPos = _this select 1;
                         
-                        [_group, drn_searchAreaMarkerName, _dropPos, drn_var_Escape_DebugSearchGroup] execVM "Scripts\DRN\SearchGroup\SearchGroup.sqf";                        
+                        //[_group, drn_searchAreaMarkerName, _dropPos, drn_var_Escape_DebugSearchGroup] execVM "Scripts\DRN\SearchGroup\SearchGroup.sqf";
+                        [_group, drn_searchAreaMarkerName, _dropPos, drn_var_Escape_DebugSearchGroup] spawn DRN_fnc_SearchGroup;
                     };
                     
                     [getMarkerPos "drn_dropChopperStartPosMarker", east, "O_Heli_Light_02_F", "O_Pilot_F", _dropUnits, _dropPosition, _minEnemySkill, _maxEnemySkill, _onGroupDropped, drn_var_Escape_debugDropChoppers] execVM "Scripts\Escape\CreateDropChopper.sqf";
@@ -177,7 +178,8 @@ while {true} do {
                         _x call drn_fnc_Escape_OnSpawnGeneralSoldierUnit;
                     } foreach units _group;
                     
-                    [_chopper, drn_searchAreaMarkerName, (5 + random 15), (5 + random 15), drn_var_Escape_debugSearchChopper] execVM "Scripts\DRN\SearchChopper\SearchChopper.sqf";
+                    //[_chopper, drn_searchAreaMarkerName, (5 + random 15), (5 + random 15), drn_var_Escape_debugSearchChopper] execVM "Scripts\DRN\SearchChopper\SearchChopper.sqf";
+                    [_chopper, drn_searchAreaMarkerName, (5 + random 15), (5 + random 15), drn_var_Escape_debugSearchChopper] spawn DRN_fnc_SearchChopper;
                   
                     // Create new russian search chopper
                     _surpriseArgs = [_minEnemySkill, _maxEnemySkill];

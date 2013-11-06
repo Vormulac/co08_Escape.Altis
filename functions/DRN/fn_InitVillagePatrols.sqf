@@ -28,7 +28,7 @@ if (count _this > 7) then {_maxSkill = _this select 7;} else {_maxSkill = 0.6;};
 if (count _this > 8) then {_spawnRadius = _this select 8;} else {_spawnRadius = 750;};
 if (count _this > 9) then {_fnc_onSpawnGroup = _this select 9;} else {_fnc_onSpawnGroup = {};};
 if (count _this > 10) then {_debug = _this select 10;} else {_debug = false;};
-_factionsArray = [independent, independent, independent, independent, EAST, independent, EAST, independent, EAST, independent, EAST, independent, EAST, independent];
+_factionsArray = [RESISTANCE, RESISTANCE, RESISTANCE, RESISTANCE, EAST, RESISTANCE, EAST, RESISTANCE, EAST, RESISTANCE, EAST, RESISTANCE, EAST, RESISTANCE];
 if (_debug) then {
 	_message = "Initializing village patrols.";
 	diag_log _message;
@@ -99,7 +99,7 @@ _villageNo = 0;
         if(_faction == EAST) then {
             _possibleInfantryTypes = drn_arr_Escape_InfantryTypes;
         };
-        if (_faction == independent) then {
+        if (_faction == RESISTANCE) then {
             _possibleInfantryTypes = drn_arr_Escape_InfantryTypes_Ind;
         };
 

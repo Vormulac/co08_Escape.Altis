@@ -18,7 +18,7 @@ if (count _this > 6) then {_minSkill = _this select 6;} else {_minSkill = 0.4;};
 if (count _this > 7) then {_maxSkill = _this select 7;} else {_maxSkill = 0.6;};
 if (count _this > 8) then {_fnc_OnSpawnVehicle = _this select 8;} else {_fnc_OnSpawnVehicle = {};};
 if (count _this > 9) then {_debug = _this select 9;} else {_debug = false;};
-_factionsArray = [EAST, independent, EAST, independent, EAST, independent, EAST, independent, EAST, independent, EAST, independent, EAST, independent];
+_factionsArray = [EAST, RESISTANCE, EAST, RESISTANCE, EAST, RESISTANCE, EAST, RESISTANCE, EAST, RESISTANCE, EAST, RESISTANCE, EAST, RESISTANCE];
 while {isNil "drn_var_commonLibInitialized"} do {
     player sideChat "Script MilitaryTraffic.sqf requires CommonLib v1.02.";
     sleep 10;
@@ -307,7 +307,7 @@ while {true} do {
             if(_faction == EAST) then {
                 _possibleVehicles = drn_arr_Escape_MilitaryTraffic_EnemyVehicleClasses;
             };
-            if (_faction == independent) then {
+            if (_faction == RESISTANCE) then {
                 _possibleVehicles = drn_arr_Escape_MilitaryTraffic_EnemyVehicleClasses_Ind;
             };
 

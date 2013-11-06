@@ -41,7 +41,7 @@ if (count _this > 10) then {_garbageCollectDistance = _this select 10;} else {_g
 if (count _this > 11) then {_fnc_OnSpawnUnit = _this select 11;} else {_fnc_OnSpawnUnit = {};};
 if (count _this > 12) then {_fnc_OnSpawnGroup = _this select 12;} else {_fnc_OnSpawnGroup = {};};
 if (count _this > 13) then {_debug = _this select 13;} else {_debug = false;};
-_factionsArray = [EAST, independent, EAST, independent, EAST, independent, EAST, independent, EAST, independent, EAST, independent, EAST, independent];
+_factionsArray = [EAST, RESISTANCE, EAST, RESISTANCE, EAST, RESISTANCE, EAST, RESISTANCE, EAST, RESISTANCE, EAST, RESISTANCE, EAST, RESISTANCE];
 
 
 if (isNil "drn_var_commonLibInitialized") then {
@@ -142,7 +142,7 @@ while {true} do {
         if(_faction == EAST) then {
             _possibleInfantryTypes = drn_arr_Escape_InfantryTypes;
         };
-        if (_faction == independent) then {
+        if (_faction == RESISTANCE) then {
             _possibleInfantryTypes = drn_arr_Escape_InfantryTypes_Ind;
         };
 

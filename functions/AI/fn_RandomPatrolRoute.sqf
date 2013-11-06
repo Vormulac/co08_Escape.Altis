@@ -22,6 +22,9 @@ if(_debug) then {
 	_debugmarker1 setmarkertext format["Pos %1",_group];
 	_debugmarker2 setmarkertext format["Aim %1",_group];
 };
+
+
+
 while {true} do {
 	_leader = (leader _group);
 	{
@@ -72,23 +75,58 @@ while {true} do {
 		};
 		if(!isNil("_markerName")) then {
 			_destinationPos = [_markerName] call a3e_fnc_rnd_marker_pos;
+			while {surfaceIsWater [_destinationPos select 0, _destinationPos select 1]} do {
+				_destinationPos = [_markerName] call a3e_fnc_rnd_marker_pos;
+			};
 		} else {
-			_destinationPos = [(getpos _leader select 0) + random 600 - 300,(getpos _leader select 1) + random 600 - 300,0];
+			private["_searchRange"];
+			_searchRange = 5000;
+			_destinationPos = [((getPos _leader) select 0) - _searchRange + (random (2* _searchRange)), ((getPos _leader) select 1) - _searchRange + (random (2* _searchRange))];
+			while {surfaceIsWater [_destinationPos select 0, _destinationPos select 1]} do {
+					_destinationPos = [((getPos _leader) select 0) - _searchRange + (random (2* _searchRange)), ((getPos _leader) select 1) - _searchRange + (random (2* _searchRange))];
+			};
 		};
 
 		if(_debug) then {
 			_debugmarker1 setmarkerpos getpos _leader;
 			_debugmarker2 setmarkerpos _destinationPos;
 		};
-		//doMove because groupMove makes a waypoint
-		_leader doMove _destinationPos;
+		//--------------------------------------------//--------------------------------------------//--------------------------------------------//--------------------------------------------
+		if(count (waypoints _group) == 0) then {
+			_group addWaypoint [[0,0,0], 0];
+			_group addWaypoint [[0,0,0], 1];
+
+		}
+		else {
+			if(count (waypoints _group) == 1) then {
+				_group addWaypoint [[0,0,0], 1];
+			};
+		};
+		[_group, 0] setWaypointPosition [_leader, 10];
+		[_group, 1] setWaypointPosition [_destinationPos, 10];
+		[_group, 1] setWaypointBehaviour "SAFE";
+		[_group, 1] setWaypointSpeed "LIMITED";
+		[_group, 1] setWaypointFormation "COLUMN";
+		[_group, 1] setWaypointType "MOVE";
+		[_group, 1] setWaypointCompletionRadius 5;
+		_group setCurrentWaypoint [_group, 0];
+		//--------------------------------------------//--------------------------------------------//--------------------------------------------//--------------------------------------------
+
+
 		//IIRC walking speed is 101 m/min (this may be from Arma 2)?
-		_time = ((_currentPos distance _destinationPos) / 101) * 60;
+		_time = ((_currentPos distance _destinationPos) / 101) * 60 * 1.01;
 		_time = _time + random 20;
 		sleep _time;
 	} else {
 		//Place for possible flanking, smoke, etc
 		// also we can plug the detection and reporting of the players here as this block is reached at detecting enemys
+		if(count (waypoints _group) == 1) then {
+			[_group, 1] setWaypointPosition [getPos _leader, 10];
+		};
+		{
+			_x setbehaviour "COMBAT";
+			_x setspeedmode "FULL";
+		} foreach units (group _leader);
 		sleep 30;
 	};
 };

@@ -556,7 +556,7 @@ if (_useSearchChopper) then {
     _fenceRotateDir = _this select 7;
 	 
     // Spawn guard
-    _guardGroup = createGroup east;
+    _guardGroup = createGroup RESISTANCE;
     _guardPos = [_startPos, [(_startPos select 0) - 4, (_startPos select 1) + 4, 0], _fenceRotateDir] call drn_fnc_CL_RotatePosition;
     //(drn_arr_Escape_StartPositionGuardTypes select floor (random count drn_arr_Escape_StartPositionGuardTypes)) createUnit [_guardPos, _guardGroup, "", (0.5), "CAPTAIN"];
     _guardGroup createUnit [(drn_arr_Escape_StartPositionGuardTypes select floor (random count drn_arr_Escape_StartPositionGuardTypes)), _guardPos, [], 0, "FORM"];
@@ -613,7 +613,7 @@ if (_useSearchChopper) then {
         };
         
         if (_createNewGroup) then {
-            _guardGroup = createGroup east;
+            _guardGroup = createGroup RESISTANCE;
             _guardGroups set [count _guardGroups, _guardGroup];
             _createNewGroup = false;
         };
