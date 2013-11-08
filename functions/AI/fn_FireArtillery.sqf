@@ -57,4 +57,4 @@ _success = false;
 	};
 } foreach a3e_var_artillery_units;
 
-_success
+_success;
