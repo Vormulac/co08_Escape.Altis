@@ -62,7 +62,7 @@ _firstGroup = true;
             //_script = [_soldier, _markerName,false] spawn A3E_fnc_RandomPatrolRoute;
             //_soldierObject set [5, _script];
             //_soldierObject set [6, true];
-			_script = [_group, _markerName, false] spawn A3E_fnc_RandomPatrolRoute;
+			_script = [_group, _markerName] spawn A3E_fnc_Patrol;
 			_group setvariable["A3E_GroupPatrolScript",_script];
         };
 

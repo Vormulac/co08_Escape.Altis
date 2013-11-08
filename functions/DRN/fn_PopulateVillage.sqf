@@ -49,7 +49,7 @@ if (count _groups == 0) exitWith {};
 			_soldier set [3, _soldierObj];
 			
 			if (_rank == "SERGEANT") then {
-				_script = [_newGroup, _markerName, false] spawn A3E_fnc_RandomPatrolRoute;
+				_script = [_newGroup, _markerName] spawn A3E_fnc_Patrol;
 				_newGroup setvariable["A3E_GroupPatrolScript",_script];
 
 			};

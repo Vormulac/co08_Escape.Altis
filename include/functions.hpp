@@ -6,22 +6,33 @@ class CfgFunctions
 		{
 			class addHijackAction {};
 			class addHealAtMedicalBuildingAction {};
-			class rnd_marker_pos {};
+			class RandomMarkerPos {};
+			class GetSideColor {};
+			class RandomSpawnPos {};
+			class DisableCenterButton {};
+			class KeyDown {};
+			class findControl {};
+			class CompileGroupVar {};
 		};
 		class AI
 		{
 			class RandomPatrolRoute {};
 			class EngageReportedGroup {};
 			class InCombat {};
-			class move {};
-			class moveEngage {};
-			class movePatrol {};
+			class Move {};
+			class Search {};
+			class Patrol {};
+			class Flee {};
 			class FireArtillery {};
+			class OrderSearch {};
+			class SetTaskState {};
+			class GetTaskState {};
 		};
 		class Debug
 		{
 			class unit_debug_marker {};
 			class drawMapLine {};
+			class TrackGroup {};
 		};
 		class Server
 		{

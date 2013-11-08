@@ -25,7 +25,7 @@ private ["_referenceGroup", "_side", "_groupsCount", "_minSpawnDistance", "_maxS
 private ["_activeGroups", "_activeUnits", "_spawnPos", "_group", "_possibleInfantryTypes", "_infantryType", "_minDistance", "_skill", "_vehicleVarName", "_factionsArray"];
 private ["_minUnitsInGroup", "_maxUnitsInGroup", "_i", "_atScriptStartUp", "_currentEntityNo", "_debugMsg", "_farAwayUnits", "_farAwayUnitsCount", "_unitsToDeleteCount", "_groupsToDeleteCount"];
 private ["_debugMarkers", "_debugMarkerNo", "_debugMarkerName", "_isFaction", "_unitsToDelete", "_groupsToDelete", "_tempGroups", "_tempGroupsCount"];
-private ["_fnc_OnSpawnUnit", "_fnc_OnSpawnGroup", "_fnc_GetRandomSpawnPos"];
+private ["_fnc_OnSpawnUnit", "_fnc_OnSpawnGroup"];
 
 _referenceGroup = _this select 0;
 _side = _this select 1;
@@ -41,6 +41,8 @@ if (count _this > 10) then {_garbageCollectDistance = _this select 10;} else {_g
 if (count _this > 11) then {_fnc_OnSpawnUnit = _this select 11;} else {_fnc_OnSpawnUnit = {};};
 if (count _this > 12) then {_fnc_OnSpawnGroup = _this select 12;} else {_fnc_OnSpawnGroup = {};};
 if (count _this > 13) then {_debug = _this select 13;} else {_debug = false;};
+
+//WHY!?!?!?!?!
 _factionsArray = [EAST, RESISTANCE, EAST, RESISTANCE, EAST, RESISTANCE, EAST, RESISTANCE, EAST, RESISTANCE, EAST, RESISTANCE, EAST, RESISTANCE];
 
 
@@ -85,35 +87,6 @@ if (!_isFaction) then {
     _possibleInfantryTypes =+ _infantryClasses;
 };
 
-_fnc_GetRandomSpawnPos = {
-    private ["_referenceUnits", "_minSpawnDistance", "_maxSpawnDistance"];
-    private ["_spawnPos", "_posOk", "_direction", "_distance", "_spawnX", "_spawnY", "_referenceUnit"];
-    
-    _referenceUnits = _this select 0;
-    _minSpawnDistance = _this select 1;
-    _maxSpawnDistance = _this select 2;
-    
-    _referenceUnit = _referenceUnits select floor random count _referenceUnits;
-    
-    _posOk = false;
-    while {!_posOk} do {
-        _direction = random 360;
-        _distance = _minSpawnDistance + (random (_maxSpawnDistance - _minSpawnDistance));
-        _spawnX = (getPos _referenceUnit select 0) + ((sin _direction) * _distance);
-        _spawnY = (getPos _referenceUnit select 1) + ((cos _direction) * _distance);
-        _spawnPos = [_spawnX, _spawnY, 0];
-        
-        _posOk = true;
-        {
-            if ((surfaceIsWater _spawnPos) || (_spawnPos distance (vehicle _x) < _minSpawnDistance)) then {
-                _posOk = false;
-            };
-        } foreach _referenceUnits;
-    };
-    
-    _spawnPos
-};
-
 _atScriptStartUp = true;
 
 while {true} do {
@@ -135,7 +108,7 @@ while {true} do {
         };
         
         // Get a random spawn position
-        _spawnPos = [units _referenceGroup, _minDistance, _maxSpawnDistance] call _fnc_GetRandomSpawnPos;
+        _spawnPos = [units _referenceGroup, _minDistance, _maxSpawnDistance] call a3e_fnc_RandomSpawnPos;
         _skill = _minSkill + random (_maxSkill - _minSkill);
         
         _faction = _factionsArray select (floor (random (count _factionsArray)));
@@ -183,7 +156,7 @@ while {true} do {
         // Start group
         //[((units _group) select 0), _debug] spawn drn_fnc_MoveInfantryGroup;
 		
-		_script = [_group, nil, false] spawn A3E_fnc_RandomPatrolRoute;
+		_script = [_group, nil] spawn A3E_fnc_Patrol;
 		_group setvariable["A3E_GroupPatrolScript",_script];
 		
         _activeGroups set [count _activeGroups, _group];

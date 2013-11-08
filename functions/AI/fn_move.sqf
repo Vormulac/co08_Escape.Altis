@@ -1,4 +1,4 @@
-private["_group","_position","_type","_formation","_speed","_combatmode","_onComplete","_script","_marker"];
+private["_group","_position","_type","_formation","_speed","_combatmode","_onComplete","_script","_marker","_markername"];
 
 _group = [_this,0,grpNull,[grpNull]] call bis_fnc_param;
 _position = [_this,1,[0,0,0],[[]]] call bis_fnc_param;
@@ -9,30 +9,35 @@ _combatmode = [_this,5,"SAFE",[""]] call bis_fnc_param;
 _onComplete = [_this,6,"",[""]] call bis_fnc_param;
 
 
+if(a3e_debug_EnemyPosition) then {
+	_script = _group getvariable "a3e_debug_positionScript";
+	if(isNil("_script")) then {
+		_script = [_group] spawn a3e_fnc_TrackGroup;
+		_group setvariable ["a3e_debug_positionScript",_script,false];
+	};
+};
 if(a3e_debug_Waypoints) then {
-	player sidechat format["%1 moving to %2",name leader _group,_position];
+	_marker = _group getvariable "s3e_debug_moveMarker";
 	if(isNil("_marker")) then {
 		_marker = [getpos leader _group,_position] call a3e_fnc_drawMapLine;
+		_group setvariable ["s3e_debug_moveMarker",_marker,false];
 	} else {
 		[getpos leader _group,_position,_marker] call a3e_fnc_drawMapLine;
 	};
 };
-/*if(count (waypoints _group) == 0) then {
-	//_group addWaypoint [[0,0,0], 0];
-	_group addWaypoint [[0,0,0], 1];
 
-}*/
 if(count (waypoints _group) <= 1) then {
 	_group addWaypoint [[0,0,0], 1];
 };
 
-//[_group, 0] setWaypointPosition [_leader, 1];
+
 [_group, 1] setWaypointPosition [_position, 1];
 [_group, 1] setWaypointBehaviour _combatmode;
 [_group, 1] setWaypointSpeed _speed;
 [_group, 1] setWaypointFormation _formation;
 [_group, 1] setWaypointType _type;
-[_group, 1] setWaypointCompletionRadius 5;
+[_group, 1] setWaypointCompletionRadius 10;
+[_group, 1] setWaypointStatements ["true", _onComplete];
 _group setCurrentWaypoint [_group, 1];
 //Return Waypoint
 [_group, 1];

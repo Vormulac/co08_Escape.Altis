@@ -61,7 +61,7 @@ while {!_exitScript} do {
 			_position = [_searchAreaMarker] call drn_fnc_CL_GetRandomMarkerPos;
 
 			_waypoint = _group addWaypoint [_position, 0];
-			_waypoint setWaypointType "MOVE";
+			_waypoint setWaypointType "LOITER";
 			_waypoint setWaypointBehaviour "SAFE";
 			_waypoint setWaypointSpeed "NORMAL";
 			_waypoint setWaypointStatements ["true", vehicleVarName _chopper + " setVariable [""waypointFulfilled"", true];"];

@@ -56,6 +56,8 @@ drn_var_Escape_MissionComplete = false;
 publicVariable "drn_var_Escape_AllPlayersDead";
 publicVariable "drn_var_Escape_MissionComplete";
 
+a3e_var_GrpNumber = 0;
+
 //_enemyMinSkill = (paramsArray select 0) / 6;
 //_enemyMaxSkill = (paramsArray select 0) / 6 + 0.1;
 _enemyMinSkill = (paramsArray select 0);
@@ -684,6 +686,7 @@ if (_useSearchChopper) then {
                     if ((_x distance _startPos) > 25 && (_x distance _startPos) < 150) exitWith {
                         drn_escapeHasStarted = true;
                         publicVariable "drn_escapeHasStarted";
+						hint "dstart by distance";
                     };
                 };
             } foreach call drn_fnc_Escape_GetPlayers;
@@ -730,7 +733,7 @@ if (_useSearchChopper) then {
     
 	
     if (_guardLivesLong) then {
-        sleep (20 + floor (random 20));
+        sleep (10 + floor (random 10));
     }
     else {
         sleep 10;

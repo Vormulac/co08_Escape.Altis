@@ -13,8 +13,6 @@ call compile preprocessFileLineNumbers "config.sqf";
 
 
 
-
-
 _isJipPlayer = false;
 if (!isServer && isNull player) then
 {
@@ -228,6 +226,7 @@ if (isMultiplayer) then {
     };
 };
 
+
 if (!isMultiplayer) then {
     {
         /*
@@ -361,6 +360,8 @@ if (!isNull player) then {
         } foreach units group player;
     };
 };
+ waitUntil {!isNull(findDisplay 46)};
+(findDisplay 46) displayAddEventHandler ["keyDown", "_this call a3e_fnc_KeyDown"];
 waitUntil {!(isNil "drn_startPos")};
 waitUntil {!(isNil "drn_fenceIsCreated")};
 //endLoadingScreen;

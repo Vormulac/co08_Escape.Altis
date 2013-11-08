@@ -7,7 +7,6 @@ private ["_in_combat","_knows_enemy","_currentPos", "_destinationPos", "_time", 
 _group = _this select 0;
 _markerName = _this select 1;
 _debug = _this select 2;
-_debug = true;
 
 if(_debug) then {
 	_leader = (leader _group);
@@ -74,9 +73,9 @@ while {true} do {
 			};			
 		};
 		if(!isNil("_markerName")) then {
-			_destinationPos = [_markerName] call a3e_fnc_rnd_marker_pos;
+			_destinationPos = [_markerName] call a3e_fnc_RandomMarkerPos;
 			while {surfaceIsWater [_destinationPos select 0, _destinationPos select 1]} do {
-				_destinationPos = [_markerName] call a3e_fnc_rnd_marker_pos;
+				_destinationPos = [_markerName] call a3e_fnc_RandomMarkerPos;
 			};
 		} else {
 			private["_searchRange"];
@@ -102,7 +101,7 @@ while {true} do {
 	} else {
 		//Place for possible flanking, smoke, etc
 		// also we can plug the detection and reporting of the players here as this block is reached at detecting enemys
-		if(count (waypoints _group) == 1) then {
+		if(count (waypoints _group) == 2) then {
 			[_group, 1] setWaypointPosition [getPos _leader, 10];
 		};
 		{

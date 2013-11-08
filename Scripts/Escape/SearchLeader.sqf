@@ -247,6 +247,7 @@ while {1 == 1} do {
                     } foreach allGroups;
                 };
 				
+				
 				//Create a spot of last known Position
 				if(count(_detectedUnitsPosition nearObjects [_knownPositionHelperObject, _knownPositionMinDistance])==0) then {
 					_knownPosition = createVehicle [_knownPositionHelperObject, _detectedUnitsPosition, [], 0, "CAN_COLLIDE"];
@@ -254,8 +255,10 @@ while {1 == 1} do {
 					_knownPosition setvariable["A3E_Accuracy",_unitThatDetectedPositionAccuracy,true];
 					_knownPosition setvariable["A3E_FirstSight",diag_tickTime,true];
 					[_knownPosition] spawn A3E_fnc_watchKnownPosition;
+					[_knownPosition] spawn a3e_fnc_OrderSearch;
 				} else {
-					_list = _detectedUnitsPosition nearObjects [_knownPositionHelperObject, _knownPositionMinDistance]; 
+					_list = _detectedUnitsPosition nearObjects [_knownPositionHelperObject, _knownPositionMinDistance];
+					_knownPosition = (_list select 0);					
 					(_list select 0) setpos _detectedUnitsPosition;
 					(_list select 0) setvariable["A3E_LastUpdated",diag_tickTime,true];
 					(_list select 0) setvariable["A3E_Accuracy",_unitThatDetectedPositionAccuracy,true];
@@ -276,7 +279,8 @@ while {1 == 1} do {
 						};
 					};
 				};
-
+				//Alert nearby Patrols
+				
                 
 				// If search area marker is not yet created, create it.
 				if (!_searchAreaMarkerCreated) then {
