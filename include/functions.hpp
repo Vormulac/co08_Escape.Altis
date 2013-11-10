@@ -25,6 +25,7 @@ class CfgFunctions
 			class OrderSearch {};
 			class SetTaskState {};
 			class GetTaskState {};
+			class AquaticPatrol {};
 		};
 		class Debug
 		{
@@ -57,9 +58,14 @@ class CfgFunctions
 			class SearchGroup {};
 			class InitVillageMarkers{};
 			class VillageMarkersAltis {};
+			class PatrolBoatMarkersAltis {};
 			class PopulateVillage {};
 			class DepopulateVillage {};
 			class InitVillagePatrols {};
+			class InitAquaticPatrols {};
+			class PopulateAquaticPatrol {};
+			class DepopulateAquaticPatrol {};
+			class InitAquaticPatrolMarkers {};
 		};
 	};
 };

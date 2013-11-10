@@ -23,7 +23,7 @@ _group = group _chopper;
 _side = side leader _group;
 _state = "READY";
 _homePos = getPos _chopper;
-
+_debug = false;
 if (_debug) then {
     player sideChat "Starting search chopper script...";
 };

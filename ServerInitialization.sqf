@@ -98,7 +98,10 @@ publicVariable "drn_fenceIsCreated";
 //### The following is a mission function now
 //call compile preprocessFileLineNumbers "Scripts\DRN\VillageMarkers\InitVillageMarkers.sqf";
 [true] call drn_fnc_InitVillageMarkers; 
+[true] call drn_fnc_InitAquaticPatrolMarkers; 
+
 [_enemyFrequency] call compile preprocessFileLineNumbers "Scripts\Escape\UnitClasses.sqf";
+
 
 //#### The player group should become a global variable broadcasted to network ###
 _playerGroup = group ((call drn_fnc_Escape_GetPlayers) select 0);
@@ -359,7 +362,39 @@ if(_debugAllUnits) then {
         _scriptHandle = [(units _playerGroup) select 0, east, drn_arr_Escape_InfantryTypes, _minEnemiesPerGroup, _maxEnemiesPerGroup, _villagePatrolSpawnArea, _enemyMinSkill, _enemyMaxSkill, _enemySpawnDistance + 250, _fnc_OnSpawnGroup, _debugVillagePatrols] spawn drn_fnc_InitVillagePatrols;
         waitUntil {scriptDone _scriptHandle};
     };
+
+    if (_useVillagePatrols) then {
+        switch (_enemyFrequency) do
+        {
+            case 1: // 1-2 players
+            {
+                _minEnemiesPerGroup = 2;
+                _maxEnemiesPerGroup = 4;
+            };
+            case 2: // 3-5 players
+            {
+                _minEnemiesPerGroup = 3;
+                _maxEnemiesPerGroup = 6;
+            };
+            default // 6-8 players
+            {
+                _minEnemiesPerGroup = 4;
+                _maxEnemiesPerGroup = 8;
+            };
+        };
+        
+        _fnc_OnSpawnGroup = {
+            {
+                _x call drn_fnc_Escape_OnSpawnGeneralSoldierUnit;
+            } foreach units _this;
+        };
+        
+        _scriptHandle = [(units _playerGroup) select 0, east, drn_arr_Escape_InfantryTypes, _minEnemiesPerGroup, _maxEnemiesPerGroup, 500000, _enemyMinSkill, _enemyMaxSkill, _enemySpawnDistance + 250, _fnc_OnSpawnGroup, _debugVillagePatrols] spawn drn_fnc_InitAquaticPatrols;
+        waitUntil {scriptDone _scriptHandle};
+    };
     
+   
+
     // Initialize ambient infantry groups
     if (_useAmbientInfantry) then {
         

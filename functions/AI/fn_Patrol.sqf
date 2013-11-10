@@ -13,7 +13,7 @@ if(!isNil("_markerName")) then {
 	while {surfaceIsWater [_destinationPos select 0, _destinationPos select 1]} do {
 		_destinationPos = [_markerName] call a3e_fnc_RandomMarkerPos;
 	};
-	_oncomplete = format["[group this,""%2""] spawn a3e_fnc_Patrol;",_markerName];
+	_oncomplete = format["[group this,""%1""] spawn a3e_fnc_Patrol;",_markerName];
 	
 	_group setvariable ["a3e_homeMarker",_markerName,false];
 

@@ -617,13 +617,13 @@ class Mission
 		};
 		class Item18
 		{
-			position[]={2664.1687,3.6531692,22099.857};
+			position[]={2741.3975,7.5176873,22082.746};
 			name="drn_Escape_ExtractionPos5_1";
 			type="Empty";
 		};
 		class Item19
 		{
-			position[]={2642.2625,3.5757687,22111.125};
+			position[]={2707.6213,3.9472935,22078.754};
 			name="drn_Escape_ExtractionPos5";
 			type="Empty";
 		};

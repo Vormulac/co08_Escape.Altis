@@ -8,13 +8,17 @@ _spawnMarkerName = "drn_Escape_ExtracionBoatSpawnPos" + str _extractionPointNo;
 _extractionMarkerName = "drn_Escape_ExtractionPos" + str _extractionPointNo;
 _extractionMarkerName2 = "drn_Escape_ExtractionPos" + str _extractionPointNo + "_1";
 
-_result = [[((getMarkerPos _spawnMarkerName) select 0) + 25, ((getMarkerPos _spawnMarkerName) select 1) + 20, 0], 0, "B_Heli_Transport_01_F", west] call BIS_fnc_spawnVehicle;
+_result = [[((getMarkerPos _spawnMarkerName) select 0) + 25, ((getMarkerPos _spawnMarkerName) select 1) + 20, 100], 0, "B_Heli_Transport_01_F", west] call BIS_fnc_spawnVehicle;
 _boat1 = _result select 0;
 _group1 = _result select 2;
 
-_result = [[((getMarkerPos _spawnMarkerName) select 0) - 25, ((getMarkerPos _spawnMarkerName) select 1) - 20, 0], 0, "B_Heli_Transport_01_F", west] call BIS_fnc_spawnVehicle;
+_result = [[((getMarkerPos _spawnMarkerName) select 0) - 25, ((getMarkerPos _spawnMarkerName) select 1) - 20, 100], 0, "B_Heli_Transport_01_F", west] call BIS_fnc_spawnVehicle;
 _boat2 = _result select 0;
 _group2 = _result select 2;
+
+_result = [[((getMarkerPos _spawnMarkerName) select 0) - 40, ((getMarkerPos _spawnMarkerName) select 1) - 40, 100], 0, "B_Heli_Attack_01_F", west] call BIS_fnc_spawnVehicle;
+_boat3 = _result select 0;
+_group3 = _result select 2;
 
 _waypoint = _group1 addWaypoint [getMarkerPos _extractionMarkerName, 0];
 _waypoint setWaypointSpeed "FULL";
@@ -28,9 +32,16 @@ _waypoint setWaypointBehaviour "CARELESS";
 _waypoint setWaypointFormation "WEDGE";
 _waypoint setWaypointStatements ["true", "vehicle this land 'LAND'"];
 
+_waypoint = _group3 addWaypoint [getMarkerPos _extractionMarkerName, 0];
+_waypoint setWaypointSpeed "FULL";
+_waypoint setWaypointBehaviour "COMBAT";
+_waypoint setWaypointFormation "WEDGE";
+
+
 
 _boat1 flyinheight 30;
 _boat2 flyinheight 30;
+_boat3 flyinheight 30;
 
 sleep 1;
 
@@ -56,6 +67,11 @@ _waypoint setWaypointBehaviour "CARELESS";
 _waypoint = _group2 addWaypoint [getMarkerPos _spawnMarkerName, 0];
 _waypoint setWaypointSpeed "FULL";
 _waypoint setWaypointBehaviour "CARELESS";
+
+_waypoint = _group3 addWaypoint [getMarkerPos _spawnMarkerName, 0];
+_waypoint setWaypointSpeed "FULL";
+_waypoint setWaypointBehaviour "CARELESS";
+
 
 sleep 10;
 
