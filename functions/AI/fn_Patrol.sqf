@@ -1,4 +1,4 @@
-private["_group","_markername","_searchRange","_oncomplete","_destinationPos","_waypoint","_leader"];
+private["_group","_markername","_searchRange","_oncomplete","_destinationPos","_waypoint","_leader","_players"];
 if(!isserver) exitwith {};
 
 _group = _this select 0;
@@ -19,10 +19,13 @@ if(!isNil("_markerName")) then {
 
 } else {
 	_leader = (units  _group) select 0;
-	_searchRange = 2000;
-	_destinationPos = [((getPos _leader) select 0) - _searchRange + (random (2* _searchRange)), ((getPos _leader) select 1) - _searchRange + (random (2* _searchRange))];
-	while {surfaceIsWater [_destinationPos select 0, _destinationPos select 1]} do {
-			_destinationPos = [((getPos _leader) select 0) - _searchRange + (random (2* _searchRange)), ((getPos _leader) select 1) - _searchRange + (random (2* _searchRange))];
+	_searchRange = 3000;
+	_players = [] call drn_fnc_Escape_GetPlayers;
+	_destinationPos = [_players,_searchRange] call a3e_fnc_RandomPatrolPos;
+	//Prevent the unit to patrol to a player far away
+	while {(_destinationPos distance _leader)>(_searchRange*1.5)} do {
+	
+			_destinationPos = [_players,_searchRange] call a3e_fnc_RandomPatrolPos;
 	};
 	_oncomplete = "[group this,nil] spawn a3e_fnc_Patrol;";
 };

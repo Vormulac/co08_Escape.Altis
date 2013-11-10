@@ -9,10 +9,8 @@ class CfgFunctions
 			class RandomMarkerPos {};
 			class GetSideColor {};
 			class RandomSpawnPos {};
-			class DisableCenterButton {};
 			class KeyDown {};
-			class findControl {};
-			class CompileGroupVar {};
+			class RandomPatrolPos {};
 		};
 		class AI
 		{

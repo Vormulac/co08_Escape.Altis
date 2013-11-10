@@ -6,13 +6,15 @@ class Mission
 		"a3_map_Altis",
 		"A3_Characters_F_BLUFOR",
 		"a3_characters_f_beta",
-		"A3_Static_F_Mortar_01"
+		"A3_Static_F_Mortar_01",
+		"A3_Armor_F_T100K"
 	};
 	addOnsAuto[]=
 	{
 		"A3_Characters_F_BLUFOR",
 		"a3_characters_f_beta",
 		"A3_Static_F_Mortar_01",
+		"A3_Armor_F_T100K",
 		"a3_map_altis"
 	};
 	randomSeed=16426086;
@@ -441,10 +443,24 @@ class Mission
 					position[]={12280.572,123.8286,8891.9805};
 					id=23;
 					side="EAST";
-					vehicle="O_Mortar_01_F";
+					vehicle="O_MBT_02_arty_F";
 					leader=1;
 					skill=0.60000002;
 					text="arti_15";
+				};
+			};
+			class Waypoints
+			{
+				items=1;
+				class Item0
+				{
+					position[]={12280.572,123.8286,8891.9805};
+					id=23;
+					type="HOLD";
+					class Effects
+					{
+					};
+					showWP="NEVER";
 				};
 			};
 		};
@@ -456,13 +472,27 @@ class Mission
 				items=1;
 				class Item0
 				{
-					position[]={12280.883,123.63023,8903.3232};
+					position[]={12285.303,123.64422,8908.9404};
 					id=24;
 					side="EAST";
-					vehicle="O_Mortar_01_F";
+					vehicle="O_MBT_02_arty_F";
 					leader=1;
 					skill=0.60000002;
 					text="arti_16";
+				};
+			};
+			class Waypoints
+			{
+				items=1;
+				class Item0
+				{
+					position[]={12285.303,123.64422,8908.9404};
+					id=24;
+					type="HOLD";
+					class Effects
+					{
+					};
+					showWP="NEVER";
 				};
 			};
 		};

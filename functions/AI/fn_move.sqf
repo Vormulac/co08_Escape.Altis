@@ -17,10 +17,10 @@ if(a3e_debug_EnemyPosition) then {
 	};
 };
 if(a3e_debug_Waypoints) then {
-	_marker = _group getvariable "s3e_debug_moveMarker";
-	if(isNil("_marker")) then {
-		_marker = [getpos leader _group,_position] call a3e_fnc_drawMapLine;
-		_group setvariable ["s3e_debug_moveMarker",_marker,false];
+	_marker = _group getvariable ["a3e_debug_moveMarker","noMarker"];
+	if(_marker == "noMarker") then {
+		_marker = [getpos ((units _group) select 0),_position] call a3e_fnc_drawMapLine;
+		_group setvariable ["a3e_debug_moveMarker",_marker,false];
 	} else {
 		[getpos leader _group,_position,_marker] call a3e_fnc_drawMapLine;
 	};
