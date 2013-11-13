@@ -19,7 +19,9 @@ _position = _this select 0;
 						[_group,getposATL _position] spawn a3e_fnc_Search;
 					};
 				} else {
-					[_group,getposATL _position] spawn a3e_fnc_Search;
+					if((random 100) < 50) then {
+						[_group,getposATL _position] spawn a3e_fnc_Search;
+					};
 				};
 				
 				

@@ -18,7 +18,7 @@ if(!isNil("_markerName")) then {
 	_group setvariable ["a3e_homeMarker",_markerName,false];
 
 } else {
-	_leader = (units  _group) select 0;
+	_leader = (leader _group);
 	_searchRange = 3000;
 	_players = [] call drn_fnc_Escape_GetPlayers;
 	_destinationPos = [_players,_searchRange] call a3e_fnc_RandomPatrolPos;

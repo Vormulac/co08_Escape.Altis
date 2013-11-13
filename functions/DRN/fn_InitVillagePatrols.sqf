@@ -1,147 +1,92 @@
-// Initialization for server
 if (!isServer) exitWith {};
 
-private ["_referenceUnit", "_side", "_infantryClasses", "_minSkill", "_maxSkill", "_debug", "_spawnRadius", "_villagePos", "_minSoldiersPerGroup", "_maxSoldiersPerGroup", "_areaPerGroup"];
-private ["_village", "_possibleInfantryTypes", "_soldierType", "_soldierCount", "_soldier", "_soldiers", "_i", "_isFaction", "_factionsArray"];
-private ["_villageNo", "_villageSize", "_maxGroupsCount", "_groupsCount", "_groups", "_groupIndex", "_damage", "_spawned", "_soldierObj"];
-private ["_script", "_skill", "_ammo", "_trigger", "_soldierPos", "_rank", "_hasScript", "_groupPos", "_roadSegments", "_roadSegment"];
-private ["_message", "_villageMarkerName", "_fnc_onSpawnGroup"];
+private ["_referenceGroup", "_locationMarkerName", "_side", "_infantryClasses", "_minSkill", "_maxSkill", "_spawnRadius", "_areaPerGroup", "_debug"];
+private ["_locationNo", "_locationFullName", "_locationExists", "_isFaction", "_location", "_soldierType", "_soldierCount", "_soldier", "_soldiers", "_i"];
+private ["_locationPos", "_locationSize", "_minSoldierCount", "_maxSoldierCount", "_maxGroupsCount", "_possibleInfantryTypes", "_instanceNo"];
 
-if (isNil "drn_var_villageMarkersInitialized") exitWith {
+_referenceGroup = _this select 0;
+_locationMarkerName = _this select 1;
+
+_side = _this select 2;
+if (count _this > 3) then {_infantryClasses = _this select 3;} else {_infantryClasses = [];};
+if (count _this > 4) then {_maxGroupsCount = _this select 4;} else {_maxGroupsCount = 10;};
+if (count _this > 5) then {_minSoldierCount = _this select 5;} else {_minSoldierCount = 5;};
+if (count _this > 6) then {_maxSoldierCount = _this select 6;} else {_maxSoldierCount = 10;};
+if (count _this > 7) then {_minSkill = _this select 7;} else {_minSkill = 0.3;};
+if (count _this > 8) then {_maxSkill = _this select 8;} else {_maxSkill = 0.6;};
+if (count _this > 9) then {_spawnRadius = _this select 9;} else {_spawnRadius = 750;};
+if (count _this > 10) then {_areaPerGroup = _this select 10;} else {_areaPerGroup = 10000;};
+if (count _this > 11) then {_debug = _this select 11;} else {_debug = false;};
+
+
+if (isNil "drn_var_commonLibInitialized") then {
     [] spawn {
-        player sideChat "Scripts\DRN\VillageMarkers\InitVillageMarkers.sqf must be called before call to Scripts/DRN/VillagePatrols/InitVillagePatrols.sqf.";
-        sleep 10;
+        while {true} do { player sideChat "Script AmbientInfantry.sqf needs CommonLib version 1.02"; sleep 5; };
     };
 };
 
-_referenceUnit = _this select 0;
-_side = _this select 1;
-if (count _this > 2) then {_infantryClasses = _this select 2;} else {_infantryClasses = [];};
-if (count _this > 3) then {_minSoldiersPerGroup = _this select 3;} else {_minSoldiersPerGroup = 2;};
-if (count _this > 4) then {_maxSoldiersPerGroup = _this select 4;} else {_maxSoldiersPerGroup = 5;};
-
-// If village area is less than this number 0 or 1 group will be spawned. If village area is double this number, 0, 1 or 2 groups will spawn, and so on.
-if (count _this > 5) then {_areaPerGroup = _this select 5;} else {_areaPerGroup = 5000;};
-
-if (count _this > 6) then {_minSkill = _this select 6;} else {_minSkill = 0.3;};
-if (count _this > 7) then {_maxSkill = _this select 7;} else {_maxSkill = 0.6;};
-if (count _this > 8) then {_spawnRadius = _this select 8;} else {_spawnRadius = 750;};
-if (count _this > 9) then {_fnc_onSpawnGroup = _this select 9;} else {_fnc_onSpawnGroup = {};};
-if (count _this > 10) then {_debug = _this select 10;} else {_debug = false;};
-_factionsArray = [RESISTANCE, RESISTANCE, RESISTANCE, RESISTANCE, EAST, RESISTANCE, EAST, RESISTANCE, EAST, RESISTANCE, EAST, RESISTANCE, EAST, RESISTANCE];
-if (_debug) then {
-	_message = "Initializing village patrols.";
-	diag_log _message;
-	player sideChat _message;
+// Initialize global variable
+sleep random 0.1;
+if (isNil "drn_var_guardedVillageInstanceNo") then {
+    drn_var_guardedVillageInstanceNo = 0;
+}
+else {
+    drn_var_guardedVillageInstanceNo = drn_var_guardedVillageInstanceNo + 1;
 };
 
-_isFaction = false;
-if (str _infantryClasses == """USMC""") then {
-    _possibleInfantryTypes = ["USMC_Soldier_AA", "USMC_Soldier_HAT", "USMC_Soldier_AT", "USMC_Soldier_AR", "USMC_Soldier_Medic", "USMC_SoldierM_Marksman", "USMC_SoldierS_Engineer", "USMC_Soldier_TL", "USMC_Soldier_GL", "USMC_Soldier_MG", "USMC_Soldier_Officer", "USMC_Soldier", "USMC_Soldier2", "USMC_Soldier_LAT", "USMC_SoldierS_Sniper", "USMC_SoldierS_SniperH"];    
-    _isFaction = true;
-};
-if (str _infantryClasses == """CDF""") then {
-    _possibleInfantryTypes = ["CDF_Soldier_Strela", "CDF_Soldier_RPG", "CDF_Soldier_AR", "CDF_Soldier_GL", "CDF_Soldier_MG", "CDF_Soldier_Marksman", "CDF_Soldier_Medic", "CDF_Soldier_Militia", "CDF_Soldier_Officer", "CDF_Soldier", "CDF_Soldier_Sniper"];
-    _isFaction = true;
-};
-if (str _infantryClasses == """RU""") then {
-    _possibleInfantryTypes = ["RU_Soldier_AA", "RU_Soldier_HAT", "RU_Soldier_AR", "RU_Soldier_GL", "RU_Soldier_MG", "RU_Soldier_Marksman", "RU_Soldier_Medic", "RU_Soldier", "RU_Soldier_LAT", "RU_Soldier_AT", "RU_Soldier2", "RU_Soldier_Sniper", "RU_Soldier_SniperH"];
-    _isFaction = true;
-};
-if (str _infantryClasses == """INS""") then {
-    _possibleInfantryTypes = ["O_engineer_F", "O_medic_F", "O_Soldier_A_F", "O_Soldier_AA_F", "O_Soldier_AR_F", "O_Soldier_AT_F", "O_Soldier_exp_F", "O_soldier_F", "O_Soldier_GL_F", "O_Soldier_LAT_F", "O_Soldier_lite_F", "O_Soldier_M_F", "O_Soldier_repair_F", "O_officer_F"];
-    _isFaction = true;
-};
-if (str _infantryClasses == """GUE""") then {
-    _possibleInfantryTypes = ["GUE_Soldier_AR", "GUE_Soldier_GL", "GUE_Soldier_Sniper", "GUE_Soldier_MG", "GUE_Soldier_Medic", "GUE_Soldier_3", "GUE_Soldier_2", "GUE_Soldier_1", "GUE_Soldier_AT", "GUE_Soldier_AA"];
-    _isFaction = true;
+_instanceNo = drn_var_guardedVillageInstanceNo;
+call compile format ["drn_var_guardedVillageLocations%1 = [];", _instanceNo];
+
+_locationNo = 0;
+_locationFullName = _locationMarkerName + str _locationNo;
+
+if (((getMarkerPos _locationFullName) select 0) != 0 || ((getMarkerPos _locationFullName) select 1 != 0)) then {
+    _locationExists = true;
+}
+else {
+    _locationExists = false;
 };
 
-if (!_isFaction) then {
-    _possibleInfantryTypes =+ _infantryClasses;
-};
+while {_locationExists} do {
+    _locationPos = getMarkerPos _locationFullName;
+    _locationSize = getMarkerSize _locationFullName;
+    _maxGroupsCount = ceil(((_locationSize select 0) * (_locationSize select 1)) * 4 / _areaPerGroup);
 
-drn_arr_villagePatrols_Villages = [];
-drn_fnc_VillagePatrols_OnSpawnGroup = _fnc_OnSpawnGroup;
-_villageNo = 0;
-
-// Create spawn triggers around each village
-{
-    _villageMarkerName = "drn_villageMarker" + str _villageNo;
+    _soldierCount = (_minSoldierCount + floor (random (_maxSoldierCount - _minSoldierCount + 1))) * _maxGroupsCount;
+    _possibleInfantryTypes = drn_arr_Escape_InfantryTypes + drn_arr_Escape_InfantryTypes_Ind;
     
-    _villagePos = _x select 0;
-    _villageSize = _x select 3;
-    _maxGroupsCount = ceil (((_villageSize select 0) * (_villageSize select 1) * 4) / _areaPerGroup);
-    
-    // _groupsCount = floor random (_maxGroupsCount + 1);
-    // _groupsCount = _groupsCount + (floor random (_maxGroupsCount + 1 - _groupsCount));
-    _groupsCount = floor random (_maxGroupsCount + 1);
-    _groupsCount = _maxGroupsCount;
-    _groups = [];
-    
-    // Create groups
+    _soldiers = [];
+    for [{_i = 0}, {_i < _soldierCount}, {_i = _i + 1}] do {
+        _soldierType = _possibleInfantryTypes select (floor (random (count _possibleInfantryTypes)));
 
-    for [{_groupIndex = 0}, {_groupIndex < _groupsCount}, {_groupIndex = _groupIndex + 1}] do {
-        
-        _soldierCount = _minSoldiersPerGroup + floor (random (_maxSoldiersPerGroup - _minSoldiersPerGroup + 1));
-        _rank = "SERGEANT";
-        _hasScript = false;
-        _groupPos = [_villageMarkerName] call drn_fnc_CL_GetRandomMarkerPos;
-        _roadSegments = _groupPos nearRoads 100;
-        if (count _roadSegments > 0) then {
-            _roadSegment = _roadSegments select floor random count _roadSegments;
-            _groupPos = getPos _roadSegment;
-        };
-        
-        //set village side
-        _faction = _factionsArray select (floor (random (count _factionsArray)));
-       
-        if(_faction == EAST) then {
-            _possibleInfantryTypes = drn_arr_Escape_InfantryTypes;
-        };
-        if (_faction == RESISTANCE) then {
-            _possibleInfantryTypes = drn_arr_Escape_InfantryTypes_Ind;
-        };
-
-        _soldiers = [];
-        for [{_i = 0}, {_i < _soldierCount}, {_i = _i + 1}] do {
-            _soldierType = _possibleInfantryTypes select floor random count _possibleInfantryTypes;
-            
-            _damage = 0;
-            _spawned = false;
-            _soldierObj = objNull;
-            _script = objNull;
-            _soldierPos = _groupPos;
-            _skill = (_minSkill + random (_maxSkill - _minSkill));
-            _ammo = random 1;
-            
-            _soldier = [_soldierType, _damage, _spawned, _soldierObj, _script, _soldierPos, _skill, _ammo, _rank, _hasScript];
-            _rank = "PRIVATE";
-            _soldiers set [_i, _soldier];
-        };
-        
-        _groups set [count _groups, [_soldiers, _faction]];
+        // soldier: [type, skill, spawned, damage, obj, scriptHandle, hasScript]
+        _soldier = [_soldierType, (_minSkill + random (_maxSkill - _minSkill)), false, 0, objNull, objNull, false];
+        _soldiers set [count _soldiers, _soldier];
     };
 
-	_village = [_villageMarkerName, _villagePos, _groups, _side];
-	drn_arr_villagePatrols_Villages set [count drn_arr_villagePatrols_Villages, _village];
+    _location = [_locationFullName, "", _soldiers, _locationPos];
 
-	// Set village trigger
-	//#### We should add two trigger, one for population one for depopulation ######
+    _location call compile format ["drn_var_guardedVillageLocations%1 set [count drn_var_guardedVillageLocations%2, _this];", _instanceNo, _instanceNo];
 
-	_trigger = createTrigger["EmptyDetector", _villagePos];
-	_trigger triggerAttachVehicle [vehicle _referenceUnit];
-	_trigger setTriggerArea[_spawnRadius, _spawnRadius, 0, false];
-	_trigger setTriggerActivation["MEMBER", "PRESENT", true];
-	_trigger setTriggerTimeout [1, 1, 1, true];
-	_trigger setTriggerStatements["this", "_nil = [drn_arr_villagePatrols_Villages select " + str _villageNo + ", " + str _debug + "] spawn drn_fnc_PopulateVillage;", "_nil = [drn_arr_villagePatrols_Villages select " + str _villageNo + ", " + str _debug + "] spawn drn_fnc_DepopulateVillage;"];
+    // Set ammo depot trigger
+    private ["_marker", "_count", "_populated", "_trigger"];
+    
+    _trigger = createTrigger["EmptyDetector", getMarkerPos _locationFullName];
+    _trigger triggerAttachVehicle [vehicle (units _referenceGroup select 0)];
+    _trigger setTriggerArea[_spawnRadius, _spawnRadius, 0, false];
+    _trigger setTriggerActivation["MEMBER", "PRESENT", true];
+    _trigger setTriggerTimeout [1, 1, 1, true];
+    _trigger setTriggerStatements["this", "_nil = [drn_var_guardedVillageLocations" + str _instanceNo + " select " + str _locationNo + ", " + str _side + ", " + str _maxGroupsCount + ", " + str _debug + "] spawn drn_fnc_PopulateLocation;", "_nil = [drn_var_guardedVillageLocations" + str _instanceNo + " select " + str _locationNo + ", " + str _debug + "] spawn drn_fnc_DepopulateLocation;"];
+    
+    // Get next guarded position
+    _locationNo = _locationNo + 1;
+    _locationFullName = _locationMarkerName + str _locationNo;
 
-	_villageNo = _villageNo + 1;
-} foreach drn_villageMarkers;
-
-if (_debug) then {
-	_message = "Initialized villages: " + str _villageNo;
-	diag_log _message;
-	player sideChat _message;
+    if (((getMarkerPos _locationFullName) select 0) != 0 || ((getMarkerPos _locationFullName) select 1 != 0)) then {
+        _locationExists = true;
+    }
+    else {
+        _locationExists = false;
+    };
 };
 

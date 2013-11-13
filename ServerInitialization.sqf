@@ -39,7 +39,7 @@ _debugVillagePatrols = false;
 _debugMilitaryTraffic = false;
 _debugAmbientInfantry = false;
 _debugGarbageCollector = false;
-_debugRoadBlocks = false;
+_debugRoadBlocks = true;
 drn_var_Escape_debugMotorizedSearchGroup = false;
 drn_var_Escape_debugDropChoppers = false;
 drn_var_Escape_debugReinforcementTruck = false;
@@ -47,7 +47,7 @@ drn_var_Escape_debugSearchChopper = false;
 drn_var_Escape_DebugSearchGroup = false;
 drn_var_Escape_debugCivilEnemy = false;
 
-_showGroupDiagnostics = false;
+_showGroupDiagnostics = true;
 
 // Game Control Variables, do not edit!
 
@@ -359,7 +359,8 @@ if(_debugAllUnits) then {
             } foreach units _this;
         };
         
-        _scriptHandle = [(units _playerGroup) select 0, east, drn_arr_Escape_InfantryTypes, _minEnemiesPerGroup, _maxEnemiesPerGroup, _villagePatrolSpawnArea, _enemyMinSkill, _enemyMaxSkill, _enemySpawnDistance + 250, _fnc_OnSpawnGroup, _debugVillagePatrols] spawn drn_fnc_InitVillagePatrols;
+        //_scriptHandle = [(units _playerGroup) select 0, east, drn_arr_Escape_InfantryTypes, _minEnemiesPerGroup, _maxEnemiesPerGroup, _villagePatrolSpawnArea, _enemyMinSkill, _enemyMaxSkill, _enemySpawnDistance + 250, _fnc_OnSpawnGroup, _debugVillagePatrols] spawn drn_fnc_InitVillagePatrols;
+        _scriptHandle = [_playerGroup, "drn_villageMarker", east, "INS", 5, _minEnemiesPerGroup, _maxEnemiesPerGroup, _enemyMinSkill, _enemyMaxSkill, _enemySpawnDistance, _villagePatrolSpawnArea, _debugVillagePatrols] spawn drn_fnc_InitVillagePatrols;
         waitUntil {scriptDone _scriptHandle};
     };
 

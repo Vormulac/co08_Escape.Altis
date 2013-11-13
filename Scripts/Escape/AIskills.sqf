@@ -48,12 +48,12 @@ EGG_EVO_skill =
         
         _unit setskill _aiSkillBase;
         _unit setskill ["general", _aiSkillBase];
-        _unit setskill ["aimingAccuracy", (_aiSkillBase * 0.25)];
-        _unit setskill ["aimingShake", (_aiSkillBase * 0.30)];
+        _unit setskill ["aimingAccuracy", (_aiSkillBase * 0.2)];
+        _unit setskill ["aimingShake", (_aiSkillBase * 0.2)];
         _unit setskill ["aimingSpeed", (_aiSkillBase * 0.40)];
         _unit setskill ["endurance", _aiSkillBase];
-        _unit setskill ["spotDistance", (_aiSkillBase * 0.25)];
-        _unit setskill ["spotTime", (_aiSkillBase * 0.50)];
+        _unit setskill ["spotDistance", (_aiSkillBase * 0.15)];
+        _unit setskill ["spotTime", (_aiSkillBase * 0.3)];
         _unit setskill ["courage", _aiSkillBase];
         _unit setskill ["reloadSpeed", (_aiSkillBase * 0.80)];
         _unit setskill ["commanding", (_aiSkillBase * 0.75)];

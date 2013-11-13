@@ -43,6 +43,7 @@ onPreloadFinished {
             drn_var_Escape_playerEnteredWorld = true;
             removeAllWeapons player;
             removeAllItems player;
+            removeBackpack player;
 		};
 	};
 };
@@ -204,6 +205,7 @@ waitUntil {!isNil "drn_var_Escape_FunctionsInitializedOnServer"};
 
 removeAllWeapons player;
 removeAllItems player;
+removeBackpack player;
 
 player addWeapon "ItemRadio";
 player addWeapon "ItemWatch";

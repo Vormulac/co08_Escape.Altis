@@ -52,38 +52,42 @@ _deleteGroupDelayed = {
 
 
 	{
-		_soldier = _x;
-		//_soldier = [_soldierType, _damage, _spawned, _soldierObj, _script, _soldierPos, _skill, _ammo, _rank, _hasScript];
-
-		_spawned = _soldier select 2;
-		_soldierObj = _soldier select 3;
-		//_script = _soldier select 4;
-		_hasScript = _soldier select 9;
+		private ["_group", "_soldierObject", "_hasScript"];
+		_soldierObject = _x;
+	    
+		//_soldierType = _soldier select 0;
+		//_skill = _soldier select 1;
+		_spawned = _soldierObject select 2;
+		_damage = _soldierObject select 3;
+		_soldier = _soldierObject select 4;
+		//_script = _soldierObject select 5;
+	    //_hasScript = _soldierObject select 6;
 
 		if (_spawned) then {
-			_damage = damage _soldierObj;
-			_soldierPos = getPos _soldierObj;
-			//_ammo = ammo _soldierObj;
-			
-			if (!canStand _soldierObj) then {
+			_damage = damage _soldier;
+			if (!canStand _soldier) then {
 				_damage = 1;
 			};
 
-			if (_hasScript) then {
-				//terminate _script;
+	        
+	        _group = group _soldier;
+	        deleteVehicle _soldier;
+			
+			_script = _group getvariable ["A3E_GroupPatrolScript",nil];
+			if(!isNil("_script")) then {
+				if (!(scriptDone _script)) then {
+					terminate _script;
+				};
 			};
+			
+	        deleteGroup _group;
 
-			//deleteVehicle _soldierObj;
-			//(group _soldier) setVariable ["UPSMON_exit", true];
-
-			_soldier set [1, _damage];
-			_soldier set [2, false];
-			_soldier set [3, objNull];
-			_soldier set [4, objNull];
-			_soldier set [5, _soldierPos];
-			//_soldier set [7, _ammo];
-		};
-
+	        _soldierObject set [2, false];
+	        _soldierObject set [3, _damage];
+	        _soldierObject set [4, objNull];
+	        _soldierObject set [5, objNull];
+	        _soldierObject set [6, false];
+	    };
 	} foreach _soldiers;
 
 	//_group setVariable ["UPSMON_exit", true];
