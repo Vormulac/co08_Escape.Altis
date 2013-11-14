@@ -108,6 +108,7 @@ drn_arr_AmmoDepotBasicWeapons set [count drn_arr_AmmoDepotBasicWeapons, ["arifle
 // non-CSAT weapons
 drn_arr_AmmoDepotBasicWeapons set [count drn_arr_AmmoDepotBasicWeapons, ["hgun_P07_F", 100, 4, 8, ["16Rnd_9x21_Mag", "30Rnd_9x21_Mag"], 6]];
 drn_arr_AmmoDepotBasicWeapons set [count drn_arr_AmmoDepotBasicWeapons, ["hgun_PDW2000_F", 100, 4, 8, ["16Rnd_9x21_Mag", "30Rnd_9x21_Mag"], 6]];
+drn_arr_AmmoDepotBasicWeapons set [count drn_arr_AmmoDepotBasicWeapons, ["hgun_Pistol_heavy_02_F", 100, 4, 8, ["6Rnd_45ACP_Cylinder"], 6]];
 drn_arr_AmmoDepotBasicWeapons set [count drn_arr_AmmoDepotBasicWeapons, ["hgun_ACPC2_F", 100, 4, 8, ["9Rnd_45ACP_Mag"], 6]];
 drn_arr_AmmoDepotBasicWeapons set [count drn_arr_AmmoDepotBasicWeapons, ["SMG_01_F", 100, 4, 8, ["30Rnd_45ACP_Mag_SMG_01", "30Rnd_45ACP_Mag_SMG_01_Tracer_Green"], 6]];
 //drn_arr_AmmoDepotBasicWeapons set [count drn_arr_AmmoDepotBasicWeapons, ["arifle_MX_F", 100, 2, 4, ["30Rnd_65x39_caseless_mag", "30Rnd_65x39_caseless_mag_Tracer"], 6]];
@@ -124,6 +125,7 @@ drn_arr_AmmoDepotBasicWeapons set [count drn_arr_AmmoDepotBasicWeapons, ["arifle
 // Weapons and ammo in the special weapons box
 drn_arr_AmmoDepotSpecialWeapons = [];
 // CSAT weapons
+drn_arr_AmmoDepotSpecialWeapons set [count drn_arr_AmmoDepotSpecialWeapons, ["srifle_DMR_01_F", 100, 2, 4, ["10Rnd_762x51_Mag"], 9]];
 drn_arr_AmmoDepotSpecialWeapons set [count drn_arr_AmmoDepotSpecialWeapons, ["srifle_EBR_F", 100, 2, 4, ["20Rnd_762x51_Mag"], 9]];
 drn_arr_AmmoDepotSpecialWeapons set [count drn_arr_AmmoDepotSpecialWeapons, ["srifle_GM6_F", 100, 2, 4, ["5Rnd_127x108_Mag"], 9]];
 drn_arr_AmmoDepotSpecialWeapons set [count drn_arr_AmmoDepotSpecialWeapons, ["LMG_Zafir_F", 100, 2, 4, ["150Rnd_762x51_Box", "150Rnd_762x51_Box_Tracer"], 6]];
@@ -209,6 +211,9 @@ drn_arr_AmmoDepotItems set [count drn_arr_AmmoDepotItems, ["optic_SOS", 100, 10,
 drn_arr_AmmoDepotItems set [count drn_arr_AmmoDepotItems, ["optic_tws", 100, 10, 10]];
 drn_arr_AmmoDepotItems set [count drn_arr_AmmoDepotItems, ["optic_tws_mg", 100, 10, 10]];
 drn_arr_AmmoDepotItems set [count drn_arr_AmmoDepotItems, ["O_UavTerminal", 100, 5, 5]];
+drn_arr_AmmoDepotItems set [count drn_arr_AmmoDepotItems, ["optic_DMS", 100, 5, 5]];
+drn_arr_AmmoDepotItems set [count drn_arr_AmmoDepotItems, ["optic_MRD", 100, 5, 5]];
+drn_arr_AmmoDepotItems set [count drn_arr_AmmoDepotItems, ["optic_Yorris", 100, 5, 5]];
 
 
 // Weapons that may show up in civilian cars

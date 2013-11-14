@@ -101,20 +101,25 @@ drn_fnc_Escape_OnSpawnGeneralSoldierUnit = {
 	if(((random 100 < 10) && (!_nighttime)) OR ((random 100 < 40) && (_nighttime))) then {
 		//Not yet
 	};
-    if (random 100 < 30) then {
-        _this linkItem "ItemMap";
+    if (random 100 < 20) then {
+        _this additem "ItemMap";
+        _this assignItem "ItemMap";
     };
 	if (random 100 < 30) then {
-        _this linkItem "ItemCompass";
+        _this additem "ItemCompass";
+        _this assignItem "ItemCompass";
     };
-    if (random 100 < 10) then {
-        _this linkItem "ItemGPS";
+    if (random 100 < 0.5) then {
+        _this additem "ItemGPS";
+        _this assignItem "ItemGPS";
     };
 	if (random 100 < 50) then {
 		if (random 100 < 80) then {
-			_this linkItem "Binocular";
+			_this additem "Binocular";
+            _this assignItem "Binocular";
 		} else {
-			_this linkItem "Rangefinder";
+            _this additem "Rangefinder";
+            _this assignItem "Rangefinder";
 		};
 	};
     if(((random 100 < 5) && (!_nighttime)) OR ((random 100 < 30) && (_nighttime))) then {
