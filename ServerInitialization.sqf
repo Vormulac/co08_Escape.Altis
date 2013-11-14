@@ -39,7 +39,7 @@ _debugVillagePatrols = false;
 _debugMilitaryTraffic = false;
 _debugAmbientInfantry = false;
 _debugGarbageCollector = false;
-_debugRoadBlocks = true;
+_debugRoadBlocks = false;
 drn_var_Escape_debugMotorizedSearchGroup = false;
 drn_var_Escape_debugDropChoppers = false;
 drn_var_Escape_debugReinforcementTruck = false;
@@ -47,7 +47,7 @@ drn_var_Escape_debugSearchChopper = false;
 drn_var_Escape_DebugSearchGroup = false;
 drn_var_Escape_debugCivilEnemy = false;
 
-_showGroupDiagnostics = true;
+_showGroupDiagnostics = false;
 
 // Game Control Variables, do not edit!
 
@@ -126,10 +126,10 @@ if (true) then {
     _markerName = _markerCoreName + str _comCenNo;
     _chosenComCenIndexes = [];
 
-    _distanceBetween = 3000;
+    _distanceBetween = 5000;
     
    _commCentreMarkers = drn_arr_communicationCenterMarkers;
-    while {count _chosenComCenIndexes < 5 && count _commCentreMarkers > 0} do {
+    while {count _chosenComCenIndexes < 8 && count _commCentreMarkers > 0} do {
         
         _index = floor random count _commCentreMarkers;
 		_currentPos = (_commCentreMarkers select _index) select 0;

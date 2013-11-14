@@ -183,14 +183,14 @@ drn_fnc_Escape_FindAmmoDepotPositions = {
     
     _positions = [];
     _i = 0;
-    _maxDistance = 500;
+    _maxDistance = 1500;
     
     _countNW = 0;
     _countNE = 0;
     _countSE = 0;
     _countSW = 0;
     
-    while {count _positions < 10} do {
+    while {count _positions < 14} do {
         _isOk = false;
         _j = 0;
         
@@ -198,9 +198,9 @@ drn_fnc_Escape_FindAmmoDepotPositions = {
             _pos = call drn_fnc_Escape_FindGoodPos;
             _isOk = true;
             
-            if (count _positions < 8) then {
+            if (count _positions < 16) then {
                 if (_pos select 0 <= ((getMarkerPos "center") select 0) && _pos select 1 > ((getMarkerPos "center") select 1)) then {
-                    if (_countNW < 2) then {
+                    if (_countNW < 5) then {
                         _countNW = _countNW + 1;
                     }
                     else {
@@ -208,7 +208,7 @@ drn_fnc_Escape_FindAmmoDepotPositions = {
                     };
                 };
                 if (_pos select 0 > ((getMarkerPos "center") select 0) && _pos select 1 > ((getMarkerPos "center") select 1)) then {
-                    if (_countNE < 2) then {
+                    if (_countNE < 5) then {
                         _countNE = _countNE + 1;
                     }
                     else {
@@ -216,7 +216,7 @@ drn_fnc_Escape_FindAmmoDepotPositions = {
                     };
                 };
                 if (_pos select 0 > ((getMarkerPos "center") select 0) && _pos select 1 <= ((getMarkerPos "center") select 1)) then {
-                    if (_countSE < 2) then {
+                    if (_countSE < 5) then {
                         _countSE = _countSE + 1;
                     }
                     else {
@@ -224,7 +224,7 @@ drn_fnc_Escape_FindAmmoDepotPositions = {
                     };
                 };
                 if (_pos select 0 <= ((getMarkerPos "center") select 0) && _pos select 1 <= ((getMarkerPos "center") select 1)) then {
-                    if (_countSW < 2) then {
+                    if (_countSW < 5) then {
                         _countSW = _countSW + 1;
                     }
                     else {
