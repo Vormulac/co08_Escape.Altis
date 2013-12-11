@@ -28,15 +28,15 @@ drn_arr_Escape_MilitaryTraffic_CivilianVehicleClasses = ["C_Hatchback_01_F", "C_
 switch (_enemyFrequency) do {
     case 1: {
         drn_arr_Escape_MilitaryTraffic_EnemyVehicleClasses = ["O_MRAP_02_F", "O_MRAP_02_F", "O_MRAP_02_F", "O_MRAP_02_F", "O_MRAP_02_hmg_F", "O_MRAP_02_hmg_F", "O_Quadbike_01_F", "O_Quadbike_01_F", "O_Quadbike_01_F", "O_Truck_02_covered_F", "O_Truck_02_transport_F", "O_Truck_02_ammo_F", "O_Truck_02_box_F", "O_Truck_02_fuel_F", "O_Truck_02_medical_F", "O_APC_Wheeled_02_rcws_F", "O_APC_Tracked_02_AA_F", "O_APC_Tracked_02_cannon_F", "O_MBT_02_arty_F", "O_MBT_02_cannon_F"];
-        drn_arr_Escape_MilitaryTraffic_EnemyVehicleClasses_IND = ["I_MRAP_03", "I_MRAP_03_hmg_F", "I_MRAP_03", "I_MRAP_03_hmg_F", "I_G_Offroad_01_armed_F", "I_G_Offroad_01_armed_F", "I_G_Offroad_01_armed_F", "I_G_Offroad_01_armed_F"];
+        drn_arr_Escape_MilitaryTraffic_EnemyVehicleClasses_IND = ["I_MRAP_03", "I_MRAP_03_hmg_F", "I_MRAP_03", "I_MRAP_03_hmg_F", "I_G_Offroad_01_armed_F", "I_G_Offroad_01_armed_F", "I_G_Offroad_01_armed_F", "I_G_Offroad_01_armed_F","I_G_Offroad_01_F","I_MBT_03_cannon_F","I_APC_tracked_03_cannon_F","I_APC_tracked_03_cannon_F"];
     };
     case 2: {
         drn_arr_Escape_MilitaryTraffic_EnemyVehicleClasses = ["O_MRAP_02_F", "O_MRAP_02_F", "O_MRAP_02_F", "O_MRAP_02_hmg_F", "O_MRAP_02_hmg_F", "O_Quadbike_01_F", "O_Quadbike_01_F", "O_Truck_02_covered_F", "O_Truck_02_transport_F", "O_Truck_02_ammo_F", "O_Truck_02_box_F", "O_Truck_02_fuel_F", "O_Truck_02_medical_F", "O_APC_Wheeled_02_rcws_F", "O_APC_Tracked_02_AA_F", "O_APC_Tracked_02_cannon_F", "O_MBT_02_arty_F", "O_MBT_02_cannon_F"];
-        drn_arr_Escape_MilitaryTraffic_EnemyVehicleClasses_IND = ["I_MRAP_03", "I_MRAP_03_hmg_F", "I_MRAP_03", "I_MRAP_03_hmg_F", "I_G_Offroad_01_armed_F", "I_G_Offroad_01_armed_F", "I_G_Offroad_01_armed_F", "I_G_Offroad_01_armed_F"];
+        drn_arr_Escape_MilitaryTraffic_EnemyVehicleClasses_IND = ["I_MRAP_03", "I_MRAP_03_hmg_F", "I_MRAP_03", "I_MRAP_03_hmg_F", "I_G_Offroad_01_armed_F", "I_G_Offroad_01_armed_F", "I_G_Offroad_01_armed_F", "I_G_Offroad_01_armed_F","I_G_Offroad_01_F","I_MBT_03_cannon_F","I_APC_tracked_03_cannon_F","I_APC_tracked_03_cannon_F"];
     };
     default {
         drn_arr_Escape_MilitaryTraffic_EnemyVehicleClasses = ["O_MRAP_02_F", "O_MRAP_02_hmg_F", "O_MRAP_02_F", "O_MRAP_02_hmg_F", "O_Quadbike_01_F", "O_Quadbike_01_F", "O_Truck_02_covered_F", "O_Truck_02_transport_F", "O_Truck_02_ammo_F", "O_Truck_02_box_F", "O_Truck_02_fuel_F", "O_Truck_02_medical_F", "O_APC_Wheeled_02_rcws_F", "O_APC_Tracked_02_AA_F", "O_APC_Tracked_02_cannon_F", "O_MBT_02_arty_F", "O_MBT_02_cannon_F"];
-        drn_arr_Escape_MilitaryTraffic_EnemyVehicleClasses_IND = ["I_MRAP_03", "I_MRAP_03_hmg_F", "I_MRAP_03", "I_MRAP_03_hmg_F", "I_G_Offroad_01_armed_F", "I_G_Offroad_01_armed_F", "I_G_Offroad_01_armed_F", "I_G_Offroad_01_armed_F"];
+        drn_arr_Escape_MilitaryTraffic_EnemyVehicleClasses_IND = ["I_MRAP_03", "I_MRAP_03_hmg_F", "I_MRAP_03", "I_MRAP_03_hmg_F", "I_G_Offroad_01_armed_F", "I_G_Offroad_01_armed_F", "I_G_Offroad_01_armed_F", "I_G_Offroad_01_armed_F","I_G_Offroad_01_F","I_MBT_03_cannon_F","I_APC_tracked_03_cannon_F","I_APC_tracked_03_cannon_F"];
     };
 };
 
@@ -47,7 +47,7 @@ a3n_arr_recon_InfantryTypes = ["O_recon_exp_F", "O_recon_JTAC_F", "O_recon_M_F",
 
 // Random array. A roadblock has a manned vehicle. This array contains possible manned vehicles (can be of any kind, like cars, armored and statics).
 drn_arr_Escape_RoadBlock_MannedVehicleTypes = ["O_MRAP_02_hmg_F", "O_HMG_01_high_F", "O_static_AT_F"];
-drn_arr_Escape_RoadBlock_MannedVehicleTypes_Ind = ["I_G_Offroad_01_armed_F", "I_MRAP_03_hmg_F", "I_HMG_01_hight_f", "I_static_AT_F"];
+drn_arr_Escape_RoadBlock_MannedVehicleTypes_Ind = ["I_G_Offroad_01_armed_F", "I_MRAP_03_hmg_F", "I_HMG_01_hight_f", "I_static_AT_F","I_G_Offroad_01_F"];
 
 // Random array. Vehicle classes (preferrably trucks) transporting enemy reinforcements.
 drn_arr_Escape_ReinforcementTruck_vehicleClasses = ["O_Truck_02_covered_F", "O_Truck_02_transport_F"];
@@ -213,7 +213,7 @@ drn_arr_AmmoDepotItems set [count drn_arr_AmmoDepotItems, ["optic_tws_mg", 100, 
 drn_arr_AmmoDepotItems set [count drn_arr_AmmoDepotItems, ["O_UavTerminal", 100, 5, 5]];
 drn_arr_AmmoDepotItems set [count drn_arr_AmmoDepotItems, ["optic_DMS", 100, 5, 5]];
 drn_arr_AmmoDepotItems set [count drn_arr_AmmoDepotItems, ["optic_Yorris", 100, 5, 5]];
-
+drn_arr_AmmoDepotItems set [count drn_arr_AmmoDepotItems, ["optic_LRPS", 100, 5, 5]];
 
 // Weapons that may show up in civilian cars
 

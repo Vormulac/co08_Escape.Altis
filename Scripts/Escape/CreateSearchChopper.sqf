@@ -30,23 +30,10 @@ if (count _this > 6) then {_maxSkill = _this select 6;} else {_maxSkill = 0.6;};
 if (count _this > 7) then {_unitArray = _this select 7;} else {_unitArray = [];};
 if (count _this > 8) then {_debug = _this select 8;} else {_debug = false;};
 
-//waituntil {!isnil "bis_fnc_init"};
-
 if (_debug) then {
     player sideChat "Creating search chopper...";
 };
 
-/*
-_result = [[_homePos select 0, _homePos select 1, 0], 0, _chopperType, _side] call BIS_fnc_spawnVehicle;
-_chopper = _result select 0;
-_crew = _result select 1;
-
-// Set crew skill
-{
-	_skill = _minSkill + random (_maxSkill - _minSkill);
-	_x setSkill _skill;
-} foreach _crew;
-*/
 
 // Find a free vehicle variable name
 _vehicleVarNameBase = "drn_searchChopper";
@@ -58,7 +45,7 @@ while {!(isNil _vehicleVarName)} do {
 };
 
 //_chopper = "O_Heli_Light_02_F" createVehicle _homePos;
-_chopper = createVehicle ["O_Heli_Light_02_F", _homePos, [], 0, "NONE"];
+_chopper = createVehicle ["I_Heli_light_03_F", _homePos, [], 0, "NONE"];
 _chopper lock false;
 _chopper setVehicleVarName _vehicleVarName;
 _chopper call compile format ["%1=_this;", _vehicleVarName];
@@ -68,8 +55,8 @@ _group = createGroup _side;
 //"O_Pilot_F" createUnit [getMarkerPos "drn_searchChopperStartPosMarker", _group, "", (_minSkill + random (_maxSkill - _minSkill)), "LIEUTNANT"];
 //"O_Pilot_F" createUnit [getMarkerPos "drn_searchChopperStartPosMarker", _group, "", (_minSkill + random (_maxSkill - _minSkill)), "LIEUTNANT"];
 //"O_Pilot_F" createUnit [position player, _group, "", (_minSkill + random (_maxSkill - _minSkill)), "LIEUTNANT"];
-_group createUnit ["O_Pilot_F", getMarkerPos "drn_searchChopperStartPosMarker", [], 0, "FORM"];
-_group createUnit ["O_Pilot_F", getMarkerPos "drn_searchChopperStartPosMarker", [], 0, "FORM"];
+_group createUnit ["I_helipilot_F", getMarkerPos "drn_searchChopperStartPosMarker", [], 0, "FORM"];
+_group createUnit ["I_helicrew_F", getMarkerPos "drn_searchChopperStartPosMarker", [], 0, "FORM"];
 
 _unitArray = _unitArray + units _group;
 
