@@ -58,8 +58,6 @@ publicVariable "drn_var_Escape_MissionComplete";
 
 a3e_var_GrpNumber = 0;
 
-//_enemyMinSkill = (paramsArray select 0) / 6;
-//_enemyMaxSkill = (paramsArray select 0) / 6 + 0.1;
 _enemyMinSkill = (paramsArray select 0);
 _enemyMaxSkill = _enemyMinskill;
 drn_var_Escape_enemyMinSkill = _enemyMinSkill;
@@ -67,9 +65,6 @@ drn_var_Escape_enemyMaxSkill = _enemyMaxSkill;
 
 _searchChopperSearchTimeMin = (5 + random 10);
 _searchChopperRefuelTimeMin = (5 + random 10);
-
-//Vorm -- don't need this anymore
-//waituntil {!isnil "bis_fnc_init"};
 
 _enemyFrequency = (paramsArray select 1);
 _enemySpawnDistance = (paramsArray select 5);
@@ -722,7 +717,6 @@ if (_useSearchChopper) then {
                     if ((_x distance _startPos) > 25 && (_x distance _startPos) < 150) exitWith {
                         drn_escapeHasStarted = true;
                         publicVariable "drn_escapeHasStarted";
-						hint "dstart by distance";
                     };
                 };
             } foreach call drn_fnc_Escape_GetPlayers;
@@ -730,17 +724,9 @@ if (_useSearchChopper) then {
             // If any player have picked up a weapon, escape has started
             {
                 if (!(_x getVariable ["drn_var_initializing", true])) then {
-                    if (_x hasWeapon "ItemMap") then {
-                        if (count weapons _x > 4 || count magazines _x > 0) exitWith {
-                            drn_escapeHasStarted = true;
-                            publicVariable "drn_escapeHasStarted";
-                        };
-                    }
-                    else {
-                        if (count weapons _x > 2 || count magazines _x > 0) exitWith {
-                            drn_escapeHasStarted = true;
-                            publicVariable "drn_escapeHasStarted";
-                        };
+                    if (count weapons _x > 2 || count magazines _x > 0) exitWith {
+                        drn_escapeHasStarted = true;
+                        publicVariable "drn_escapeHasStarted";
                     };
                 };
             } foreach call drn_fnc_Escape_GetPlayers;
@@ -754,7 +740,7 @@ if (_useSearchChopper) then {
             _x setCaptive false;
         } foreach call drn_fnc_Escape_GetPlayers;
         
-        sleep (5 + random 7);
+        sleep (10 + random 10);
         
         {
             private ["_guardGroup"];
@@ -769,10 +755,10 @@ if (_useSearchChopper) then {
     
 	
     if (_guardLivesLong) then {
-        sleep (10 + floor (random 10));
+        sleep (10+ floor (random 10));
     }
     else {
-        sleep 10;
+        sleep 8;
     };
     
     // Guard passes out
