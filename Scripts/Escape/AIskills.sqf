@@ -60,17 +60,17 @@ EGG_EVO_skill =
     }
     else {
         if(_skill == 5) then {
-            _unit setskill (paramsArray select 17);
-            _unit setskill ["general", (paramsArray select 17)];
-            _unit setskill ["aimingAccuracy", (paramsArray select 8)];
-            _unit setskill ["aimingShake", (paramsArray select 9)];
-            _unit setskill ["aimingSpeed", (paramsArray select 10)];
-            _unit setskill ["endurance", (paramsArray select 11)];
-            _unit setskill ["spotDistance", (paramsArray select 12)];
-            _unit setskill ["spotTime", (paramsArray select 13)];
-            _unit setskill ["courage", (paramsArray select 14)];
-            _unit setskill ["reloadSpeed", (paramsArray select 15)];
-            _unit setskill ["commanding", (paramsArray select 16)];
+            _unit setskill ((paramsArray select 17) / 100);
+            _unit setskill ["general", ((paramsArray select 17) / 100)];
+            _unit setskill ["aimingAccuracy", ((paramsArray select 8) / 100)];
+            _unit setskill ["aimingShake", ((paramsArray select 9) / 100)];
+            _unit setskill ["aimingSpeed", ((paramsArray select 10) / 100)];
+            _unit setskill ["endurance", ((paramsArray select 11) / 100)];
+            _unit setskill ["spotDistance", ((paramsArray select 12) / 100)];
+            _unit setskill ["spotTime", ((paramsArray select 13) / 100)];
+            _unit setskill ["courage", ((paramsArray select 14) / 100)];
+            _unit setskill ["reloadSpeed", ((paramsArray select 15) / 100)];
+            _unit setskill ["commanding", ((paramsArray select 16) / 100)];
         };
     };
 
