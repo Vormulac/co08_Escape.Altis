@@ -9,7 +9,7 @@ if(!isDedicated) then {
 	titleText ["Loading...", "BLACK",0.1];
 };
 
-call compileFinal preprocessFileLineNumbers "FAR_revive\FAR_revive_init.sqf";
+//call compileFinal preprocessFileLineNumbers "FAR_revive\FAR_revive_init.sqf";
 call compile preprocessFileLineNumbers "config.sqf";
 
 
@@ -35,6 +35,16 @@ _debug = a3e_debug;
 
 drn_var_Escape_firstPreloadDone = false;
 drn_var_Escape_playerEnteredWorld = false;
+
+//revive init
+if(isMultiplayer) then {
+	{[_x] call at_fnc_initRevive;} foreach playableunits;
+} else {
+	[p1] call at_fnc_initRevive;
+};
+//[player] call at_fnc_initRevive;	
+[] spawn at_fnc_serverCheck;
+
 
 onPreloadFinished {
 	if (!drn_var_Escape_firstPreloadDone) then {

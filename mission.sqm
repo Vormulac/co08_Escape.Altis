@@ -41,7 +41,7 @@ class Mission
 	};
 	class Groups
 	{
-		items=18;
+		items=19;
 		class Item0
 		{
 			side="WEST";
@@ -496,6 +496,24 @@ class Mission
 				};
 			};
 		};
+		class Item18
+		{
+			side="LOGIC";
+			class Vehicles
+			{
+				items=1;
+				class Item0
+				{
+					position[]={14984.838,6.4170852,15973.742};
+					id=25;
+					side="LOGIC";
+					vehicle="Logic";
+					leader=1;
+					skill=0.60000002;
+					text="center";
+				};
+			};
+		};
 	};
 	class Markers
 	{
@@ -793,11 +811,11 @@ class Mission
 		};
 		class Item1
 		{
-			position[]={29564.568,0.0027208335,30100.012};
+			position[]={29564.568,0.0070355982,30100.012};
 			activationBy="ANY";
 			interruptable=1;
 			age="UNKNOWN";
-			expCond="isServer && isMultiplayer && drn_escapeHasStarted && ({(_x getVariable ""FAR_isUnconscious"") == 1} count playableUnits == count playableUnits)";
+			expCond="isServer && isMultiplayer && drn_escapeHasStarted && ({(_x getVariable ""AT_isConscious"") == 0} count playableUnits == count playableUnits)";
 			expActiv="call drn_fnc_Escape_SetMissionCompleteTasks;drn_var_Escape_AllPlayersDead = true;publicVariable ""drn_var_Escape_AllPlayersDead"";";
 			class Effects
 			{
@@ -833,7 +851,7 @@ class Mission
 		};
 		class Item4
 		{
-			position[]={30299.455,0.0027147143,30098.973};
+			position[]={30299.455,-0.22493441,30098.973};
 			timeoutMin=3;
 			timeoutMid=3;
 			timeoutMax=3;

@@ -68,4 +68,30 @@ class CfgFunctions
 			class InitAquaticPatrolMarkers {};
 		};
 	};
+	class AT
+	{
+		class Revive
+		{
+			class debug {};
+			class handleDamage {};
+			class revive {};
+			class addReviveAction {};
+			class removeReviveAction {};
+			class initRevive {};
+			class setUnconscious {};
+			class setConscious {};
+			class playMove {};
+			class switchMove {};
+			class animDone {};
+			class animChanged {};
+			class respawn {};
+			class serverCheck {};
+			class startCrawling{};
+			class washAshore{};
+			class killed{};
+			class consciousHandler {};
+			class copyGear{};
+			class handleHeal{};
+		};
+	};
 };
