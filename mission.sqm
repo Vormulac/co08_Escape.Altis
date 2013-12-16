@@ -815,7 +815,7 @@ class Mission
 			activationBy="ANY";
 			interruptable=1;
 			age="UNKNOWN";
-			expCond="isServer && isMultiplayer && drn_escapeHasStarted && ({(_x getVariable ""AT_isConscious"") == 0} count playableUnits == count playableUnits)";
+			expCond="isServer && isMultiplayer && drn_escapeHasStarted && ({!(_x getVariable ""AT_isConscious"")} count playableUnits == count playableUnits)";
 			expActiv="call drn_fnc_Escape_SetMissionCompleteTasks;drn_var_Escape_AllPlayersDead = true;publicVariable ""drn_var_Escape_AllPlayersDead"";";
 			class Effects
 			{
