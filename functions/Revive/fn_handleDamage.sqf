@@ -8,11 +8,12 @@ _projectile = _this select 4;
 
 if((_unit getvariable "AT_isConscious")) then {
    // player sidechat format["Hit %1 with %2",_selection,_hit];
-    if(_hit>=0.80 && (_selection =="") || _hit>=0.9 && (_selection =="head")) then { 
+    if(_hit>=0.80 && (_selection =="") || _hit>=0.9 && (_selection =="head") || (getOxygenRemaining _unit)<=0.3) then { 
             _unit allowDamage false;
             _hit = 0.7;
             if((getOxygenRemaining _unit)<1) then {
                 _unit setdammage 0;
+                _unit setOxygenRemaining 1;
             };     
            //_unit setOxygenRemaining 1;
             if(surfaceIsWater (position _unit)) then {
