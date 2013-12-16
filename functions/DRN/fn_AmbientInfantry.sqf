@@ -43,7 +43,7 @@ if (count _this > 12) then {_fnc_OnSpawnGroup = _this select 12;} else {_fnc_OnS
 if (count _this > 13) then {_debug = _this select 13;} else {_debug = false;};
 
 //WHY!?!?!?!?!
-_factionsArray = [EAST, RESISTANCE, EAST, RESISTANCE, EAST, RESISTANCE, EAST, RESISTANCE, EAST, RESISTANCE, EAST, RESISTANCE, EAST, RESISTANCE];
+_factionsArray = [RESISTANCE, RESISTANCE, RESISTANCE, RESISTANCE, RESISTANCE, RESISTANCE, RESISTANCE, RESISTANCE, EAST, EAST];
 
 
 if (isNil "drn_var_commonLibInitialized") then {
