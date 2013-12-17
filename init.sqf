@@ -36,15 +36,6 @@ _debug = a3e_debug;
 drn_var_Escape_firstPreloadDone = false;
 drn_var_Escape_playerEnteredWorld = false;
 
-//revive init
-if(isMultiplayer) then {
-	{[_x] call at_fnc_initRevive;} foreach playableunits;
-} else {
-	[p1] call at_fnc_initRevive;
-};
-//[player] call at_fnc_initRevive;	
-[] spawn at_fnc_serverCheck;
-
 
 onPreloadFinished {
 	if (!drn_var_Escape_firstPreloadDone) then {
@@ -88,6 +79,17 @@ if (!isDedicated) then {
 if (_playerIsImmortal) then {
     p1 allowDamage false;
 };
+
+//revive init
+if(isMultiplayer) then {
+	{[_x] call at_fnc_initRevive;} foreach playableunits;
+} else {
+	[p1] call at_fnc_initRevive;
+};
+//[player] call at_fnc_initRevive;	
+[] spawn at_fnc_serverCheck;
+
+
 
 // Initialization
 drn_arr_JipSpawnPos = [];
@@ -279,6 +281,7 @@ if (!isDedicated) then {
 				drn_fnc_Escape_AskForJipPos = [str player];
 				publicVariable "drn_fnc_Escape_AskForJipPos";
 				
+                                
 				[] spawn {
 					private ["_marker"];
 					
