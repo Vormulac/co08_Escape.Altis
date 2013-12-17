@@ -12,7 +12,7 @@ _unit = _this select 0;
             
             DumVar = _unit addeventhandler ["Respawn",{_this call at_fnc_respawn;}];
             DumVar = _unit addeventhandler ["HandleDamage",{_this call at_fnc_handleDamage;}];
-            DumVar = _unit addeventhandler ["HandleHeal",{_this call at_fnc_handleHeal;}];
+            //DumVar = _unit addeventhandler ["HandleHeal",{_this call at_fnc_handleHeal;}];
             //DumVar = _unit addeventhandler ["Killed",{_this call at_fnc_killed;}];
             _unit setvariable ["AT_Revive_Action",-1,false];
         };
