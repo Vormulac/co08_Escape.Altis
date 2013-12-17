@@ -10,7 +10,7 @@ if(_anim == "amovppnemstpsraswrfldnon_injured") then {
             _unit = _this select 0;
             _endtime = time + random 10 + 5;
             waituntil{time>_endtime || !(_unit getvariable "AT_isCrawling")};
-             if((_unit getvariable "AT_isCrawling")) then {
+             if((_unit getvariable "AT_isCrawling") && !(_unit getvariable "AT_isConscious")) then {
                _unit setcaptive true;
                [[_unit,"AinjPpneMstpSnonWrflDnon"],"at_fnc_playMove",true] call BIS_fnc_MP;
                _unit setvariable ["AT_isCrawling",false,false];

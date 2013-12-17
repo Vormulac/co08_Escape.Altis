@@ -32,7 +32,7 @@ if (isnull _u1) exitwith {
 if (isnull _u2) exitwith {
 	["Missing second parameter for gear copy!"] call BIS_fnc_error;
 };
-[[format["Copy gear for %1",name _u1]],"at_fnc_debug",true] call BIS_fnc_MP;
+//[[format["Copy gear for %1",name _u1]],"at_fnc_debug",true] call BIS_fnc_MP;
 _primary = primaryWeapon _u2;
 _weapons = weaponsItems _u2;
 

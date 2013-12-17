@@ -259,7 +259,7 @@ if (!isDedicated) then {
 			
 			if (_isJipPlayer) then {
 				private ["_anotherPlayer"];
-				
+				//###Looks like _anotherPlayer is not used###
 				_anotherPlayer = (call drn_fnc_Escape_GetPlayers) select 0;
 				if (player == _anotherPlayer) then {
 					_anotherPlayer = (call drn_fnc_Escape_GetPlayers) select 1;

@@ -2,7 +2,10 @@ private["_unit","_reviver","_changeEH","_doneEH","_abortAction"];
 
 _unit = _this select 0;
 _reviver = _this select 1;
-
+if(_unit getvariable "AT_isCrawling") then {
+    _unit setvariable ["AT_isCrawling",false,false];
+    _unit setcaptive true;
+};
 [[_unit,"AinjPpneMstpSnonWrflDnon_injuredHealed"],"at_fnc_playMove",true] call BIS_fnc_MP;
 [[_reviver,"AinvPknlMstpSnonWrflDr_medic2"],"at_fnc_playMove",true] call BIS_fnc_MP;
 _reviver setvariable ["AT_isHealing",[_unit,false,false],true];
@@ -13,7 +16,17 @@ _abortAction = [_reviver,_unit] call compile format["private[""_reviver"",""_rev
 _unit attachTo [_reviver,[0,1,0]]; 
 _unit setDir (getDir _reviver + 90);
 // eventuell das statt dem EH : WaitUntil {animationstate player == "ainjppnemstpsnonwrfldnon"};
-
+[_reviver] spawn {
+    private["_reviver","_dir","_pos"];
+    _reviver = _this select 0;
+    _dir = getdir _reviver;
+    _pos = getposASL _reviver;
+    while{count(_reviver getvariable "AT_isHealing")>0} do {
+        sleep 0.01;
+        _reviver setdir _dir;
+        _reviver setposASL _pos;
+    };
+};
 
 waituntil{((_reviver getvariable "AT_isHealing") select 1)};
 detach _unit;
@@ -26,8 +39,6 @@ if((_reviver getvariable "AT_isHealing") select 2) then {
 	player sidechat format["%1 revived by %2",name _unit, name _reviver];
 
 	[[_reviver,"AinvPknlMstpSnonWrflDr_medicEnd"],"at_fnc_playMove",true] call BIS_fnc_MP;
-
-	[[_unit],"at_fnc_setConscious",true] call BIS_fnc_MP;
 	[[_unit],"at_fnc_removeReviveAction",true] call BIS_fnc_MP;
 } else {
 	player sidechat "Healing Aborted";

@@ -16,10 +16,7 @@ if((_unit getvariable "AT_isConscious")) then {
                 _unit setOxygenRemaining 1;
             };     
            //_unit setOxygenRemaining 1;
-            if(surfaceIsWater (position _unit)) then {
-                [_unit] spawn at_fnc_washAshore;
-            };
-            [_unit] spawn at_fnc_setUnconscious;
+             [[_unit],"at_fnc_setUnconscious",true] call BIS_fnc_MP;
     } else {
         if(_hit>=0.8) then {
             _hit = 0.8;    
