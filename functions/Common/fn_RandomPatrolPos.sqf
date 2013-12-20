@@ -3,7 +3,9 @@
     
     _referenceUnits = _this select 0;
     _maxSpawnDistance = _this select 1;
-    
+	
+    if(isNil("_referenceUnits")) exitwith {diag_log format ["%1 : Error: fn_RandomPatrolPos was unable to find the referenceUnit.", time];};
+	
     _referenceUnit = _referenceUnits select floor random count _referenceUnits;
     
     _posOk = false;

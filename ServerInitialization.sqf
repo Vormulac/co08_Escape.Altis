@@ -119,14 +119,17 @@ if (true) then {
     _comCenNo = 1;
     _markerCoreName = "drn_var_communicationCenter";
     _markerName = _markerCoreName + str _comCenNo;
+	
+	private["_index","_chosenComCenIndexes","_commCentreMarkers"];
     _chosenComCenIndexes = [];
 
     _distanceBetween = 5000;
     
    _commCentreMarkers = drn_arr_communicationCenterMarkers;
+
     while {count _chosenComCenIndexes < 8 && count _commCentreMarkers > 0} do {
         
-        _index = floor random count _commCentreMarkers;
+        _index = floor(random(count(_commCentreMarkers)));
 		_currentPos = (_commCentreMarkers select _index) select 0;
 
         
@@ -134,7 +137,8 @@ if (true) then {
             _currentPos = (_commCentreMarkers select _index) select 0;
 
             _tooClose = false;
-            {
+            {		
+				//Sometimes this try to access out of boundary!
                 _pos = (_commCentreMarkers select _x) select 0;
                 if (_pos distance _currentPos < _distanceBetween) then {
                     _tooClose = true;
