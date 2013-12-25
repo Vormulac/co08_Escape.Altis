@@ -13,6 +13,13 @@ private["_unit","_script","_ragdoll"];
             };
         if((vehicle _unit) != _unit) then {
              _unit action ["Eject", vehicle _unit];
+             [_unit] spawn {
+                 private["_unit"];
+                 _unit = _this select 0;
+                 waituntil{(vehicle _unit == _unit)};
+                 [[_unit switchmove "AinjPpneMstpSnonWrflDnon"],"at_fnc_playMove",true] call BIS_fnc_MP;
+
+             };
         };
         if(surfaceIsWater (position _unit)) then {
            [_unit] spawn at_fnc_washAshore;

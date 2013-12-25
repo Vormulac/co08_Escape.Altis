@@ -16,13 +16,14 @@ if(!isNil("center")) then {
     };
     if(_found) then {
         if(_unit == player) then {
-            titleText ["You are being washed ashore...", "BLACK",1];
+            titleText ["You are being washed ashore...", "BLACK",2];
         };
         sleep 1;
        _unit setpos _pos; 
-       sleep 1;
+        [[_unit switchmove "AinjPpneMstpSnonWrflDnon"],"at_fnc_playMove",true] call BIS_fnc_MP;
+       sleep 2;
        if(_unit == player) then {
-            titleFadeOut 1;
+            titleFadeOut 2;
        };
     } else {
         player sidechat "Can't find dry land.";
