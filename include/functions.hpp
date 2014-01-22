@@ -57,8 +57,6 @@ class CfgFunctions
 			class SearchChopper {};
 			class SearchGroup {};
 			class InitVillageMarkers{};
-			class VillageMarkersAltis {};
-			class PatrolBoatMarkersAltis {};
 			class PopulateVillage {};
 			class DepopulateVillage {};
 			class InitVillagePatrols {};

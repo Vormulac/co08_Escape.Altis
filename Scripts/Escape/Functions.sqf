@@ -40,6 +40,16 @@ drn_fnc_Escape_GetPlayers = {
 			drn_players set [count drn_players, p8];
 		};
 	};
+	if (!isNil "p9") then {
+		if (isPlayer p9) then {
+			drn_players set [count drn_players, p9];
+		};
+	};
+	if (!isNil "p10") then {
+		if (isPlayer p10) then {
+			drn_players set [count drn_players, p10];
+		};
+	};
 
 	drn_players
 };
@@ -129,35 +139,21 @@ drn_fnc_Escape_OnSpawnGeneralSoldierUnit = {
 
 drn_fnc_Escape_FindGoodPos = {
 	private ["_i", "_startPos", "_isOk", "_result", "_roadSegments", "_dummyObject"];
-    private ["_randomNumber"];
     // Choose a random and flat position (for-loopen and markers are for test on new maps).
     for [{_i = 0},  {_i < 1}, {_i = _i + 1}] do {
         _isOk = false;
         while {!_isOk} do {
-			_randomNumber = random 100;
-            if (_randomNumber > 90) then {
-                _startPos = + [8200 + random 6000, 6200 + random 4800]; // Most difficult place
-            }
-            else {
-                if (_randomNumber > 50) then {
-                    _startPos = + [3000 + random 10000, 10000 + random 14000]; // Difficult place
-                }
-                else {
-                    if (_randomNumber > 25) then {
-                    _startPos = + [15000 + random 10000, 4000 + random 11000]; // Difficult place
-					}
-					else {
-						_startPos = + [13000 + random 16000, 14000 + random 11000]; // Easiest place
-					};
-                };
-            };
+		
+			_startPos = [(getpos SouthWest select 0) + random (getpos NorthEast select 0),(getpos SouthWest select 1) + random (getpos NorthEast select 1)];
+
             
             //diag_log ("startPos == " + str _startPos);
-            _result = _startPos isFlatEmpty [0, 0, 0.25, 1, 0, false, objNull];
+            _result = _startPos isFlatEmpty [5, 0, 0.25, 1, 0, false, objNull];
             _roadSegments = _startPos nearRoads 30;
 			_buildings = _startPos nearObjects 30;
             
             if ((count _result > 0) && (count _roadSegments == 0) && (!surfaceIsWater _startPos) && (count _buildings == 0)) then {
+				_startPos = _result;
                 _dummyObject = "Land_Can_Rusty_F" createVehicleLocal _startPos;
                 
                 if (((nearestBuilding _dummyObject) distance _startPos) > 50) then {
@@ -183,7 +179,7 @@ drn_fnc_Escape_FindAmmoDepotPositions = {
     
     _positions = [];
     _i = 0;
-    _maxDistance = 1500;
+    _maxDistance = 1000;
     
     _countNW = 0;
     _countNE = 0;

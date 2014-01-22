@@ -1,2 +1,2 @@
-#define VERSION "1.6.7 RC1"
-#define MISSIONNAME "co08 Escape Altis 1.6.7 RC 1"
+#define VERSION "1.7.1"
+#define MISSIONNAME "co10 Escape Altis 1.7.1"

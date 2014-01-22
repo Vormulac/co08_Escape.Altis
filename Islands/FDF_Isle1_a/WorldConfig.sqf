@@ -1,0 +1,1 @@
+A3E_MinComCenterDistance = 2000;

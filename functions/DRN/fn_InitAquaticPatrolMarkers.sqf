@@ -1,4 +1,4 @@
-call compile format["call drn_fnc_PatrolBoatMarkers%1;",worldName];
+call compile preprocessFileLineNumbers ("Islands\" + worldName + "\PatrolBoatMarkers" + worldName + ".sqf");
 
 drn_fnc_AquticPatrolMarkers_PutAquaticPatrolMarkersOnMap = {
 	private ["_showMarkers"];

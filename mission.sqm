@@ -41,13 +41,13 @@ class Mission
 	};
 	class Groups
 	{
-		items=19;
+		items=21;
 		class Item0
 		{
 			side="WEST";
 			class Vehicles
 			{
-				items=8;
+				items=10;
 				class Item0
 				{
 					position[]={12943.073,28.213163,18902.805};
@@ -148,12 +148,40 @@ class Mission
 				};
 				class Item7
 				{
-					position[]={12945.907,28.074078,18901.93};
-					azimut=3.5765834;
+					position[]={12947.342,28.421822,18904.104};
+					azimut=3.57658;
 					special="NONE";
 					id=7;
 					side="WEST";
 					vehicle="B_medic_F";
+					player="PLAY CDG";
+					rank="LIEUTENANT";
+					skill=0.60000002;
+					text="p10";
+					init="this setCaptive true;this setVariable [""drn_var_initializing"", true];this addeventhandler [""killed"",{ if ((_this select 1) in (call drn_fnc_Escape_GetPlayers) && (_this select 1) != (_this select 0)) then {[(_this select 1), -9] call drn_fnc_CL_AddScore;}; }];";
+				};
+				class Item8
+				{
+					position[]={12946.883,28.174303,18902.684};
+					azimut=3.57658;
+					special="NONE";
+					id=8;
+					side="WEST";
+					vehicle="B_Soldier_F";
+					player="PLAY CDG";
+					rank="LIEUTENANT";
+					skill=0.60000002;
+					text="p9";
+					init="this setCaptive true;this setVariable [""drn_var_initializing"", true];this addeventhandler [""killed"",{ if ((_this select 1) in (call drn_fnc_Escape_GetPlayers) && (_this select 1) != (_this select 0)) then {[(_this select 1), -9] call drn_fnc_CL_AddScore;}; }];";
+				};
+				class Item9
+				{
+					position[]={12946.029,28.028261,18901.713};
+					azimut=3.57658;
+					special="NONE";
+					id=9;
+					side="WEST";
+					vehicle="B_Soldier_F";
 					player="PLAY CDG";
 					rank="LIEUTENANT";
 					skill=0.60000002;
@@ -171,7 +199,7 @@ class Mission
 				class Item0
 				{
 					position[]={28978.295,0.19443066,29217.291};
-					id=8;
+					id=10;
 					side="LOGIC";
 					vehicle="Logic";
 					leader=1;
@@ -189,7 +217,7 @@ class Mission
 				class Item0
 				{
 					position[]={14746.219,17.91,16660.645};
-					id=9;
+					id=11;
 					side="EAST";
 					vehicle="O_Mortar_01_F";
 					leader=1;
@@ -207,7 +235,7 @@ class Mission
 				class Item0
 				{
 					position[]={14770.932,17.91,16683.342};
-					id=10;
+					id=12;
 					side="EAST";
 					vehicle="O_Mortar_01_F";
 					leader=1;
@@ -225,7 +253,7 @@ class Mission
 				class Item0
 				{
 					position[]={12805.338,87.343971,16682.547};
-					id=11;
+					id=13;
 					side="EAST";
 					vehicle="O_Mortar_01_F";
 					leader=1;
@@ -243,7 +271,7 @@ class Mission
 				class Item0
 				{
 					position[]={12801.627,87.658035,16675.916};
-					id=12;
+					id=14;
 					side="EAST";
 					vehicle="O_Mortar_01_F";
 					leader=1;
@@ -261,7 +289,7 @@ class Mission
 				class Item0
 				{
 					position[]={9127.0156,15.044341,21592.691};
-					id=13;
+					id=15;
 					side="EAST";
 					vehicle="O_Mortar_01_F";
 					leader=1;
@@ -279,7 +307,7 @@ class Mission
 				class Item0
 				{
 					position[]={9117.3818,15.032089,21585.854};
-					id=14;
+					id=16;
 					side="EAST";
 					vehicle="O_Mortar_01_F";
 					leader=1;
@@ -297,7 +325,7 @@ class Mission
 				class Item0
 				{
 					position[]={9222.2451,271.97845,19286.127};
-					id=15;
+					id=17;
 					side="EAST";
 					vehicle="O_Mortar_01_F";
 					leader=1;
@@ -315,7 +343,7 @@ class Mission
 				class Item0
 				{
 					position[]={9198.6885,272.28702,19290.357};
-					id=16;
+					id=18;
 					side="EAST";
 					vehicle="O_Mortar_01_F";
 					leader=1;
@@ -333,7 +361,7 @@ class Mission
 				class Item0
 				{
 					position[]={20584.91,51.239403,20107.232};
-					id=17;
+					id=19;
 					side="EAST";
 					vehicle="O_Mortar_01_F";
 					leader=1;
@@ -351,7 +379,7 @@ class Mission
 				class Item0
 				{
 					position[]={20598.967,51.47456,20106.463};
-					id=18;
+					id=20;
 					side="EAST";
 					vehicle="O_Mortar_01_F";
 					leader=1;
@@ -369,7 +397,7 @@ class Mission
 				class Item0
 				{
 					position[]={20795.633,29.055777,7203.1543};
-					id=19;
+					id=21;
 					side="EAST";
 					vehicle="O_Mortar_01_F";
 					leader=1;
@@ -387,7 +415,7 @@ class Mission
 				class Item0
 				{
 					position[]={20805.541,29.019278,7210.2314};
-					id=20;
+					id=22;
 					side="EAST";
 					vehicle="O_Mortar_01_F";
 					leader=1;
@@ -405,7 +433,7 @@ class Mission
 				class Item0
 				{
 					position[]={17402.426,14.290254,13182.943};
-					id=21;
+					id=23;
 					side="EAST";
 					vehicle="O_Mortar_01_F";
 					leader=1;
@@ -423,7 +451,7 @@ class Mission
 				class Item0
 				{
 					position[]={17408.949,14.222617,13175.954};
-					id=22;
+					id=24;
 					side="EAST";
 					vehicle="O_Mortar_01_F";
 					leader=1;
@@ -441,7 +469,7 @@ class Mission
 				class Item0
 				{
 					position[]={12280.572,123.8286,8891.9805};
-					id=23;
+					id=25;
 					side="EAST";
 					vehicle="O_MBT_02_arty_F";
 					leader=1;
@@ -455,7 +483,7 @@ class Mission
 				class Item0
 				{
 					position[]={12280.572,123.8286,8891.9805};
-					id=23;
+					id=25;
 					type="HOLD";
 					class Effects
 					{
@@ -473,7 +501,7 @@ class Mission
 				class Item0
 				{
 					position[]={12285.303,123.64422,8908.9404};
-					id=24;
+					id=26;
 					side="EAST";
 					vehicle="O_MBT_02_arty_F";
 					leader=1;
@@ -487,7 +515,7 @@ class Mission
 				class Item0
 				{
 					position[]={12285.303,123.64422,8908.9404};
-					id=24;
+					id=26;
 					type="HOLD";
 					class Effects
 					{
@@ -505,12 +533,48 @@ class Mission
 				class Item0
 				{
 					position[]={14984.838,6.4170852,15973.742};
-					id=25;
+					id=27;
 					side="LOGIC";
 					vehicle="Logic";
 					leader=1;
 					skill=0.60000002;
 					text="center";
+				};
+			};
+		};
+		class Item19
+		{
+			side="LOGIC";
+			class Vehicles
+			{
+				items=1;
+				class Item0
+				{
+					position[]={2835.2676,0.64044058,4936.0781};
+					id=28;
+					side="LOGIC";
+					vehicle="Logic";
+					leader=1;
+					skill=0.60000002;
+					text="SouthWest";
+				};
+			};
+		};
+		class Item20
+		{
+			side="LOGIC";
+			class Vehicles
+			{
+				items=1;
+				class Item0
+				{
+					position[]={28629.201,0.19616511,25920.324};
+					id=29;
+					side="LOGIC";
+					vehicle="Logic";
+					leader=1;
+					skill=0.60000002;
+					text="NorthEast";
 				};
 			};
 		};
