@@ -11,7 +11,7 @@ if(!isDedicated) then {
 
 //call compileFinal preprocessFileLineNumbers "FAR_revive\FAR_revive_init.sqf";
 call compile preprocessFileLineNumbers "config.sqf";
-
+call compile preprocessFileLineNumbers ("Islands\" + worldName + "\WorldConfig.sqf");
 
 
 _isJipPlayer = false;
@@ -369,7 +369,7 @@ if (!isDedicated) then {
 	sleep 1.5;
 	titleFadeOut 1;
 	sleep 3;
-	["Somewhere on", "Altis", str (date select 2) + "/" + str (date select 1) + "/" + str (date select 0) + " " + str (date select 3) + ":00"] spawn BIS_fnc_infoText;
+	["Somewhere on", A3E_WorldName , str (date select 2) + "/" + str (date select 1) + "/" + str (date select 0) + " " + str (date select 3) + ":00"] spawn BIS_fnc_infoText;
 };
 
 

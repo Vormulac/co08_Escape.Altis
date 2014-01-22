@@ -113,7 +113,6 @@ if (_showGroupDiagnostics) then {
 if (true) then {
     private ["_communicationCenterMarkers", "_comCenNo", "_comCenMarkerNames", "_markerCoreName", "_markerName", "_instanceNo", "_marker", "_minEnemies", "_maxEnemies", "_chosenComCenIndexes", "_index", "_comCenPositions", "_comCenItem", "_distanceBetween", "_currentPos", "_tooClose", "_pos", "_scriptHandle"];
 	
-	call compile preprocessFileLineNumbers ("Islands\" + worldName + "\WorldConfig.sqf");
     call compile preprocessFileLineNumbers ("Islands\" + worldName + "\CommunicationCenterMarkers" + worldName + ".sqf");
     
     _comCenMarkerNames = [];
@@ -124,7 +123,7 @@ if (true) then {
 	private["_index","_chosenComCenIndexes","_commCentreMarkers"];
     _chosenComCenIndexes = [];
 
-    _distanceBetween = 5000;
+    _distanceBetween = A3E_MinComCenterDistance;
     
    _commCentreMarkers = drn_arr_communicationCenterMarkers;
 
