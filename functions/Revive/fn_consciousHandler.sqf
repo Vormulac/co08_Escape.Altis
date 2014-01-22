@@ -39,6 +39,7 @@ _crawlHandler = _unit addeventhandler["AnimChanged",{_this call at_fnc_startCraw
 [_unit] spawn {
     sleep 1;
     [[(_this select 0)],"at_fnc_addReviveAction",true] call BIS_fnc_MP;
+	[[_unit,"AinjPpneMstpSnonWrflDnon"],"at_fnc_switchMove",true] call BIS_fnc_MP;
 };
 if(_unit == player) then {
     showHud false;
@@ -61,9 +62,7 @@ if(_unit == player) then {
                 "
         ];
 };
-//if(surfaceIsWater (position _unit)) then {
-//    [_unit] spawn at_fnc_washAshore;
-//};
+
 _unit allowDamage true;
 while{!(_unit getvariable "AT_isConscious") && (alive _unit)} do {
         sleep 0.1;

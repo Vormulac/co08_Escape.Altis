@@ -30,7 +30,6 @@ private["_unit","_script","_ragdoll","_processed"];
 		if(!_processed) then {
 			[[_unit,"AinjPpneMstpSnonWrflDnon"],"at_fnc_playMove",true] call BIS_fnc_MP;
 		};
-		
 		_unit setvariable["AT_IsConscious",false,true];
         _script = [_unit] spawn at_fnc_consciousHandler;       
 };

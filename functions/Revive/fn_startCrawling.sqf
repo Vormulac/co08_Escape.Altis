@@ -8,7 +8,7 @@ if(_anim == "amovppnemstpsraswrfldnon_injured") then {
         [_unit] spawn {
             private["_unit","_endtime"];
             _unit = _this select 0;
-            _endtime = time + random 10 + 5;
+            _endtime = time + random 30 + 15;
             waituntil{time>_endtime || !(_unit getvariable "AT_isCrawling")};
              if((_unit getvariable "AT_isCrawling") && !(_unit getvariable "AT_isConscious")) then {
                _unit setcaptive true;

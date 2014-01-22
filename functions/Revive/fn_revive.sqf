@@ -16,16 +16,18 @@ _abortAction = [_reviver,_unit] call compile format["private[""_reviver"",""_rev
 _unit attachTo [_reviver,[0,1,0]]; 
 _unit setDir (getDir _reviver + 90);
 // eventuell das statt dem EH : WaitUntil {animationstate player == "ainjppnemstpsnonwrfldnon"};
-[_reviver] spawn {
-    private["_reviver","_dir","_pos"];
+[_reviver,_unit] spawn {
+    private["_reviver","_dir","_pos","_unit"];
     _reviver = _this select 0;
+	_unit = _this select 1;
     _dir = getdir _reviver;
     _pos = getposASL _reviver;
-    while{count(_reviver getvariable "AT_isHealing")>0} do {
+    while{count(_reviver getvariable "AT_isHealing")>0 && !(_unit getvariable "AT_isConscious")} do {
         sleep 0.01;
         _reviver setdir _dir;
         _reviver setposASL _pos;
     };
+	//Maybe detach here
 };
 
 waituntil{((_reviver getvariable "AT_isHealing") select 1)};

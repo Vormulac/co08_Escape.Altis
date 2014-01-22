@@ -1,4 +1,4 @@
-private["_unit"];
+private["_unit","_isFlat","_position"];
     _unit = _this select 0;
     _unit setcaptive false;
     if(local _unit) then {
@@ -12,13 +12,15 @@ private["_unit"];
 		false,				//--- True if some water can be in 25m radius
 		_unit			//--- Ignored object
 	];
-	if(!_isFlat) then {
-		_position = (position _unit) findEmptyPosition [0,4,typeof _unit];
+	if(count(_isFlat)==0) then {
+		_position = (position _unit) findEmptyPosition [0,2,typeof _unit];
 		if(count(_position)>0) then {
 			_unit setpos _position;
 		} else {
 			diag_log format ["Trying to get a good reviveposition for %1 failed", name player];
 		};
+	} else {
+		_unit setposASL _isFlat;
 	};
 	[[_unit,"AmovPpneMstpSrasWrflDnon"],"at_fnc_playMove",true] call BIS_fnc_MP;
         if(!(isplayer _unit)) then {
