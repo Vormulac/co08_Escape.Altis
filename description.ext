@@ -8,13 +8,13 @@ class Header
   maxPlayers = 8;
 };
 
-onLoadMission = MISSIONNAME;
+onLoadMission = MISSIONNAMEFULL;
 OnLoadMissionTime = FALSE;
 dev = "Vormulac, Hyperz and NeoArmageddon";
 briefingName = MISSIONNAME;
 author = "Vormulac, Hyperz and NeoArmageddon";
 overviewPicture = "a3\Missions_F_Gamma\data\img\MP_COOP_m03_overview_CA.paa";
-overviewText = MISSIONNAME;
+overviewText = MISSIONNAMEFULL;
 onLoadName = MISSIONNAME;
 loadScreen = "escape_banner.paa"; 
 

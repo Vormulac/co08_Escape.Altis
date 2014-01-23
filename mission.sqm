@@ -50,7 +50,7 @@ class Mission
 				items=10;
 				class Item0
 				{
-					position[]={12943.073,28.213163,18902.805};
+					position[]={12944.353,28.547741,18904.357};
 					azimut=-7.9580002;
 					id=0;
 					side="WEST";
@@ -64,7 +64,7 @@ class Mission
 				};
 				class Item1
 				{
-					position[]={12941.19,28.009911,18901.064};
+					position[]={12942.47,28.15794,18902.617};
 					azimut=3.5765834;
 					special="NONE";
 					id=1;
@@ -78,7 +78,7 @@ class Mission
 				};
 				class Item2
 				{
-					position[]={12940.483,28.339865,18903.609};
+					position[]={12941.763,28.612873,18905.162};
 					azimut=3.57658;
 					special="NONE";
 					id=2;
@@ -92,7 +92,7 @@ class Mission
 				};
 				class Item3
 				{
-					position[]={12940.396,28.178778,18902.242};
+					position[]={12941.676,28.352827,18903.795};
 					azimut=3.5765834;
 					special="NONE";
 					id=3;
@@ -106,7 +106,7 @@ class Mission
 				};
 				class Item4
 				{
-					position[]={12943.791,27.839136,18900.393};
+					position[]={12945.07,28.112879,18901.945};
 					azimut=3.5765834;
 					special="NONE";
 					id=4;
@@ -120,7 +120,7 @@ class Mission
 				};
 				class Item5
 				{
-					position[]={12945.125,27.91711,18900.916};
+					position[]={12946.404,28.154417,18902.469};
 					azimut=3.5765834;
 					special="NONE";
 					id=5;
@@ -134,7 +134,7 @@ class Mission
 				};
 				class Item6
 				{
-					position[]={12942.386,27.893785,18900.441};
+					position[]={12943.665,28.080755,18901.994};
 					azimut=3.5765834;
 					special="NONE";
 					id=6;
@@ -148,26 +148,26 @@ class Mission
 				};
 				class Item7
 				{
-					position[]={12947.342,28.421822,18904.104};
+					position[]={12947.574,28.222952,18903.1};
 					azimut=3.57658;
 					special="NONE";
 					id=7;
 					side="WEST";
-					vehicle="B_medic_F";
+					vehicle="B_Soldier_A_F";
 					player="PLAY CDG";
 					rank="LIEUTENANT";
 					skill=0.60000002;
-					text="p10";
+					text="p8";
 					init="this setCaptive true;this setVariable [""drn_var_initializing"", true];this addeventhandler [""killed"",{ if ((_this select 1) in (call drn_fnc_Escape_GetPlayers) && (_this select 1) != (_this select 0)) then {[(_this select 1), -9] call drn_fnc_CL_AddScore;}; }];";
 				};
 				class Item8
 				{
-					position[]={12946.883,28.174303,18902.684};
+					position[]={12948.394,28.397936,18904.195};
 					azimut=3.57658;
 					special="NONE";
 					id=8;
 					side="WEST";
-					vehicle="B_Soldier_F";
+					vehicle="B_soldier_M_F";
 					player="PLAY CDG";
 					rank="LIEUTENANT";
 					skill=0.60000002;
@@ -176,16 +176,16 @@ class Mission
 				};
 				class Item9
 				{
-					position[]={12946.029,28.028261,18901.713};
+					position[]={12949.015,28.64612,18905.281};
 					azimut=3.57658;
 					special="NONE";
 					id=9;
 					side="WEST";
-					vehicle="B_Soldier_F";
+					vehicle="B_medic_F";
 					player="PLAY CDG";
 					rank="LIEUTENANT";
 					skill=0.60000002;
-					text="p8";
+					text="p10";
 					init="this setCaptive true;this setVariable [""drn_var_initializing"", true];this addeventhandler [""killed"",{ if ((_this select 1) in (call drn_fnc_Escape_GetPlayers) && (_this select 1) != (_this select 0)) then {[(_this select 1), -9] call drn_fnc_CL_AddScore;}; }];";
 				};
 			};
@@ -198,7 +198,7 @@ class Mission
 				items=1;
 				class Item0
 				{
-					position[]={28978.295,0.19443066,29217.291};
+					position[]={6111.5283,-0.25259724,3089.2568};
 					id=10;
 					side="LOGIC";
 					vehicle="Logic";
@@ -568,7 +568,7 @@ class Mission
 				items=1;
 				class Item0
 				{
-					position[]={28629.201,0.19616511,25920.324};
+					position[]={27618.588,9.997592,23148.314};
 					id=29;
 					side="LOGIC";
 					vehicle="Logic";
@@ -621,7 +621,7 @@ class Mission
 		};
 		class Item6
 		{
-			position[]={28074.797,37.182579,25478.461};
+			position[]={26992.51,20.519274,23288.25};
 			name="TrafficMarker_NorthEast";
 			type="Empty";
 		};
@@ -861,7 +861,7 @@ class Mission
 		items=5;
 		class Item0
 		{
-			position[]={30304.916,-0.0048664864,30363.506};
+			position[]={7438.1479,-0.18757653,4235.4717};
 			timeoutMin=3;
 			timeoutMid=3;
 			timeoutMax=3;
@@ -875,7 +875,7 @@ class Mission
 		};
 		class Item1
 		{
-			position[]={29564.568,0.0070355982,30100.012};
+			position[]={6697.8018,0.06143418,3971.9775};
 			activationBy="ANY";
 			interruptable=1;
 			age="UNKNOWN";
@@ -887,7 +887,7 @@ class Mission
 		};
 		class Item2
 		{
-			position[]={29830.422,0.0069147209,30090.08};
+			position[]={6963.6563,0.036508054,3962.0459};
 			timeoutMin=1;
 			timeoutMid=1;
 			timeoutMax=1;
@@ -901,7 +901,7 @@ class Mission
 		};
 		class Item3
 		{
-			position[]={30062.363,0.0014374719,30098.973};
+			position[]={7195.5972,0.33702251,3970.9385};
 			timeoutMin=2;
 			timeoutMid=2;
 			timeoutMax=2;
@@ -915,7 +915,7 @@ class Mission
 		};
 		class Item4
 		{
-			position[]={30299.455,-0.22493441,30098.973};
+			position[]={7432.687,-0.4325304,3970.9385};
 			timeoutMin=3;
 			timeoutMid=3;
 			timeoutMax=3;
