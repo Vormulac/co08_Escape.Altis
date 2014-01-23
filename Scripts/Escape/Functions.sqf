@@ -185,8 +185,10 @@ drn_fnc_Escape_FindAmmoDepotPositions = {
     _countNE = 0;
     _countSE = 0;
     _countSW = 0;
-    
-    while {count _positions < 14} do {
+    if(isNil("A3E_AmmoDepotCount")) then {
+		A3E_AmmoDepotCount = 8;
+	};
+    while {count _positions < A3E_AmmoDepotCount} do {
         _isOk = false;
         _j = 0;
         

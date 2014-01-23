@@ -154,6 +154,14 @@ if (!isDedicated) then {
 				drn_var_Escape_playerEnteredWorld_p8 = true;
 				publicVariable "drn_var_Escape_playerEnteredWorld_p8";
 			};
+			case "p9": {
+				drn_var_Escape_playerEnteredWorld_p9 = true;
+				publicVariable "drn_var_Escape_playerEnteredWorld_p9";
+			};
+			case "p10": {
+				drn_var_Escape_playerEnteredWorld_p10 = true;
+				publicVariable "drn_var_Escape_playerEnteredWorld_p10";
+			};
 			default {
 				player sideChat "This should never happen!";
 			};
@@ -185,6 +193,12 @@ if (!isDedicated) then {
 				_playersEnteredWorld = _playersEnteredWorld + 1;
 			};
 			if (!isNil "drn_var_Escape_playerEnteredWorld_p8") then {
+				_playersEnteredWorld = _playersEnteredWorld + 1;
+			};
+			if (!isNil "drn_var_Escape_playerEnteredWorld_p9") then {
+				_playersEnteredWorld = _playersEnteredWorld + 1;
+			};
+			if (!isNil "drn_var_Escape_playerEnteredWorld_p10") then {
 				_playersEnteredWorld = _playersEnteredWorld + 1;
 			};
 		};

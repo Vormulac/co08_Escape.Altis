@@ -127,7 +127,11 @@ if (true) then {
     
    _commCentreMarkers = drn_arr_communicationCenterMarkers;
 
-    while {count _chosenComCenIndexes < 8 && count _commCentreMarkers > 0} do {
+	if(isNil("A3E_ComCenterCount")) then {
+		A3E_ComCenterCount = 5;
+	};
+	
+    while {count _chosenComCenIndexes < A3E_ComCenterCount && count _commCentreMarkers > 0} do {
         
         _index = floor(random(count(_commCentreMarkers)));
 		_currentPos = (_commCentreMarkers select _index) select 0;
