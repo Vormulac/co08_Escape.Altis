@@ -1,29 +1,16 @@
-//SearchLeader
+diag_log("Config invoked");
 
-a3e_var_knownPositionHelperObject = "Land_HelipadEmpty_F";
-a3e_var_knownPositionMinDistance = 100;
+//Loading world specific configs
+call compile preprocessFileLineNumbers ("islands\"+ worldName +"\WorldConfig.sqf");
+call compile preprocessFileLineNumbers ("islands\"+ worldName +"\VillageMarkers.sqf");
+call compile preprocessFileLineNumbers ("islands\"+ worldName +"\PatrolBoatMarkers.sqf");
+call compile preprocessFileLineNumbers ("islands\"+ worldName +"\CommunicationCenterMarkers.sqf");
+
+A3E_Debug = false; //Can be overwritten by parameters
+
+//Settings
 
 
-//Patrols
-a3e_var_maxSearchRange = 1000;
-a3e_var_investigationChance = 60;
-
-//Debug
-a3e_debug = false;
-a3e_debug_EnemyPosition = false;
-a3e_debug_Waypoints = false;
-a3e_debug_MapAndCompass = false;
-a3e_debug_immortal = false;
-a3e_debug_lastKnownPosition = false;
-a3e_debug_artillery = false;
-a3e_debug_aistate = false;
-
-//Artillery
-a3e_var_artillery_units  = [arti_1,arti_2,arti_3,arti_4,arti_5,arti_6,arti_7,arti_8,arti_9,arti_10,arti_11,arti_12,arti_13,arti_14,arti_15,arti_16];
-a3e_var_artilleryTimeThreshold = 120;
-a3e_var_artillery_cooldown = 600;
-a3e_var_artillery_rounds = 4;
-a3e_var_artillery_dispersion = 80;
-a3e_var_artillery_chance = 10;
-a3e_var_artillery_chance_cooldown = 60;
-a3e_var_artillery_fleeingDistance = 400;
+//GlobalVariables (NO SETTINGS)
+A3E_Players = []; //A list of the connected players
+A3E_StartPos = [];  //The Startposition
