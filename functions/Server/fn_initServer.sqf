@@ -1,7 +1,6 @@
 //waituntil{!isNil("BIS_fnc_init")};
 if(!isServer) exitwith {};
-diag_log("Server bootstrap invoked");
-
+["Server started."] spawn a3e_fnc_debugChat;
 //Parse the parameters
 call a3e_fnc_parameterInit;
 
@@ -19,3 +18,5 @@ _fenceRotateDir = random 360;
 
 [] call A3E_fnc_createComCenters;
 [] call A3E_fnc_createAmmoDepots;
+
+[] call A3E_fnc_parsebaseMarkers;

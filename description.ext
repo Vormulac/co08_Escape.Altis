@@ -1,2 +1,6 @@
 #include "include\params.hpp"
-#include "include\functions.hpp"
+
+class CfgFunctions
+{
+	#include "include\functions.hpp"
+};

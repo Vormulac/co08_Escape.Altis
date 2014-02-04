@@ -4,11 +4,15 @@ class Mission
 	addOns[]=
 	{
 		"A3_Characters_F_BLUFOR",
-		"a3_map_altis"
+		"a3_map_altis",
+		"A3_Characters_F_Civil",
+		"a3_characters_f_gamma"
 	};
 	addOnsAuto[]=
 	{
 		"A3_Characters_F_BLUFOR",
+		"A3_Characters_F_Civil",
+		"a3_characters_f_gamma",
 		"a3_map_altis"
 	};
 	randomSeed=11703990;
@@ -32,7 +36,7 @@ class Mission
 	};
 	class Groups
 	{
-		items=5;
+		items=6;
 		class Item0
 		{
 			side="WEST";
@@ -41,13 +45,15 @@ class Mission
 				items=1;
 				class Item0
 				{
-					position[]={14864.618,17.940001,16415.014};
+					position[]={12808.995,87.696861,16667.889};
+					azimut=-166.5;
 					id=0;
 					side="WEST";
 					vehicle="B_Soldier_F";
 					player="PLAYER COMMANDER";
 					leader=1;
 					skill=0.60000002;
+					init="this setcaptive true;";
 				};
 			};
 		};
@@ -113,7 +119,7 @@ class Mission
 				items=1;
 				class Item0
 				{
-					position[]={14861.892,17.940001,16413.98};
+					position[]={14850.387,17.93,16408.029};
 					id=4;
 					side="WEST";
 					vehicle="B_medic_F";
@@ -122,6 +128,51 @@ class Mission
 					skill=0.60000002;
 				};
 			};
+		};
+		class Item5
+		{
+			side="CIV";
+			class Vehicles
+			{
+				items=1;
+				class Item0
+				{
+					position[]={8839.9688,46.752808,25247.535};
+					id=5;
+					side="CIV";
+					vehicle="C_man_shorts_2_F_euro";
+					player="PLAY CDG";
+					leader=1;
+					skill=0.60000002;
+					text="HC";
+					init="this allowdamage false;";
+					description="Headless Client";
+				};
+			};
+		};
+	};
+	class Markers
+	{
+		items=2;
+		class Item0
+		{
+			position[]={16583.346,0.20365815,12069.899};
+			name="Base";
+			markerType="ELLIPSE";
+			type="Empty";
+			colorName="ColorRed";
+			a=50;
+			b=50;
+		};
+		class Item1
+		{
+			position[]={12811.27,87.787605,16667.988};
+			name="Base_1";
+			markerType="ELLIPSE";
+			type="Empty";
+			colorName="ColorRed";
+			a=50;
+			b=50;
 		};
 	};
 };
