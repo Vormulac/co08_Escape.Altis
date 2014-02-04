@@ -16,7 +16,7 @@ _fenceRotateDir = random 360;
 // Add crashsite here
 //##############
 
-[] call A3E_fnc_createComCenters;
-[] call A3E_fnc_createAmmoDepots;
+//[] call A3E_fnc_createComCenters;
+//[] call A3E_fnc_createAmmoDepots;
 
 [] call A3E_fnc_parsebaseMarkers;

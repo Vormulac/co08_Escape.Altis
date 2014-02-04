@@ -119,13 +119,14 @@ class Mission
 				items=1;
 				class Item0
 				{
-					position[]={14850.387,17.93,16408.029};
+					position[]={12802.974,87.723587,16666.027};
 					id=4;
 					side="WEST";
 					vehicle="B_medic_F";
 					player="PLAY CDG";
 					leader=1;
 					skill=0.60000002;
+					init="this setcaptive true;";
 				};
 			};
 		};
