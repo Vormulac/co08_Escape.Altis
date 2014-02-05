@@ -6,26 +6,32 @@ class Mission
 		"A3_Characters_F_BLUFOR",
 		"a3_map_altis",
 		"A3_Characters_F_Civil",
-		"a3_characters_f_gamma"
+		"a3_characters_f_gamma",
+		"A3_Characters_F_OPFOR",
+		"a3_characters_f_beta",
+		"A3_Soft_F_MRAP_01"
 	};
 	addOnsAuto[]=
 	{
 		"A3_Characters_F_BLUFOR",
+		"a3_characters_f_beta",
 		"A3_Characters_F_Civil",
 		"a3_characters_f_gamma",
+		"A3_Soft_F_MRAP_01",
 		"a3_map_altis"
 	};
 	randomSeed=11703990;
 	class Intel
 	{
-		timeOfChanges=1800.0002;
-		startWeather=0.30000001;
-		startWind=0.1;
-		startWaves=0.1;
-		forecastWeather=0.30000001;
-		forecastWind=0.1;
-		forecastWaves=0.1;
-		forecastLightnings=0.1;
+		briefingName="Escape 2 Test";
+		resistanceWest=0;
+		startWeather=0.29999998;
+		startWind=0.099999994;
+		startWaves=0.099999994;
+		forecastWeather=0.29999998;
+		forecastWind=0.099999994;
+		forecastWaves=0.099999994;
+		forecastLightnings=0.099999994;
 		year=2035;
 		month=6;
 		day=24;
@@ -36,24 +42,42 @@ class Mission
 	};
 	class Groups
 	{
-		items=6;
+		items=5;
 		class Item0
 		{
 			side="WEST";
 			class Vehicles
 			{
-				items=1;
+				items=3;
 				class Item0
 				{
 					position[]={12808.995,87.696861,16667.889};
-					azimut=-166.5;
+					azimut=1.2354733;
 					id=0;
 					side="WEST";
 					vehicle="B_Soldier_F";
 					player="PLAYER COMMANDER";
 					leader=1;
 					skill=0.60000002;
-					init="this setcaptive true;";
+				};
+				class Item1
+				{
+					position[]={12811.322,87.793999,16666.377};
+					azimut=1.2354701;
+					id=1;
+					side="WEST";
+					vehicle="B_engineer_F";
+					player="PLAY CDG";
+					skill=0.60000002;
+				};
+				class Item2
+				{
+					position[]={12814.519,88.049118,16666.803};
+					id=2;
+					side="WEST";
+					vehicle="B_medic_F";
+					player="PLAY CDG";
+					skill=0.60000002;
 				};
 			};
 		};
@@ -66,7 +90,7 @@ class Mission
 				class Item0
 				{
 					position[]={2625.5002,0.061969448,4799.7231};
-					id=1;
+					id=3;
 					side="LOGIC";
 					vehicle="Logic";
 					leader=1;
@@ -84,7 +108,7 @@ class Mission
 				class Item0
 				{
 					position[]={28758.738,0.0942204,25517.965};
-					id=2;
+					id=4;
 					side="LOGIC";
 					vehicle="Logic";
 					leader=1;
@@ -102,7 +126,7 @@ class Mission
 				class Item0
 				{
 					position[]={13788.666,8.5962229,15404.262};
-					id=3;
+					id=5;
 					side="LOGIC";
 					vehicle="Logic";
 					leader=1;
@@ -113,25 +137,6 @@ class Mission
 		};
 		class Item4
 		{
-			side="WEST";
-			class Vehicles
-			{
-				items=1;
-				class Item0
-				{
-					position[]={12802.974,87.723587,16666.027};
-					id=4;
-					side="WEST";
-					vehicle="B_medic_F";
-					player="PLAY CDG";
-					leader=1;
-					skill=0.60000002;
-					init="this setcaptive true;";
-				};
-			};
-		};
-		class Item5
-		{
 			side="CIV";
 			class Vehicles
 			{
@@ -139,7 +144,7 @@ class Mission
 				class Item0
 				{
 					position[]={8839.9688,46.752808,25247.535};
-					id=5;
+					id=6;
 					side="CIV";
 					vehicle="C_man_shorts_2_F_euro";
 					player="PLAY CDG";
@@ -152,9 +157,53 @@ class Mission
 			};
 		};
 	};
+	class Vehicles
+	{
+		items=5;
+		class Item0
+		{
+			position[]={12793.325,87.689362,16656.84};
+			id=7;
+			side="EMPTY";
+			vehicle="B_MRAP_01_F";
+			skill=0.60000002;
+		};
+		class Item1
+		{
+			position[]={12799.227,87.71048,16656.904};
+			id=8;
+			side="EMPTY";
+			vehicle="B_MRAP_01_F";
+			skill=0.60000002;
+		};
+		class Item2
+		{
+			position[]={12805.129,87.696121,16656.971};
+			id=9;
+			side="EMPTY";
+			vehicle="B_MRAP_01_F";
+			skill=0.60000002;
+		};
+		class Item3
+		{
+			position[]={12810.441,87.67305,16656.77};
+			id=10;
+			side="EMPTY";
+			vehicle="B_MRAP_01_F";
+			skill=0.60000002;
+		};
+		class Item4
+		{
+			position[]={12815.884,87.960739,16656.902};
+			id=11;
+			side="EMPTY";
+			vehicle="B_MRAP_01_F";
+			skill=0.60000002;
+		};
+	};
 	class Markers
 	{
-		items=2;
+		items=3;
 		class Item0
 		{
 			position[]={16583.346,0.20365815,12069.899};
@@ -174,6 +223,12 @@ class Mission
 			colorName="ColorRed";
 			a=50;
 			b=50;
+		};
+		class Item2
+		{
+			position[]={12805.784,87.714424,16666.416};
+			name="respawn_west";
+			type="Empty";
 		};
 	};
 };

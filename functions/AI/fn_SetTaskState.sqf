@@ -4,6 +4,6 @@ _state = _this select 1;
 
 _group setvariable ["a2e_TaskState",_state,false];
 
-if(a3e_debug_aistate) then {
-	player sidechat format["%1 is now in state %2",_group,_state];
+if(A3E_Debug) then {
+        //[format["%1 is now in state %2",_group,_state]] call a3e_fnc_debugChat;
 };

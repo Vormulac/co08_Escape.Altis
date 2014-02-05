@@ -19,12 +19,18 @@ class A3E
             class findFlatArea{};
             class groupChat {};
             class getMarkerList {};
-            class getBuildingsInMarker{};
+            class getBuildingsInMarker {};
+            class calcMarkerArea {};
 	};
 	class AI
 	{
             class findSpawnPosBuilding;
             class spawnGarisson;
+            class spawnGroup;
+            class patrol;
+            class move;
+            class SetTaskState;
+            class GetTaskState;
             //class createGroup;
            // class createUnit;
 	};
@@ -38,7 +44,6 @@ class A3E
 	};
 	class Server
 	{
-            class AmbientInfantry {}; 
             class initServer {
                     preInit = 0; // 1 to call the function upon mission start, before objects are initialized. Passed arguments are ["preInit"]
                     postInit = 1; // 1 to call the function upon mission start, after objects are initialized. Passed arguments are ["postInit"]
@@ -48,9 +53,28 @@ class A3E
             class createComCenters {};
             class createAmmoDepots {};
             class HCExec {};
-            class parseBaseMarkers {};
+            class parseBaseMarkers {}; //Obsolet
+            ;
 
 	};
+        class Searchleader 
+        {
+            class initSearchLeader {};
+            //class startSearchChopper {};
+            class reportToHQ {};
+            class enemyDetected {};
+        };
+        class Regions
+        {
+            class createRegions {};
+            class activateRegion {};
+            class deactivateRegion {};
+            class initRegion {};
+            class spawnAmbientInfantry {};
+            class despawnAmbientInfantry {};
+            class spawnPatrols {};
+            class despawnPatrols {};
+        };
 	class Templates
 	{
             class BuildPrison {};

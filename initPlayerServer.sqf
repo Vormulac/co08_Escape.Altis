@@ -3,7 +3,7 @@ private["_player","_didJIP"];
 _player = _this select 0;
 _didJIP =  _this select 1;
 
-if(_player == HC) then {
+if(name _player == "HC") then {
     ["HC present. Offloading AI."] spawn a3e_fnc_debugChat;
     A3E_HC_ID = owner _player;
     if(A3E_HC_ID==0) exitwith {

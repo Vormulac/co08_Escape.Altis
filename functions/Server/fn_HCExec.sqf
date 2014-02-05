@@ -10,5 +10,6 @@ if(A3E_HC_ID !=0) then {    //Call function on HC if present
 };
 //Call if additional servercall is required
 if(A3E_HC_ID !=0 && _server) then {
-    call compile format["%1 spawn %2;",_params,_function];
+    _function = missionnamespace getvariable _function;
+    _params call _function;
 }
