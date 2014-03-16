@@ -8,8 +8,8 @@ class Mission
 		"A3_Characters_F_Civil",
 		"a3_characters_f_gamma",
 		"A3_Characters_F_OPFOR",
-		"a3_characters_f_beta",
-		"A3_Soft_F_MRAP_01"
+		"A3_Soft_F_MRAP_01",
+		"a3_characters_f_beta"
 	};
 	addOnsAuto[]=
 	{
@@ -48,35 +48,16 @@ class Mission
 			side="WEST";
 			class Vehicles
 			{
-				items=3;
+				items=1;
 				class Item0
 				{
 					position[]={12808.995,87.696861,16667.889};
-					azimut=1.2354733;
+					azimut=1.2354701;
 					id=0;
 					side="WEST";
-					vehicle="B_Soldier_F";
+					vehicle="B_engineer_F";
 					player="PLAYER COMMANDER";
 					leader=1;
-					skill=0.60000002;
-				};
-				class Item1
-				{
-					position[]={12811.322,87.793999,16666.377};
-					azimut=1.2354701;
-					id=1;
-					side="WEST";
-					vehicle="B_engineer_F";
-					player="PLAY CDG";
-					skill=0.60000002;
-				};
-				class Item2
-				{
-					position[]={12814.519,88.049118,16666.803};
-					id=2;
-					side="WEST";
-					vehicle="B_medic_F";
-					player="PLAY CDG";
 					skill=0.60000002;
 				};
 			};
@@ -90,7 +71,7 @@ class Mission
 				class Item0
 				{
 					position[]={2625.5002,0.061969448,4799.7231};
-					id=3;
+					id=1;
 					side="LOGIC";
 					vehicle="Logic";
 					leader=1;
@@ -108,7 +89,7 @@ class Mission
 				class Item0
 				{
 					position[]={28758.738,0.0942204,25517.965};
-					id=4;
+					id=2;
 					side="LOGIC";
 					vehicle="Logic";
 					leader=1;
@@ -125,8 +106,8 @@ class Mission
 				items=1;
 				class Item0
 				{
-					position[]={13788.666,8.5962229,15404.262};
-					id=5;
+					position[]={15380.047,4.3200073,16007.417};
+					id=3;
 					side="LOGIC";
 					vehicle="Logic";
 					leader=1;
@@ -144,7 +125,7 @@ class Mission
 				class Item0
 				{
 					position[]={8839.9688,46.752808,25247.535};
-					id=6;
+					id=4;
 					side="CIV";
 					vehicle="C_man_shorts_2_F_euro";
 					player="PLAY CDG";
@@ -163,7 +144,7 @@ class Mission
 		class Item0
 		{
 			position[]={12793.325,87.689362,16656.84};
-			id=7;
+			id=5;
 			side="EMPTY";
 			vehicle="B_MRAP_01_F";
 			skill=0.60000002;
@@ -171,7 +152,7 @@ class Mission
 		class Item1
 		{
 			position[]={12799.227,87.71048,16656.904};
-			id=8;
+			id=6;
 			side="EMPTY";
 			vehicle="B_MRAP_01_F";
 			skill=0.60000002;
@@ -179,7 +160,7 @@ class Mission
 		class Item2
 		{
 			position[]={12805.129,87.696121,16656.971};
-			id=9;
+			id=7;
 			side="EMPTY";
 			vehicle="B_MRAP_01_F";
 			skill=0.60000002;
@@ -187,7 +168,7 @@ class Mission
 		class Item3
 		{
 			position[]={12810.441,87.67305,16656.77};
-			id=10;
+			id=8;
 			side="EMPTY";
 			vehicle="B_MRAP_01_F";
 			skill=0.60000002;
@@ -195,7 +176,7 @@ class Mission
 		class Item4
 		{
 			position[]={12815.884,87.960739,16656.902};
-			id=11;
+			id=9;
 			side="EMPTY";
 			vehicle="B_MRAP_01_F";
 			skill=0.60000002;
@@ -203,10 +184,10 @@ class Mission
 	};
 	class Markers
 	{
-		items=3;
+		items=65;
 		class Item0
 		{
-			position[]={16583.346,0.20365815,12069.899};
+			position[]={16583.346,-0.018537618,12069.899};
 			name="Base";
 			markerType="ELLIPSE";
 			type="Empty";
@@ -228,6 +209,378 @@ class Mission
 		{
 			position[]={12805.784,87.714424,16666.416};
 			name="respawn_west";
+			type="Empty";
+		};
+		class Item3
+		{
+			position[]={29599.48,-0.066593066,14009.619};
+			name="ExtractionA";
+			type="Empty";
+		};
+		class Item4
+		{
+			position[]={29628.764,-0.12551595,14006.92};
+			name="ExtractionB";
+			type="Empty";
+		};
+		class Item5
+		{
+			position[]={24162.803,3.1900001,18092.641};
+			name="ExtractionA_1";
+			type="Empty";
+		};
+		class Item6
+		{
+			position[]={24210.426,3.1900001,18069.4};
+			name="ExtractionB_1";
+			type="Empty";
+		};
+		class Item7
+		{
+			position[]={13677.929,58.865738,6401.4492};
+			name="ExtractionA_2";
+			type="Empty";
+		};
+		class Item8
+		{
+			position[]={13725.608,60.308475,6389.0981};
+			name="ExtractionB_2";
+			type="Empty";
+		};
+		class Item9
+		{
+			position[]={26859.76,24.350613,24571.568};
+			name="ExtractionA_3";
+			type="Empty";
+		};
+		class Item10
+		{
+			position[]={26897.521,23.712086,24608.223};
+			name="ExtractionB_3";
+			type="Empty";
+		};
+		class Item11
+		{
+			position[]={27086.729,22.73572,24832.096};
+			name="ExtractionA_4";
+			type="Empty";
+		};
+		class Item12
+		{
+			position[]={27108.379,23.517862,24863.746};
+			name="ExtractionB_4";
+			type="Empty";
+		};
+		class Item13
+		{
+			position[]={23095.402,3.1900001,18475.936};
+			name="ExtractionA_5";
+			type="Empty";
+		};
+		class Item14
+		{
+			position[]={23143.025,3.1900001,18452.695};
+			name="ExtractionB_5";
+			type="Empty";
+		};
+		class Item15
+		{
+			position[]={23136,3.1900001,18869.232};
+			name="ExtractionA_6";
+			type="Empty";
+		};
+		class Item16
+		{
+			position[]={23183.623,3.1900001,18845.992};
+			name="ExtractionB_6";
+			type="Empty";
+		};
+		class Item17
+		{
+			position[]={21098.133,23.197025,7197.9326};
+			name="ExtractionA_7";
+			type="Empty";
+		};
+		class Item18
+		{
+			position[]={21079.51,25.535698,7121.4453};
+			name="ExtractionB_7";
+			type="Empty";
+		};
+		class Item19
+		{
+			position[]={21145.16,19.709644,7465.8926};
+			name="ExtractionA_8";
+			type="Empty";
+		};
+		class Item20
+		{
+			position[]={21154.568,19.086349,7525.3667};
+			name="ExtractionB_8";
+			type="Empty";
+		};
+		class Item21
+		{
+			position[]={11627.271,22.786114,11928.154};
+			name="ExtractionA_9";
+			type="Empty";
+		};
+		class Item22
+		{
+			position[]={11693.305,22.863676,11865.976};
+			name="ExtractionB_9";
+			type="Empty";
+		};
+		class Item23
+		{
+			position[]={11417.985,23.618053,11495.662};
+			name="ExtractionA_10";
+			type="Empty";
+		};
+		class Item24
+		{
+			position[]={11381.39,23.615709,11507.19};
+			name="ExtractionB_10";
+			type="Empty";
+		};
+		class Item25
+		{
+			position[]={5873.0508,17.656197,10343.745};
+			name="ExtractionA_11";
+			type="Empty";
+		};
+		class Item26
+		{
+			position[]={5941.1465,19.313992,10279.05};
+			name="ExtractionB_11";
+			type="Empty";
+		};
+		class Item27
+		{
+			position[]={9017.3301,17.713249,21390.133};
+			name="ExtractionA_12";
+			type="Empty";
+		};
+		class Item28
+		{
+			position[]={9062.334,17.222467,21417.826};
+			name="ExtractionB_12";
+			type="Empty";
+		};
+		class Item29
+		{
+			position[]={9214.5879,16.598946,21533.205};
+			name="ExtractionA_13";
+			type="Empty";
+		};
+		class Item30
+		{
+			position[]={9259.6201,16.996161,21568.018};
+			name="ExtractionB_13";
+			type="Empty";
+		};
+		class Item31
+		{
+			position[]={16698.164,13.346168,19782.066};
+			name="ExtractionA_14";
+			type="Empty";
+		};
+		class Item32
+		{
+			position[]={16799.98,7.1601219,19852.545};
+			name="ExtractionB_14";
+			type="Empty";
+		};
+		class Item33
+		{
+			position[]={22185.307,3.4346838,14433.986};
+			name="ExtractionA_15";
+			type="Empty";
+		};
+		class Item34
+		{
+			position[]={22178.949,3.1034424,14520.271};
+			name="ExtractionB_15";
+			type="Empty";
+		};
+		class Item35
+		{
+			position[]={7987.8726,58.232414,9666.7598};
+			name="ExtractionA_16";
+			type="Empty";
+		};
+		class Item36
+		{
+			position[]={7946.8428,60.519112,9688.3496};
+			name="ExtractionB_16";
+			type="Empty";
+		};
+		class Item37
+		{
+			position[]={18562.482,9.1625414,6313.8555};
+			name="ExtractionA_17";
+			type="Empty";
+		};
+		class Item38
+		{
+			position[]={18623.07,13.443164,6355.501};
+			name="ExtractionB_17";
+			type="Empty";
+		};
+		class Item39
+		{
+			position[]={2644.5476,3.4697971,22107.652};
+			name="ExtractionA_18";
+			type="Empty";
+		};
+		class Item40
+		{
+			position[]={2684.7207,3.0300303,22087.977};
+			name="ExtractionB_18";
+			type="Empty";
+		};
+		class Item41
+		{
+			position[]={14764.404,5.9043679,10743.143};
+			name="ExtractionA_19";
+			type="Empty";
+		};
+		class Item42
+		{
+			position[]={14815.663,4.9738669,10736.125};
+			name="ExtractionB_19";
+			type="Empty";
+		};
+		class Item43
+		{
+			position[]={4573.231,123.32262,16924.447};
+			name="ExtractionA_20";
+			type="Empty";
+		};
+		class Item44
+		{
+			position[]={4564.5127,120.69376,16957.883};
+			name="ExtractionB_20";
+			type="Empty";
+		};
+		class Item45
+		{
+			position[]={14260.955,57.335712,23282.178};
+			name="ExtractionA_21";
+			type="Empty";
+		};
+		class Item46
+		{
+			position[]={14319.01,58.590237,23305.549};
+			name="ExtractionB_21";
+			type="Empty";
+		};
+		class Item47
+		{
+			position[]={23700.338,75.689537,24282.766};
+			name="ExtractionA_22";
+			type="Empty";
+		};
+		class Item48
+		{
+			position[]={23733.705,75.465729,24237.4};
+			name="ExtractionB_22";
+			type="Empty";
+		};
+		class Item49
+		{
+			position[]={27967.516,10.660208,21254.963};
+			name="ExtractionA_23";
+			type="Empty";
+		};
+		class Item50
+		{
+			position[]={27944.537,10.413853,21239.168};
+			name="ExtractionB_23";
+			type="Empty";
+		};
+		class Item51
+		{
+			position[]={2829.6199,45.978855,12039.668};
+			name="ExtractionA_24";
+			type="Empty";
+		};
+		class Item52
+		{
+			position[]={2893.583,49.609421,11996.229};
+			name="ExtractionB_24";
+			type="Empty";
+		};
+		class Item53
+		{
+			position[]={2590.3315,10.6255,9954.2354};
+			name="ExtractionA_25";
+			type="Empty";
+		};
+		class Item54
+		{
+			position[]={2678.3433,12.407679,9948.9307};
+			name="ExtractionB_25";
+			type="Empty";
+		};
+		class Item55
+		{
+			position[]={8741.0313,22.40274,7511.4111};
+			name="ExtractionA_26";
+			type="Empty";
+		};
+		class Item56
+		{
+			position[]={8795.4512,24.169502,7575.6001};
+			name="ExtractionB_26";
+			type="Empty";
+		};
+		class Item57
+		{
+			position[]={18501.957,12.613297,8144.8486};
+			name="ExtractionA_27";
+			type="Empty";
+		};
+		class Item58
+		{
+			position[]={18550.051,13.151469,8156.8491};
+			name="ExtractionB_27";
+			type="Empty";
+		};
+		class Item59
+		{
+			position[]={21961.762,44.463833,11192.166};
+			name="ExtractionA_28";
+			type="Empty";
+		};
+		class Item60
+		{
+			position[]={21985.346,45.807804,11147.347};
+			name="ExtractionB_28";
+			type="Empty";
+		};
+		class Item61
+		{
+			position[]={8476.9766,82.537804,23469.041};
+			name="ExtractionA_29";
+			type="Empty";
+		};
+		class Item62
+		{
+			position[]={8512.4873,84.105133,23506.197};
+			name="ExtractionB_29";
+			type="Empty";
+		};
+		class Item63
+		{
+			position[]={20654.072,7.9075556,20289.336};
+			name="ExtractionA_30";
+			type="Empty";
+		};
+		class Item64
+		{
+			position[]={20716.396,5.5391479,20350.773};
+			name="ExtractionB_30";
 			type="Empty";
 		};
 	};

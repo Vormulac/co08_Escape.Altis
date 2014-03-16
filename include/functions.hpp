@@ -21,6 +21,7 @@ class A3E
             class getMarkerList {};
             class getBuildingsInMarker {};
             class calcMarkerArea {};
+            class Hijack {};
 	};
 	class AI
 	{
@@ -54,7 +55,9 @@ class A3E
             class createAmmoDepots {};
             class HCExec {};
             class parseBaseMarkers {}; //Obsolet
-            ;
+            class RunExtraction {};
+            class AddHijackAction {};
+            class CreateExtractionPoint {};
 
 	};
         class Searchleader 
@@ -74,11 +77,13 @@ class A3E
             class despawnAmbientInfantry {};
             class spawnPatrols {};
             class despawnPatrols {};
+            class BuildRoadblock {};
         };
 	class Templates
 	{
             class BuildPrison {};
             class BuildComCenter {};
             class AmmoDepot {};
+            class BasicRoadBlock {};         
 	};
 };

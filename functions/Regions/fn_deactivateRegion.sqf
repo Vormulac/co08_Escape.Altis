@@ -12,4 +12,19 @@ if((_region select 0)) then {
         {deletevehicle _x;} foreach units _x;
         deleteGroup _x;
     } foreach _groups;
+
+     //delete roadblocks
+     _roadblock = (_region select 2) getVariable ["A3E_Roadblock",[]];
+     if((count _roadblock) > 0) then {
+     	
+	     _rbGroup = _roadblock select 0;
+	     _rbVehicles = _roadblock select 1;
+	     
+		 {deletevehicle _x;} foreach units _rbGroup;
+	     deleteGroup _rbGroup;
+	 	 
+	 	 {
+	 	  	deletevehicle _x;
+	 	 } foreach _rbVehicles;
+	 };
 };

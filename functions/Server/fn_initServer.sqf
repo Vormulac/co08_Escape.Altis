@@ -26,3 +26,5 @@ A3E_VillageMarker = ["Village_"] call a3e_fnc_getMarkerList;
 [] spawn A3E_fnc_createRegions;
 
 [] spawn A3E_fnc_initSearchLeader;
+
+[] spawn A3E_fnc_CreateComCenters;

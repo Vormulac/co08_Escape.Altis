@@ -36,7 +36,7 @@ cutText ["", "Plain", 1];
 //### mode 2: try to pick a extraction far away 
 _mode = 0;
 if(isServer) then {
-	_mode = 1;//paramsArray select 7;
+	_mode = paramsArray select 7;
 } else {
 	_mode = 1;
 };
@@ -48,15 +48,15 @@ if (_count == 0) then {
 
 	_flag = false;
 	//If selection fails ten times, a random point is selected-
-	for[{_i = 0},{_i<15},{_i = _i +1}] do {
-		_extractionPointNo = (floor random count A3E_ExtractionPointsA);
-		drn_var_Escape_ExtractionMarkerPos = getMarkerPos (A3E_ExtractionPointsA select _extractionPointNo);
-		
-		if((_mode == 1)) exitwith {};
+	for[{_i = 0},{_i<10},{_i = _i +1}] do {
+		_extractionPointNo = (floor random count A3E_ExtractionPointsA) + 1;
+		drn_var_Escape_ExtractionMarkerPos = getMarkerPos ("drn_Escape_ExtractionPos" + str _extractionPointNo);
+
+		if((_mode == 0)) exitwith {};
 		if((_generatorTrailer distance drn_var_Escape_ExtractionMarkerPos)<_max_range AND (_mode == 1)) exitwith {};
 		if((_generatorTrailer distance drn_var_Escape_ExtractionMarkerPos)>_min_range AND (_mode == 2)) exitwith {};
 	};
-	
+
     publicVariable "drn_var_Escape_ExtractionMarkerPos";
     
     if (!isNil "drn_var_Escape_ExtractionMarker") then {
@@ -67,10 +67,8 @@ if (_count == 0) then {
     
     [_extractionPointNo] call A3E_fnc_CreateExtractionPoint;
     
-    //["drn_hijackTasks", "SUCCEEDED"] call drn_SetTaskStateOnAllMachines;
-    //["Task complete: Hijack Communication Center (Rendezvous point marked on map)"] call drn_fnc_CL_ShowTitleTextAllClients;
+    ["drn_hijackTasks", "SUCCEEDED"] call drn_SetTaskStateOnAllMachines;
+    ["Task complete: Hijack Communication Center (Rendezvous point marked on map)"] call drn_fnc_CL_ShowTitleTextAllClients;
     
     _generatorTrailer removeAction _id;
 };
-
-
