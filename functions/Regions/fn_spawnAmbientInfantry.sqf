@@ -34,6 +34,5 @@ for "_x" from 1 to _groupCount do {
     } else {
         [format["Finding a spawnposition for AmbientInf failed.",_groupCount]] call a3e_fnc_debugChat;
     };
-        
 };
 _logic setvariable ["A3E_AmbientInfantryGroups",_groups,true];
