@@ -5,23 +5,25 @@ class Header
 {
   gameType = Coop;
   minPlayers = 1;
-  maxPlayers = 8;
+  maxPlayers = 10;
 };
 
-onLoadMission = MISSIONNAMEFULL;
+
+onLoadMission = "Escape Altis";
 OnLoadMissionTime = FALSE;
-dev = "Vormulac, Hyperz and NeoArmageddon";
+dev = "Vormulac and NeoArmageddon";
 briefingName = MISSIONNAME;
-author = "Vormulac, Hyperz and NeoArmageddon";
+author = "Vormulac and NeoArmageddon";
 overviewPicture = "a3\Missions_F_Gamma\data\img\MP_COOP_m03_overview_CA.paa";
 overviewText = MISSIONNAMEFULL;
 onLoadName = MISSIONNAME;
 loadScreen = "escape_banner.paa"; 
 
 ///////////////////////////////////////////////////////////////////////////////////////////
-Respawn = "BASE";
+Respawn = "INSTANT";
+RespawnDelay = 5;
 disabledAI = 1;
-enableDebugConsole = 1;
+enableDebugConsole = 2;
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////

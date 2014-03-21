@@ -1,4 +1,4 @@
-call compile preprocessFileLineNumbers ("Islands\" + worldName + "\VillageMarkers" + worldName + ".sqf");
+call compile preprocessFileLineNumbers ("Islands\" + worldName + "\VillageMarkers" + ".sqf");
 
 drn_fnc_VillageMarkers_PutVillageMarkersOnMap = {
 	private ["_showMarkers"];

@@ -10,6 +10,7 @@ if(!isDedicated) then {
 };
 
 //call compileFinal preprocessFileLineNumbers "FAR_revive\FAR_revive_init.sqf";
+call compile preprocessFile "Revive\reviveInit.sqf";
 call compile preprocessFileLineNumbers "config.sqf";
 call compile preprocessFileLineNumbers ("Islands\" + worldName + "\WorldConfig.sqf");
 
@@ -82,12 +83,12 @@ if (_playerIsImmortal) then {
 
 //revive init
 if(isMultiplayer) then {
-	{[_x] call at_fnc_initRevive;} foreach playableunits;
+	//{[_x] call at_fnc_initRevive;} foreach playableunits;
 } else {
-	[p1] call at_fnc_initRevive;
+	//[p1] call at_fnc_initRevive;
 };
 //[player] call at_fnc_initRevive;	
-[] spawn at_fnc_serverCheck;
+//[] spawn at_fnc_serverCheck;
 
 
 
@@ -101,20 +102,16 @@ call compile preprocessFileLineNumbers "Scripts\Escape\AIskills.sqf";
 
 [_isJipPlayer] call compile preprocessFileLineNumbers "Briefing.sqf";
 
-
-//The following should become a function
-execVM "Scripts\Escape\RandomWeather.sqf";
-
 setTerrainGrid (paramsArray select 4);
 
 
 // Server Initialization
 
-if (isServer) then {
+/*if (isServer) then {
 	//### To a function
-    execVM "ServerInitialization.sqf";
+   // execVM "ServerInitialization.sqf";
     if (isDedicated) exitWith {};
-};
+};*/
 if (!isDedicated) then {
 	waitUntil {drn_var_Escape_playerEnteredWorld};
 
@@ -384,6 +381,9 @@ if (!isDedicated) then {
 	titleFadeOut 1;
 	sleep 3;
 	["Somewhere on", A3E_WorldName , str (date select 2) + "/" + str (date select 1) + "/" + str (date select 0) + " " + str (date select 3) + ":00"] spawn BIS_fnc_infoText;
+	if(!isNil("paramsArray")) then {
+		paramsArray call A3E_fnc_WriteParamBriefing;
+	};
 };
 
 

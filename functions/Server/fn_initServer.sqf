@@ -1,8 +1,16 @@
-if (!isServer) exitWith {};
+//waituntil{!isNil("BIS_fnc_init")};
+if(!isServer) exitwith {};
+["Server started."] spawn a3e_fnc_debugChat;
+//Parse the parameters
+//call a3e_fnc_parameterInit;
+
+// Add crashsite here
+//##############
+
 
 private ["_useEscapeSurprises", "_useRandomStartPos", "_useAmmoDepots", "_useSearchLeader", "_useMotorizedSearchGroup", "_useVillagePatrols", "_useMilitaryTraffic", "_useAmbientInfantry", "_useSearchChopper", "_useRoadBlocks", "_guardsExist", "_guardsAreArmed", "_guardLivesLong"];
 private ["_debugEscapeSurprises", "_debugAmmoDepots", "_debugSearchLeader", "_showGroupDiagnostics", "_debugVillagePatrols", "_debugMilitaryTraffic", "_debugAmbientInfantry", "_debugGarbageCollector", "_debugRoadBlocks"];
-private ["_debugAllUnits","_pos","_enemyMinSkill", "_enemyMaxSkill", "_searchChopperSearchTimeMin", "_searchChopperRefuelTimeMin", "_enemySpawnDistance", "_playerGroup", "_enemyFrequency", "_comCenGuardsExist", "_fenceRotateDir", "_scriptHandle"];
+private ["_EnemyCount","_debugAllUnits","_pos","_enemyMinSkill", "_enemyMaxSkill", "_searchChopperSearchTimeMin", "_searchChopperRefuelTimeMin", "_enemySpawnDistance", "_playerGroup", "_enemyFrequency", "_comCenGuardsExist", "_fenceRotateDir", "_scriptHandle"];
 
 // Developer Variables
 EAST Setfriend [RESISTANCE, 1];
@@ -12,7 +20,10 @@ WEST setFriend [RESISTANCE, 0];
 RESISTANCE setFriend [WEST, 0];
 
 
-//[] spawn MB_fnc_randomWeather2;
+[] spawn MB_fnc_randomWeather2;
+
+call compile preprocessFileLineNumbers ("Islands\" + worldName + "\CommunicationCenterMarkers.sqf");
+
 
 //#### Do we need all those switches
 _useRandomStartPos = true;
@@ -75,25 +86,20 @@ _villagePatrolSpawnArea = (paramsArray select 6);
 drn_searchAreaMarkerName = "drn_searchAreaMarker";
 
 // Choose a start position
-if (_useRandomStartPos) then {
-    drn_startPos = [] call drn_fnc_Escape_FindGoodPos;
-}
-else {
-    drn_startPos = getPos ((call drn_fnc_Escape_GetPlayers) select 0);
-};
+
+drn_startPos = [] call a3e_fnc_findFlatArea;
 publicVariable "drn_startPos";
 
 // Build start position
 _fenceRotateDir = random 360;
-_scriptHandle = [drn_startPos, _fenceRotateDir] execVM "Scripts\Escape\BuildStartPos.sqf";
+_scriptHandle = [drn_startPos, _fenceRotateDir] spawn a3e_fnc_BuildPrison;
 waitUntil {scriptDone _scriptHandle};
-sleep 0.25;
 
 drn_fenceIsCreated = true;
 publicVariable "drn_fenceIsCreated";
 
 //### The following is a mission function now
-//call compile preprocessFileLineNumbers "Scripts\DRN\VillageMarkers\InitVillageMarkers.sqf";
+
 [true] call drn_fnc_InitVillageMarkers; 
 [true] call drn_fnc_InitAquaticPatrolMarkers; 
 
@@ -113,127 +119,21 @@ if (_showGroupDiagnostics) then {
 
 // Initialize communication centers
 if (true) then {
-    private ["_communicationCenterMarkers", "_comCenNo", "_comCenMarkerNames", "_markerCoreName", "_markerName", "_instanceNo", "_marker", "_minEnemies", "_maxEnemies", "_chosenComCenIndexes", "_index", "_comCenPositions", "_comCenItem", "_distanceBetween", "_currentPos", "_tooClose", "_pos", "_scriptHandle"];
+
+    [] call A3E_fnc_createComCenters;
+
+    _EnemyCount = [3] call A3E_fnc_GetEnemyCount;
 	
-    call compile preprocessFileLineNumbers ("Islands\" + worldName + "\CommunicationCenterMarkers" + worldName + ".sqf");
-    
-    _comCenMarkerNames = [];
-    _comCenNo = 1;
-    _markerCoreName = "drn_var_communicationCenter";
-    _markerName = _markerCoreName + str _comCenNo;
-	
-	private["_index","_chosenComCenIndexes","_commCentreMarkers"];
-    _chosenComCenIndexes = [];
-
-    _distanceBetween = A3E_MinComCenterDistance;
-    
-   _commCentreMarkers = drn_arr_communicationCenterMarkers;
-
-	if(isNil("A3E_ComCenterCount")) then {
-		A3E_ComCenterCount = 5;
-	};
-	
-    while {count _chosenComCenIndexes < A3E_ComCenterCount && count _commCentreMarkers > 0} do {
-        
-        _index = floor(random(count(_commCentreMarkers)));
-		_currentPos = (_commCentreMarkers select _index) select 0;
-
-        
-        if (!(_index in _chosenComCenIndexes)) then {
-            _currentPos = (_commCentreMarkers select _index) select 0;
-
-            _tooClose = false;
-            {		
-				//Sometimes this try to access out of boundary!
-                _pos = (_commCentreMarkers select _x) select 0;
-                if (_pos distance _currentPos < _distanceBetween) then {
-                    _tooClose = true;
-                };
-                if (_useRandomStartPos && _currentPos distance drn_startPos < _distanceBetween) then {
-                    _tooClose = true;
-                };
-            } foreach _chosenComCenIndexes;
-            
-            if (!_tooClose) then {
-                _chosenComCenIndexes set [count _chosenComCenIndexes, _index];
-            }
-			else {
-				_commCentreMarkers = _commCentreMarkers - [_commCentreMarkers select _index];
-			};
-        };
-    };
-    
-    // Unmark this if you want communication centers everywhere
-    /*
-    _i = 0;
-    {
-        _chosenComCenIndexes set [_i, _i];
-        _i = _i + 1;
-    } foreach drn_arr_communicationCenterMarkers;
-    */
-    
-    _instanceNo = 0;
-    
-    switch (_enemyFrequency) do
-    {
-        case 1: // 1-2 players
-        {
-            _minEnemies = 8;
-            _maxEnemies = 12;
-        };
-        case 2: // 3-5 players
-        {
-            _minEnemies = 12;
-            _maxEnemies = 16;
-        };
-        default // 6-8 players
-        {
-            _minEnemies = 16;
-            _maxEnemies = 24;
-        };
-    };
-    
-    _comCenPositions = [];
-    
-    {
-        private ["_index"];
-        private ["_pos", "_dir"];
-        
-        _index = _x;
-        _comCenItem = drn_arr_communicationCenterMarkers select _index;
-        
-        _pos = _comCenItem select 0;
-        _dir = _comCenItem select 1;
-        _comCenPositions set [count _comCenPositions, _pos];
-        
-        _scriptHandle = [_pos, _dir, drn_arr_ComCenStaticWeapons, drn_arr_ComCenParkedVehicles] execVM "Scripts\Escape\BuildCommunicationCenter.sqf";
-        waitUntil {scriptDone _scriptHandle};
-        
-        _marker = createMarker ["drn_CommunicationCenterMapMarker" + str _instanceNo, _pos];
-        _marker setMarkerShape "ICON";
-		_marker setMarkerType "flag_CSAT";
-		
-        
-        _marker = createMarkerLocal ["drn_CommunicationCenterPatrolMarker" + str _instanceNo, _pos];
-        _marker setMarkerShapeLocal "ELLIPSE";
-        _marker setMarkerAlpha 0;
-        _marker setMarkerSizeLocal [75, 75];
-        
-        _instanceNo = _instanceNo + 1;
-    } foreach _chosenComCenIndexes;
     
     if (_comCenGuardsExist) then {
-        _scriptHandle = [_playerGroup, "drn_CommunicationCenterPatrolMarker", east, "INS", 4, _minEnemies, _maxEnemies, _enemyMinSkill, _enemyMaxSkill, _enemySpawnDistance] spawn drn_fnc_InitGuardedLocations;
+        _scriptHandle = [_playerGroup, "drn_CommunicationCenterPatrolMarker", east, "INS", 4, _EnemyCount select 0, _EnemyCount select 1, _enemyMinSkill, _enemyMaxSkill, _enemySpawnDistance] spawn drn_fnc_InitGuardedLocations;
         waitUntil {scriptDone _scriptHandle};
     };
-    
-    drn_var_Escape_communicationCenterPositions = _comCenPositions;
-    publicVariable "drn_var_Escape_communicationCenterPositions";
     
     // Initialize armor defence at communication centers
     
     if (_comCenGuardsExist) then {
-        [_playerGroup, _comCenPositions, _enemySpawnDistance, _enemyFrequency] call drn_fnc_Escape_InitializeComCenArmor;
+        [_playerGroup, drn_var_Escape_communicationCenterPositions, _enemySpawnDistance, _enemyFrequency] call drn_fnc_Escape_InitializeComCenArmor;
     };
 };
 
@@ -250,36 +150,17 @@ if (_useAmmoDepots) then {
         _playerGroup = _this select 4;
         _enemyFrequency = _this select 5;
         
+		_EnemyCount = [2] call A3E_fnc_GetEnemyCount;
+		_minEnemies = _EnemyCount select 0;
+		_maxEnemies = _EnemyCount select 1;
+		
         _bannedPositions = + drn_var_Escape_communicationCenterPositions + [drn_startPos, getMarkerPos "drn_insurgentAirfieldMarker"];
         drn_var_Escape_ammoDepotPositions = _bannedPositions call drn_fnc_Escape_FindAmmoDepotPositions;
         publicVariable "drn_var_Escape_ammoDepotPositions";
         
-        for "_i" from 0 to (count drn_var_Escape_ammoDepotPositions) - 1 do {
-            sleep 1;
-            [drn_var_Escape_ammoDepotPositions select _i, drn_arr_Escape_AmmoDepot_StaticWeaponClasses, drn_arr_Escape_AmmoDepot_ParkedVehicleClasses] call drn_fnc_Escape_BuildAmmoDepot;
-        };
-        
-        switch (_enemyFrequency) do
-        {
-            case 1: // 1-2 players
-            {
-                _minEnemies = 6;
-                _maxEnemies = 8;
-            };
-            case 2: // 3-5 players
-            {
-                _minEnemies = 8;
-                _maxEnemies = 12;
-            };
-            default // 6-8 players
-            {
-                _minEnemies = 12;
-                _maxEnemies = 18;
-            };
-        };
-        
-        _scriptHandle = [_playerGroup, "drn_AmmoDepotPatrolMarker", east, "INS", 3, _minEnemies, _maxEnemies, _enemyMinSkill, _enemyMaxSkill, _enemySpawnDistance, _debugAmmoDepots] spawn drn_fnc_InitGuardedLocations;
-        waitUntil {scriptDone _scriptHandle};
+        [] call A3E_fnc_createAmmoDepots;
+		
+        [_playerGroup, "drn_AmmoDepotPatrolMarker", east, "INS", 3, _minEnemies, _maxEnemies, _enemyMinSkill, _enemyMaxSkill, _enemySpawnDistance, _debugAmmoDepots] spawn drn_fnc_InitGuardedLocations;
     };
 };
 
@@ -587,7 +468,7 @@ if (_useSearchChopper) then {
 // Spawn creation of start position settings
 [drn_startPos, _enemyMinSkill, _enemyMaxSkill, _guardsAreArmed, _guardsExist, _guardLivesLong, _enemyFrequency, _fenceRotateDir] spawn {
     private ["_startPos", "_enemyMinSkill", "_enemyMaxSkill", "_guardsAreArmed", "_guardsExist", "_guardLivesLong", "_enemyFrequency", "_fenceRotateDir"];
-    private ["_debugAllUnits","_i", "_guard", "_guardGroup", "_marker", "_guardCount", "_guardGroups", "_unit", "_createNewGroup", "_guardPos"];
+    private ["_backpack","_debugAllUnits","_i", "_guard", "_guardGroup", "_marker", "_guardCount", "_guardGroups", "_unit", "_createNewGroup", "_guardPos"];
     
     _startPos = _this select 0;
     _enemyMinSkill = _this select 1;
@@ -599,39 +480,14 @@ if (_useSearchChopper) then {
     _fenceRotateDir = _this select 7;
 	 
     // Spawn guard
-    _guardGroup = createGroup RESISTANCE;
+
     _guardPos = [_startPos, [(_startPos select 0) - 4, (_startPos select 1) + 4, 0], _fenceRotateDir] call drn_fnc_CL_RotatePosition;
-    //(drn_arr_Escape_StartPositionGuardTypes select floor (random count drn_arr_Escape_StartPositionGuardTypes)) createUnit [_guardPos, _guardGroup, "", (0.5), "CAPTAIN"];
-    _guardGroup createUnit [(drn_arr_Escape_StartPositionGuardTypes select floor (random count drn_arr_Escape_StartPositionGuardTypes)), _guardPos, [], 0, "FORM"];
-    _guard = units _guardGroup select 0;
-    _guard setUnitRank "CAPTAIN";
-    _guard disableAI "MOVE";
-    _guard setDir _fenceRotateDir + 125;
-    _guard setVehicleAmmo 0.3 + random 0.7;
-	_guard unlinkItem "ItemGPS";
-	_guard unlinkItem "ItemMap";
-	_guard unlinkItem "ItemCompass";
-	_guard unlinkItem "NVGoggles_INDEP";
-    
-	if(random 100 < 70) then {
-		removeAllPrimaryWeaponItems _guard;
-	};
 	
-    //_guard setSkill _enemyMinSkill + random (_enemyMaxSkill - _enemyMinSkill);
-//    [_guard, drn_var_Escape_enemyMinSkill] call EGG_EVO_skill;
-    // _guard addMagazine drn_var_Escape_InnerFenceGuardSecondaryWeaponMagazine;
-    // _guard addMagazine drn_var_Escape_InnerFenceGuardSecondaryWeaponMagazine;
-    // _guard addMagazine drn_var_Escape_InnerFenceGuardSecondaryWeaponMagazine;
-    // if (random 100 < 50) then {
-        // _guard addMagazine drn_var_Escape_InnerFenceGuardSecondaryWeaponMagazine;
-    // };
-    // _guard addWeapon drn_var_Escape_InnerFenceGuardSecondaryWeapon;
-  
-    if (random 100 < 40) then {
-        _guard linkItem "NVGoggles_INDEP";
-		
-    };
-    
+	_backpack = "B_AssaultPack_khk" createvehicle _startPos;
+
+    _backpack addWeaponCargoGlobal[drn_var_Escape_InnerFenceGuardSecondaryWeapon,5];
+	_backpack addMagazineCargoGlobal[drn_var_Escape_InnerFenceGuardSecondaryWeaponMagazine,15];
+	
     // Spawn more guards
     _marker = createMarkerLocal ["drn_guardAreaMarker", _startPos];
     _marker setMarkerAlpha 0;
@@ -750,7 +606,7 @@ if (_useSearchChopper) then {
             _x setCaptive false;
         } foreach call drn_fnc_Escape_GetPlayers;
         
-        sleep (10 + random 10);
+        sleep (15 + random 15);
         
         {
             private ["_guardGroup"];
@@ -762,16 +618,4 @@ if (_useSearchChopper) then {
             } foreach call drn_fnc_Escape_GetPlayers;
         } foreach _guardGroups;
     };
-    
-	
-    if (_guardLivesLong) then {
-        sleep (10+ floor (random 10));
-    }
-    else {
-        sleep 8;
-    };
-    
-    // Guard passes out
-    _guard setDamage 1;
 };
-

@@ -4,42 +4,14 @@ _unitvar = [_unit] call BIS_fnc_objectVar;
 disableSerialization;
 //This will prevent a unconscious unit from taking more damage while unconscious
 _run = true;
-_respawned = false;
 
-
-//This should be put in a local function
-if(!alive _unit) then { 
-    _unit = [] call compile _unitvar;
-    _corpse = _unit getvariable ["AT_Corpse",ObjNull];
-    _unit setvariable ["AT_Corpse",nil];
-    [[format["%1 died while unconscious.",name _unit]],"at_fnc_debug",true] call BIS_fnc_MP;
-    if(!isNull _corpse) then {
-        [[format["%1 respawned. Copy gear from old body %2",name _unit,_corpse]],"at_fnc_debug",true] call BIS_fnc_MP;
-        [_unit,_corpse,false] call at_fnc_copyGear;
-        _unit setpos getpos _corpse;
-        deletevehicle _corpse;
-    } else {
-        [[format["Can't find a corpse!"]],"at_fnc_debug",true] call BIS_fnc_MP;
-    };
-};
-if(_respawned) then {
-     [[format["%1 has respawned and is now unconscious again.",name _unit]],"at_fnc_debug",true] call BIS_fnc_MP;
-     [_unit] call at_fnc_setUnconscious;
-} else {
-    [[format["%1 is unconscious",name _unit]],"at_fnc_debug",true] call BIS_fnc_MP;
-};
 _unit setcaptive true;
 
-//Prevent AI from using FAKs
-if(_unit != player) then {
-    _unit setdammage 0;
-};
 _crawlHandler = _unit addeventhandler["AnimChanged",{_this call at_fnc_startCrawling}];
 //_unit setvariable["AT_isConscious",false,true];
 [_unit] spawn {
     sleep 1;
     [[(_this select 0)],"at_fnc_addReviveAction",true] call BIS_fnc_MP;
-	[[_unit,"AinjPpneMstpSnonWrflDnon"],"at_fnc_switchMove",true] call BIS_fnc_MP;
 };
 if(_unit == player) then {
     showHud false;
@@ -63,28 +35,11 @@ if(_unit == player) then {
         ];
 };
 
-_unit allowDamage true;
 while{!(_unit getvariable "AT_isConscious") && (alive _unit)} do {
         sleep 0.1;
 };
-//_unit removeeventhandler _crawlHandler; //This is throwing an integer given, array expected error (especialy with AI)
 
-_respawn = false;
-if(!alive _unit) then { 
-    _unit = [] call compile _unitvar;
-    _corpse = _unit getvariable ["AT_Corpse",ObjNull];
-    _unit setvariable ["AT_Corpse",nil];
-    [[format["%1 died while unconscious.",name _unit]],"at_fnc_debug",true] call BIS_fnc_MP;
-    if(!isNull _corpse) then {
-        [[format["%1 respawned. Copy gear from old body %2",name _unit,_corpse]],"at_fnc_debug",true] call BIS_fnc_MP;
-        [_unit,_corpse,false] call at_fnc_copyGear;
-        _unit setpos getpos _corpse;
-        deletevehicle _corpse;
-    } else {
-        [[format["Can't find a corpse!"]],"at_fnc_debug",true] call BIS_fnc_MP;
-    };
-    _respawn = true;
-} else {
+if(alive _unit) then { 
     [[format["%1 is now conscious again.",name _unit]],"at_fnc_debug",true] call BIS_fnc_MP;
     [[_unit],"at_fnc_setConscious",true] call BIS_fnc_MP;
 };
@@ -94,7 +49,4 @@ _unit removeAllEventHandlers "AnimChanged"; //This could possibly break somethin
 if(_unit == player) then {
     _displayNumber displayRemoveEventHandler [ "keydown", _displayHandler];
     showHud true;
-};
-if(_respawn) then {
-        [_unit] spawn at_fnc_consciousHandler;
 };

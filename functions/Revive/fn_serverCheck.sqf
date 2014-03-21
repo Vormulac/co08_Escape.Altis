@@ -2,12 +2,11 @@ private["_run","_flag"];
 
 
 if(isserver && isMultiplayer) then {
-		player sidechat "Server";
 	_run = true;
 	while{_run} do {
 		_flag = true;
 		{
-			if((_x getvariable "AT_isConscious")) then {
+			if((_x getvariable ["AT_isConscious",true])) then {
 					_flag = false;			
 			} else {
 			};
